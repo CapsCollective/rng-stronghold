@@ -7,33 +7,40 @@ var turn = 0
 enum Resources {FOOD, WATER, WALL, ARMS, INFLUENCE}
 
 # Events
-var events = {
-	'Food Rots!': {
+var events = [
+	{
+		'title': 'Food Rots!',
 		'resource': Resources.FOOD,
 		'amount': 15,
 		'flavour': "This is some flavour text",
 	},
-	'Water Poisoned!': {
+	{
+		'title': 'Water Poisoned!',
 		'resource': Resources.WATER,
 		'amount': 15,
 		'flavour': "This is some flavour text",
 	},
-	'Riots Break Out!': {
+	{
+		'title': 'Riots Break Out!',
 		'resource': Resources.INFLUENCE,
 		'amount': 15,
 		'flavour': "This is some flavour text",
 	},
-	'Walls Start to Crumble!': {
+	{
+		'title': 'Walls Start to Crumble!',
 		'resource': Resources.WALL,
 		'amount': 15,
 		'flavour': "This is some flavour text",
 	},
-	'Weapons Rust': {
+	{
+		'title': 'Weapons Rust',
 		'resource': Resources.ARMS,
 		'amount': 15,
 		'flavour': "This is some flavour text",
 	},
-}
+]
+
+var active_events = []
 
 # Resources
 export (int) var grain
@@ -54,13 +61,12 @@ func _ready():
 
 func process_turn():
 	resolve_combat()
-	# 2. TODO: Enemy Turn
 	commit_enemies()
 	degrade_resources()
-	# 3. TODO: Roll for Events 
 	generate_events()
 	turn += 1
 	update_ui()
+	display_active_events()
 
 func get_dice_roll():
 	return randi()%7+1
@@ -95,7 +101,8 @@ func degrade_resources():
 	walls -= 1
 
 func generate_events():
-	pass
+	active_events.append(events[randi()%events.size()])
+	print(active_events)
 
 func update_ui():
 	$GrainLabel.text = "Grain: " + str(grain)
@@ -106,6 +113,9 @@ func update_ui():
 	$TurnLabel.text = "Turn: " + str(turn)
 	$EnemiesLabel.text = "Enemies: " + str(enemies)
 	$DiceLabel.text = "Manpower: " + str(dice)
+
+func display_active_events():
+	print(active_events)
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
