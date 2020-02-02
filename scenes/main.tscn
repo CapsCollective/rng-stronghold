@@ -18,7 +18,7 @@ walls = 100
 influence = 20
 
 [node name="Buildings" parent="." instance=ExtResource( 2 )]
-position = Vector2( -0.781158, 0 )
+position = Vector2( 85.061, 0 )
 
 [node name="TurnLabel" type="Label" parent="."]
 margin_left = 11.4153
@@ -28,6 +28,15 @@ margin_bottom = 96.453
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Turn: "
+
+[node name="DiceLabel" type="Label" parent="."]
+margin_left = 11.4153
+margin_top = 536.019
+margin_right = 170.415
+margin_bottom = 620.019
+rect_scale = Vector2( 0.617864, 0.617864 )
+custom_fonts/font = SubResource( 1 )
+text = "Manpower: "
 
 [node name="GrainLabel" type="Label" parent="."]
 margin_left = 11.4153
