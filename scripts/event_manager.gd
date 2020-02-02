@@ -43,7 +43,7 @@ export (int) var walls
 export (int) var influence
 
 # Enemy Strength
-var enemies
+var enemies = 5
 
 # Manpower
 var dice = 20
@@ -54,7 +54,6 @@ func _ready():
 	update_ui()
 
 func process_turn():
-	# 1. TODO: Resolve Combat
 	resolve_combat()
 	# 2. TODO: Enemy Turn
 	commit_enemies()
@@ -64,8 +63,28 @@ func process_turn():
 	turn += 1
 	update_ui()
 
+func get_dice_roll():
+	randi()%7+1
+
 func resolve_combat():
-	pass
+	for dice in range(enemies):
+		if dice > 0:
+			var player_roll = get_dice_roll()
+			var enemy_roll = get_dice_roll()
+			if player_roll > enemy_roll:
+				enemies -= 1
+				influence += 1
+			elif enemy_roll > player_roll:
+				dice -=1
+				influence -= 1
+			else:
+				enemies -= 1
+				dice -=1
+		elif walls > 0:
+			walls - get_dice_roll()
+		else:
+			# TODO make something cool happen
+			print("game over")
 
 func commit_enemies():
 	pass
