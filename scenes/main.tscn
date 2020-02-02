@@ -18,6 +18,11 @@ arms = 10
 walls = 100
 influence = 20
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512, 300 )
+scale = Vector2( 0.414592, 0.414592 )
+current = true
+
 [node name="Buildings" parent="." instance=ExtResource( 2 )]
 position = Vector2( 85.061, 0 )
 
@@ -94,4 +99,5 @@ custom_fonts/font = SubResource( 1 )
 text = "Walls:  "
 
 [node name="EventPanel" parent="." instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 503.949, 286.131 )
