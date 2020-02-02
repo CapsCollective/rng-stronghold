@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="Button" type="Button"]
+margin_left = -26.1086
+margin_top = -172.906
+margin_right = 21.8914
+margin_bottom = -146.906
+text = "Roll"
+__meta__ = {
+"_edit_use_anchors_": false
+}
