@@ -1,16 +1,23 @@
 extends Node2D
 
+# Turn timer
+onready var turn = 0
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+# Buildings
+var buildings = Array()
 
+# Resources
+export (int) var grain
+export (int) var water
+export (int) var arms
+export (int) var walls
+export (int) var influence
 
-# Called when the node enters the scene tree for the first time.
+# Enemy Strength
+var enemies
+
+# Manpower
+var dice
+
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	pass
