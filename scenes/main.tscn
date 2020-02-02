@@ -1,91 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/event_manager.gd" type="Script" id=1]
-[ext_resource path="res://res/walls.png" type="Texture" id=2]
-[ext_resource path="res://res/water-supply.png" type="Texture" id=3]
-[ext_resource path="res://res/keep.png" type="Texture" id=4]
-[ext_resource path="res://res/armoury.png" type="Texture" id=5]
-[ext_resource path="res://res/granary.png" type="Texture" id=6]
-[ext_resource path="res://res/field.png" type="Texture" id=7]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 97.3824, 85.1436 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 58.4886, 47.8422 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 60.922, 75.014 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 1367.67, 377.338 )
+[ext_resource path="res://scenes/buildings.tscn" type="PackedScene" id=2]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Buildings" type="Node2D" parent="."]
-
-[node name="Keep" type="Area2D" parent="Buildings"]
-position = Vector2( 400, 150 )
-
-[node name="Sprite" type="Sprite" parent="Buildings/Keep"]
-scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 4 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Buildings/Keep"]
-shape = SubResource( 1 )
-
-[node name="Armoury" type="Area2D" parent="Buildings"]
-position = Vector2( 600, 250 )
-
-[node name="Sprite" type="Sprite" parent="Buildings/Armoury"]
-scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 5 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Buildings/Armoury"]
-shape = SubResource( 2 )
-
-[node name="Granary" type="Area2D" parent="Buildings"]
-position = Vector2( 200, 250 )
-
-[node name="Sprite" type="Sprite" parent="Buildings/Granary"]
-scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 6 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Buildings/Granary"]
-shape = SubResource( 3 )
-
-[node name="Water" type="Area2D" parent="Buildings"]
-position = Vector2( 800, 250 )
-
-[node name="Sprite" type="Sprite" parent="Buildings/Water"]
-scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 3 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buildings/Water"]
-scale = Vector2( 0.2, 0.2 )
-polygon = PoolVector2Array( -64.0144, -904.472, -600.3, -906.856, -640.82, -315.75, -249.927, -167.973, -59.2476, 96.5947, 150.5, 966.57, 541.393, 1188.23, 600.98, 1088.13, 415.068, 616.196, 345.946, -232.327, 298.276, -399.172, 446.053, -761.463, 674.868, -997.428, 365.014, -1190.49, 205.32, -1190.49 )
-
-[node name="Wall" type="Area2D" parent="Buildings"]
-position = Vector2( 465.983, 360 )
-scale = Vector2( 0.2, 0.2 )
-
-[node name="Sprite" type="Sprite" parent="Buildings/Wall"]
-scale = Vector2( 1, 1 )
-texture = ExtResource( 2 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buildings/Wall"]
-polygon = PoolVector2Array( -1256.5, -94.366, -949.033, -37.1624, -493.786, -20.4778, 56.8008, -72.9146, 204.577, -89.5991, 898.174, -249.293, 1143.67, -318.415, 1353.42, -327.948, 1439.23, -3.79346, 1298.6, 17.6582, 1038.8, 108.231, -98.1265, 282.226, -334.092, 337.046, -808.407, 332.279, -1080.13, 296.527, -1351.84, 213.104, -1442.42, 153.517, -1304.17, 8.12427 )
-
-[node name="Battlefield" type="Area2D" parent="Buildings"]
-position = Vector2( 557.509, 562.771 )
-scale = Vector2( 0.2, 0.2 )
-
-[node name="Sprite" type="Sprite" parent="Buildings/Battlefield"]
-position = Vector2( -505.3, -245.5 )
-texture = ExtResource( 7 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Buildings/Battlefield"]
-position = Vector2( -505.3, -245.5 )
-scale = Vector2( 1, 1 )
-shape = SubResource( 4 )
+[node name="Buildings" parent="." instance=ExtResource( 2 )]
