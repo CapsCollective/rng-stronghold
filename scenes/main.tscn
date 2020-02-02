@@ -17,6 +17,11 @@ arms = 10
 walls = 100
 influence = 20
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 511.375, 299.009 )
+scale = Vector2( 0.617864, 0.617864 )
+current = true
+
 [node name="Buildings" parent="." instance=ExtResource( 2 )]
 position = Vector2( 85.061, 0 )
 
@@ -37,6 +42,9 @@ margin_bottom = 575.976
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Manpower: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="EnemiesLabel" type="Label" parent="."]
 margin_left = 11.4153
@@ -91,3 +99,6 @@ margin_bottom = 447.561
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Walls:  "
+__meta__ = {
+"_edit_use_anchors_": false
+}
