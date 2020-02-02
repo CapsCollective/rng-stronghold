@@ -1,7 +1,7 @@
 extends Node2D
 
 # Turn timer
-onready var turn = 0
+var turn = 0
 
 # Resources enum for referencing buildings 
 enum Resources {FOOD, WATER, WALL, ARMS, INFLUENCE}
@@ -25,10 +25,10 @@ export (int) var walls
 export (int) var influence
 
 # Enemy Strength
-onready var enemies
+var enemies
 
 # Manpower
-onready var dice = 20
+var dice = 20
 
 func _ready():
 	$TurnLabel.text = "Turn: " + str(turn)
@@ -36,7 +36,6 @@ func _ready():
 	update_ui()
 
 func process_turn():
-	
 	# 1. TODO: Resolve Combat
 	resolve_combat()
 	# 2. TODO: Enemy Turn
