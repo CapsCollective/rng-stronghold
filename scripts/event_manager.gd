@@ -9,12 +9,30 @@ enum Resources {FOOD, WATER, WALL, ARMS, INFLUENCE}
 # Events
 var events = {
 	'Food Rots!': {
-		
+		'resource': Resources.FOOD,
+		'amount': 15,
+		'flavour': "This is some flavour text",
 	},
-	'Water Poisoned!': {},
-	'Riots Break Out!': {},
-	'Walls Start to Crumble!': {},
-	'Weapons Rust': {},
+	'Water Poisoned!': {
+		'resource': Resources.WATER,
+		'amount': 15,
+		'flavour': "This is some flavour text",
+	},
+	'Riots Break Out!': {
+		'resource': Resources.INFLUENCE,
+		'amount': 15,
+		'flavour': "This is some flavour text",
+	},
+	'Walls Start to Crumble!': {
+		'resource': Resources.WALL,
+		'amount': 15,
+		'flavour': "This is some flavour text",
+	},
+	'Weapons Rust': {
+		'resource': Resources.ARMS,
+		'amount': 15,
+		'flavour': "This is some flavour text",
+	},
 }
 
 # Resources
