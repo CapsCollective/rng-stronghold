@@ -29,6 +29,9 @@ custom_fonts/font = SubResource( 1 )
 text = "Riots Break Out"
 align = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BodyLabel" type="Label" parent="."]
 anchor_right = 0.61
