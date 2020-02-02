@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name EventManager
+
 # Turn timer
 var turn = 0
 
@@ -101,7 +103,10 @@ func degrade_resources():
 	walls -= 1
 
 func generate_events():
-	active_events.append(events[randi()%events.size()])
+	var new_event = events[randi()%events.size()]
+	active_events.append(new_event)
+	$EventPanel.display_event(new_event)
+	$EventPanel.show()
 	print(active_events)
 
 func update_ui():
@@ -120,3 +125,5 @@ func display_active_events():
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		process_turn()
+	if event.is_action_pressed("ui_cancel"):
+		$EventPanel.hide()
