@@ -1,23 +1,30 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://res/fort2.png" type="Texture" id=1]
 [ext_resource path="res://res/armoury.png" type="Texture" id=2]
 [ext_resource path="res://res/granary2.png" type="Texture" id=3]
 [ext_resource path="res://res/watermill2.png" type="Texture" id=4]
 [ext_resource path="res://res/wall.png" type="Texture" id=5]
-[ext_resource path="res://res/field.png" type="Texture" id=6]
+[ext_resource path="res://res/enemypiece.png" type="Texture" id=6]
 [ext_resource path="res://scripts/building.gd" type="Script" id=7]
 [ext_resource path="res://scripts/buildings.gd" type="Script" id=8]
 [ext_resource path="res://scenes/roll_button.tscn" type="PackedScene" id=9]
+[ext_resource path="res://res/playerpiece.png" type="Texture" id=10]
+[ext_resource path="res://res/84358937_491041978221415_6817221342048288768_n.png" type="Texture" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 77.6596, 93.1153 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 58.4886, 47.8422 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 278.948, 75.791 )
+extents = Vector2( 41.4409, 62.2359 )
 
 [node name="Buildings" type="Node2D"]
 script = ExtResource( 8 )
+
+[node name="Base" type="Sprite" parent="."]
+position = Vector2( 499.236, 559.746 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 11 )
 
 [node name="Water" type="Area2D" parent="."]
 position = Vector2( 719.951, 248.194 )
@@ -50,8 +57,26 @@ margin_bottom = -53.8026
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Keep"]
 polygon = PoolVector2Array( -13.9766, 192.062, -204.02, 96.6309, -204.293, 84.3613, -196.386, 79.4534, -195.295, -14.6142, -205.656, -19.522, -204.838, -35.0636, -208.656, -63.9656, -203.584, -74.054, -196.495, -70.5094, -189.951, -80.3251, -177.409, -75.4173, -166.775, -92.0495, -156.414, -87.687, -145.78, -99.684, -140.327, -84.6877, -128.33, -96.4121, -121.514, -87.4143, -120.968, -75.1446, -113.606, -80.0525, -112.516, -92.0495, -107.608, -98.866, -100.246, -92.3222, -80.342, -111.681, 17.8155, -161.305, 51.6252, -109.772, 57.3511, -114.68, 62.5316, -110.318, 64.4402, -95.0488, 66.6215, -103.501, 75.3466, -108.954, 78.8912, -103.501, 82.9811, -107.046, 90.0703, -94.5034, 95.2508, -99.9566, 103.976, -81.4158, 111.883, -92.8675, 119.517, -74.8719, 127.152, -80.8705, 133.696, -73.7813, 141.603, -81.4158, 148.147, -72.6907, 153.327, -78.1439, 164.234, -68.0555, 167.233, -67.7828, 172.141, -59.3304, 170.505, -33.7003, 173.504, -30.4284, 174.867, -19.7947, 165.597, -14.3415, 166.579, 79.1262, 175.849, 82.6708, 176.122, 94.9405, 119.954, 123.297, 130.042, 133.113, 130.315, 138.566, 69.2391, 169.377, 55.3335, 156.016 )
 
+[node name="Armoury" type="Area2D" parent="."]
+position = Vector2( 151.89, 191.761 )
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Armoury"]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Armoury"]
+position = Vector2( -0.497589, -0.492615 )
+shape = SubResource( 1 )
+
+[node name="Button" parent="Armoury" instance=ExtResource( 9 )]
+margin_left = 7.3889
+margin_top = -43.8421
+margin_right = 55.3889
+margin_bottom = -17.8421
+
 [node name="Granary" type="Area2D" parent="."]
-position = Vector2( 200, 267.263 )
+position = Vector2( 274.939, 294.401 )
 script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Granary"]
@@ -66,24 +91,6 @@ margin_bottom = -43.4578
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Granary"]
 polygon = PoolVector2Array( -92.2173, 53.7947, -92.1086, 6.63907, -98.4106, 3.05351, -62.5549, -35.1925, -62.7722, -39.6473, -53.754, -56.38, -31.719, -100.233, -26.7209, -101.21, 63.2442, -56.2278, 79.8682, -43.0807, 97.796, -22.6539, 97.1876, 53.5556, 90.9943, 56.4893, 85.8876, 54.4249, 85.127, 51.3826, 80.9982, 49.4268, 41.4483, 68.9844, 41.3397, 81.045, 2.41991, 100.798, -4.75122, 97.3212, -5.07718, 92.3231, -81.8952, 53.8598, -85.5895, 56.4675 )
-
-[node name="Armoury" type="Area2D" parent="."]
-position = Vector2( 308.827, 361.777 )
-script = ExtResource( 7 )
-
-[node name="Sprite" type="Sprite" parent="Armoury"]
-scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Armoury"]
-position = Vector2( 0, -0.492615 )
-shape = SubResource( 2 )
-
-[node name="Button" parent="Armoury" instance=ExtResource( 9 )]
-margin_left = 7.3889
-margin_top = -43.8421
-margin_right = 55.3889
-margin_bottom = -17.8421
 
 [node name="Wall" type="Area2D" parent="."]
 position = Vector2( 698.328, 435.197 )
@@ -103,18 +110,23 @@ margin_bottom = 5.35074
 polygon = PoolVector2Array( -225.882, -90.0397, -221.901, 77.1445, -121.889, 129.389, 222.928, -38.2922, 223.923, -223.887, 123.414, -251.253 )
 
 [node name="Battlefield" type="Area2D" parent="."]
-position = Vector2( 557.509, 562.771 )
+position = Vector2( 818.237, 483.16 )
 script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Battlefield"]
-scale = Vector2( 0.2, 0.2 )
+scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Battlefield"]
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="Button" parent="Battlefield" instance=ExtResource( 9 )]
 margin_left = 26.6338
 margin_top = -66.9236
 margin_right = 74.6338
 margin_bottom = -40.9236
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 820.994, 174.15 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 10 )

@@ -18,19 +18,11 @@ arms = 10
 walls = 100
 influence = 20
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -3.57628e-07
-margin_right = 1031.0
-margin_bottom = 606.0
-color = Color( 0.388235, 0.54902, 0.376471, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 511.375, 299.009 )
 scale = Vector2( 0.617864, 0.617864 )
 current = true
+zoom = Vector2( 1.5, 1.5 )
 
 [node name="Buildings" parent="." instance=ExtResource( 2 )]
 position = Vector2( 85.061, 0 )
