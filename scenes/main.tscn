@@ -1,22 +1,75 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/event_manager.gd" type="Script" id=1]
-[ext_resource path="res://res/8bitOperatorPlusSC-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://scenes/buildings.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/buildings.tscn" type="PackedScene" id=2]
+[ext_resource path="res://res/8bitOperatorPlusSC-Regular.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
-font_data = ExtResource( 2 )
+font_data = ExtResource( 3 )
 
 [node name="Node2D" type="Node2D"]
+position = Vector2( 0.709473, 0 )
 script = ExtResource( 1 )
+grain = 80
+water = 80
+arms = 10
+walls = 100
+influence = 20
+
+[node name="Buildings" parent="." instance=ExtResource( 2 )]
+position = Vector2( -0.781158, 0 )
 
 [node name="TurnLabel" type="Label" parent="."]
 margin_left = 11.4153
 margin_top = 12.453
 margin_right = 170.415
 margin_bottom = 96.453
+rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Turn: "
 
-[node name="Buildings" parent="." instance=ExtResource( 3 )]
+[node name="GrainLabel" type="Label" parent="."]
+margin_left = 11.4153
+margin_top = 155.957
+margin_right = 216.415
+margin_bottom = 239.957
+rect_scale = Vector2( 0.617864, 0.617864 )
+custom_fonts/font = SubResource( 1 )
+text = "Grain :  "
+
+[node name="WaterLabel" type="Label" parent="."]
+margin_left = 11.4153
+margin_top = 207.786
+margin_right = 234.415
+margin_bottom = 291.786
+rect_scale = Vector2( 0.617864, 0.617864 )
+custom_fonts/font = SubResource( 1 )
+text = "Water :  "
+
+[node name="InfluenceLabel" type="Label" parent="."]
+margin_left = 11.4153
+margin_top = 259.917
+margin_right = 234.415
+margin_bottom = 343.917
+rect_scale = Vector2( 0.617864, 0.617864 )
+custom_fonts/font = SubResource( 1 )
+text = "Inf:  "
+
+[node name="WeaponsLabel" type="Label" parent="."]
+margin_left = 11.4153
+margin_top = 311.747
+margin_right = 234.415
+margin_bottom = 395.747
+rect_scale = Vector2( 0.617864, 0.617864 )
+custom_fonts/font = SubResource( 1 )
+text = "Arms:  "
+
+[node name="WallsLabel" type="Label" parent="."]
+margin_left = 11.4153
+margin_top = 363.561
+margin_right = 234.415
+margin_bottom = 447.561
+rect_scale = Vector2( 0.617864, 0.617864 )
+custom_fonts/font = SubResource( 1 )
+text = "Walls:  "

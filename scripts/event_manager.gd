@@ -30,11 +30,9 @@ onready var enemies
 # Manpower
 onready var dice = 20
 
-#Labels
-onready var turn_label = $TurnLabel
-
 func _ready():
-	turn_label.text = "Turn: " + str(turn)
+	$TurnLabel.text = "Turn: " + str(turn)
+	display_resources()
 
 func process_turn():
 	
@@ -56,15 +54,25 @@ func commit_enemies():
 	pass
 
 func degrade_resources():
-	pass
+	grain -= dice
+	water -= dice
+	walls -= 5
+	display_resources()
 
 func generate_events():
 	pass
 
 func increment_turn():
 	turn += 1
-	turn_label.text = "Turn: " + str(turn)
+	$TurnLabel.text = "Turn: " + str(turn)
 
-func _process(delta):
-	if Input.is_action_just_pressed('ui_accept'):
+func display_resources():
+	$GrainLabel.text = "Grain: " + str(grain)
+	$WaterLabel.text = "Water: " + str(water)
+	$InfluenceLabel.text = "Inf: " + str(influence)
+	$WeaponsLabel.text = "Arms: " + str(arms)
+	$WallsLabel.text = "Walls: " + str(walls)
+
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
 		process_turn()
