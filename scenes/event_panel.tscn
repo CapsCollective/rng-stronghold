@@ -19,26 +19,46 @@ texture = ExtResource( 2 )
 
 [node name="TitleLabel" type="Label" parent="."]
 anchor_right = 0.61
-margin_left = -93.2708
-margin_top = -329.063
-margin_right = 106.729
-margin_bottom = -231.063
+margin_left = -272.292
+margin_top = -329.0
+margin_right = 314.708
+margin_bottom = -231.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 1 )
 text = "Riots Break Out"
 align = 1
+autowrap = true
 
-[node name="Bodylabel" type="Label" parent="."]
+[node name="BodyLabel" type="Label" parent="."]
 anchor_right = 0.61
-margin_left = -63.224
-margin_top = -37.0
-margin_right = 136.776
-margin_bottom = 61.0
+margin_left = -284.771
+margin_top = -54.4822
+margin_right = 298.229
+margin_bottom = 43.5178
 grow_horizontal = 2
 grow_vertical = 2
-rect_scale = Vector2( 0.745557, 0.745557 )
 custom_fonts/font = SubResource( 1 )
 text = "Body"
+align = 1
 autowrap = true
-clip_text = true
+
+[node name="SeverityLabel" type="Label" parent="."]
+anchor_right = 0.61
+margin_left = -382.567
+margin_top = 294.072
+margin_right = 200.433
+margin_bottom = 392.072
+grow_vertical = 2
+custom_fonts/font = SubResource( 1 )
+text = "Severity: "
+
+[node name="ResourceLabel" type="Label" parent="."]
+anchor_right = 0.61
+margin_left = -385.074
+margin_top = 197.53
+margin_right = 197.926
+margin_bottom = 295.53
+grow_vertical = 2
+custom_fonts/font = SubResource( 1 )
+text = "Resource: "

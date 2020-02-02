@@ -93,5 +93,5 @@ rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Walls:  "
 
-[node name="Node2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 515.966, 296.299 )
+[node name="EventPanel" parent="." instance=ExtResource( 4 )]
+position = Vector2( 503.949, 286.131 )
