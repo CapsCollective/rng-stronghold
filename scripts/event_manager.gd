@@ -25,14 +25,13 @@ export (int) var walls
 export (int) var influence
 
 # Enemy Strength
-var enemies
+var enemies = 0
 
 # Manpower
 var dice = 20
 
 func _ready():
-	$TurnLabel.text = "Turn: " + str(turn)
-	$DiceLabel.text = "Manpower: " + str(dice)
+	commit_enemies()
 	update_ui()
 
 func process_turn():
@@ -50,7 +49,8 @@ func resolve_combat():
 	pass
 
 func commit_enemies():
-	pass
+	var committed = 5 + (turn / 3)
+	enemies += committed
 
 func degrade_resources():
 	grain -= dice
@@ -67,6 +67,8 @@ func update_ui():
 	$WeaponsLabel.text = "Arms: " + str(arms)
 	$WallsLabel.text = "Walls: " + str(walls)
 	$TurnLabel.text = "Turn: " + str(turn)
+	$EnemiesLabel.text = "Enemies: " + str(enemies)
+	$DiceLabel.text = "Manpower: " + str(dice)
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
