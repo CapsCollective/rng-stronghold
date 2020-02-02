@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name EventManager
+
 # Turn timer
 var turn = 0
 

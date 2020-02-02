@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://res/keep.png" type="Texture" id=1]
 [ext_resource path="res://res/armoury.png" type="Texture" id=2]
 [ext_resource path="res://res/granary.png" type="Texture" id=3]
 [ext_resource path="res://res/water-supply.png" type="Texture" id=4]
-[ext_resource path="res://res/walls.png" type="Texture" id=5]
+[ext_resource path="res://res/wall.png" type="Texture" id=5]
 [ext_resource path="res://res/field.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -15,6 +15,9 @@ extents = Vector2( 58.4886, 47.8422 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 60.922, 75.014 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 456.633, 393.643 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 1367.67, 377.338 )
@@ -53,6 +56,7 @@ shape = SubResource( 3 )
 
 [node name="Water" type="Area2D" parent="."]
 position = Vector2( 800, 250 )
+z_index = -1
 
 [node name="Sprite" type="Sprite" parent="Water"]
 scale = Vector2( 0.2, 0.2 )
@@ -63,18 +67,21 @@ scale = Vector2( 0.2, 0.2 )
 polygon = PoolVector2Array( -64.0144, -904.472, -600.3, -906.856, -640.82, -315.75, -249.927, -167.973, -59.2476, 96.5947, 150.5, 966.57, 541.393, 1188.23, 600.98, 1088.13, 415.068, 616.196, 345.946, -232.327, 298.276, -399.172, 446.053, -761.463, 674.868, -997.428, 365.014, -1190.49, 205.32, -1190.49 )
 
 [node name="Wall" type="Area2D" parent="."]
-position = Vector2( 465.983, 360 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 654.479, 400 )
+scale = Vector2( 0.4, 0.4 )
 
 [node name="Sprite" type="Sprite" parent="Wall"]
 texture = ExtResource( 5 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall"]
-polygon = PoolVector2Array( -1256.5, -94.366, -949.033, -37.1624, -493.786, -20.4778, 56.8008, -72.9146, 204.577, -89.5991, 898.174, -249.293, 1143.67, -318.415, 1353.42, -327.948, 1439.23, -3.79346, 1298.6, 17.6582, 1038.8, 108.231, -98.1265, 282.226, -334.092, 337.046, -808.407, 332.279, -1080.13, 296.527, -1351.84, 213.104, -1442.42, 153.517, -1304.17, 8.12427 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2( -1.29883, -125.992 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 5 )
 
 [node name="Battlefield" type="Area2D" parent="."]
-position = Vector2( 557.509, 562.771 )
+position = Vector2( 847.009, 562.771 )
 scale = Vector2( 0.2, 0.2 )
+z_index = -1
 
 [node name="Sprite" type="Sprite" parent="Battlefield"]
 position = Vector2( -505.3, -245.5 )
