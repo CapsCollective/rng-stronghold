@@ -9,12 +9,30 @@ enum Resources {FOOD, WATER, WALL, ARMS, INFLUENCE}
 # Events
 var events = {
 	'Food Rots!': {
-		
+		'resource': Resources.FOOD,
+		'amount': 15,
+		'flavour': "This is some flavour text",
 	},
-	'Water Poisoned!': {},
-	'Riots Break Out!': {},
-	'Walls Start to Crumble!': {},
-	'Weapons Rust': {},
+	'Water Poisoned!': {
+		'resource': Resources.WATER,
+		'amount': 15,
+		'flavour': "This is some flavour text",
+	},
+	'Riots Break Out!': {
+		'resource': Resources.INFLUENCE,
+		'amount': 15,
+		'flavour': "This is some flavour text",
+	},
+	'Walls Start to Crumble!': {
+		'resource': Resources.WALL,
+		'amount': 15,
+		'flavour': "This is some flavour text",
+	},
+	'Weapons Rust': {
+		'resource': Resources.ARMS,
+		'amount': 15,
+		'flavour': "This is some flavour text",
+	},
 }
 
 # Resources
@@ -35,7 +53,6 @@ func _ready():
 	update_ui()
 
 func process_turn():
-	# 1. TODO: Resolve Combat
 	resolve_combat()
 	# 2. TODO: Enemy Turn
 	commit_enemies()
@@ -45,17 +62,37 @@ func process_turn():
 	turn += 1
 	update_ui()
 
+func get_dice_roll():
+	return randi()%7+1
+
 func resolve_combat():
-	pass
+	for enemy in range(enemies):
+		if dice > 0:
+			var player_roll = get_dice_roll()
+			var enemy_roll = get_dice_roll()
+			if player_roll > enemy_roll:
+				enemies -= 1
+				influence += 1
+			elif enemy_roll > player_roll:
+				dice -=1
+				influence -= 1
+			else:
+				enemies -= 1
+				dice -=1
+		elif walls > 0:
+			walls -= get_dice_roll()
+		else:
+			# TODO make something cool happen
+			print("game over")
 
 func commit_enemies():
-	var committed = 5 + (turn / 3)
+	var committed = 1 + (turn / 20)
 	enemies += committed
 
 func degrade_resources():
 	grain -= dice
 	water -= dice
-	walls -= 5
+	walls -= 1
 
 func generate_events():
 	pass
