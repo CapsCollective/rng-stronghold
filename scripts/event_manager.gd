@@ -107,7 +107,6 @@ func generate_events():
 	active_events.append(new_event)
 	$EventPanel.display_event(new_event)
 	$EventPanel.show()
-	print(active_events)
 
 func update_ui():
 	$GrainLabel.text = "Grain: " + str(grain)

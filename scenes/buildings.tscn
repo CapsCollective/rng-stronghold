@@ -3,7 +3,7 @@
 [ext_resource path="res://res/fort2.png" type="Texture" id=1]
 [ext_resource path="res://res/armoury.png" type="Texture" id=2]
 [ext_resource path="res://res/granary2.png" type="Texture" id=3]
-[ext_resource path="res://res/water-supply.png" type="Texture" id=4]
+[ext_resource path="res://res/watermill2.png" type="Texture" id=4]
 [ext_resource path="res://res/wall.png" type="Texture" id=5]
 [ext_resource path="res://res/field.png" type="Texture" id=6]
 [ext_resource path="res://scripts/building.gd" type="Script" id=7]
@@ -18,6 +18,20 @@ extents = Vector2( 278.948, 75.791 )
 
 [node name="Buildings" type="Node2D"]
 script = ExtResource( 8 )
+
+[node name="Water" type="Area2D" parent="."]
+position = Vector2( 719.951, 248.194 )
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Water"]
+position = Vector2( -142.536, -74.6057 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 4 )
+
+[node name="Button" parent="Water" instance=ExtResource( 9 )]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Water"]
+polygon = PoolVector2Array( -88.9475, -16.0938, -163.131, -52.7143, -162.66, -54.4806, -149.495, -67.3625, -149.377, -154.498, -117.466, -186.762, -85.6265, -186.856, -9.55951, -149.529, -9.0885, -131.042, 4.09961, -124.919, 1.15582, -119.267, 5.04156, -118.443, 10.8114, -116.677, 14.2261, -113.38, 13.3777, -110.553, 6.43042, -107.256, 12.7889, -108.787, 22.9155, -103.135, 22.9155, -100.191, 21.1493, -97.9542, 9.25647, -95.8346, -2.16541, -86.2968, 6.90143, -88.7696, 12.5535, -89.1228, 25.6238, -83.2353, 25.3883, -79.8205, 22.4445, -78.8785, 15.615, -80.8803, 5.6062, -79.4673, -0.516846, -78.643, -12.5275, -79.3495, 4.78192, -66.7502, 6.31268, -64.5129, 8.9032, -58.5076, 32.5711, -77.701, 35.4443, -76.1938, 42.7448, -73.9566, 55.4619, -69.011, 56.9927, -68.8933, 57.793, 0.27356, -16.4138, 40.2381, -62.9254, 62.964, -123.167, 92.1427, -149.19, 108.604, -166.852, 117.553, -189.46, 125.913, -342.654, 125.348, -342.419, 108.981, -297.909, 84.8182, -262.937, 66.8023, -230.084, 51.1414, -180.511, 25.2363, -109.649, -7.19225 )
 
 [node name="Keep" type="Area2D" parent="."]
 position = Vector2( 400, 150 )
@@ -36,8 +50,25 @@ margin_bottom = -53.8026
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Keep"]
 polygon = PoolVector2Array( -13.9766, 192.062, -204.02, 96.6309, -204.293, 84.3613, -196.386, 79.4534, -195.295, -14.6142, -205.656, -19.522, -204.838, -35.0636, -208.656, -63.9656, -203.584, -74.054, -196.495, -70.5094, -189.951, -80.3251, -177.409, -75.4173, -166.775, -92.0495, -156.414, -87.687, -145.78, -99.684, -140.327, -84.6877, -128.33, -96.4121, -121.514, -87.4143, -120.968, -75.1446, -113.606, -80.0525, -112.516, -92.0495, -107.608, -98.866, -100.246, -92.3222, -80.342, -111.681, 17.8155, -161.305, 51.6252, -109.772, 57.3511, -114.68, 62.5316, -110.318, 64.4402, -95.0488, 66.6215, -103.501, 75.3466, -108.954, 78.8912, -103.501, 82.9811, -107.046, 90.0703, -94.5034, 95.2508, -99.9566, 103.976, -81.4158, 111.883, -92.8675, 119.517, -74.8719, 127.152, -80.8705, 133.696, -73.7813, 141.603, -81.4158, 148.147, -72.6907, 153.327, -78.1439, 164.234, -68.0555, 167.233, -67.7828, 172.141, -59.3304, 170.505, -33.7003, 173.504, -30.4284, 174.867, -19.7947, 165.597, -14.3415, 166.579, 79.1262, 175.849, 82.6708, 176.122, 94.9405, 119.954, 123.297, 130.042, 133.113, 130.315, 138.566, 69.2391, 169.377, 55.3335, 156.016 )
 
+[node name="Granary" type="Area2D" parent="."]
+position = Vector2( 200, 267.263 )
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Granary"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="Button" parent="Granary" instance=ExtResource( 9 )]
+margin_left = 3.94077
+margin_top = -69.4578
+margin_right = 51.9408
+margin_bottom = -43.4578
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Granary"]
+polygon = PoolVector2Array( -92.2173, 53.7947, -92.1086, 6.63907, -98.4106, 3.05351, -62.5549, -35.1925, -62.7722, -39.6473, -53.754, -56.38, -31.719, -100.233, -26.7209, -101.21, 63.2442, -56.2278, 79.8682, -43.0807, 97.796, -22.6539, 97.1876, 53.5556, 90.9943, 56.4893, 85.8876, 54.4249, 85.127, 51.3826, 80.9982, 49.4268, 41.4483, 68.9844, 41.3397, 81.045, 2.41991, 100.798, -4.75122, 97.3212, -5.07718, 92.3231, -81.8952, 53.8598, -85.5895, 56.4675 )
+
 [node name="Armoury" type="Area2D" parent="."]
-position = Vector2( 600, 250 )
+position = Vector2( 308.827, 361.777 )
 script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Armoury"]
@@ -54,40 +85,8 @@ margin_top = -43.8421
 margin_right = 55.3889
 margin_bottom = -17.8421
 
-[node name="Granary" type="Area2D" parent="."]
-position = Vector2( 200, 250 )
-script = ExtResource( 7 )
-
-[node name="Sprite" type="Sprite" parent="Granary"]
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 3 )
-
-[node name="Button" parent="Granary" instance=ExtResource( 9 )]
-margin_left = 3.94077
-margin_top = -69.4578
-margin_right = 51.9408
-margin_bottom = -43.4578
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Granary"]
-polygon = PoolVector2Array( -92.2173, 53.7947, -92.1086, 6.63907, -98.4106, 3.05351, -62.5549, -35.1925, -62.7722, -39.6473, -53.754, -56.38, -31.719, -100.233, -26.7209, -101.21, 63.2442, -56.2278, 79.8682, -43.0807, 97.796, -22.6539, 97.1876, 53.5556, 90.9943, 56.4893, 85.8876, 54.4249, 85.127, 51.3826, 80.9982, 49.4268, 41.4483, 68.9844, 41.3397, 81.045, 2.41991, 100.798, -4.75122, 97.3212, -5.07718, 92.3231, -81.8952, 53.8598, -85.5895, 56.4675 )
-
-[node name="Water" type="Area2D" parent="."]
-position = Vector2( 800, 250 )
-script = ExtResource( 7 )
-
-[node name="Sprite" type="Sprite" parent="Water"]
-scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 4 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Water"]
-position = Vector2( 0, 0.492615 )
-scale = Vector2( 0.2, 0.2 )
-polygon = PoolVector2Array( -64.0144, -904.472, -600.3, -906.856, -640.82, -315.75, -249.927, -167.973, -59.2476, 96.5947, 150.5, 966.57, 541.393, 1188.23, 600.98, 1088.13, 415.068, 616.196, 345.946, -232.327, 298.276, -399.172, 446.053, -761.463, 674.868, -997.428, 365.014, -1190.49, 205.32, -1190.49 )
-
-[node name="Button" parent="Water" instance=ExtResource( 9 )]
-
 [node name="Wall" type="Area2D" parent="."]
-position = Vector2( 789.405, 454.041 )
+position = Vector2( 698.328, 435.197 )
 script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Wall"]
