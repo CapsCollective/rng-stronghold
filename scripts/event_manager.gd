@@ -1,11 +1,19 @@
 extends Node2D
 
-<<<<<<< HEAD
 # Turn timer
 onready var turn = 0
 
-# Buildings
-var buildings = Array()
+enum Resources {FOOD, WATER, WALL, ARMS, INFLUENCE}
+
+var events = {
+	'Food Rots!': {
+		
+	},
+	'Water Poisoned!': {},
+	'Riots Break Out!': {},
+	'Walls Start to Crumble!': {},
+	'Weapons Rust': {},
+}
 
 # Resources
 export (int) var grain
@@ -22,19 +30,3 @@ var dice
 
 func _ready():
 	pass
-=======
-enum Resources {FOOD, WATER, WALL, ARMS, INFLUENCE}
-
-var events = {
-	'Food Rots!': {
-		
-	},
-	'Water Poisoned!': {},
-	'Riots Break Out!': {},
-	'Walls Start to Crumble!': {},
-	'Weapons Rust': {},
-}
-
-func _ready():
-	print(Resources.INFLUENCE)
->>>>>>> 609386820283e6f900dac6023c247054d00b456e
