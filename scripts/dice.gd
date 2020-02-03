@@ -11,4 +11,4 @@ func _ready():
 func finish():
 	set_mode(RigidBody2D.MODE_STATIC)
 	$AnimationPlayer.play("rest")
-	$Sprite.texture = load("res://res/dice_" + str(val) + ".png")
+	$Sprite.texture = load("res://res/dice/dice_" + str(val) + ".png")

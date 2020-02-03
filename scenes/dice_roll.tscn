@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://scenes/dice.tscn" type="PackedScene" id=1]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 385.667, 10 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -24,6 +21,5 @@ val = 6
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 495.679, 554.158 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( -2.78467, 4.45555 )
-shape = SubResource( 1 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -489.847, -481.203, -491.518, 35.64, 522.118, 41.7664, 522.675, -472.849, 516.549, -472.849, 515.435, 30.6276, -486.506, 27.2859, -481.493, -482.317 )
