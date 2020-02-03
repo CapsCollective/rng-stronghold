@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dice_blank.png-690fd08606cda325992760c1cb21cde0.stex"
+path="res://.import/watermill2.png-bbd1a3fd928f7eb932ecbecf99d85187.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/dice_blank.png"
-dest_files=[ "res://.import/dice_blank.png-690fd08606cda325992760c1cb21cde0.stex" ]
+source_file="res://res/buildings/watermill2.png"
+dest_files=[ "res://.import/watermill2.png-bbd1a3fd928f7eb932ecbecf99d85187.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/granary.png-f6d39460a467a02c9f0eb6ca313f6358.stex"
+path="res://.import/enemypiece.png-06cd1eabc5af8a64681d69d1a7814f78.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/granary.png"
-dest_files=[ "res://.import/granary.png-f6d39460a467a02c9f0eb6ca313f6358.stex" ]
+source_file="res://res/buildings/enemypiece.png"
+dest_files=[ "res://.import/enemypiece.png-06cd1eabc5af8a64681d69d1a7814f78.stex" ]
 
 [params]
 

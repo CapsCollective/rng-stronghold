@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/keep.png-1fcde5a1fe906e4fc48f332379c5fce2.stex"
+path="res://.import/dice_blank.png-81102e4dc7dd719d6c00bcea88c2d7eb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/keep.png"
-dest_files=[ "res://.import/keep.png-1fcde5a1fe906e4fc48f332379c5fce2.stex" ]
+source_file="res://res/dice/dice_blank.png"
+dest_files=[ "res://.import/dice_blank.png-81102e4dc7dd719d6c00bcea88c2d7eb.stex" ]
 
 [params]
 

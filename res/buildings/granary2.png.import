@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/84393588_886776001759124_5496748181062418432_n.png-d895058ae7b315d6cb15aaf3ac438ab4.stex"
+path="res://.import/granary2.png-0940e481b1da8b72950f900297d05049.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/84393588_886776001759124_5496748181062418432_n.png"
-dest_files=[ "res://.import/84393588_886776001759124_5496748181062418432_n.png-d895058ae7b315d6cb15aaf3ac438ab4.stex" ]
+source_file="res://res/buildings/granary2.png"
+dest_files=[ "res://.import/granary2.png-0940e481b1da8b72950f900297d05049.stex" ]
 
 [params]
 

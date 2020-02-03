@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/watermill2.png-8eeead91cad4779b4402fdc814ba42d0.stex"
+path="res://.import/Ground.png-b4a0cac0d3595dc92feba42d01a1a3c5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/watermill2.png"
-dest_files=[ "res://.import/watermill2.png-8eeead91cad4779b4402fdc814ba42d0.stex" ]
+source_file="res://res/buildings/Ground.png"
+dest_files=[ "res://.import/Ground.png-b4a0cac0d3595dc92feba42d01a1a3c5.stex" ]
 
 [params]
 
