@@ -1,28 +1,68 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=20 format=2]
 
-[ext_resource path="res://res/fort2.png" type="Texture" id=1]
-[ext_resource path="res://res/armoury.png" type="Texture" id=2]
-[ext_resource path="res://res/granary2.png" type="Texture" id=3]
-[ext_resource path="res://res/watermill2.png" type="Texture" id=4]
-[ext_resource path="res://res/wall.png" type="Texture" id=5]
-[ext_resource path="res://res/enemypiece.png" type="Texture" id=6]
+[ext_resource path="res://res/buildings/fort2.png" type="Texture" id=1]
+[ext_resource path="res://res/buildings/armoury.png" type="Texture" id=2]
+[ext_resource path="res://res/buildings/granary2.png" type="Texture" id=3]
+[ext_resource path="res://res/buildings/watermill2.png" type="Texture" id=4]
+[ext_resource path="res://res/buildings/wall.png" type="Texture" id=5]
+[ext_resource path="res://res/buildings/enemypiece.png" type="Texture" id=6]
 [ext_resource path="res://scripts/building.gd" type="Script" id=7]
 [ext_resource path="res://scripts/buildings.gd" type="Script" id=8]
 [ext_resource path="res://scenes/roll_button.tscn" type="PackedScene" id=9]
-[ext_resource path="res://res/playerpiece.png" type="Texture" id=10]
-[ext_resource path="res://res/84358937_491041978221415_6817221342048288768_n.png" type="Texture" id=11]
+[ext_resource path="res://res/buildings/playerpiece.png" type="Texture" id=10]
+[ext_resource path="res://res/buildings/Ground.png" type="Texture" id=11]
+[ext_resource path="res://res/outline.shader" type="Shader" id=12]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 77.6596, 93.1153 )
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 12 )
+shader_param/intensity = null
+shader_param/sizex = 1000.0
+shader_param/sizey = 1000.0
+shader_param/outline_color = Color( 1, 1, 1, 0.196078 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 12 )
+shader_param/intensity = null
+shader_param/sizex = 1000.0
+shader_param/sizey = 1000.0
+shader_param/outline_color = Color( 1, 1, 1, 0.196078 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 12 )
+shader_param/intensity = 0
+shader_param/sizex = 499.0
+shader_param/sizey = 615.0
+shader_param/outline_color = Color( 1, 1, 1, 0.196078 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 12 )
+shader_param/intensity = null
+shader_param/sizex = 393.0
+shader_param/sizey = 404.0
+shader_param/outline_color = Color( 1, 1, 1, 0.196078 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 12 )
+shader_param/intensity = null
+shader_param/sizex = 1000.0
+shader_param/sizey = 1000.0
+shader_param/outline_color = Color( 1, 1, 1, 0.196078 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 12 )
+shader_param/intensity = null
+shader_param/sizex = 196.0
+shader_param/sizey = 300.0
+shader_param/outline_color = Color( 1, 1, 1, 0.196078 )
+
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 41.4409, 62.2359 )
 
 [node name="Buildings" type="Node2D"]
 script = ExtResource( 8 )
 
 [node name="Base" type="Sprite" parent="."]
-position = Vector2( 499.236, 559.746 )
+position = Vector2( 499.236, 560.351 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 11 )
 
@@ -31,6 +71,7 @@ position = Vector2( 719.951, 248.194 )
 script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Water"]
+material = SubResource( 1 )
 position = Vector2( -142.536, -74.6057 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 4 )
@@ -38,13 +79,14 @@ texture = ExtResource( 4 )
 [node name="Button" parent="Water" instance=ExtResource( 9 )]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Water"]
-polygon = PoolVector2Array( -88.9475, -16.0938, -163.131, -52.7143, -162.66, -54.4806, -149.495, -67.3625, -149.377, -154.498, -117.466, -186.762, -85.6265, -186.856, -9.55951, -149.529, -9.0885, -131.042, 4.09961, -124.919, 1.15582, -119.267, 5.04156, -118.443, 10.8114, -116.677, 14.2261, -113.38, 13.3777, -110.553, 6.43042, -107.256, 12.7889, -108.787, 22.9155, -103.135, 22.9155, -100.191, 21.1493, -97.9542, 9.25647, -95.8346, -2.16541, -86.2968, 6.90143, -88.7696, 12.5535, -89.1228, 25.6238, -83.2353, 25.3883, -79.8205, 22.4445, -78.8785, 15.615, -80.8803, 5.6062, -79.4673, -0.516846, -78.643, -12.5275, -79.3495, 4.78192, -66.7502, 6.31268, -64.5129, 8.9032, -58.5076, 32.5711, -77.701, 35.4443, -76.1938, 42.7448, -73.9566, 55.4619, -69.011, 56.9927, -68.8933, 57.793, 0.27356, -16.4138, 40.2381, -62.9254, 62.964, -123.167, 92.1427, -149.19, 108.604, -166.852, 117.553, -189.46, 125.913, -342.654, 125.348, -342.419, 108.981, -297.909, 84.8182, -262.937, 66.8023, -230.084, 51.1414, -180.511, 25.2363, -109.649, -7.19225 )
+polygon = PoolVector2Array( -88.9475, -16.0938, -163.131, -52.7143, -162.66, -54.4806, -149.495, -67.3625, -149.377, -154.498, -117.466, -186.762, -85.6265, -186.856, -9.55951, -149.529, -9.0885, -131.042, 4.09961, -124.919, 1.15582, -119.267, 5.04156, -118.443, 10.8114, -116.677, 14.2261, -113.38, 13.3777, -110.553, 6.43042, -107.256, 12.7889, -108.787, 22.9155, -103.135, 22.9155, -100.191, 21.1493, -97.9542, 9.25647, -95.8346, -2.16541, -86.2968, 6.90143, -88.7696, 12.5535, -89.1228, 25.6238, -83.2353, 25.3883, -79.8205, 22.4445, -78.8785, 15.615, -80.8803, 5.6062, -79.4673, -0.516846, -78.643, -12.5275, -79.3495, 4.78192, -66.7502, 6.31268, -64.5129, 8.9032, -58.5076, 32.5711, -77.701, 35.4443, -76.1938, 42.7448, -73.9566, 55.4619, -69.011, 56.9927, -68.8933, 56.902, -41.864, -235.983, 99.5471, -239.955, 124.704, -342.654, 125.348, -342.419, 108.981, -297.909, 84.8182, -262.937, 66.8023, -230.084, 51.1414, -180.511, 25.2363, -109.649, -7.19225 )
 
 [node name="Keep" type="Area2D" parent="."]
 position = Vector2( 400, 150 )
 script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Keep"]
+material = SubResource( 2 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 
@@ -55,19 +97,19 @@ margin_right = 86.916
 margin_bottom = -53.8026
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Keep"]
-polygon = PoolVector2Array( -13.9766, 192.062, -204.02, 96.6309, -204.293, 84.3613, -196.386, 79.4534, -195.295, -14.6142, -205.656, -19.522, -204.838, -35.0636, -208.656, -63.9656, -203.584, -74.054, -196.495, -70.5094, -189.951, -80.3251, -177.409, -75.4173, -166.775, -92.0495, -156.414, -87.687, -145.78, -99.684, -140.327, -84.6877, -128.33, -96.4121, -121.514, -87.4143, -120.968, -75.1446, -113.606, -80.0525, -112.516, -92.0495, -107.608, -98.866, -100.246, -92.3222, -80.342, -111.681, 17.8155, -161.305, 51.6252, -109.772, 57.3511, -114.68, 62.5316, -110.318, 64.4402, -95.0488, 66.6215, -103.501, 75.3466, -108.954, 78.8912, -103.501, 82.9811, -107.046, 90.0703, -94.5034, 95.2508, -99.9566, 103.976, -81.4158, 111.883, -92.8675, 119.517, -74.8719, 127.152, -80.8705, 133.696, -73.7813, 141.603, -81.4158, 148.147, -72.6907, 153.327, -78.1439, 164.234, -68.0555, 167.233, -67.7828, 172.141, -59.3304, 170.505, -33.7003, 173.504, -30.4284, 174.867, -19.7947, 165.597, -14.3415, 166.579, 79.1262, 175.849, 82.6708, 176.122, 94.9405, 119.954, 123.297, 130.042, 133.113, 130.315, 138.566, 69.2391, 169.377, 55.3335, 156.016 )
+polygon = PoolVector2Array( -61.8921, 87.79, -155.901, 40.3882, -192.181, 111.094, -191.916, 33.7678, -166.759, 31.9141, -148.751, 21.0567, -146.103, 1.1956, -186.885, 3.31412, -204.838, -35.0636, -208.656, -63.9656, -203.584, -74.054, -196.495, -70.5094, -189.951, -80.3251, -177.409, -75.4173, -166.775, -92.0495, -156.414, -87.687, -145.78, -99.684, -140.327, -84.6877, -128.33, -96.4121, -121.514, -87.4143, -120.968, -75.1446, -113.606, -80.0525, -112.516, -92.0495, -107.608, -98.866, -100.246, -92.3222, -80.342, -111.681, 17.8155, -161.305, 51.6252, -109.772, 57.3511, -114.68, 62.5316, -110.318, 64.4402, -95.0488, 66.6215, -103.501, 75.3466, -108.954, 78.8912, -103.501, 82.9811, -107.046, 90.0703, -94.5034, 95.2508, -99.9566, 103.976, -81.4158, 111.883, -92.8675, 119.517, -74.8719, 127.152, -80.8705, 133.696, -73.7813, 141.603, -81.4158, 148.147, -72.6907, 153.327, -78.1439, 164.234, -68.0555, 167.233, -67.7828, 172.141, -59.3304, 170.505, -33.7003, 173.504, -30.4284, 174.867, -19.7947, 165.597, -14.3415, 166.579, 79.1262, 175.849, 82.6708, 176.122, 94.9405, 119.954, 123.297, 130.042, 133.113, 130.315, 138.566, 69.2391, 169.377, 55.3335, 156.016, -13.1662, 190.009, -26.9366, 182.329, -27.731, 120.627 )
 
 [node name="Armoury" type="Area2D" parent="."]
 position = Vector2( 151.89, 191.761 )
 script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Armoury"]
+material = SubResource( 3 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Armoury"]
-position = Vector2( -0.497589, -0.492615 )
-shape = SubResource( 1 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Armoury"]
+polygon = PoolVector2Array( -15.4214, -122.825, -33.5021, -117.634, -34.0392, -93.2874, -49.6137, -97.0468, -77.3613, -77.5339, -68.2314, -25.798, -100.634, -8.25429, -99.7384, 84.6556, -22.4031, 123.502, 33.0922, 95.7546, 55.6484, 71.7663, 55.8274, -9.32841, 81.2478, -11.1186, 97.3593, -19.7114, 100.582, -39.9403, 59.4077, -35.8229, 47.7716, -72.7004, 33.0922, -92.3923, 39.5368, -66.4349, 35.2404, -50.3233, 23.9624, -51.5764, 8.20885, -82.1883, -7.0076, -95.4356, -5.03841, -111.905, -4.68037, -118.529 )
 
 [node name="Button" parent="Armoury" instance=ExtResource( 9 )]
 margin_left = 7.3889
@@ -80,6 +122,7 @@ position = Vector2( 274.939, 294.401 )
 script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Granary"]
+material = SubResource( 4 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
@@ -97,6 +140,7 @@ position = Vector2( 698.328, 435.197 )
 script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Wall"]
+material = SubResource( 5 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 
@@ -114,11 +158,12 @@ position = Vector2( 818.237, 483.16 )
 script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Battlefield"]
+material = SubResource( 6 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Battlefield"]
-shape = SubResource( 2 )
+shape = SubResource( 7 )
 
 [node name="Button" parent="Battlefield" instance=ExtResource( 9 )]
 margin_left = 26.6338
