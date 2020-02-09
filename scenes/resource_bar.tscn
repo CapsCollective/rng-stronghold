@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://res/8bitOperatorPlusSC-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://res/RNG-FortressBanner.png" type="Texture" id=2]
 [ext_resource path="res://res/Turn Banner.png" type="Texture" id=3]
+[ext_resource path="res://res/EnemyBanner.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -20,16 +21,21 @@ position = Vector2( 513.575, 102.333 )
 scale = Vector2( 4.01312, 4.01312 )
 texture = ExtResource( 2 )
 
+[node name="EnemyBanner" type="Sprite" parent="."]
+position = Vector2( 882.279, 568.898 )
+scale = Vector2( 4.30565, 4.30565 )
+texture = ExtResource( 4 )
+
 [node name="Turn Banner" type="Sprite" parent="."]
-position = Vector2( 92.9961, 571.069 )
+position = Vector2( 94.0513, 568.079 )
 scale = Vector2( 2.47745, 2.47745 )
 texture = ExtResource( 3 )
 
 [node name="TurnLabel" type="Label" parent="."]
-margin_left = 12.7912
-margin_top = 547.301
-margin_right = 171.791
-margin_bottom = 631.301
+margin_left = 14.374
+margin_top = 545.191
+margin_right = 173.374
+margin_bottom = 629.191
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Turn: "
@@ -52,13 +58,16 @@ __meta__ = {
 }
 
 [node name="EnemiesLabel" type="Label" parent="."]
-margin_left = 783.727
-margin_top = 543.978
-margin_right = 1070.73
-margin_bottom = 627.978
+margin_left = 850.484
+margin_top = 544.34
+margin_right = 1137.49
+margin_bottom = 628.34
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Enemies: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GrainLabel" type="Label" parent="."]
 margin_left = 27.9767
