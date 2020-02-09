@@ -32,17 +32,22 @@ func add_dice():
 	update_display()
 
 func remove_dice():
-	dice_to_roll -= 1
-	update_display()
+	if dice_to_roll > 0:
+		dice_to_roll -= 1
+		update_display()
 
 func update_display():
 	if current_event:
-		$Target/Label.text = "Target: " + str(current_event['amount'])
+		$Target/Label.text = str(current_event['amount'])
 	$Target.visible = current_event and current_event['amount'] > 0
 	$DiceButtons/DiceNumberLabel.text = "Dice Committed: " + str(dice_to_roll)
 
 func roll_dice():
+	$"../../".dice -= dice_to_roll
 	for i in dice_to_roll:
 		var new_dice = physics_dice_scene.instance()
 		new_dice.val = randi()%6+1
 		$DiceRoller/DiceSpawner.add_child(new_dice)
+	dice_to_roll = 0
+	$"../../".update_ui()
+	update_display()
