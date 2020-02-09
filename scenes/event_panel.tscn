@@ -1,28 +1,37 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/event_panel.gd" type="Script" id=1]
-[ext_resource path="res://res/Panel.png" type="Texture" id=2]
 [ext_resource path="res://res/8bitOperatorPlusSC-Regular.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 70
+size = 34
 font_data = ExtResource( 3 )
 
-[node name="Node2D" type="Node2D"]
-scale = Vector2( 0.414592, 0.414592 )
+[node name="EventPanel" type="Control"]
+margin_left = -1.0
+margin_top = 1.0
+margin_right = 314.0
+margin_bottom = 339.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Panel" type="Sprite" parent="."]
-modulate = Color( 0.384314, 0.384314, 0.384314, 1 )
-scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 2 )
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_top = 1.0
+margin_right = 316.0
+margin_bottom = 336.0
+color = Color( 0.227451, 0.227451, 0.227451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TitleLabel" type="Label" parent="."]
 anchor_right = 0.61
-margin_left = -272.292
-margin_top = -329.0
-margin_right = 314.708
-margin_bottom = -231.0
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 117.8
+margin_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 1 )
@@ -35,33 +44,41 @@ __meta__ = {
 
 [node name="BodyLabel" type="Label" parent="."]
 anchor_right = 0.61
-margin_left = -284.771
-margin_top = -54.4822
-margin_right = 298.229
-margin_bottom = 43.5178
+margin_left = 8.33673
+margin_top = 95.1839
+margin_right = 113.137
+margin_bottom = 193.184
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 1 )
-text = "Body"
-align = 1
+text = "Body text"
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SeverityLabel" type="Label" parent="."]
 anchor_right = 0.61
-margin_left = -382.567
-margin_top = 294.072
-margin_right = 200.433
-margin_bottom = 392.072
+margin_left = 6.32654
+margin_top = 272.052
+margin_right = 116.127
+margin_bottom = 370.052
 grow_vertical = 2
 custom_fonts/font = SubResource( 1 )
 text = "Severity: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ResourceLabel" type="Label" parent="."]
 anchor_right = 0.61
-margin_left = -385.074
-margin_top = 197.53
-margin_right = 197.926
-margin_bottom = 295.53
+margin_left = 5.97955
+margin_top = 227.5
+margin_right = 117.78
+margin_bottom = 325.5
 grow_vertical = 2
 custom_fonts/font = SubResource( 1 )
 text = "Resource: "
+__meta__ = {
+"_edit_use_anchors_": false
+}

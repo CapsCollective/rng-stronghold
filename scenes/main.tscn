@@ -1,14 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/event_manager.gd" type="Script" id=1]
 [ext_resource path="res://scenes/buildings.tscn" type="PackedScene" id=2]
-[ext_resource path="res://res/8bitOperatorPlusSC-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scenes/resource_bar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/event_panel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/building_interface.tscn" type="PackedScene" id=5]
-
-[sub_resource type="DynamicFont" id=1]
-size = 50
-font_data = ExtResource( 3 )
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 0.709473, 0 )
@@ -24,95 +20,20 @@ position = Vector2( 511.375, 299.009 )
 scale = Vector2( 0.617864, 0.617864 )
 current = true
 
-[node name="Buildings" parent="." instance=ExtResource( 2 )]
-position = Vector2( 85.061, 0 )
+[node name="HUDCanvas" type="CanvasLayer" parent="."]
 
-[node name="TurnLabel" type="Label" parent="."]
-margin_left = 11.4153
-margin_top = 12.453
-margin_right = 170.415
-margin_bottom = 96.453
-rect_scale = Vector2( 0.617864, 0.617864 )
-custom_fonts/font = SubResource( 1 )
-text = "Turn: "
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ResourceBar" parent="HUDCanvas" instance=ExtResource( 3 )]
 
-[node name="DiceLabel" type="Label" parent="."]
-margin_left = 11.4153
-margin_top = 491.976
-margin_right = 298.415
-margin_bottom = 575.976
-rect_scale = Vector2( 0.617864, 0.617864 )
-custom_fonts/font = SubResource( 1 )
-text = "Manpower: "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EnemiesLabel" type="Label" parent="."]
-margin_left = 11.4153
-margin_top = 543.978
-margin_right = 298.415
-margin_bottom = 627.978
-rect_scale = Vector2( 0.617864, 0.617864 )
-custom_fonts/font = SubResource( 1 )
-text = "Enemies: "
-
-[node name="GrainLabel" type="Label" parent="."]
-margin_left = 11.4153
-margin_top = 155.957
-margin_right = 216.415
-margin_bottom = 239.957
-rect_scale = Vector2( 0.617864, 0.617864 )
-custom_fonts/font = SubResource( 1 )
-text = "Grain :  "
-
-[node name="WaterLabel" type="Label" parent="."]
-margin_left = 11.4153
-margin_top = 207.786
-margin_right = 234.415
-margin_bottom = 291.786
-rect_scale = Vector2( 0.617864, 0.617864 )
-custom_fonts/font = SubResource( 1 )
-text = "Water :  "
-
-[node name="InfluenceLabel" type="Label" parent="."]
-margin_left = 11.4153
-margin_top = 259.917
-margin_right = 234.415
-margin_bottom = 343.917
-rect_scale = Vector2( 0.617864, 0.617864 )
-custom_fonts/font = SubResource( 1 )
-text = "Inf:  "
-
-[node name="WeaponsLabel" type="Label" parent="."]
-margin_left = 11.4153
-margin_top = 311.747
-margin_right = 234.415
-margin_bottom = 395.747
-rect_scale = Vector2( 0.617864, 0.617864 )
-custom_fonts/font = SubResource( 1 )
-text = "Arms:  "
-
-[node name="WallsLabel" type="Label" parent="."]
-margin_left = 11.4153
-margin_top = 363.561
-margin_right = 234.415
-margin_bottom = 447.561
-rect_scale = Vector2( 0.617864, 0.617864 )
-custom_fonts/font = SubResource( 1 )
-text = "Walls:  "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="BuildingInterface" parent="CanvasLayer" instance=ExtResource( 5 )]
+[node name="BuildingInterface" parent="HUDCanvas" instance=ExtResource( 5 )]
+visible = false
 position = Vector2( 0.709473, 0.679001 )
 
-[node name="EventPanel" parent="." instance=ExtResource( 4 )]
+[node name="EventPanel" parent="HUDCanvas" instance=ExtResource( 4 )]
 visible = false
-position = Vector2( 512, 300 )
+margin_left = 371.753
+margin_top = 160.183
+margin_right = 686.753
+margin_bottom = 498.183
+
+[node name="Buildings" parent="." instance=ExtResource( 2 )]
+position = Vector2( 84.3977, 0 )

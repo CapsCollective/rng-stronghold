@@ -1,0 +1,95 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://res/8bitOperatorPlusSC-Regular.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 1 )
+
+[node name="ResourceBar" type="Control"]
+margin_right = 1023.0
+margin_bottom = 78.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TurnLabel" type="Label" parent="."]
+margin_left = 12.1248
+margin_top = 12.453
+margin_right = 171.124
+margin_bottom = 96.453
+rect_scale = Vector2( 0.617864, 0.617864 )
+custom_fonts/font = SubResource( 1 )
+text = "Turn: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DiceLabel" type="Label" parent="."]
+margin_left = 12.1248
+margin_top = 491.976
+margin_right = 299.125
+margin_bottom = 575.976
+rect_scale = Vector2( 0.617864, 0.617864 )
+custom_fonts/font = SubResource( 1 )
+text = "Manpower: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemiesLabel" type="Label" parent="."]
+margin_left = 12.1248
+margin_top = 543.978
+margin_right = 299.124
+margin_bottom = 627.978
+rect_scale = Vector2( 0.617864, 0.617864 )
+custom_fonts/font = SubResource( 1 )
+text = "Enemies: "
+
+[node name="GrainLabel" type="Label" parent="."]
+margin_left = 12.1248
+margin_top = 155.957
+margin_right = 217.125
+margin_bottom = 239.957
+rect_scale = Vector2( 0.617864, 0.617864 )
+custom_fonts/font = SubResource( 1 )
+text = "Grain :  "
+
+[node name="WaterLabel" type="Label" parent="."]
+margin_left = 12.1248
+margin_top = 207.786
+margin_right = 235.125
+margin_bottom = 291.786
+rect_scale = Vector2( 0.617864, 0.617864 )
+custom_fonts/font = SubResource( 1 )
+text = "Water :  "
+
+[node name="InfluenceLabel" type="Label" parent="."]
+margin_left = 12.1248
+margin_top = 259.917
+margin_right = 235.124
+margin_bottom = 343.917
+rect_scale = Vector2( 0.617864, 0.617864 )
+custom_fonts/font = SubResource( 1 )
+text = "Inf:  "
+
+[node name="WeaponsLabel" type="Label" parent="."]
+margin_left = 12.1248
+margin_top = 311.747
+margin_right = 235.124
+margin_bottom = 395.747
+rect_scale = Vector2( 0.617864, 0.617864 )
+custom_fonts/font = SubResource( 1 )
+text = "Arms:  "
+
+[node name="WallsLabel" type="Label" parent="."]
+margin_left = 12.1248
+margin_top = 363.561
+margin_right = 235.124
+margin_bottom = 447.561
+rect_scale = Vector2( 0.617864, 0.617864 )
+custom_fonts/font = SubResource( 1 )
+text = "Walls:  "
+__meta__ = {
+"_edit_use_anchors_": false
+}

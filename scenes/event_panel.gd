@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var resource_names = ["Food", "Water", "Wall", "Arms", "Influence"]
 

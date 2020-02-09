@@ -105,18 +105,18 @@ func degrade_resources():
 func generate_events():
 	var new_event = events[randi()%events.size()]
 	active_events.append(new_event)
-	$EventPanel.display_event(new_event)
-	$EventPanel.show()
+	$"HUDCanvas/EventPanel".display_event(new_event)
+	$"HUDCanvas/EventPanel".show()
 
 func update_ui():
-	$GrainLabel.text = "Grain: " + str(grain)
-	$WaterLabel.text = "Water: " + str(water)
-	$InfluenceLabel.text = "Inf: " + str(influence)
-	$WeaponsLabel.text = "Arms: " + str(arms)
-	$WallsLabel.text = "Walls: " + str(walls)
-	$TurnLabel.text = "Turn: " + str(turn)
-	$EnemiesLabel.text = "Enemies: " + str(enemies)
-	$DiceLabel.text = "Manpower: " + str(dice)
+	$"HUDCanvas/ResourceBar/GrainLabel".text = "Grain: " + str(grain)
+	$"HUDCanvas/ResourceBar/WaterLabel".text = "Water: " + str(water)
+	$"HUDCanvas/ResourceBar/InfluenceLabel".text = "Inf: " + str(influence)
+	$"HUDCanvas/ResourceBar/WeaponsLabel".text = "Arms: " + str(arms)
+	$"HUDCanvas/ResourceBar/WallsLabel".text = "Walls: " + str(walls)
+	$"HUDCanvas/ResourceBar/TurnLabel".text = "Turn: " + str(turn)
+	$"HUDCanvas/ResourceBar/EnemiesLabel".text = "Enemies: " + str(enemies)
+	$"HUDCanvas/ResourceBar/DiceLabel".text = "Manpower: " + str(dice)
 
 func display_active_events():
 	print(active_events)
@@ -125,4 +125,4 @@ func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		process_turn()
 	if event.is_action_pressed("ui_cancel"):
-		$EventPanel.hide()
+		$"HUDCanvas/EventPanel".hide()
