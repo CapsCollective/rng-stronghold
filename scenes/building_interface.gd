@@ -1,6 +1,6 @@
 extends Node2D
 
-var dice_scene = preload("res://scenes/dice.tscn")
+var physics_dice_scene = preload("res://scenes/physics_dice.tscn")
 var dice_to_roll = 0
 
 func _ready():
@@ -21,6 +21,6 @@ func update_display():
 
 func roll_dice():
 	for i in dice_to_roll:
-		var new_dice = dice_scene.instance()
+		var new_dice = physics_dice_scene.instance()
 		new_dice.val = randi()%6+1
 		$DiceRoller/DiceSpawner.add_child(new_dice)
