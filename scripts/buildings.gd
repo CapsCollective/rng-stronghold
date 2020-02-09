@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var camera = $"../Camera2D"
+onready var resting_pos = camera.global_position
 
 var zoomed = false
 
@@ -21,6 +22,6 @@ func _input(event):
 
 func close_building():
 	camera.zoom = Vector2(1, 1)
-	camera.position = Vector2(get_viewport().size.x/2, get_viewport().size.y/2)
+	camera.position = resting_pos
 	zoomed = false
 	$"../HUDCanvas/BuildingInterface".visible = false
