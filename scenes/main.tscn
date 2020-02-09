@@ -36,4 +36,4 @@ visible = false
 position = Vector2( 0.709473, 0.679001 )
 
 [node name="Buildings" parent="." instance=ExtResource( 2 )]
-position = Vector2( 100.979, 30.9608 )
+position = Vector2( 44.5797, 62.4256 )
