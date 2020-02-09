@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://res/8bitOperatorPlusSC-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/building_interface.gd" type="Script" id=2]
@@ -10,6 +10,9 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=2]
 size = 30
 font_data = ExtResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 77.6604, 73.339 )
 
 [node name="BuildingInterface" type="Node2D"]
 position = Vector2( 0, 0.679001 )
@@ -79,18 +82,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-margin_left = 1227.0
-margin_top = 63.0
-margin_right = 1460.0
-margin_bottom = 287.0
+[node name="Target" type="ColorRect" parent="."]
+margin_left = 2055.14
+margin_top = 174.985
+margin_right = 2288.14
+margin_bottom = 398.985
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="ColorRect2"]
+[node name="Label" type="Label" parent="Target"]
 anchor_top = -0.00106534
-anchor_bottom = -0.00106533
+anchor_bottom = -0.00106532
 margin_left = 6.0
 margin_top = 5.23864
 margin_right = 224.0
@@ -103,6 +106,12 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Area2D" type="Area2D" parent="Target"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target/Area2D"]
+position = Vector2( 115.993, 112.57 )
+shape = SubResource( 3 )
 
 [node name="ColorRect3" type="ColorRect" parent="."]
 margin_left = 1949.38

@@ -1,17 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://res/8bitOperatorPlusSC-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://res/RNG-FortressBanner.png" type="Texture" id=2]
 [ext_resource path="res://res/Turn Banner.png" type="Texture" id=3]
-[ext_resource path="res://res/EnemyBanner.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 50
+size = 48
+extra_spacing_bottom = -15
 font_data = ExtResource( 1 )
 
 [node name="ResourceBar" type="Control"]
 margin_right = 1023.0
 margin_bottom = 78.0
+rect_pivot_offset = Vector2( 158.555, 57.2394 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -21,33 +22,42 @@ position = Vector2( 513.575, 102.333 )
 scale = Vector2( 4.01312, 4.01312 )
 texture = ExtResource( 2 )
 
-[node name="EnemyBanner" type="Sprite" parent="."]
-position = Vector2( 882.279, 568.898 )
-scale = Vector2( 4.30565, 4.30565 )
-texture = ExtResource( 4 )
-
 [node name="Turn Banner" type="Sprite" parent="."]
-position = Vector2( 94.0513, 568.079 )
-scale = Vector2( 2.47745, 2.47745 )
+position = Vector2( 877.195, 566.26 )
+scale = Vector2( 3.86046, 2.47745 )
+texture = ExtResource( 3 )
+flip_h = true
+
+[node name="Turn Banner2" type="Sprite" parent="."]
+self_modulate = Color( 0.396078, 0.419608, 1, 1 )
+position = Vector2( 118.758, 566.26 )
+scale = Vector2( 3.08309, 2.47745 )
 texture = ExtResource( 3 )
 
 [node name="TurnLabel" type="Label" parent="."]
-margin_left = 14.374
-margin_top = 545.191
-margin_right = 173.374
-margin_bottom = 629.191
+margin_left = 35.0
+margin_top = 544.0
+margin_right = 274.0
+margin_bottom = 615.0
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Turn: "
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DiceLabel" type="Label" parent="."]
-margin_left = 32.4493
-margin_top = 57.7435
-margin_right = 145.449
-margin_bottom = 202.744
+anchor_left = 0.000149709
+anchor_top = 0.00785378
+anchor_right = 0.000149709
+anchor_bottom = 0.00785378
+margin_left = 27.8468
+margin_top = 63.3874
+margin_right = 150.847
+margin_bottom = 174.387
+grow_horizontal = 2
+grow_vertical = 2
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Pop: "
@@ -58,13 +68,18 @@ __meta__ = {
 }
 
 [node name="EnemiesLabel" type="Label" parent="."]
-margin_left = 850.484
-margin_top = 544.34
-margin_right = 1137.49
-margin_bottom = 628.34
+anchor_left = -0.000671566
+anchor_top = 0.026422
+anchor_right = -0.000671566
+anchor_bottom = 0.026422
+margin_left = 791.687
+margin_top = 542.939
+margin_right = 1115.69
+margin_bottom = 614.939
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Enemies: "
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
