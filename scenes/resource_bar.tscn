@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://res/8bitOperatorPlusSC-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://res/RNG-FortressBanner.png" type="Texture" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -13,11 +14,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RNG-FortressBanner" type="Sprite" parent="."]
+position = Vector2( 513.575, 102.333 )
+scale = Vector2( 4.01312, 4.01312 )
+texture = ExtResource( 2 )
+
 [node name="TurnLabel" type="Label" parent="."]
-margin_left = 12.1248
-margin_top = 12.453
-margin_right = 171.124
-margin_bottom = 96.453
+margin_left = 3.09653
+margin_top = 544.877
+margin_right = 162.096
+margin_bottom = 628.877
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Turn: "
@@ -26,70 +32,73 @@ __meta__ = {
 }
 
 [node name="DiceLabel" type="Label" parent="."]
-margin_left = 12.1248
-margin_top = 491.976
-margin_right = 299.125
-margin_bottom = 575.976
+margin_left = 32.4493
+margin_top = 57.7435
+margin_right = 145.449
+margin_bottom = 202.744
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
-text = "Manpower: "
+text = "Pop: "
+align = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="EnemiesLabel" type="Label" parent="."]
-margin_left = 12.1248
+margin_left = 783.727
 margin_top = 543.978
-margin_right = 299.124
+margin_right = 1070.73
 margin_bottom = 627.978
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Enemies: "
 
 [node name="GrainLabel" type="Label" parent="."]
-margin_left = 12.1248
-margin_top = 155.957
-margin_right = 217.125
-margin_bottom = 239.957
+margin_left = 27.9767
+margin_top = 1.86191
+margin_right = 232.977
+margin_bottom = 85.8619
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Grain :  "
 
 [node name="WaterLabel" type="Label" parent="."]
-margin_left = 12.1248
-margin_top = 207.786
-margin_right = 235.125
-margin_bottom = 291.786
+margin_left = 232.945
+margin_top = 4.29201
+margin_right = 455.945
+margin_bottom = 88.292
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Water :  "
 
 [node name="InfluenceLabel" type="Label" parent="."]
-margin_left = 12.1248
-margin_top = 259.917
-margin_right = 235.124
-margin_bottom = 343.917
+margin_left = 583.839
+margin_top = 4.12775
+margin_right = 806.838
+margin_bottom = 88.1277
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Inf:  "
 
 [node name="WeaponsLabel" type="Label" parent="."]
-margin_left = 12.1248
-margin_top = 311.747
-margin_right = 235.124
-margin_bottom = 395.747
+margin_left = 811.678
+margin_top = 3.44473
+margin_right = 1034.68
+margin_bottom = 87.4447
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Arms:  "
 
 [node name="WallsLabel" type="Label" parent="."]
-margin_left = 12.1248
-margin_top = 363.561
-margin_right = 235.124
-margin_bottom = 447.561
+margin_left = 445.082
+margin_top = 6.21909
+margin_right = 668.081
+margin_bottom = 90.2191
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Walls:  "
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

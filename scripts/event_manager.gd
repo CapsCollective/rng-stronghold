@@ -113,10 +113,10 @@ func update_ui():
 	$"HUDCanvas/ResourceBar/WaterLabel".text = "Water: " + str(water)
 	$"HUDCanvas/ResourceBar/InfluenceLabel".text = "Inf: " + str(influence)
 	$"HUDCanvas/ResourceBar/WeaponsLabel".text = "Arms: " + str(arms)
-	$"HUDCanvas/ResourceBar/WallsLabel".text = "Walls: " + str(walls)
+	$"HUDCanvas/ResourceBar/WallsLabel".text = "Walls: " +   "\n" + str(walls)
 	$"HUDCanvas/ResourceBar/TurnLabel".text = "Turn: " + str(turn)
 	$"HUDCanvas/ResourceBar/EnemiesLabel".text = "Enemies: " + str(enemies)
-	$"HUDCanvas/ResourceBar/DiceLabel".text = "Manpower: " + str(dice)
+	$"HUDCanvas/ResourceBar/DiceLabel".text = "Pop: " + str(dice)
 
 func display_active_events():
 	print(active_events)
