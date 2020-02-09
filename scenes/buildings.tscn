@@ -66,16 +66,16 @@ scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 11 )
 
 [node name="Water" type="Area2D" parent="."]
-position = Vector2( 719.951, 248.194 )
+position = Vector2( 636.947, 171.152 )
 script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Water"]
 material = SubResource( 1 )
-position = Vector2( -82.9198, -79.6501 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 4 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Water"]
+position = Vector2( 82.0867, 77.0423 )
 polygon = PoolVector2Array( -130.645, -168.538, -98.0851, -168.996, -24.7115, -132.309, -23.3358, -114.883, -1.32367, -99.2913, 8.76526, -85.0752, 9.22382, -65.8146, 0.969299, -34.6308, -30.6731, -19.0389, -57.2711, -16.2874, -66.9014, -17.2046, -102.671, 2.5146, -152.657, -24.0833, -153.115, -111.673, -143.485, -116.718, -145.778, -132.309, -146.695, -152.029 )
 
 [node name="Keep" type="Area2D" parent="."]
@@ -115,15 +115,22 @@ texture = ExtResource( 3 )
 polygon = PoolVector2Array( -92.2173, 53.7947, -92.1086, 6.63907, -98.4106, 3.05351, -62.5549, -35.1925, -62.7722, -39.6473, -53.754, -56.38, -31.719, -100.233, -26.7209, -101.21, 63.2442, -56.2278, 79.8682, -43.0807, 97.796, -22.6539, 97.1876, 53.5556, 90.9943, 56.4893, 85.8876, 54.4249, 85.127, 51.3826, 80.9982, 49.4268, 41.4483, 68.9844, 41.3397, 81.045, 2.41991, 100.798, -4.75122, 97.3212, -5.07718, 92.3231, -81.8952, 53.8598, -85.5895, 56.4675 )
 
 [node name="Wall" type="Area2D" parent="."]
-position = Vector2( 698.328, 435.197 )
+position = Vector2( 722.174, 271.023 )
 script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Wall"]
 material = SubResource( 5 )
+position = Vector2( 0, 150 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 
+[node name="Sprite2" type="Sprite" parent="Wall"]
+position = Vector2( -4.82092, -46.429 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 10 )
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall"]
+position = Vector2( -0.00012207, 150.416 )
 polygon = PoolVector2Array( -225.882, -90.0397, -221.901, 77.1445, -121.889, 129.389, 222.928, -38.2922, 223.923, -223.887, 123.414, -251.253 )
 
 [node name="Battlefield" type="Area2D" parent="."]
@@ -137,8 +144,3 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Battlefield"]
 shape = SubResource( 7 )
-
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 820.994, 174.15 )
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 10 )
