@@ -1,5 +1,7 @@
 extends Area2D
 
+export (int) var res_id
+
 func _ready():
 	connect("mouse_entered", self, "highlight")
 	connect("mouse_exited", self, "highlight")

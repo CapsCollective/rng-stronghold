@@ -42,7 +42,13 @@ var events = [
 	},
 ]
 
-var active_events = []
+var active_events = {
+	Resources.FOOD: null,
+	Resources.WATER: null,
+	Resources.WALL: null,
+	Resources.ARMS: null,
+	Resources.INFLUENCE: null,
+}
 
 # Resources
 export (int) var grain
@@ -104,9 +110,10 @@ func degrade_resources():
 
 func generate_events():
 	var new_event = events[randi()%events.size()]
-	active_events.append(new_event)
-	$"HUDCanvas/EventPanel".display_event(new_event)
-	$"HUDCanvas/EventPanel".show()
+	if not active_events[new_event['resource']]:
+		active_events[new_event['resource']] = new_event
+		$"HUDCanvas/EventPanel".display_event(new_event)
+		$"HUDCanvas/EventPanel".show()
 
 func update_ui():
 	$"HUDCanvas/ResourceBar/GrainLabel".text = "Grain: " + str(grain)
@@ -126,3 +133,9 @@ func _input(event):
 		process_turn()
 	if event.is_action_pressed("ui_cancel"):
 		$"HUDCanvas/EventPanel".hide()
+
+func get_event(res_id):
+	return active_events[res_id]
+
+func clear_event(resource):
+	active_events[resource] = null

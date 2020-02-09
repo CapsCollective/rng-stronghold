@@ -7,6 +7,7 @@ var zoomed = false
 func building_clicked(building):
 	if not zoomed:
 		$"../HUDCanvas/BuildingInterface".visible = true
+		$"../HUDCanvas/BuildingInterface".populate(building.res_id)
 		camera.zoom = Vector2(0.5, 0.5)
 		camera.position = building.global_position
 		zoomed = true

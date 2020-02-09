@@ -68,6 +68,7 @@ texture = ExtResource( 11 )
 [node name="Water" type="Area2D" parent="."]
 position = Vector2( 636.947, 171.152 )
 script = ExtResource( 7 )
+res_id = 1
 
 [node name="Sprite" type="Sprite" parent="Water"]
 material = SubResource( 1 )
@@ -81,6 +82,7 @@ polygon = PoolVector2Array( -130.645, -168.538, -98.0851, -168.996, -24.7115, -1
 [node name="Keep" type="Area2D" parent="."]
 position = Vector2( 400, 150 )
 script = ExtResource( 7 )
+res_id = 4
 
 [node name="Sprite" type="Sprite" parent="Keep"]
 material = SubResource( 2 )
@@ -93,6 +95,7 @@ polygon = PoolVector2Array( -61.8921, 87.79, -155.901, 40.3882, -192.181, 111.09
 [node name="Armoury" type="Area2D" parent="."]
 position = Vector2( 151.89, 191.761 )
 script = ExtResource( 7 )
+res_id = 3
 
 [node name="Sprite" type="Sprite" parent="Armoury"]
 material = SubResource( 3 )
@@ -117,6 +120,7 @@ polygon = PoolVector2Array( -92.2173, 53.7947, -92.1086, 6.63907, -98.4106, 3.05
 [node name="Wall" type="Area2D" parent="."]
 position = Vector2( 722.174, 271.023 )
 script = ExtResource( 7 )
+res_id = 2
 
 [node name="Sprite" type="Sprite" parent="Wall"]
 material = SubResource( 5 )
@@ -134,8 +138,9 @@ position = Vector2( -0.00012207, 150.416 )
 polygon = PoolVector2Array( -225.882, -90.0397, -221.901, 77.1445, -121.889, 129.389, 222.928, -38.2922, 223.923, -223.887, 123.414, -251.253 )
 
 [node name="Battlefield" type="Area2D" parent="."]
-position = Vector2( 818.237, 483.16 )
+position = Vector2( 890.235, 442.346 )
 script = ExtResource( 7 )
+res_id = 5
 
 [node name="Sprite" type="Sprite" parent="Battlefield"]
 material = SubResource( 6 )
