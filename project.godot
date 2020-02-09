@@ -22,7 +22,7 @@ _global_script_class_icons={
 
 config/name="RNG Stronghold"
 run/main_scene="res://scenes/main.tscn"
-config/icon="res://res/icon.png"
+config/icon="res://icon.png"
 
 [display]
 

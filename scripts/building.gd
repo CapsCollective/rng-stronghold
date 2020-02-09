@@ -5,7 +5,7 @@ func _ready():
 	connect("mouse_exited", self, "highlight")
 
 func highlight():
-	if $Sprite.material:
+	if not $"../".zoomed and $Sprite.material:
 		var intensity = $Sprite.material.get_shader_param("intensity")
 		if intensity and intensity > 0:
 			$Sprite.material.set_shader_param("intensity", 0)

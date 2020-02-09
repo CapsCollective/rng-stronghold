@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 export var val = 3
+var lifted = false
 
 func _ready():
 	set_bounce(0.7)

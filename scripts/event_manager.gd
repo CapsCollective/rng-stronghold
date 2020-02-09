@@ -71,7 +71,7 @@ func process_turn():
 	display_active_events()
 
 func get_dice_roll():
-	return randi()%7+1
+	return randi()%6+1
 
 func resolve_combat():
 	for enemy in range(enemies):
