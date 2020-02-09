@@ -29,11 +29,11 @@ margin_top = 110.052
 margin_right = 736.027
 margin_bottom = 536.052
 
-[node name="ResourceBar" parent="HUDCanvas" instance=ExtResource( 3 )]
-
 [node name="BuildingInterface" parent="HUDCanvas" instance=ExtResource( 5 )]
 visible = false
 position = Vector2( 0.709473, 0.679001 )
+
+[node name="ResourceBar" parent="HUDCanvas" instance=ExtResource( 3 )]
 
 [node name="Buildings" parent="." instance=ExtResource( 2 )]
 position = Vector2( 44.5797, 62.4256 )

@@ -123,7 +123,7 @@ func update_ui():
 	$"HUDCanvas/ResourceBar/WallsLabel".text = "Walls: " +   "\n" + str(walls)
 	$"HUDCanvas/ResourceBar/TurnLabel".text = "Turn: " + str(turn)
 	$"HUDCanvas/ResourceBar/EnemiesLabel".text = "Enemies: " + str(enemies)
-	$"HUDCanvas/ResourceBar/DiceLabel".text = "Pop: " + str(dice)
+	$"HUDCanvas/ResourceBar/DiceLabel".text = "Pop: " + str(dice) + "/" + str(20)
 
 func display_active_events():
 	print(active_events)

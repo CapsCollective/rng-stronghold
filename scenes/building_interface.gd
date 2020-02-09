@@ -28,8 +28,9 @@ func _process(delta):
 					current_event = null
 
 func add_dice():
-	dice_to_roll += 1
-	update_display()
+	if dice_to_roll < $"../../".dice:
+		dice_to_roll += 1
+		update_display()
 
 func remove_dice():
 	if dice_to_roll > 0:
@@ -40,7 +41,7 @@ func update_display():
 	if current_event:
 		$Target/Label.text = str(current_event['amount'])
 	$Target.visible = current_event and current_event['amount'] > 0
-	$DiceButtons/DiceNumberLabel.text = "Dice Committed: " + str(dice_to_roll)
+	$DiceButtons/DiceNumberLabel.text = str(dice_to_roll)
 
 func roll_dice():
 	$"../../".dice -= dice_to_roll
