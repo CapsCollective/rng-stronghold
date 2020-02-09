@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/armoury.png-ec0c4aada19a5bcb075fcb63cf373194.stex"
+path="res://.import/EventPanel.png-f6dadfd407df82df4a1186d23712a248.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/buildings/armoury.png"
-dest_files=[ "res://.import/armoury.png-ec0c4aada19a5bcb075fcb63cf373194.stex" ]
+source_file="res://res/EventPanel.png"
+dest_files=[ "res://.import/EventPanel.png-f6dadfd407df82df4a1186d23712a248.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

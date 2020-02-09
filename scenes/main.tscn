@@ -22,18 +22,18 @@ current = true
 
 [node name="HUDCanvas" type="CanvasLayer" parent="."]
 
+[node name="EventPanel" parent="HUDCanvas" instance=ExtResource( 4 )]
+visible = false
+margin_left = 300.0
+margin_top = 110.052
+margin_right = 736.027
+margin_bottom = 536.052
+
 [node name="ResourceBar" parent="HUDCanvas" instance=ExtResource( 3 )]
 
 [node name="BuildingInterface" parent="HUDCanvas" instance=ExtResource( 5 )]
 visible = false
 position = Vector2( 0.709473, 0.679001 )
-
-[node name="EventPanel" parent="HUDCanvas" instance=ExtResource( 4 )]
-visible = false
-margin_left = 371.753
-margin_top = 160.183
-margin_right = 686.753
-margin_bottom = 498.183
 
 [node name="Buildings" parent="." instance=ExtResource( 2 )]
 position = Vector2( 100.979, 30.9608 )
