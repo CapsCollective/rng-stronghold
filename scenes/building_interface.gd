@@ -14,6 +14,8 @@ func _ready():
 func populate(res_id):
 	current_event = $"../../".get_event(res_id)
 	dice_to_roll = 0
+	for child in $DiceRoller/DiceSpawner.get_children():
+		child.queue_free()
 	update_display()
 
 func _process(delta):
