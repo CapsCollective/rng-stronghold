@@ -108,7 +108,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BuildingInterface" parent="." instance=ExtResource( 5 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BuildingInterface" parent="CanvasLayer" instance=ExtResource( 5 )]
+position = Vector2( 0.709473, 0.679001 )
 
 [node name="EventPanel" parent="." instance=ExtResource( 4 )]
 visible = false
