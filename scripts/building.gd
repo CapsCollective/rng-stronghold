@@ -1,7 +1,6 @@
 extends Area2D
 
 func _ready():
-	$Button.connect("button_down", self, "resolve_event")
 	connect("mouse_entered", self, "highlight")
 	connect("mouse_exited", self, "highlight")
 
@@ -15,10 +14,6 @@ func highlight():
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
-		
 		if event.pressed:
 			if Input.is_action_pressed("lmb"):
 				get_parent().building_clicked(self)
-
-func resolve_event():
-	print("rolling...")
