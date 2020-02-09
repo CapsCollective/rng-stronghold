@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/armoury.png-ec0c4aada19a5bcb075fcb63cf373194.stex"
+path="res://.import/complete-barracks.png-b008933cfa08914e9035fd655dae86a7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/buildings/armoury.png"
-dest_files=[ "res://.import/armoury.png-ec0c4aada19a5bcb075fcb63cf373194.stex" ]
+source_file="res://res/buildings/complete-barracks.png"
+dest_files=[ "res://.import/complete-barracks.png-b008933cfa08914e9035fd655dae86a7.stex" ]
 
 [params]
 
