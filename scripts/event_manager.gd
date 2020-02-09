@@ -83,10 +83,12 @@ func resolve_combat():
 				influence += 1
 			elif enemy_roll > player_roll:
 				dice -=1
+				arms -= 1
 				influence -= 1
 			else:
 				enemies -= 1
 				dice -=1
+				arms -= 1
 		elif walls > 0:
 			walls -= get_dice_roll()
 		else:

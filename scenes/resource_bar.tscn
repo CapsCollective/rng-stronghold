@@ -5,12 +5,14 @@
 [ext_resource path="res://res/Turn Banner.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 50
+size = 48
+extra_spacing_bottom = -15
 font_data = ExtResource( 1 )
 
 [node name="ResourceBar" type="Control"]
 margin_right = 1023.0
 margin_bottom = 78.0
+rect_pivot_offset = Vector2( 158.555, 57.2394 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -26,10 +28,10 @@ scale = Vector2( 2.47745, 2.47745 )
 texture = ExtResource( 3 )
 
 [node name="TurnLabel" type="Label" parent="."]
-margin_left = 12.7912
-margin_top = 547.301
-margin_right = 171.791
-margin_bottom = 631.301
+margin_left = 30.0
+margin_top = 548.0
+margin_right = 238.0
+margin_bottom = 619.0
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Turn: "
@@ -38,10 +40,16 @@ __meta__ = {
 }
 
 [node name="DiceLabel" type="Label" parent="."]
-margin_left = 32.4493
-margin_top = 57.7435
-margin_right = 145.449
-margin_bottom = 202.744
+anchor_left = 0.000149715
+anchor_top = 0.00785383
+anchor_right = 0.000149709
+anchor_bottom = 0.00785378
+margin_left = 27.8468
+margin_top = 63.3874
+margin_right = 150.847
+margin_bottom = 174.387
+grow_horizontal = 2
+grow_vertical = 2
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Pop: "
@@ -52,13 +60,21 @@ __meta__ = {
 }
 
 [node name="EnemiesLabel" type="Label" parent="."]
-margin_left = 783.727
-margin_top = 543.978
-margin_right = 1070.73
-margin_bottom = 627.978
+anchor_left = -0.000671566
+anchor_top = 0.00880784
+anchor_right = -0.000671566
+anchor_bottom = 0.00880784
+margin_left = 823.687
+margin_top = 549.313
+margin_right = 1137.69
+margin_bottom = 621.313
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Enemies: "
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GrainLabel" type="Label" parent="."]
 margin_left = 27.9767
