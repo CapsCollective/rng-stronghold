@@ -36,4 +36,4 @@ margin_right = 686.753
 margin_bottom = 498.183
 
 [node name="Buildings" parent="." instance=ExtResource( 2 )]
-position = Vector2( 100.979, 38.4691 )
+position = Vector2( 84.3977, 0 )
