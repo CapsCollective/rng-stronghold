@@ -4,13 +4,14 @@ var val
 var original_position
 var lifted = false
 var old_mouse_pos
+var interactable = false
 
 func _ready():
 	original_position = position
 	$Sprite.texture = load("res://res/dice/dice_" + str(val) + ".png")
 
 func _input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton:
+	if interactable and event is InputEventMouseButton:
 		if not lifted and event.pressed and Input.is_action_just_pressed("lmb"):
 			lifted = true
 		elif lifted and Input.is_action_just_released("lmb"):
@@ -23,3 +24,9 @@ func _process(delta):
 	elif lifted:
 		global_position = global_position + (new_mouse_pos - old_mouse_pos)
 	old_mouse_pos = new_mouse_pos
+	
+	if not interactable:
+		rotation = 0 + rotation / 1.5
+		if rotation < 0.01:
+			rotation = 0
+			interactable = true

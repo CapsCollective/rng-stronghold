@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://res/buildings/fort2.png" type="Texture" id=1]
 [ext_resource path="res://res/buildings/complete-barracks.png" type="Texture" id=2]
@@ -10,49 +10,6 @@
 [ext_resource path="res://scripts/buildings.gd" type="Script" id=8]
 [ext_resource path="res://res/buildings/playerpiece.png" type="Texture" id=10]
 [ext_resource path="res://res/buildings/Ground.png" type="Texture" id=11]
-[ext_resource path="res://res/outline.shader" type="Shader" id=12]
-
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 12 )
-shader_param/intensity = null
-shader_param/sizex = 470.0
-shader_param/sizey = 452.0
-shader_param/outline_color = Color( 1, 1, 1, 0.196078 )
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 12 )
-shader_param/intensity = null
-shader_param/sizex = 1000.0
-shader_param/sizey = 1000.0
-shader_param/outline_color = Color( 1, 1, 1, 0.196078 )
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = ExtResource( 12 )
-shader_param/intensity = 0
-shader_param/sizex = 499.0
-shader_param/sizey = 615.0
-shader_param/outline_color = Color( 1, 1, 1, 0.196078 )
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = ExtResource( 12 )
-shader_param/intensity = null
-shader_param/sizex = 393.0
-shader_param/sizey = 404.0
-shader_param/outline_color = Color( 1, 1, 1, 0.196078 )
-
-[sub_resource type="ShaderMaterial" id=5]
-shader = ExtResource( 12 )
-shader_param/intensity = null
-shader_param/sizex = 1000.0
-shader_param/sizey = 1000.0
-shader_param/outline_color = Color( 1, 1, 1, 0.196078 )
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = ExtResource( 12 )
-shader_param/intensity = null
-shader_param/sizex = 196.0
-shader_param/sizey = 300.0
-shader_param/outline_color = Color( 1, 1, 1, 0.196078 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 41.4409, 62.2359 )
@@ -71,7 +28,6 @@ script = ExtResource( 7 )
 res_id = 1
 
 [node name="Sprite" type="Sprite" parent="Water"]
-material = SubResource( 1 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 4 )
 
@@ -85,7 +41,6 @@ script = ExtResource( 7 )
 res_id = 4
 
 [node name="Sprite" type="Sprite" parent="Keep"]
-material = SubResource( 2 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 
@@ -98,7 +53,6 @@ script = ExtResource( 7 )
 res_id = 3
 
 [node name="Sprite" type="Sprite" parent="Armoury"]
-material = SubResource( 3 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
 
@@ -110,7 +64,6 @@ position = Vector2( 274.939, 294.401 )
 script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Granary"]
-material = SubResource( 4 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
@@ -123,7 +76,6 @@ script = ExtResource( 7 )
 res_id = 2
 
 [node name="Sprite" type="Sprite" parent="Wall"]
-material = SubResource( 5 )
 position = Vector2( 0, 150 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
@@ -143,7 +95,6 @@ script = ExtResource( 7 )
 res_id = 5
 
 [node name="Sprite" type="Sprite" parent="Battlefield"]
-material = SubResource( 6 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 6 )
 

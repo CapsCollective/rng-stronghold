@@ -4,6 +4,10 @@ var physics_dice_scene = preload("res://scenes/physics_dice.tscn")
 var dice_to_roll = 0
 var potential_dice
 var current_event
+var ability_val
+var res_id
+
+var resource_alts = ['Harvest Grain', 'Draw Water', 'Repair Wall', 'Forge Weapons', 'Recruit Soldiers']
 
 func _ready():
 	$DiceButtons/RollDiceButton.connect("button_up", self, "roll_dice")
@@ -11,9 +15,11 @@ func _ready():
 	$DiceButtons/RemoveDiceButton.connect("button_up", self, "remove_dice")
 	update_display()
 
-func populate(res_id):
+func populate(rid):
+	res_id = rid
 	current_event = $"../../".get_event(res_id)
 	dice_to_roll = 0
+	ability_val = 8
 	for child in $DiceRoller/DiceSpawner.get_children():
 		child.queue_free()
 	update_display()
@@ -28,6 +34,15 @@ func _process(delta):
 				if current_event['amount'] <= 0:
 					$"../../".clear_event(current_event['resource'])
 					current_event = null
+	for area in $Box/dice_spot/Area2D.get_overlapping_areas():
+		if area.name.find('Dice') != -1 and not area.lifted:
+				print(area)
+				ability_val -= area.val
+				area.queue_free()
+				if ability_val <= 0:
+					ability_val = 8
+					$"../../".add_resources(res_id, 5)
+				update_display()
 
 func add_dice():
 	if dice_to_roll < $"../../".dice:
@@ -44,6 +59,9 @@ func update_display():
 		$Target/Label.text = str(current_event['amount'])
 	$Target.visible = current_event and current_event['amount'] > 0
 	$DiceButtons/DiceNumberLabel.text = str(dice_to_roll)
+	if res_id != null:
+		$Box/Label2.text = str(resource_alts[res_id])
+	$Box/dice_spot/Label3.text = str(ability_val)
 
 func roll_dice():
 	$"../../".dice -= dice_to_roll

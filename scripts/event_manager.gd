@@ -7,6 +7,7 @@ var turn = 0
 
 # Resources enum for referencing buildings 
 enum Resources {FOOD, WATER, WALL, ARMS, INFLUENCE}
+var resource_names = ["Food", "Water", "Wall", "Arms", "Influence"]
 
 # Events
 var events = [
@@ -123,7 +124,7 @@ func update_ui():
 	$"HUDCanvas/ResourceBar/WallsLabel".text = "Walls: " +   "\n" + str(walls)
 	$"HUDCanvas/ResourceBar/TurnLabel".text = "Turn: " + str(turn)
 	$"HUDCanvas/ResourceBar/EnemiesLabel".text = "Enemies: " + str(enemies)
-	$"HUDCanvas/ResourceBar/DiceLabel".text = "Pop: " + str(dice) + "/" + str(20)
+	$"HUDCanvas/ResourceBar/DiceLabel".text = "Dice: " + str(dice) + "/" + str(20)
 
 func display_active_events():
 	print(active_events)
@@ -139,3 +140,17 @@ func get_event(res_id):
 
 func clear_event(resource):
 	active_events[resource] = null
+
+func add_resources(res_id, amount):
+	match res_id:
+		0:
+			grain += amount
+		1:
+			water += amount
+		2:
+			walls += amount
+		3:
+			arms += amount
+		4:
+			influence += amount
+	update_ui()
