@@ -29,6 +29,7 @@ __meta__ = {
 [node name="RollDiceButton" type="Button" parent="DiceButtons"]
 anchor_left = 1.5634e-08
 anchor_top = 1.57918e-07
+anchor_right = 1.5634e-08
 anchor_bottom = 1.57918e-07
 margin_left = 124.889
 margin_top = 611.885

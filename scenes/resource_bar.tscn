@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://res/8bitOperatorPlusSC-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://res/RNG-FortressBanner.png" type="Texture" id=2]
+[ext_resource path="res://res/Turn Banner.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -19,11 +20,16 @@ position = Vector2( 513.575, 102.333 )
 scale = Vector2( 4.01312, 4.01312 )
 texture = ExtResource( 2 )
 
+[node name="Turn Banner" type="Sprite" parent="."]
+position = Vector2( 92.9961, 571.069 )
+scale = Vector2( 2.47745, 2.47745 )
+texture = ExtResource( 3 )
+
 [node name="TurnLabel" type="Label" parent="."]
-margin_left = 3.09653
-margin_top = 544.877
-margin_right = 162.096
-margin_bottom = 628.877
+margin_left = 12.7912
+margin_top = 547.301
+margin_right = 171.791
+margin_bottom = 631.301
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Turn: "
