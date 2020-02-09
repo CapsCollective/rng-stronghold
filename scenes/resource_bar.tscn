@@ -23,33 +23,25 @@ scale = Vector2( 4.01312, 4.01312 )
 texture = ExtResource( 2 )
 
 [node name="Turn Banner" type="Sprite" parent="."]
-position = Vector2( 877.195, 566.26 )
-scale = Vector2( 3.86046, 2.47745 )
-texture = ExtResource( 3 )
-flip_h = true
-
-[node name="Turn Banner2" type="Sprite" parent="."]
-self_modulate = Color( 0.396078, 0.419608, 1, 1 )
-position = Vector2( 118.758, 566.26 )
-scale = Vector2( 3.08309, 2.47745 )
+position = Vector2( 92.9961, 571.069 )
+scale = Vector2( 2.47745, 2.47745 )
 texture = ExtResource( 3 )
 
 [node name="TurnLabel" type="Label" parent="."]
-margin_left = 35.0
-margin_top = 544.0
-margin_right = 274.0
-margin_bottom = 615.0
+margin_left = 30.0
+margin_top = 548.0
+margin_right = 238.0
+margin_bottom = 619.0
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Turn: "
-align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DiceLabel" type="Label" parent="."]
-anchor_left = 0.000149709
-anchor_top = 0.00785378
+anchor_left = 0.000149715
+anchor_top = 0.00785383
 anchor_right = 0.000149709
 anchor_bottom = 0.00785378
 margin_left = 27.8468
@@ -69,17 +61,17 @@ __meta__ = {
 
 [node name="EnemiesLabel" type="Label" parent="."]
 anchor_left = -0.000671566
-anchor_top = 0.026422
+anchor_top = 0.00880784
 anchor_right = -0.000671566
-anchor_bottom = 0.026422
-margin_left = 791.687
-margin_top = 542.939
-margin_right = 1115.69
-margin_bottom = 614.939
+anchor_bottom = 0.00880784
+margin_left = 823.687
+margin_top = 549.313
+margin_right = 1137.69
+margin_bottom = 621.313
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Enemies: "
-align = 1
+align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
