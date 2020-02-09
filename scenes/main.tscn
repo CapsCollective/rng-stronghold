@@ -17,7 +17,6 @@ influence = 20
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 511.375, 299.009 )
-scale = Vector2( 0.617864, 0.617864 )
 current = true
 
 [node name="HUDCanvas" type="CanvasLayer" parent="."]
