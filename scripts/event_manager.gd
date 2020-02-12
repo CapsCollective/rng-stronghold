@@ -63,8 +63,10 @@ var enemies = 0
 
 # Manpower
 var dice = 20
+var turn_dice = 0
 
 func _ready():
+	turn_dice = dice
 	commit_enemies()
 	update_ui()
 
@@ -73,6 +75,7 @@ func process_turn():
 	commit_enemies()
 	degrade_resources()
 	generate_events()
+	turn_dice = dice
 	turn += 1
 	update_ui()
 	display_active_events()
@@ -124,7 +127,7 @@ func update_ui():
 	$"HUDCanvas/ResourceBar/WallsLabel".text = "Walls: " +   "\n" + str(walls)
 	$"HUDCanvas/ResourceBar/TurnLabel".text = "Turn: " + str(turn)
 	$"HUDCanvas/ResourceBar/EnemiesLabel".text = "Enemies: " + str(enemies)
-	$"HUDCanvas/ResourceBar/DiceLabel".text = "Dice: " + str(dice) + "/" + str(20)
+	$"HUDCanvas/ResourceBar/DiceLabel".text = "Dice: " + str(turn_dice) + "/" + str(dice)
 
 func display_active_events():
 	print(active_events)

@@ -45,7 +45,7 @@ func _process(delta):
 				update_display()
 
 func add_dice():
-	if dice_to_roll < $"../../".dice:
+	if dice_to_roll < $"../../".turn_dice:
 		dice_to_roll += 1
 		update_display()
 
@@ -64,7 +64,7 @@ func update_display():
 	$Box/dice_spot/Label3.text = str(ability_val)
 
 func roll_dice():
-	$"../../".dice -= dice_to_roll
+	$"../../".turn_dice -= dice_to_roll
 	for i in dice_to_roll:
 		var new_dice = physics_dice_scene.instance()
 		new_dice.val = randi()%6+1
