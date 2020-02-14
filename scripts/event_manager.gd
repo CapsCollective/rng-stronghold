@@ -6,7 +6,7 @@ class_name EventManager
 var turn = 0
 
 # Resources enum for referencing buildings 
-enum Resources {FOOD, WATER, WALL, ARMS, INFLUENCE}
+enum Resources {FOOD, WATER, WALL, ARMS, INFLUENCE, MANPOWER}
 var resource_names = ["Food", "Water", "Wall", "Arms", "Influence"]
 
 # Events
@@ -49,6 +49,7 @@ var active_events = {
 	Resources.WALL: null,
 	Resources.ARMS: null,
 	Resources.INFLUENCE: null,
+	Resources.MANPOWER: null,
 }
 
 # Resources

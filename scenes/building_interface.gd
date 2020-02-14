@@ -7,7 +7,7 @@ var current_event
 var ability_val
 var res_id
 
-var resource_alts = ['Harvest Grain', 'Draw Water', 'Repair Wall', 'Forge Weapons', 'Recruit Soldiers']
+var resource_alts = ['Harvest Grain', 'Draw Water', 'Repair Wall', 'Forge Weapons', 'Recruit Soldiers', 'Commit Soldiers']
 
 func _ready():
 	$DiceButtons/RollDiceButton.connect("button_up", self, "roll_dice")
