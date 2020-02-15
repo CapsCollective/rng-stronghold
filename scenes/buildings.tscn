@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://res/buildings/fort2.png" type="Texture" id=1]
 [ext_resource path="res://res/buildings/complete-barracks.png" type="Texture" id=2]
@@ -10,9 +10,6 @@
 [ext_resource path="res://scripts/buildings.gd" type="Script" id=8]
 [ext_resource path="res://res/buildings/playerpiece.png" type="Texture" id=10]
 [ext_resource path="res://res/buildings/Ground.png" type="Texture" id=11]
-
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 41.4409, 62.2359 )
 
 [node name="Buildings" type="Node2D"]
 script = ExtResource( 8 )
@@ -94,9 +91,29 @@ position = Vector2( 890.235, 442.346 )
 script = ExtResource( 7 )
 res_id = 5
 
+[node name="Sprite4" type="Sprite" parent="Battlefield"]
+position = Vector2( 63.9175, -28.5945 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 6 )
+
 [node name="Sprite" type="Sprite" parent="Battlefield"]
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Battlefield"]
-shape = SubResource( 7 )
+[node name="Sprite2" type="Sprite" parent="Battlefield"]
+position = Vector2( -56.6284, 31.6783 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 6 )
+
+[node name="Sprite3" type="Sprite" parent="Battlefield"]
+position = Vector2( 68.9636, 16.8204 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 6 )
+
+[node name="Sprite5" type="Sprite" parent="Battlefield"]
+position = Vector2( 11.7747, 53.2645 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Battlefield"]
+polygon = PoolVector2Array( -10.5337, -57.8945, 6.00635, -59.2961, 19.7429, -25.0948, 37.6846, -39.1118, 16.3788, -70.5097, 65.4382, -95.4599, 79.1748, -66.8653, 80.0157, -54.2501, 78.8944, -43.5972, 106.928, -30.1409, 113.096, 60.6889, 14.1361, 118.719, -59.0323, 94.8903, -96.3174, 74.1452, -98.8405, -11.0779, -56.7896, -34.9067, -40.2496, -46.6809 )

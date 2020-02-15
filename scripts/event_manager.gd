@@ -129,6 +129,7 @@ func update_ui():
 	$"HUDCanvas/ResourceBar/TurnLabel".text = "Turn: " + str(turn)
 	$"HUDCanvas/ResourceBar/EnemiesLabel".text = "Enemies: " + str(enemies)
 	$"HUDCanvas/ResourceBar/DiceLabel".text = "Dice: " + str(turn_dice) + "/" + str(dice)
+	$Buildings.display_battlefield()
 
 func display_active_events():
 	print(active_events)

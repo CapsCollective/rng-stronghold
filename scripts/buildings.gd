@@ -25,3 +25,9 @@ func close_building():
 	camera.position = resting_pos
 	zoomed = false
 	$"../HUDCanvas/BuildingInterface".visible = false
+
+func display_battlefield():
+	var display_num = $"../".enemies
+	for child in $Battlefield.get_children():
+		child.visible = child is Sprite and display_num > 0
+		display_num -= 1
