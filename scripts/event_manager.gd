@@ -75,11 +75,10 @@ func process_turn():
 	resolve_combat()
 	commit_enemies()
 	degrade_resources()
-	generate_events()
 	turn_dice = dice
 	turn += 1
 	update_ui()
-	display_active_events()
+	generate_event()
 
 func get_dice_roll():
 	return randi()%6+1
@@ -113,7 +112,7 @@ func degrade_resources():
 	water -= dice
 	walls -= 1
 
-func generate_events():
+func generate_event():
 	var new_event = events[randi()%events.size()]
 	if not active_events[new_event['resource']]:
 		active_events[new_event['resource']] = new_event
@@ -130,9 +129,6 @@ func update_ui():
 	$"HUDCanvas/ResourceBar/EnemiesLabel".text = "Enemies: " + str(enemies)
 	$"HUDCanvas/ResourceBar/DiceLabel".text = "Dice: " + str(turn_dice) + "/" + str(dice)
 	$Buildings.display_battlefield()
-
-func display_active_events():
-	print(active_events)
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
