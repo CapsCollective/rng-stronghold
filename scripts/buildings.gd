@@ -17,8 +17,10 @@ func building_clicked(building):
 		zoomed = true
 
 func _process(delta):
-	camera.zoom = camera.zoom.linear_interpolate(target_zoom, delta*camera_speed)
-	camera.position = camera.position.linear_interpolate(target_position, delta*camera_speed)
+	if camera.zoom != target_zoom:
+		camera.zoom = camera.zoom.linear_interpolate(target_zoom, delta*camera_speed)
+	if camera.position != target_position:
+		camera.position = camera.position.linear_interpolate(target_position, delta*camera_speed)
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
