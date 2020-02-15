@@ -24,22 +24,22 @@ scale = Vector2( 4.01312, 4.01312 )
 texture = ExtResource( 2 )
 
 [node name="Turn Banner" type="Sprite" parent="."]
-position = Vector2( 856.868, 563.421 )
-scale = Vector2( 5.07831, 4.58136 )
+position = Vector2( 893.405, 569.388 )
+scale = Vector2( 4, 4 )
 texture = ExtResource( 4 )
 
 [node name="Turn Banner2" type="Sprite" parent="."]
-position = Vector2( 116.758, 569.26 )
-scale = Vector2( 3.08309, 2.47745 )
+position = Vector2( 114.204, 567.257 )
+scale = Vector2( 3, 2.5 )
 texture = ExtResource( 3 )
 
 [node name="TurnLabel" type="Label" parent="."]
 anchor_left = 0.000671536
 anchor_right = 0.000671536
 margin_left = 30.0
-margin_top = 546.0
+margin_top = 546.891
 margin_right = 269.0
-margin_bottom = 617.0
+margin_bottom = 617.891
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Turn: "
@@ -73,10 +73,10 @@ anchor_left = -0.000671566
 anchor_top = 0.026422
 anchor_right = -0.000671566
 anchor_bottom = 0.026422
-margin_left = 825.687
-margin_top = 537.939
-margin_right = 1131.69
-margin_bottom = 609.939
+margin_left = 866.687
+margin_top = 546.939
+margin_right = 1107.69
+margin_bottom = 618.939
 rect_scale = Vector2( 0.617864, 0.617864 )
 custom_fonts/font = SubResource( 1 )
 text = "Enemies: "
