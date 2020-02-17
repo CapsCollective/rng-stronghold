@@ -10,7 +10,7 @@
 [ext_resource path="res://res/button.png" type="Texture" id=8]
 [ext_resource path="res://scenes/roll_button.gd" type="Script" id=9]
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=1]
 size = 12
 font_data = ExtResource( 1 )
 
@@ -19,7 +19,7 @@ size = 10
 extra_spacing_bottom = -6
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=3]
 size = 34
 font_data = ExtResource( 1 )
 
@@ -27,13 +27,13 @@ font_data = ExtResource( 1 )
 size = 30
 font_data = ExtResource( 1 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 60.3813, 64.9693 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 32.9019, 35.4614 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=7]
 size = 12
 extra_spacing_bottom = -8
 font_data = ExtResource( 1 )
@@ -73,7 +73,7 @@ margin_left = 15.4692
 margin_top = 4.28909
 margin_right = 43.4692
 margin_bottom = 13.2891
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Roll"
 __meta__ = {
@@ -136,10 +136,20 @@ margin_left = -9.7109
 margin_top = -30.0296
 margin_right = 35.2891
 margin_bottom = 17.9704
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.380392, 0.203922, 0.0745098, 1 )
 text = "0"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shade" type="ColorRect" parent="DiceButtons"]
+margin_left = -48.0
+margin_top = -64.0
+margin_right = 48.0
+margin_bottom = 64.0
+color = Color( 0, 0, 0, 0.521569 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -172,7 +182,7 @@ scale = Vector2( 0.333333, 0.333333 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Target/Area2D"]
 position = Vector2( 118.693, 117.487 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="Box" type="Sprite" parent="."]
 position = Vector2( 2205.36, 927.241 )
@@ -206,16 +216,16 @@ scale = Vector2( 0.47619, 0.47619 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Box/dice_spot/Area2D"]
 position = Vector2( 0.86731, 1.73462 )
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 
 [node name="Label2" type="Label" parent="Box"]
-anchor_top = 0.0011932
+anchor_top = 0.00119317
 anchor_bottom = 0.00119317
 margin_left = -36.0
 margin_top = -45.238
 margin_right = 37.0
 margin_bottom = -9.23801
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.380392, 0.203922, 0.0745098, 1 )
 text = "Regenerate
 Walls"

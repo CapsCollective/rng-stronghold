@@ -75,10 +75,14 @@ func process_turn():
 	resolve_combat()
 	commit_enemies()
 	degrade_resources()
+	increment_turn()
 	turn_dice = dice
-	turn += 1
 	update_ui()
 	generate_event()
+
+func increment_turn():
+	turn += 1
+	$HUDCanvas/BuildingInterface.on_turn_update()
 
 func get_dice_roll():
 	return randi()%6+1
