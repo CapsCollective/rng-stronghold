@@ -1,6 +1,6 @@
 extends Node2D
 
-class_name EventManager
+class_name GameManager
 
 # Turn timer
 var turn = 0
@@ -124,14 +124,7 @@ func generate_event():
 		$"HUDCanvas/EventPanel".show()
 
 func update_ui():
-	$"HUDCanvas/ResourceBar/GrainLabel".text = "Grain: " + str(grain)
-	$"HUDCanvas/ResourceBar/WaterLabel".text = "Water: " + str(water)
-	$"HUDCanvas/ResourceBar/InfluenceLabel".text = "Inf: " + str(influence)
-	$"HUDCanvas/ResourceBar/WeaponsLabel".text = "Arms: " + str(arms)
-	$"HUDCanvas/ResourceBar/WallsLabel".text = "Walls: " +   "\n" + str(walls)
-	$"HUDCanvas/ResourceBar/TurnLabel".text = "Turn: " + str(turn)
-	$"HUDCanvas/ResourceBar/EnemiesLabel".text = "Enemies: " + str(enemies)
-	$"HUDCanvas/ResourceBar/DiceLabel".text = "Dice: " + str(turn_dice) + "/" + str(dice)
+	$HUDCanvas/ResourceBar.update_labels()
 	$Buildings.display_battlefield()
 
 func _input(event):

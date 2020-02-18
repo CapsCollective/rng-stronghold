@@ -10,12 +10,12 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
-"class": "EventManager",
+"class": "GameManager",
 "language": "GDScript",
-"path": "res://scripts/event_manager.gd"
+"path": "res://scripts/game_manager.gd"
 } ]
 _global_script_class_icons={
-"EventManager": ""
+"GameManager": ""
 }
 
 [application]

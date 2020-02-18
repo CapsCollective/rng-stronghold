@@ -1,8 +1,5 @@
 extends Control
 
-func _ready():
-	hide()
-
 func display_event(event):
 	$TitleLabel.text = event["title"]
 	$BodyLabel.text = event["flavour"]

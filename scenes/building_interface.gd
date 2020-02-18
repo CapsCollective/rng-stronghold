@@ -11,6 +11,8 @@ var resource_alts = ['Harvest Grain', 'Draw Water', 'Repair Wall', 'Forge Weapon
 
 var rolled_buildings = [false, false, false, false, false, false]
 
+onready var game_manager = $"../../"
+
 func _ready():
 	$DiceButtons/RollDiceButton.connect("button_up", self, "roll_dice")
 	$DiceButtons/AddDiceButton.connect("button_up", self, "add_dice")
@@ -19,7 +21,7 @@ func _ready():
 
 func populate(rid):
 	res_id = rid
-	current_event = $"../../".get_event(res_id)
+	current_event = game_manager.get_event(res_id)
 	dice_to_roll = 0
 	ability_val = 8
 	for child in $DiceRoller/DiceSpawner.get_children():
@@ -34,7 +36,7 @@ func _process(delta):
 				area.queue_free()
 				update_display()
 				if current_event['amount'] <= 0:
-					$"../../".clear_event(current_event['resource'])
+					game_manager.clear_event(current_event['resource'])
 					current_event = null
 	for area in $Box/dice_spot/Area2D.get_overlapping_areas():
 		if area.name.find('Dice') != -1 and not area.lifted:
@@ -42,11 +44,11 @@ func _process(delta):
 				area.queue_free()
 				if ability_val <= 0:
 					ability_val = 8
-					$"../../".add_resources(res_id, 5)
+					game_manager.add_resources(res_id, 5)
 				update_display()
 
 func add_dice():
-	if dice_to_roll < $"../../".turn_dice:
+	if dice_to_roll < game_manager.turn_dice:
 		dice_to_roll += 1
 		update_display()
 
@@ -67,13 +69,13 @@ func update_display():
 
 func roll_dice():
 	if dice_to_roll > 0:
-		$"../../".turn_dice -= dice_to_roll
+		game_manager.turn_dice -= dice_to_roll
 		for i in dice_to_roll:
 			var new_dice = physics_dice_scene.instance()
 			new_dice.val = randi()%6+1
 			$DiceRoller/DiceSpawner.add_child(new_dice)
 		dice_to_roll = 0
-		$"../../".update_ui()
+		game_manager.update_ui()
 		rolled_buildings[res_id] = true
 		update_display()
 
