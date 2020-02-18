@@ -6,3 +6,4 @@ func display_event(event):
 	$SeverityLabel.text = "Severity: " + str(event["amount"])
 	var name = $"../../".resource_names[event["resource"]]
 	$ResourceLabel.text = "Resource: " + name
+	show()

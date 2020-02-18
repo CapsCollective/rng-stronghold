@@ -121,7 +121,6 @@ func generate_event():
 	if not active_events[new_event['resource']]:
 		active_events[new_event['resource']] = new_event
 		$"HUDCanvas/EventPanel".display_event(new_event)
-		$"HUDCanvas/EventPanel".show()
 
 func update_ui():
 	$HUDCanvas/ResourceBar.update_labels()

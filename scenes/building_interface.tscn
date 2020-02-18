@@ -1,14 +1,13 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://res/8bitOperatorPlusSC-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://scenes/building_interface.gd" type="Script" id=2]
+[ext_resource path="res://scripts/building_interface.gd" type="Script" id=2]
 [ext_resource path="res://res/dice_box.png" type="Texture" id=3]
 [ext_resource path="res://res/box.png" type="Texture" id=4]
 [ext_resource path="res://res/arrow.png" type="Texture" id=5]
 [ext_resource path="res://res/arrow_down.png" type="Texture" id=6]
 [ext_resource path="res://res/dice_spot.png" type="Texture" id=7]
 [ext_resource path="res://res/button.png" type="Texture" id=8]
-[ext_resource path="res://scenes/roll_button.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 12
@@ -55,7 +54,6 @@ margin_right = 26.0616
 margin_bottom = 50.5782
 focus_mode = 0
 enabled_focus_mode = 0
-script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

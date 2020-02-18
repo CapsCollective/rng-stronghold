@@ -8,9 +8,6 @@ func _ready():
 	$Timer.connect("timeout", self, "finish")
 
 func finish():
-	input_pickable = true
-	set_mode(RigidBody2D.MODE_STATIC)
-	$AnimationPlayer.play("rest")
 	var new_dice = preload("res://scenes/ui_dice.tscn").instance()
 	new_dice.val = val
 	new_dice.position = position
