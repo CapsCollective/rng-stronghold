@@ -63,6 +63,7 @@ func update_display():
 	$DiceButtons/DiceNumberLabel.text = str(dice_to_roll)
 	if res_id != null:
 		$Box/Label2.text = str(resource_alts[res_id])
+		$Box/Label3.text = "+" + str(ability_risk_returns[res_id][1])
 		$DiceButtons/Shade.visible = rolled_buildings[res_id]
 	if ability_risk_returns:
 		$Box/dice_spot/Label3.text = str(ability_risk_returns[res_id][0])
