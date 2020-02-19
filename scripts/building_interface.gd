@@ -4,8 +4,8 @@ var physics_dice_scene = preload("res://scenes/physics_dice.tscn")
 var dice_to_roll = 0
 var potential_dice
 var current_event
-var ability_val
 var res_id
+var ability_risk_returns
 
 var resource_alts = ['Harvest Grain', 'Draw Water', 'Repair Wall', 'Forge Weapons', 'Recruit Soldiers', 'Commit Soldiers']
 
@@ -23,7 +23,6 @@ func populate(rid):
 	res_id = rid
 	current_event = game_manager.get_event(res_id)
 	dice_to_roll = 0
-	ability_val = 8
 	for child in $DiceRoller/DiceSpawner.get_children():
 		child.queue_free()
 	update_display()
@@ -40,11 +39,11 @@ func _process(delta):
 					current_event = null
 	for area in $Box/dice_spot/Area2D.get_overlapping_areas():
 		if area.name.find('Dice') != -1 and not area.lifted:
-				ability_val -= area.val
+				ability_risk_returns[res_id][0] -= area.val
 				area.queue_free()
-				if ability_val <= 0:
-					ability_val = 8
-					game_manager.add_resources(res_id, 5)
+				if ability_risk_returns[res_id][0] <= 0:
+					ability_risk_returns[res_id][0] = game_manager.ability_risk_returns[res_id][0]
+					game_manager.add_resources(res_id, ability_risk_returns[res_id][1])
 				update_display()
 
 func add_dice():
@@ -65,7 +64,8 @@ func update_display():
 	if res_id != null:
 		$Box/Label2.text = str(resource_alts[res_id])
 		$DiceButtons/Shade.visible = rolled_buildings[res_id]
-	$Box/dice_spot/Label3.text = str(ability_val)
+	if ability_risk_returns:
+		$Box/dice_spot/Label3.text = str(ability_risk_returns[res_id][0])
 
 func roll_dice():
 	if dice_to_roll > 0:
@@ -80,4 +80,5 @@ func roll_dice():
 		update_display()
 
 func on_turn_update():
+	ability_risk_returns = game_manager.ability_risk_returns
 	rolled_buildings = [false, false, false, false, false, false]

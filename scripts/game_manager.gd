@@ -3,11 +3,12 @@ extends Node2D
 class_name GameManager
 
 # Turn timer
-var turn = 0
+var turn = -1
 
 # Resources enum for referencing buildings 
 enum Resources {FOOD, WATER, WALL, ARMS, INFLUENCE, MANPOWER}
 var resource_names = ["Food", "Water", "Wall", "Arms", "Influence"]
+var ability_risk_returns = [[8, 10], [4, 5], [12, 10], [6, 5], [12, 1], [0, 0]]
 
 # Events
 var events = [
@@ -67,6 +68,7 @@ var dice = 20
 var turn_dice = 0
 
 func _ready():
+	increment_turn()
 	turn_dice = dice
 	commit_enemies()
 	update_ui()
