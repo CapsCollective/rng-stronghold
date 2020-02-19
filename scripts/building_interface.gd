@@ -81,5 +81,5 @@ func roll_dice():
 		update_display()
 
 func on_turn_update():
-	ability_risk_returns = game_manager.ability_risk_returns
+	ability_risk_returns = game_manager.ability_risk_returns.duplicate(true)
 	rolled_buildings = [false, false, false, false, false, false]
