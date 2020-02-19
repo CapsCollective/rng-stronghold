@@ -18,3 +18,4 @@ func _input_event(viewport, event, shape_idx):
 		if event.pressed:
 			if Input.is_action_pressed("lmb"):
 				get_parent().building_clicked(self)
+				unhighlight()
