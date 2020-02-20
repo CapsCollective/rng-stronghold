@@ -114,9 +114,18 @@ func commit_enemies():
 	enemies += committed
 
 func degrade_resources():
-	grain -= dice
+	if grain > 0 :
+		grain -= dice
+	else:
+		grain = 0
 	water -= dice
 	walls -= 1
+	if grain > 0 and water > 0:
+		influence += 5
+	elif (grain > 0 and water == 0) or (grain == 0 and water > 0):
+		influence += 2
+	else:
+		influence -= 5
 
 func generate_event():
 	var new_event = events[randi()%events.size()]
@@ -153,3 +162,6 @@ func add_resources(res_id, amount):
 		4:
 			influence += amount
 	update_ui()
+
+func decrement_resources(res_id, amount):
+	pass
