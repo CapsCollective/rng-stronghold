@@ -88,8 +88,8 @@ func process_turn():
 	degrade_resources()
 	increment_turn()
 	turn_dice = dice
-	update_ui()
 	generate_event()
+	update_ui()
 
 func increment_turn():
 	turn += 1
