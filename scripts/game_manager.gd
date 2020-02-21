@@ -4,6 +4,7 @@ class_name GameManager
 
 # Turn timer
 var turn = -1
+var turn_delta = 0
 
 # Resources enum for referencing buildings 
 enum Resources {FOOD, WATER, WALL, ARMS, INFLUENCE, MANPOWER}
@@ -59,6 +60,8 @@ export (int) var water
 export (int) var arms
 export (int) var walls
 export (int) var influence
+
+var attritionRate = 0
 
 # Enemy Strength
 var enemies = 0
@@ -121,8 +124,11 @@ func degrade_resources():
 		influence += 5
 	elif (grain > 0 and water == 0) or (grain == 0 and water > 0):
 		influence += 2
+		attritionRate = 2
 	else:
 		influence = decrement_resource(influence, 5)
+		attritionRate = 1
+	check_attrition()
 
 func generate_event():
 	var new_event = events[randi()%events.size()]
@@ -146,6 +152,13 @@ func get_event(res_id):
 func clear_event(resource):
 	active_events[resource] = null
 
+func check_attrition():
+	if attritionRate > 0:
+		turn_delta += 1
+		if turn_delta == attritionRate:
+			dice = decrement_resource(dice, 1)
+			turn_delta = 0
+
 func add_resources(res_id, amount):
 	match res_id:
 		0:
@@ -161,7 +174,7 @@ func add_resources(res_id, amount):
 	update_ui()
 
 func decrement_resource(res, amount):
-	if (res - dice) > 0:
+	if (res - amount) > 0:
 		res -= amount
 	else:
 		res = 0
