@@ -154,6 +154,7 @@ func trigger_events():
 					print('EVENT: ' + event['title'])
 					print('AMOUNT: ' + str(event['amount']))
 					decrement_resource(event['resource'], event['amount'])
+					event['amount'] = 15
 					events_to_delete.push_back(event['resource'])
 	for res in events_to_delete:
 		clear_event(res)
