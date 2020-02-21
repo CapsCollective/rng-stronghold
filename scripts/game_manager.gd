@@ -69,6 +69,7 @@ var enemies = 0
 # Manpower
 var dice = 20
 var turn_dice = 0
+var commited_dice = 0
 
 func _ready():
 	increment_turn()
@@ -87,6 +88,7 @@ func process_turn():
 
 func increment_turn():
 	turn += 1
+	commited_dice = 0
 	$HUDCanvas/BuildingInterface.on_turn_update()
 
 func get_dice_roll():
@@ -94,18 +96,18 @@ func get_dice_roll():
 
 func resolve_combat():
 	for enemy in range(enemies):
-		if dice > 0:
+		if commited_dice > 0:
 			var player_roll = get_dice_roll()
 			var enemy_roll = get_dice_roll()
 			if player_roll > enemy_roll:
 				enemies -= 1
 				influence += 1
 			elif enemy_roll > player_roll:
-				dice -=1
+				commited_dice -=1
 				influence -= 1
 			else:
 				enemies -= 1
-				dice -=1
+				commited_dice -=1
 		elif walls > 0:
 			walls -= get_dice_roll()
 		else:
