@@ -57,6 +57,9 @@ func remove_dice():
 		update_display()
 
 func update_display():
+	var is_battlefield = res_id == game_manager.Resources.MANPOWER
+	$DiceButtons.visible = !is_battlefield
+	$CommitButtons.visible = is_battlefield
 	if current_event:
 		$Target/Label.text = str(current_event['amount'])
 	$Target.visible = current_event and current_event['amount'] > 0
