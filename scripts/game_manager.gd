@@ -18,30 +18,35 @@ var events = [
 		'resource': Resources.FOOD,
 		'amount': 15,
 		'flavour': "This is some flavour text",
+		'turn_counter': 0,
 	},
 	{
 		'title': 'Water Poisoned!',
 		'resource': Resources.WATER,
 		'amount': 15,
 		'flavour': "This is some flavour text",
+		'turn_counter': 0,
 	},
 	{
 		'title': 'Riots Break Out!',
 		'resource': Resources.INFLUENCE,
 		'amount': 15,
 		'flavour': "This is some flavour text",
+		'turn_counter': 0,
 	},
 	{
 		'title': 'Walls Start to Crumble!',
 		'resource': Resources.WALL,
 		'amount': 15,
 		'flavour': "This is some flavour text",
+		'turn_counter': 0,
 	},
 	{
 		'title': 'Weapons Rust',
 		'resource': Resources.ARMS,
 		'amount': 15,
 		'flavour': "This is some flavour text",
+		'turn_counter': 0,
 	},
 ]
 
@@ -119,20 +124,28 @@ func commit_enemies():
 	enemies += committed
 
 func degrade_resources():
-	grain = decrement_resource(grain, dice)
-	water = decrement_resource(water, dice)
-	walls = decrement_resource(walls, 1)
+	decrement_resource(Resources.FOOD, dice)
+	decrement_resource(Resources.WATER, dice)
+	decrement_resource(Resources.WALL, 1)
 	if grain > 0 and water > 0:
 		influence += 5
 	elif (grain > 0 and water == 0) or (grain == 0 and water > 0):
 		influence += 2
 		attritionRate = 2
 	else:
-		influence = decrement_resource(influence, 5)
+		decrement_resource(Resources.INFLUENCE, 5)
 		attritionRate = 1
 	check_attrition()
 
 func generate_event():
+	if not active_events.empty():
+		for e in active_events.keys():
+			var event = active_events[e]
+			if event:
+				event['turn_counter'] += 1
+				if event['turn_counter'] == 2:
+					pass
+					
 	var new_event = events[randi()%events.size()]
 	if not active_events[new_event['resource']]:
 		active_events[new_event['resource']] = new_event
@@ -158,7 +171,8 @@ func check_attrition():
 	if attritionRate > 0:
 		turn_delta += 1
 		if turn_delta == attritionRate:
-			dice = decrement_resource(dice, 1)
+			print("Attrition!")
+			decrement_resource(Resources.MANPOWER, 1)
 			turn_delta = 0
 
 func add_resources(res_id, amount):
@@ -176,8 +190,24 @@ func add_resources(res_id, amount):
 	update_ui()
 
 func decrement_resource(res, amount):
-	if (res - amount) > 0:
-		res -= amount
+	match res:
+		Resources.FOOD:
+			grain = decrement(grain, amount)
+		Resources.WATER:
+			water = decrement(water, amount)
+		Resources.WALL:
+			walls = decrement(walls, amount)
+		Resources.ARMS:
+			arms = decrement(arms, amount)
+		Resources.INFLUENCE:
+			influence = decrement(influence, amount)
+		Resources.MANPOWER:
+			dice = decrement(dice, amount)
+
+func decrement(obj, amount):
+	if (obj - amount) > 0:
+		obj -= amount
 	else:
-		res = 0
-	return res
+		obj = 0
+	print(obj)
+	return obj
