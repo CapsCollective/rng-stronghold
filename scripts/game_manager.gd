@@ -115,9 +115,8 @@ func resolve_combat():
 				commited_dice -=1
 		elif walls > 0:
 			walls -= get_dice_roll()
-		else:
-			# TODO make something cool happen
-			print("game over")
+	if walls == 0:
+		print('GAME OVER')
 
 func commit_enemies():
 	var committed = 1 + (turn / 20)
@@ -138,18 +137,32 @@ func degrade_resources():
 	check_attrition()
 
 func generate_event():
-	if not active_events.empty():
-		for e in active_events.keys():
-			var event = active_events[e]
-			if event:
-				event['turn_counter'] += 1
-				if event['turn_counter'] == 2:
-					pass
-					
+	trigger_events()
 	var new_event = events[randi()%events.size()]
 	if not active_events[new_event['resource']]:
 		active_events[new_event['resource']] = new_event
 		$"HUDCanvas/EventPanel".display_event(new_event)
+
+func trigger_events():
+	var events_to_delete = []
+	if not active_events.empty():
+		for event in active_events.values():
+			if event:
+				event['turn_counter'] += 1
+				if event['turn_counter'] == 2:
+					print('EVENT TRIGGERED: ')
+					print('EVENT: ' + event['title'])
+					print('AMOUNT: ' + str(event['amount']))
+					decrement_resource(event['resource'], event['amount'])
+					events_to_delete.push_back(event['resource'])
+	for res in events_to_delete:
+		clear_event(res)
+
+func get_event(res_id):
+	return active_events[res_id]
+
+func clear_event(resource):
+	active_events[resource] = null
 
 func update_ui():
 	$HUDCanvas/ResourceBar.update_labels()
@@ -160,12 +173,6 @@ func _input(event):
 		process_turn()
 	if event.is_action_pressed("ui_cancel"):
 		$"HUDCanvas/EventPanel".hide()
-
-func get_event(res_id):
-	return active_events[res_id]
-
-func clear_event(resource):
-	active_events[resource] = null
 
 func check_attrition():
 	if attritionRate > 0:
@@ -209,5 +216,4 @@ func decrement(obj, amount):
 		obj -= amount
 	else:
 		obj = 0
-	print(obj)
 	return obj
