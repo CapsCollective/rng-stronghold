@@ -77,8 +77,38 @@ position = Vector2( 0, 150 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 
-[node name="Sprite2" type="Sprite" parent="Wall"]
-position = Vector2( -4.82092, -46.429 )
+[node name="Sprite5" type="Sprite" parent="Wall" groups=[
+"soldier_sprite",
+]]
+position = Vector2( 107.112, -100.451 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 10 )
+
+[node name="Sprite6" type="Sprite" parent="Wall" groups=[
+"soldier_sprite",
+]]
+position = Vector2( 47.0398, -70.1986 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 10 )
+
+[node name="Sprite2" type="Sprite" parent="Wall" groups=[
+"soldier_sprite",
+]]
+position = Vector2( -13.0322, -44.2681 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 10 )
+
+[node name="Sprite3" type="Sprite" parent="Wall" groups=[
+"soldier_sprite",
+]]
+position = Vector2( -70.5112, -13.1517 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 10 )
+
+[node name="Sprite4" type="Sprite" parent="Wall" groups=[
+"soldier_sprite",
+]]
+position = Vector2( -132.744, 17.1004 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 10 )
 

@@ -40,3 +40,8 @@ func display_battlefield():
 	for child in $Battlefield.get_children():
 		child.visible = child is Sprite and display_num > 0
 		display_num -= 1
+	display_num = $"../".committed_dice
+	for child in $Wall.get_children():
+		if child.is_in_group("soldier_sprite"):
+			child.visible = display_num > 0
+			display_num -= 1
