@@ -45,3 +45,5 @@ func display_battlefield():
 		if child.is_in_group("soldier_sprite"):
 			child.visible = display_num > 0
 			display_num -= 1
+	$Wall/ColorRect.visible = display_num > 0
+	$Wall/ColorRect/Label.text = "+" + str(display_num)
