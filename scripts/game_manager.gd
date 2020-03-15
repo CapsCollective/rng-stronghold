@@ -179,7 +179,6 @@ func check_attrition():
 	if attritionRate > 0:
 		turn_delta += 1
 		if turn_delta == attritionRate:
-			print("Attrition!")
 			decrement_resource(Resources.MANPOWER, 1)
 			turn_delta = 0
 
