@@ -32,6 +32,6 @@ func update_labels():
 
 func display_label(resource_label, amount):
 	var negation_label = negation_label_scene.instance()
-	negation_label.set_text(str(amount))
+	negation_label.set_text(amount)
 	negation_label.position = resource_label.get_global_transform().get_origin() + resource_label.get_size()/2
 	$"../".add_child(negation_label)
