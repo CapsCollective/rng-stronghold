@@ -1,7 +1,7 @@
 extends Control
 
 var initialised = false
-var negation_label_scene = preload("res://scenes/negation_label.tscn")
+var negation_label_scene = preload("res://scenes/update_label.tscn")
 
 onready var game_manager = $"../../"
 onready var label_fields = {
