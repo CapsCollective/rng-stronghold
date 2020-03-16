@@ -1,5 +1,6 @@
 extends Control
 
+var initialised = false
 var negation_label_scene = preload("res://scenes/negation_label.tscn")
 
 onready var game_manager = $"../../"
@@ -25,8 +26,9 @@ func update_labels():
 		else:
 			label.text = label_fields[label][0] + str(new_value)
 		var difference = new_value - old_value
-		if difference != 0:
+		if difference != 0 and initialised:
 			display_label(label, str(difference))
+	initialised = true
 
 func display_label(resource_label, amount):
 	var negation_label = negation_label_scene.instance()
