@@ -1,24 +1,32 @@
 extends Control
 
-onready var game_manager = $"../../"
 var negation_label_scene = preload("res://scenes/negation_label.tscn")
 
+onready var game_manager = $"../../"
+onready var label_fields = {
+	$GrainLabel: ["Grain: ", "grain"],
+	$WaterLabel: ["Water: ", "water"],
+	$InfluenceLabel: ["Inf: ", "influence"],
+	$WeaponsLabel: ["Arms: ", "arms"],
+	$WallsLabel: ["Walls:\n", "walls"],
+	$DiceLabel: ["Dice: ", "dice"],
+}
+
 func update_labels():
-	$GrainLabel.text = "Grain: " + str(game_manager.grain)
-	$WaterLabel.text = "Water: " + str(game_manager.water)
-	$InfluenceLabel.text = "Inf: " + str(game_manager.influence)
-	$WeaponsLabel.text = "Arms: " + str(game_manager.arms)
-	$WallsLabel.text = "Walls: " +   "\n" + str(game_manager.walls)
 	$TurnLabel.text = "Turn: " + str(game_manager.turn)
 	$EnemiesLabel.text = "Enemies: " + str(game_manager.enemies)
-	$DiceLabel.text = "Dice: " + str(game_manager.turn_dice) + "/" + str(game_manager.dice)
 	
-	display_label($GrainLabel, -5)
-	display_label($WaterLabel, -5)
-	display_label($InfluenceLabel, -5)
-	display_label($WeaponsLabel, -5)
-	display_label($WallsLabel, -5)
-	display_label($DiceLabel, -5)
+	for label in label_fields.keys():
+		var old_value = int(label.text)
+		var new_value = game_manager.get(label_fields[label][1])
+		if label == $DiceLabel:
+			old_value = int(label.text.right(label.text.find ("/")))
+			$DiceLabel.text = "Dice: " + str(game_manager.turn_dice) + "/" + str(game_manager.dice)
+		else:
+			label.text = label_fields[label][0] + str(new_value)
+		var difference = new_value - old_value
+		if difference != 0:
+			display_label(label, str(difference))
 
 func display_label(resource_label, amount):
 	var negation_label = negation_label_scene.instance()
