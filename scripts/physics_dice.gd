@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 var val = null
+var comabt_dice = false
 
 func _ready():
 	set_bounce(0.7)
@@ -8,7 +9,11 @@ func _ready():
 	$Timer.connect("timeout", self, "finish")
 
 func finish():
-	var new_dice = preload("res://scenes/ui_dice.tscn").instance()
+	var new_dice
+	if comabt_dice:
+		new_dice = preload("res://scenes/combat_dice.tscn").instance()
+	else:
+		new_dice = preload("res://scenes/ui_dice.tscn").instance()
 	new_dice.val = val
 	new_dice.position = position
 	new_dice.rotation = rotation

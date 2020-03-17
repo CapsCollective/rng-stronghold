@@ -83,7 +83,6 @@ func _ready():
 	update_ui()
 
 func process_turn():
-	resolve_combat()
 	commit_enemies()
 	degrade_resources()
 	increment_turn()
@@ -124,6 +123,14 @@ func resolve_combat():
 			walls -= get_dice_roll()
 	if walls == 0:
 		print('GAME OVER')
+	
+	update_ui()
+	
+	
+	$HUDCanvas/CombatInterface.resolve_combat()
+
+func on_combat_resolved():
+	process_turn()
 
 func commit_enemies():
 	var committed = 1 + (turn / 20)
@@ -178,7 +185,7 @@ func update_ui():
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
-		process_turn()
+		resolve_combat()
 	if event.is_action_pressed("ui_cancel"):
 		$"HUDCanvas/EventPanel".hide()
 
