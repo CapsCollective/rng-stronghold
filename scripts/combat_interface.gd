@@ -19,3 +19,5 @@ func finished_rolling(dice):
 	if rolled % 2 == 0:
 		get_tree().get_root().set_disable_input(false)
 		get_parent().get_parent().on_combat_resolved()
+		$DiceSpawner1.get_children()[0].queue_free()
+		$DiceSpawner2.get_children()[0].queue_free()
