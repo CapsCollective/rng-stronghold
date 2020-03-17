@@ -36,7 +36,6 @@ position = Vector2( 0.709473, 0.679001 )
 [node name="ResourceBar" parent="HUDCanvas" instance=ExtResource( 3 )]
 
 [node name="CombatInterface" parent="HUDCanvas" instance=ExtResource( 6 )]
-visible = false
 
 [node name="Buildings" parent="." instance=ExtResource( 2 )]
 position = Vector2( 44.5797, 62.4256 )

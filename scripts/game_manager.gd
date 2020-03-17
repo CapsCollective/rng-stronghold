@@ -100,6 +100,13 @@ func get_dice_roll():
 	return randi()%6+1
 
 func resolve_combat():
+	# 1 Zoom in on battlefield
+	# 2 Roll two dice (one blue, one red)
+	# 3 Move them to the centre of the screen
+	# 4 Remove the one that fails (or both)
+	# 5 If enemies have unrolled dice damage the walls
+	# 6 Zoom out on the battlefield
+	
 	for enemy in range(enemies):
 		if committed_dice > 0:
 			var player_roll = get_dice_roll()
