@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="CombatInterface" type="Node2D"]
+
+[node name="DiceSpawner1" type="Node2D" parent="."]
+position = Vector2( 250, 250 )
+
+[node name="DiceSpawner2" type="Node2D" parent="."]
+position = Vector2( 750, 250 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 1001.95, 7.4298, 1001.47, 528.194, 17.541, 524.354, 16.5811, 206.616, 138.013, 203.736, 137.053, 167.739, 990.434, 167.259, 992.353, 7.4298, 3.14203, 7.90977, 6.98176, 539.233, 1015.39, 540.673, 1017.79, 7.90977 )
