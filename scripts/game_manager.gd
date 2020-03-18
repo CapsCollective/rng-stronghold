@@ -105,29 +105,7 @@ func resolve_combat():
 	# 4 Remove the one that fails (or both)
 	# 5 If enemies have unrolled dice damage the walls
 	# 6 Zoom out on the battlefield
-	
-	for enemy in range(enemies):
-		if committed_dice > 0:
-			var player_roll = get_dice_roll()
-			var enemy_roll = get_dice_roll()
-			if player_roll > enemy_roll:
-				enemies -= 1
-				influence += 1
-			elif enemy_roll > player_roll:
-				committed_dice -=1
-				influence -= 1
-			else:
-				enemies -= 1
-				committed_dice -=1
-		elif walls > 0:
-			walls -= get_dice_roll()
-	if walls == 0:
-		print('GAME OVER')
-	
-	update_ui()
-	
-	
-	$HUDCanvas/CombatInterface.resolve_combat()
+	$HUDCanvas/CombatInterface.start_resolve_combat()
 
 func on_combat_resolved():
 	process_turn()
