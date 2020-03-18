@@ -142,9 +142,9 @@ func trigger_events():
 			if event:
 				event['turn_counter'] += 1
 				if event['turn_counter'] == 2:
-					print('EVENT TRIGGERED: ')
-					print('EVENT: ' + event['title'])
-					print('AMOUNT: ' + str(event['amount']))
+					#print('EVENT TRIGGERED: ')
+					#print('EVENT: ' + event['title'])
+					#print('AMOUNT: ' + str(event['amount']))
 					decrement_resource(event['resource'], event['amount'])
 					event['amount'] = 15
 					events_to_delete.push_back(event['resource'])
