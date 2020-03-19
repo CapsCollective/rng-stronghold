@@ -40,6 +40,7 @@ func _process(delta):
 				area.queue_free()
 				if current_event['amount'] <= 0:
 					game_manager.clear_event(current_event['resource'])
+					current_event['amount'] = 15
 					current_event = null
 				update_display()
 	for area in $Box/dice_spot/Area2D.get_overlapping_areas():

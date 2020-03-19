@@ -296,6 +296,7 @@ position = Vector2( 118.693, 117.487 )
 shape = SubResource( 5 )
 
 [node name="InfoPanel" type="Sprite" parent="."]
+visible = false
 position = Vector2( 2192.47, 927.241 )
 scale = Vector2( 4.26851, 4 )
 texture = ExtResource( 4 )
@@ -303,15 +304,16 @@ texture = ExtResource( 4 )
 [node name="Title" type="Label" parent="InfoPanel"]
 anchor_top = -0.00106534
 anchor_bottom = -0.00106533
-margin_left = -45.6356
-margin_top = -54.4109
-margin_right = 42.3645
-margin_bottom = -23.4109
+margin_left = -42.0
+margin_top = -54.8636
+margin_right = 42.0
+margin_bottom = -23.8636
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.380392, 0.203922, 0.0745098, 1 )
 text = "Riots Break Out!"
 align = 1
 autowrap = true
+uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -320,16 +322,15 @@ __meta__ = {
 anchor_top = -0.00106534
 anchor_bottom = -0.00106533
 margin_left = -38.6944
-margin_top = -30.9987
+margin_top = -26.4606
 margin_right = 49.3056
-margin_bottom = 25.0013
+margin_bottom = 29.5394
 rect_scale = Vector2( 0.9, 0.9 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.380392, 0.203922, 0.0745098, 1 )
-text = "Resolve event to use building abilities!
-"
 align = 1
 autowrap = true
+uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -337,23 +338,23 @@ __meta__ = {
 [node name="Final Label" type="Label" parent="InfoPanel"]
 anchor_top = -0.00106534
 anchor_bottom = -0.00106533
-margin_left = -40.2112
-margin_top = 19.9732
-margin_right = 47.7888
-margin_bottom = 64.9732
-rect_scale = Vector2( 0.9, 0.9 )
+margin_left = -37.2784
+margin_top = 23.0156
+margin_right = 55.7216
+margin_bottom = 68.0156
+rect_scale = Vector2( 0.806755, 0.806755 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.380392, 0.203922, 0.0745098, 1 )
-text = "Resolve event to use building abilities!
+text = "Abilities locked until event resolved
 "
 align = 1
 autowrap = true
+uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Box" type="Sprite" parent="."]
-visible = false
 position = Vector2( 2205.36, 927.241 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 4 )
