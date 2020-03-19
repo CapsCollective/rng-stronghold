@@ -12,6 +12,7 @@ var dice_rolled = []
 func start_resolve_combat():
 	visible = true
 	get_tree().get_root().set_disable_input(true)
+	MainCam.zoom_to($CombatZone.global_position, 0.75)
 	
 	while game_manager.enemies > 0:
 		rolled = 0
@@ -29,6 +30,8 @@ func start_resolve_combat():
 			print('GAME OVER')
 		game_manager.update_ui()
 	
+	yield(get_tree().create_timer(1), "timeout")
+	MainCam.reset()
 	yield(get_tree().create_timer(2), "timeout")
 	
 	get_tree().get_root().set_disable_input(false)
@@ -43,6 +46,7 @@ func perform_dual_roll():
 		game_manager.influence += 1
 	elif enemy_roll > player_roll:
 		game_manager.committed_dice -=1
+		game_manager.dice -= 1
 		game_manager.influence -= 1
 	else:
 		game_manager.enemies -= 1
