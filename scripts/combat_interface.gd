@@ -29,6 +29,8 @@ func start_resolve_combat():
 			print('GAME OVER')
 		game_manager.update_ui()
 	
+	yield(get_tree().create_timer(2), "timeout")
+	
 	get_tree().get_root().set_disable_input(false)
 	visible = true
 	get_parent().get_parent().on_combat_resolved()
@@ -69,5 +71,5 @@ func finished_rolling(dice):
 	if rolled % expected_rolls == 0:
 		for rolled_dice in dice_rolled:
 			rolled_dice.queue_free()
-		emit_signal("finished_rolling")
 		dice_rolled.clear()
+		emit_signal("finished_rolling")
