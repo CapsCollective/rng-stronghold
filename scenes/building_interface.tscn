@@ -154,7 +154,6 @@ __meta__ = {
 }
 
 [node name="CommitButtons" type="Sprite" parent="."]
-visible = false
 position = Vector2( 331.993, 958.232 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 4 )
@@ -307,6 +306,8 @@ scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 7 )
 
 [node name="Label3" type="Label" parent="Box/dice_spot"]
+anchor_top = -0.00769322
+anchor_bottom = -0.00769322
 margin_left = -19.0
 margin_top = -22.3882
 margin_right = 21.0
@@ -331,8 +332,8 @@ position = Vector2( 0.86731, 1.73462 )
 shape = SubResource( 6 )
 
 [node name="Label2" type="Label" parent="Box"]
-anchor_top = 0.00119317
-anchor_bottom = 0.00119317
+anchor_top = 0.0011932
+anchor_bottom = 0.0011932
 margin_left = -36.181
 margin_top = -59.3541
 margin_right = 36.819

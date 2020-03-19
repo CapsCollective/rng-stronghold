@@ -100,6 +100,7 @@ func get_dice_roll():
 
 func resolve_combat():
 	$HUDCanvas/EventPanel.hide()
+	$HUDCanvas/BuildingInterface.visible = false
 	$HUDCanvas/CombatInterface.start_resolve_combat()
 
 func on_combat_resolved():
