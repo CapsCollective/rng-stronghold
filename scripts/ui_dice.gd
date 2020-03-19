@@ -30,3 +30,6 @@ func _process(delta):
 		if rotation < 0.01:
 			rotation = 0
 			interactable = true
+			var grandparent = get_parent().get_parent()
+			if grandparent.has_method("finished_rolling"):
+				grandparent.finished_rolling(self)

@@ -43,7 +43,7 @@ func _process(delta):
 					game_manager.clear_event(current_event['resource'])
 					current_event = null
 	for area in $Box/dice_spot/Area2D.get_overlapping_areas():
-		if area.name.find('Dice') != -1 and not area.lifted:
+		if area.is_in_group("ui_dice") and not area.lifted:
 				ability_risk_returns[res_id][0] -= area.val
 				area.queue_free()
 				if ability_risk_returns[res_id][0] <= 0:

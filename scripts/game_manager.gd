@@ -83,7 +83,6 @@ func _ready():
 	update_ui()
 
 func process_turn():
-	resolve_combat()
 	commit_enemies()
 	degrade_resources()
 	increment_turn()
@@ -100,23 +99,11 @@ func get_dice_roll():
 	return randi()%6+1
 
 func resolve_combat():
-	for enemy in range(enemies):
-		if committed_dice > 0:
-			var player_roll = get_dice_roll()
-			var enemy_roll = get_dice_roll()
-			if player_roll > enemy_roll:
-				enemies -= 1
-				influence += 1
-			elif enemy_roll > player_roll:
-				committed_dice -=1
-				influence -= 1
-			else:
-				enemies -= 1
-				committed_dice -=1
-		elif walls > 0:
-			walls -= get_dice_roll()
-	if walls == 0:
-		print('GAME OVER')
+	$HUDCanvas/EventPanel.hide()
+	$HUDCanvas/CombatInterface.start_resolve_combat()
+
+func on_combat_resolved():
+	process_turn()
 
 func commit_enemies():
 	var committed = 1 + (turn / 20)
@@ -150,9 +137,9 @@ func trigger_events():
 			if event:
 				event['turn_counter'] += 1
 				if event['turn_counter'] == 2:
-					print('EVENT TRIGGERED: ')
-					print('EVENT: ' + event['title'])
-					print('AMOUNT: ' + str(event['amount']))
+					#print('EVENT TRIGGERED: ')
+					#print('EVENT: ' + event['title'])
+					#print('AMOUNT: ' + str(event['amount']))
 					decrement_resource(event['resource'], event['amount'])
 					event['amount'] = 15
 					events_to_delete.push_back(event['resource'])
@@ -171,9 +158,9 @@ func update_ui():
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
-		process_turn()
+		resolve_combat()
 	if event.is_action_pressed("ui_cancel"):
-		$"HUDCanvas/EventPanel".hide()
+		$HUDCanvas/EventPanel.hide()
 
 func check_attrition():
 	if attritionRate > 0:
