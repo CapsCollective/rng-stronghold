@@ -7,7 +7,7 @@ func _ready():
 	connect("mouse_exited", self, "unhighlight")
 
 func highlight():
-	if not $"../".zoomed:
+	if not MainCam.zoomed:
 		scale = Vector2(1.03, 1.03)
 
 func unhighlight():
