@@ -74,10 +74,13 @@ func remove_commit_dice():
 func update_display():
 	var is_battlefield = res_id == game_manager.Resources.MANPOWER
 	$DiceButtons.visible = !is_battlefield
+	$DiceButtons/Label.text = "Dice to Roll"
+	$DiceButtons/RollDiceButton/Label.text = "Roll"
 	$CommitButtons.visible = is_battlefield
 	if current_event:
 		$Target/Label.text = str(current_event['amount'])
-	$Target.visible = current_event and current_event['amount'] > 0
+	$Target.visible = (current_event and current_event['amount'] > 0)
+	$Box.visible = !is_battlefield && !(res_id == game_manager.Resources.INFLUENCE)
 	$DiceButtons/DiceNumberLabel.text = str(dice_to_roll)
 	$CommitButtons/DiceNumberLabel.text = str(dice_to_commit)
 	if res_id != null:
@@ -86,6 +89,9 @@ func update_display():
 		$DiceButtons/Shade.visible = rolled_buildings[res_id]
 		if is_battlefield:
 			$CommitButtons/Shade.visible = rolled_buildings[res_id]
+		if res_id == game_manager.Resources.INFLUENCE:
+			$DiceButtons/Label.text = "Buy Troops"
+			$DiceButtons/RollDiceButton/Label.text = "Buy"
 	if ability_risk_returns:
 		$Box/dice_spot/Label3.text = str(ability_risk_returns[res_id][0])
 
