@@ -38,10 +38,10 @@ func _process(delta):
 			if not area.lifted:
 				current_event['amount'] -= area.val
 				area.queue_free()
-				update_display()
 				if current_event['amount'] <= 0:
 					game_manager.clear_event(current_event['resource'])
 					current_event = null
+				update_display()
 	for area in $Box/dice_spot/Area2D.get_overlapping_areas():
 		if area.is_in_group("ui_dice") and not area.lifted:
 				ability_risk_returns[res_id][0] -= area.val
@@ -73,6 +73,7 @@ func remove_commit_dice():
 
 func update_display():
 	var is_battlefield = res_id == game_manager.Resources.MANPOWER
+	var is_keep = res_id == game_manager.Resources.INFLUENCE
 	$DiceButtons.visible = !is_battlefield
 	$DiceButtons/Label.text = "Dice to Roll"
 	$DiceButtons/RollDiceButton/Label.text = "Roll"
@@ -80,7 +81,7 @@ func update_display():
 	if current_event:
 		$Target/Label.text = str(current_event['amount'])
 	$Target.visible = (current_event and current_event['amount'] > 0)
-	$Box.visible = !is_battlefield && !(res_id == game_manager.Resources.INFLUENCE)
+	$Box.visible = !is_battlefield && !is_keep
 	$DiceButtons/DiceNumberLabel.text = str(dice_to_roll)
 	$CommitButtons/DiceNumberLabel.text = str(dice_to_commit)
 	if res_id != null:
@@ -89,14 +90,23 @@ func update_display():
 		$DiceButtons/Shade.visible = rolled_buildings[res_id]
 		if is_battlefield:
 			$CommitButtons/Shade.visible = rolled_buildings[res_id]
-		if res_id == game_manager.Resources.INFLUENCE:
+		if is_keep && not current_event:
 			$DiceButtons/Label.text = "Buy Troops"
 			$DiceButtons/RollDiceButton/Label.text = "Buy"
+			$DiceButtons/Shade.visible = false
 	if ability_risk_returns:
 		$Box/dice_spot/Label3.text = str(ability_risk_returns[res_id][0])
 
 func roll_dice():
 	if dice_to_roll > 0:
+		if res_id == game_manager.Resources.INFLUENCE && !current_event:
+			var remainder = game_manager.influence - (10 * dice_to_roll)
+			if remainder >= 0:
+				game_manager.influence = remainder
+				game_manager.dice += dice_to_roll
+				game_manager.turn_dice += dice_to_roll
+				game_manager.update_ui()
+			return
 		game_manager.turn_dice -= dice_to_roll
 		for i in dice_to_roll:
 			var new_dice = physics_dice_scene.instance()
