@@ -47,19 +47,20 @@ func perform_dual_roll():
 		game_manager.committed_dice -=1
 	
 	expected_rolls = 2
-	roll_dice($DiceSpawner1, player_roll)
-	roll_dice($DiceSpawner2, enemy_roll)
+	roll_dice($DiceSpawner1, player_roll, false)
+	roll_dice($DiceSpawner2, enemy_roll, true)
 
 func perform_wall_roll():
 	var enemy_roll = game_manager.get_dice_roll()
 	game_manager.walls -= enemy_roll
 	expected_rolls = 1
-	roll_dice($DiceSpawner2, enemy_roll)
+	roll_dice($DiceSpawner2, enemy_roll, true)
 
-func roll_dice(spawner, value):
+func roll_dice(spawner, value, enemy_dice):
 	var new_dice = physics_dice_scene.instance()
 	new_dice.comabt_dice = true
 	new_dice.val = value
+	new_dice.is_enemy_dice = enemy_dice
 	spawner.add_child(new_dice)
 
 func finished_rolling(dice):

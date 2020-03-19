@@ -1,6 +1,7 @@
 extends Area2D
 
 var val
+var is_enemy_dice
 var final_position
 var lifted = false
 var finished_rotating = false
@@ -8,6 +9,8 @@ var finished_moving = false
 var forgiveness = 1
 
 func _ready():
+	if is_enemy_dice:
+		modulate = Color(0.780392, 0.203922, 0.203922)
 	final_position = get_parent().get_parent().position
 	$Sprite.texture = load("res://res/dice/dice_" + str(val) + ".png")
 
