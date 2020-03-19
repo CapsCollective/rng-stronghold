@@ -78,10 +78,13 @@ func update_display():
 	$DiceButtons/Label.text = "Dice to Roll"
 	$DiceButtons/RollDiceButton/Label.text = "Roll"
 	$CommitButtons.visible = is_battlefield
+	$InfoPanel.visible = current_event != null
 	if current_event:
 		$Target/Label.text = str(current_event['amount'])
+		$InfoPanel/Title.text = current_event['title']
+		$InfoPanel/FlavorText.text = current_event['flavour']
 	$Target.visible = (current_event and current_event['amount'] > 0)
-	$Box.visible = !is_battlefield && !is_keep
+	$Box.visible = !is_battlefield && !is_keep && !current_event
 	$DiceButtons/DiceNumberLabel.text = str(dice_to_roll)
 	$CommitButtons/DiceNumberLabel.text = str(dice_to_commit)
 	if res_id != null:

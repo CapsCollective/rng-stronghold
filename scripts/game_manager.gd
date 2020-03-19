@@ -17,7 +17,7 @@ var events = [
 		'title': 'Food Rots!',
 		'resource': Resources.FOOD,
 		'amount': 15,
-		'flavour': "This is some flavour text",
+		'flavour': "Your food starts to rot! Save it before it spoils!",
 		'turn_counter': 0,
 	},
 	{

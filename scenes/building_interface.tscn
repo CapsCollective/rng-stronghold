@@ -295,7 +295,65 @@ scale = Vector2( 0.333333, 0.333333 )
 position = Vector2( 118.693, 117.487 )
 shape = SubResource( 5 )
 
+[node name="InfoPanel" type="Sprite" parent="."]
+position = Vector2( 2192.47, 927.241 )
+scale = Vector2( 4.26851, 4 )
+texture = ExtResource( 4 )
+
+[node name="Title" type="Label" parent="InfoPanel"]
+anchor_top = -0.00106534
+anchor_bottom = -0.00106533
+margin_left = -45.6356
+margin_top = -54.4109
+margin_right = 42.3645
+margin_bottom = -23.4109
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.380392, 0.203922, 0.0745098, 1 )
+text = "Riots Break Out!"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlavorText" type="Label" parent="InfoPanel"]
+anchor_top = -0.00106534
+anchor_bottom = -0.00106533
+margin_left = -38.6944
+margin_top = -30.9987
+margin_right = 49.3056
+margin_bottom = 25.0013
+rect_scale = Vector2( 0.9, 0.9 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.380392, 0.203922, 0.0745098, 1 )
+text = "Resolve event to use building abilities!
+"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Final Label" type="Label" parent="InfoPanel"]
+anchor_top = -0.00106534
+anchor_bottom = -0.00106533
+margin_left = -40.2112
+margin_top = 19.9732
+margin_right = 47.7888
+margin_bottom = 64.9732
+rect_scale = Vector2( 0.9, 0.9 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.380392, 0.203922, 0.0745098, 1 )
+text = "Resolve event to use building abilities!
+"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Box" type="Sprite" parent="."]
+visible = false
 position = Vector2( 2205.36, 927.241 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 4 )
