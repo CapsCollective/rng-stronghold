@@ -99,12 +99,7 @@ func get_dice_roll():
 	return randi()%6+1
 
 func resolve_combat():
-	# 1 Zoom in on battlefield
-	# 2 Roll two dice (one blue, one red)
-	# 3 Move them to the centre of the screen
-	# 4 Remove the one that fails (or both)
-	# 5 If enemies have unrolled dice damage the walls
-	# 6 Zoom out on the battlefield
+	$HUDCanvas/EventPanel.hide()
 	$HUDCanvas/CombatInterface.start_resolve_combat()
 
 func on_combat_resolved():
@@ -165,7 +160,7 @@ func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		resolve_combat()
 	if event.is_action_pressed("ui_cancel"):
-		$"HUDCanvas/EventPanel".hide()
+		$HUDCanvas/EventPanel.hide()
 
 func check_attrition():
 	if attritionRate > 0:
