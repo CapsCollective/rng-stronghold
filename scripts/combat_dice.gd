@@ -6,6 +6,7 @@ var final_position
 var lifted = false
 var finished_rotating = false
 var finished_moving = false
+var finished_resizing = false
 var forgiveness = 1
 
 func _ready():
@@ -13,6 +14,7 @@ func _ready():
 		modulate = Color(0.780392, 0.203922, 0.203922)
 	final_position = get_parent().get_parent().position
 	$Sprite.texture = load("res://res/dice/dice_" + str(val) + ".png")
+	scale = Vector2(0.5, 0.5)
 
 func _process(delta):
 	if finished_rotating:
@@ -30,3 +32,8 @@ func _process(delta):
 		if rotation < 0.01:
 			rotation = 0
 			finished_rotating = true
+	
+	if not finished_resizing:
+		scale = scale.linear_interpolate(Vector2.ONE, delta*5)
+		if scale == Vector2.ONE:
+			finished_resizing = true
