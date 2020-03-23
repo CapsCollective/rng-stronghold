@@ -50,9 +50,10 @@ func start_resolve_combat():
 		enemy_dice.begin_show()
 		yield(self, "finished_showing")
 		yield(get_tree().create_timer(0.5), "timeout")
-		display_results(player_dice.get("val"), enemy_dice.get("val"))
+		display_results(player_dice, enemy_dice)
 		game_manager.update_ui()
-		player_dice.queue_free()
+		if player_dice:
+			player_dice.queue_free()
 		enemy_dice.queue_free()
 	
 	yield(get_tree().create_timer(2), "timeout")
@@ -76,7 +77,12 @@ func reset_values():
 	expected_shown = 0
 	shown = 0
 
-func display_results(player_roll, enemy_roll):
+func display_results(player_dice, enemy_dice):
+	var enemy_roll = enemy_dice.val
+	var player_roll = null
+	if player_dice:
+		player_roll = player_dice.val
+	
 	if player_roll:
 		if player_roll > enemy_roll:
 			game_manager.enemies -= 1
