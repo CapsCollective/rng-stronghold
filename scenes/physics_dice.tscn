@@ -35,5 +35,5 @@ polygon = PoolVector2Array( 0.286003, -29.6443, 28.252, -15.9791, 28.8876, 15.32
 anims/rest = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 3.0
 autostart = true
