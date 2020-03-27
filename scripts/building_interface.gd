@@ -53,7 +53,7 @@ func _process(delta):
 				update_display()
 
 func add_dice():
-	if dice_to_roll < game_manager.turn_dice:
+	if (res_id == game_manager.Resources.INFLUENCE && !current_event and dice_to_roll < game_manager.influence/10) or (res_id != game_manager.Resources.INFLUENCE || current_event and dice_to_roll < game_manager.turn_dice):
 		dice_to_roll += 1
 		update_display()
 
@@ -97,7 +97,7 @@ func update_display():
 		if is_keep && not current_event:
 			$DiceButtons/Label.text = "Buy Troops"
 			$DiceButtons/RollDiceButton/Label.text = "Buy"
-			$DiceButtons/Shade.visible = false
+			$DiceButtons/Shade.visible = game_manager.influence/10 < 1
 	if ability_risk_returns:
 		$Box/dice_spot/Label3.text = str(ability_risk_returns[res_id][0])
 
@@ -109,6 +109,8 @@ func roll_dice():
 				game_manager.influence = remainder
 				game_manager.dice += dice_to_roll
 				game_manager.turn_dice += dice_to_roll
+				dice_to_roll = 0
+				update_display()
 				game_manager.update_ui()
 			return
 		game_manager.turn_dice -= dice_to_roll
