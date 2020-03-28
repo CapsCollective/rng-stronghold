@@ -4,7 +4,6 @@
 [ext_resource path="res://res/EventPanel.png" type="Texture" id=2]
 [ext_resource path="res://res/8bitOperatorPlusSC-Regular.ttf" type="DynamicFontData" id=3]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 34
 font_data = ExtResource( 3 )
@@ -15,6 +14,16 @@ margin_top = 1.0
 margin_right = 436.0
 margin_bottom = 433.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -403.428
+margin_top = -166.897
+margin_right = 817.572
+margin_bottom = 580.103
+color = Color( 0, 0, 0, 0.392157 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
