@@ -158,8 +158,7 @@ func update_ui():
 	$Buildings.display_battlefield()
 
 func _input(event):
-	if event.is_action_pressed("ui_accept"):
-	if event.is_action_pressed("ui_cancel"):
+	if not event is InputEventMouseMotion:
 		$HUDCanvas/EventPanel.hide()
 		if event.is_action_pressed("ui_accept"):
 			advance_turn()
