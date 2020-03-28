@@ -135,3 +135,15 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TurnButton" type="Button" parent="."]
+margin_left = -0.136749
+margin_top = 529.932
+margin_right = 224.863
+margin_bottom = 598.932
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

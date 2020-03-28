@@ -13,6 +13,9 @@ onready var label_fields = {
 	$DiceLabel: ["Dice: ", "dice"],
 }
 
+func _ready():
+	$TurnButton.connect("pressed", self, "advance_turn")
+
 func update_labels():
 	$TurnLabel.text = "Turn: " + str(game_manager.turn)
 	$EnemiesLabel.text = "Enemies: " + str(game_manager.enemies)
@@ -38,3 +41,6 @@ func display_label(resource_label, amount):
 	negation_label.set_text(amount)
 	negation_label.position = resource_label.get_global_transform().get_origin() + resource_label.get_size()/2
 	$"../".add_child(negation_label)
+
+func advance_turn():
+	game_manager.advance_turn()

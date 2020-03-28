@@ -159,9 +159,13 @@ func update_ui():
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
-		resolve_combat()
 	if event.is_action_pressed("ui_cancel"):
 		$HUDCanvas/EventPanel.hide()
+		if event.is_action_pressed("ui_accept"):
+			advance_turn()
+
+func advance_turn():
+	resolve_combat()
 
 func check_attrition():
 	if attritionRate > 0:
