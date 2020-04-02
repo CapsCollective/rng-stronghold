@@ -63,7 +63,7 @@ func remove_dice():
 		update_display()
 
 func add_commit_dice():
-	if dice_to_commit < game_manager.turn_dice:
+	if dice_to_commit < game_manager.turn_dice and dice_to_commit < game_manager.arms:
 		dice_to_commit += 1
 		update_display()
 
