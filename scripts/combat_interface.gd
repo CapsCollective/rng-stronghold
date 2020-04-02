@@ -90,9 +90,11 @@ func display_results(player_dice, enemy_dice):
 		elif enemy_roll > player_roll:
 			game_manager.committed_dice -=1
 			game_manager.dice -= 1
+			game_manager.arms -= 1
 			game_manager.influence -= 1
 		else:
 			game_manager.enemies -= 1
+			game_manager.arms -= 1
 			game_manager.committed_dice -=1
 	elif game_manager.walls > 0:
 		game_manager.walls -= enemy_roll
