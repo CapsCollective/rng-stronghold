@@ -1,26 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://res/8bitOperatorPlusSC-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/building_interface.gd" type="Script" id=2]
 [ext_resource path="res://res/dice_box.png" type="Texture" id=3]
 [ext_resource path="res://res/box.png" type="Texture" id=4]
-[ext_resource path="res://res/arrow.png" type="Texture" id=5]
-[ext_resource path="res://res/arrow_down.png" type="Texture" id=6]
 [ext_resource path="res://res/dice_spot.png" type="Texture" id=7]
-[ext_resource path="res://res/button.png" type="Texture" id=8]
-
-[sub_resource type="DynamicFont" id=1]
-size = 12
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 10
-extra_spacing_bottom = -6
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 34
-font_data = ExtResource( 1 )
+[ext_resource path="res://scenes/dice_selector.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=4]
 size = 30
@@ -28,6 +13,11 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 60.3813, 64.9693 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+extra_spacing_bottom = -6
+font_data = ExtResource( 1 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 32.9019, 35.4614 )
@@ -42,228 +32,7 @@ position = Vector2( 0, 0.679001 )
 scale = Vector2( 0.414592, 0.414592 )
 script = ExtResource( 2 )
 
-[node name="DiceButtons" type="Sprite" parent="."]
-position = Vector2( 331.993, 958.232 )
-scale = Vector2( 4, 4 )
-texture = ExtResource( 4 )
-
-[node name="RollDiceButton" type="ToolButton" parent="DiceButtons"]
-margin_left = -31.9384
-margin_top = 21.5782
-margin_right = 26.0616
-margin_bottom = 50.5782
-focus_mode = 0
-enabled_focus_mode = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="Sprite" parent="DiceButtons/RollDiceButton"]
-position = Vector2( 29.1991, 13.8768 )
-scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 8 )
-hframes = 2
-
-[node name="Label" type="Label" parent="DiceButtons/RollDiceButton"]
-anchor_top = -0.00996873
-anchor_bottom = 0.334859
-margin_left = 15.4692
-margin_top = 4.28909
-margin_right = 43.4692
-margin_bottom = 13.2891
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Roll"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AddDiceButton" type="ToolButton" parent="DiceButtons"]
-anchor_left = 7.94729e-08
-anchor_top = 0.00451708
-anchor_right = 0.111226
-anchor_bottom = 0.00451708
-margin_left = -33.9052
-margin_top = -30.8199
-margin_right = -0.58287
-margin_bottom = 9.18011
-rect_scale = Vector2( 0.6, 0.6 )
-focus_mode = 0
-enabled_focus_mode = 0
-icon = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RemoveDiceButton" type="ToolButton" parent="DiceButtons"]
-anchor_left = 7.94729e-08
-anchor_top = 0.00451708
-anchor_right = 0.111226
-anchor_bottom = 0.00451708
-margin_left = -34.4834
-margin_top = -5.66812
-margin_right = -1.16107
-margin_bottom = 34.3319
-rect_scale = Vector2( 0.6, 0.6 )
-focus_mode = 0
-enabled_focus_mode = 0
-icon = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="DiceButtons"]
-anchor_top = -0.00106534
-anchor_bottom = -0.00106533
-margin_left = -49.2891
-margin_top = -53.5745
-margin_right = 47.7109
-margin_bottom = -22.5745
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.380392, 0.203922, 0.0745098, 1 )
-text = "Dice to Roll"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DiceNumberLabel" type="Label" parent="DiceButtons"]
-anchor_top = 0.00119331
-anchor_bottom = 0.00119333
-margin_left = -9.7109
-margin_top = -30.0296
-margin_right = 35.2891
-margin_bottom = 17.9704
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.380392, 0.203922, 0.0745098, 1 )
-text = "0"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Shade" type="ColorRect" parent="DiceButtons"]
-visible = false
-margin_left = -48.0
-margin_top = -64.0
-margin_right = 48.0
-margin_bottom = 64.0
-color = Color( 0, 0, 0, 0.521569 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CommitButtons" type="Sprite" parent="."]
-position = Vector2( 331.993, 958.232 )
-scale = Vector2( 4, 4 )
-texture = ExtResource( 4 )
-
-[node name="CommitButton" type="ToolButton" parent="CommitButtons"]
-margin_left = -36.927
-margin_top = 21.5782
-margin_right = 21.073
-margin_bottom = 50.5782
-focus_mode = 0
-enabled_focus_mode = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="Sprite" parent="CommitButtons/CommitButton"]
-position = Vector2( 36.5038, 13.8768 )
-scale = Vector2( 1.02135, 0.8 )
-texture = ExtResource( 8 )
-hframes = 2
-
-[node name="Label" type="Label" parent="CommitButtons/CommitButton"]
-anchor_top = -0.00996873
-anchor_bottom = 0.334859
-margin_left = 15.4692
-margin_top = 4.28909
-margin_right = 43.4692
-margin_bottom = 13.2891
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Commit"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AddButton" type="ToolButton" parent="CommitButtons"]
-anchor_left = 7.94729e-08
-anchor_top = 0.00451708
-anchor_right = 0.111226
-anchor_bottom = 0.00451708
-margin_left = -33.9052
-margin_top = -30.8199
-margin_right = -0.58287
-margin_bottom = 9.18011
-rect_scale = Vector2( 0.6, 0.6 )
-focus_mode = 0
-enabled_focus_mode = 0
-icon = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RemoveButton" type="ToolButton" parent="CommitButtons"]
-anchor_left = 7.94729e-08
-anchor_top = 0.00451708
-anchor_right = 0.111226
-anchor_bottom = 0.00451708
-margin_left = -34.4834
-margin_top = -5.66812
-margin_right = -1.16107
-margin_bottom = 34.3319
-rect_scale = Vector2( 0.6, 0.6 )
-focus_mode = 0
-enabled_focus_mode = 0
-icon = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="CommitButtons"]
-anchor_top = -0.00106531
-anchor_bottom = -0.0010653
-margin_left = -38.0
-margin_top = -53.8636
-margin_right = 37.0
-margin_bottom = -22.8636
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.380392, 0.203922, 0.0745098, 1 )
-text = "Commit Soldiers"
-align = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DiceNumberLabel" type="Label" parent="CommitButtons"]
-anchor_top = 0.00119331
-anchor_bottom = 0.00119333
-margin_left = -9.7109
-margin_top = -30.0296
-margin_right = 35.2891
-margin_bottom = 17.9704
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.380392, 0.203922, 0.0745098, 1 )
-text = "0"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Shade" type="ColorRect" parent="CommitButtons"]
-visible = false
-margin_left = -48.0
-margin_top = -64.0
-margin_right = 48.0
-margin_bottom = 64.0
-color = Color( 0, 0, 0, 0.521569 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="DiceSelector" parent="." instance=ExtResource( 9 )]
 
 [node name="Target" type="Sprite" parent="."]
 position = Vector2( 2014.07, 276.748 )
