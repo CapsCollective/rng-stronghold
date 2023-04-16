@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://csg3j8dony7ew"]
+
+[ext_resource type="Script" path="res://assets/dice/scripts/dice_test.gd" id="1_jb5hj"]
+
+[sub_resource type="Environment" id="Environment_rb555"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3moja"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vj7l0"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1xcj6"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cqwaj"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_byjwl"]
+size = Vector3(14.8268, 14.0738, 1.42399)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_jb5hj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rb555")
+camera_attributes = SubResource("CameraAttributesPractical_3moja")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.501511, 0.704771, -0.501781, 2.49258e-16, 0.579992, 0.814622, 0.865151, -0.408542, 0.290872, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.977046, 0.21303, 0, -0.21303, 0.977046, 0, 6.18744, 9.5031)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_vj7l0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_1xcj6")
+surface_material_override/0 = SubResource("StandardMaterial3D_cqwaj")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.80358)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("BoxShape3D_byjwl")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.92715)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+shape = SubResource("BoxShape3D_byjwl")

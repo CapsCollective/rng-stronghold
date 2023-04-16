@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3]
+
+[ext_resource type="Texture2D" uid="uid://cdkuw5fmhyfc6" path="res://assets/dice/models/d6/dice_d6_tex.png" id="1_7qipu"]
+
+[resource]
+albedo_texture = ExtResource("1_7qipu")
