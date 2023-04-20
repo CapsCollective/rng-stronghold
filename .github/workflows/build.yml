@@ -1,0 +1,40 @@
+name: Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+env:
+  BUILD_NAME: RNGStronghold
+  BUILD_DIR: build/macos
+  GODOT_VERSION: 4.0.2
+  GODOT_TEMPLATES_DIR: "/Users/runner/Library/Application Support/Godot/export_templates"
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Install Godot
+        run: brew install godot
+
+      - name: Setup Godot templates
+        run: |
+          curl -o ./godot-templates.zip "https://downloads.tuxfamily.org/godotengine/$GODOT_VERSION/Godot_v$GODOT_VERSION-stable_export_templates.tpz"
+          unzip ./godot-templates.zip
+          mkdir -p "$GODOT_TEMPLATES_DIR"
+          mv ./templates "$GODOT_TEMPLATES_DIR/$GODOT_VERSION.stable"
+        
+      - name: Build application
+        run: |
+          mkdir -p $BUILD_DIR
+          godot --export-debug macOS --headless
+      
+      - uses: actions/upload-artifact@v3.1.2
+        with:
+          name: macOS Build
+          path: ${{ env.BUILD_DIR }}
