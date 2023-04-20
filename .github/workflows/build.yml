@@ -28,6 +28,9 @@ jobs:
           unzip ./godot-templates.zip
           mkdir -p "$GODOT_TEMPLATES_DIR"
           mv ./templates "$GODOT_TEMPLATES_DIR/$GODOT_VERSION.stable"
+
+      - name: Apply version to export information
+        run: godot --script scripts/apply_version.gd --headless
         
       - name: Build application
         run: |
