@@ -56,3 +56,17 @@ jobs:
         with:
           name: windows
           path: ${{ env.BUILD_DIR }}/windows
+
+      - name: Build Linux application
+        run: |
+          mkdir -p $BUILD_DIR/linux
+          godot --export-debug Linux --headless
+          [ "$(ls -A $BUILD_DIR/linux)" ]
+
+      - name: Compress Linux build (to preserve permissions)
+        run: tar -cvf $BUILD_DIR/linux/linux.tar -C $BUILD_DIR/linux $APP_NAME $APP_NAME.pck
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: linux
+          path: ${{ env.BUILD_DIR }}/linux/linux.tar
