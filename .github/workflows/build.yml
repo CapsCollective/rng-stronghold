@@ -45,3 +45,14 @@ jobs:
         with:
           name: macos
           path: ${{ env.BUILD_DIR }}/macos/macos.tar
+
+      - name: Build Windows application
+        run: |
+          mkdir -p $BUILD_DIR/windows
+          godot --export-debug Windows --headless
+          [ "$(ls -A $BUILD_DIR/windows)" ]
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: windows
+          path: ${{ env.BUILD_DIR }}/windows
