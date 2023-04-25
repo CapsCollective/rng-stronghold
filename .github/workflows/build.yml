@@ -1,0 +1,72 @@
+name: Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+env:
+  APP_NAME: RNGStronghold
+  BUILD_DIR: build
+  GODOT_VERSION: 4.0.2
+  GODOT_TEMPLATES_DIR: "/Users/runner/Library/Application Support/Godot/export_templates"
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Install Godot
+        run: brew install godot
+
+      - name: Setup Godot templates
+        run: |
+          curl -o ./godot-templates.zip "https://downloads.tuxfamily.org/godotengine/$GODOT_VERSION/Godot_v$GODOT_VERSION-stable_export_templates.tpz"
+          unzip ./godot-templates.zip
+          mkdir -p "$GODOT_TEMPLATES_DIR"
+          mv ./templates "$GODOT_TEMPLATES_DIR/$GODOT_VERSION.stable"
+
+      - name: Apply version to export information
+        run: godot --script scripts/apply_version.gd --headless
+        
+      - name: Build macOS application
+        run: |
+          mkdir -p $BUILD_DIR/macos
+          godot --export-debug macOS --headless
+          [ "$(ls -A $BUILD_DIR/macos)" ]
+
+      - name: Compress macOS build (to preserve permissions)
+        run: tar -cvf $BUILD_DIR/macos/macos.tar -C $BUILD_DIR/macos $APP_NAME.app
+      
+      - uses: actions/upload-artifact@v3
+        with:
+          name: macos
+          path: ${{ env.BUILD_DIR }}/macos/macos.tar
+
+      - name: Build Windows application
+        run: |
+          mkdir -p $BUILD_DIR/windows
+          godot --export-debug Windows --headless
+          [ "$(ls -A $BUILD_DIR/windows)" ]
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: windows
+          path: ${{ env.BUILD_DIR }}/windows
+
+      - name: Build Linux application
+        run: |
+          mkdir -p $BUILD_DIR/linux
+          godot --export-debug Linux --headless
+          [ "$(ls -A $BUILD_DIR/linux)" ]
+
+      - name: Compress Linux build (to preserve permissions)
+        run: tar -cvf $BUILD_DIR/linux/linux.tar -C $BUILD_DIR/linux $APP_NAME $APP_NAME.pck
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: linux
+          path: ${{ env.BUILD_DIR }}/linux/linux.tar
