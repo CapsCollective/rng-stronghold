@@ -16,6 +16,11 @@ config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://assets/common/application_icon.svg"
 config/version="0.1.1"
 
+[autoload]
+
+PersistentData="*res://assets/persistence/persistent_data.gd"
+ExampleData="*res://assets/persistence/example_data.gd"
+
 [filesystem]
 
 import/blender/enabled=false

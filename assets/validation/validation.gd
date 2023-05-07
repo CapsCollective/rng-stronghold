@@ -7,8 +7,8 @@ func run_all_validations() -> bool:
 	var result = true
 	for validation in validations:
 		var v = validation.new()
-		print("- Running validation for %s..." % v._name())
-		if not v._run_validations():
+		print("- Running validation for %s..." % v.get_name())
+		if not v.run_validations():
 			print("    VALIDATION FAILED")
 			result = false
 	if result:
@@ -19,8 +19,8 @@ func run_all_validations() -> bool:
 
 class Validation:
 	
-	func _name() -> String:
+	func get_name() -> String:
 		return "Validation"
 	
-	func _run_validations() -> bool:
+	func run_validations() -> bool:
 		return true

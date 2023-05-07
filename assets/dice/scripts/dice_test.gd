@@ -5,7 +5,7 @@ const d6 = preload("res://assets/dice/scenes/physics_die_d6.tscn")
 const dice_types = [d4, d6]
 
 func _ready():
-	pass
+	PersistentData.load_file()
 
 func _input(event):
 	if event.is_action_released("ui_accept"):
@@ -20,3 +20,7 @@ func _input(event):
 func on_roll_completed(die: PhysicsDie, value: int):
 	die.roll_completed.disconnect(on_roll_completed)
 	print(value)
+	
+	ExampleData.time = Time.get_ticks_msec()
+	ExampleData.value = value
+	PersistentData.save_file()
