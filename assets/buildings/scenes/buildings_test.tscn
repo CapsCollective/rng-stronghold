@@ -1,0 +1,114 @@
+[gd_scene load_steps=17 format=3 uid="uid://tdgsrefjoyu4"]
+
+[ext_resource type="ArrayMesh" uid="uid://b21x26cs8xipu" path="res://assets/buildings/models/ground/ground_geo.res" id="1_2owat"]
+[ext_resource type="ArrayMesh" uid="uid://c5hedb8sggyjj" path="res://assets/buildings/models/granary/granary_geo.res" id="2_vs0x1"]
+[ext_resource type="Script" path="res://assets/buildings/scripts/building.gd" id="2_y88aw"]
+[ext_resource type="ArrayMesh" uid="uid://bwtjwljfr3uia" path="res://assets/buildings/models/armoury/armoury_geo.res" id="3_f610y"]
+[ext_resource type="ArrayMesh" uid="uid://cidgwartiiilx" path="res://assets/buildings/models/fort/fort_geo.res" id="4_msdfp"]
+[ext_resource type="ArrayMesh" uid="uid://bomor0mk3tu18" path="res://assets/buildings/models/wall/wall_geo.res" id="6_lmmap"]
+[ext_resource type="ArrayMesh" uid="uid://bp475keqc861h" path="res://assets/buildings/models/watermill/watermill_geo.res" id="7_bfwor"]
+
+[sub_resource type="Environment" id="Environment_8f0bx"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_s300m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8ybs"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_r2lt4"]
+data = PackedVector3Array(-5.8397, -10.8962, 2.0853, -5.8397, 1, -23.6335, -5.8397, 1, 2.0853, -5.8397, -10.8962, 2.0853, -5.8397, -10.8962, -23.6335, -5.8397, 1, -23.6335, -5.8397, -10.8962, -23.6335, 14.5648, 1, -23.6335, -5.8397, 1, -23.6335, -5.8397, -10.8962, -23.6335, 14.5648, -10.8962, -23.6335, 14.5648, 1, -23.6335, 14.5648, -10.8962, 5.1841, 14.5648, 1, 26.5912, 14.5648, 1, 5.1841, 14.5648, -10.8962, 5.1841, 14.5648, -10.8962, 26.5912, 14.5648, 1, 26.5912, 14.5648, -10.8962, 26.5912, -5.8397, 1, 26.5912, 14.5648, 1, 26.5912, 14.5648, -10.8962, 26.5912, -5.8397, -10.8962, 26.5912, -5.8397, 1, 26.5912, -5.8397, -10.8962, 5.1841, 14.5648, -10.8962, 26.5912, 14.5648, -10.8962, 5.1841, -5.8397, -10.8962, 5.1841, -5.8397, -10.8962, 26.5912, 14.5648, -10.8962, 26.5912, 14.5648, 1, 5.1841, -5.8397, 1, 26.5912, -5.8397, 1, 5.1841, 14.5648, 1, 5.1841, 14.5648, 1, 26.5912, -5.8397, 1, 26.5912, 14.5648, 1, -23.6335, -5.8397, 1, 2.0853, -5.8397, 1, -23.6335, 14.5648, 1, -23.6335, 14.5648, 1, 2.0853, -5.8397, 1, 2.0853, -5.8397, -10.8962, -23.6335, 14.5648, -10.8962, 2.0853, 14.5648, -10.8962, -23.6335, -5.8397, -10.8962, -23.6335, -5.8397, -10.8962, 2.0853, 14.5648, -10.8962, 2.0853, 14.5648, -10.8962, -23.6335, 14.5648, 1, 2.0853, 14.5648, 1, -23.6335, 14.5648, -10.8962, -23.6335, 14.5648, -10.8962, 2.0853, 14.5648, 1, 2.0853, -5.8397, -10.8962, 5.1841, -5.5592, 0.7353, 5.1152, -5.8397, 1, 5.1841, -5.8397, -10.8962, 5.1841, -5.5592, -10.6315, 5.1152, -5.5592, 0.7353, 5.1152, -5.8397, -10.8962, 26.5912, -5.8397, 1, 5.1841, -5.8397, 1, 26.5912, -5.8397, -10.8962, 26.5912, -5.8397, -10.8962, 5.1841, -5.8397, 1, 5.1841, 14.5648, -10.8962, 5.1841, -5.5592, -10.6315, 5.1152, -5.8397, -10.8962, 5.1841, 14.5648, -10.8962, 5.1841, 14.2843, -10.6315, 5.1152, -5.5592, -10.6315, 5.1152, -5.8397, -10.8962, 2.0853, 14.2843, -10.6315, 2.1542, 14.5648, -10.8962, 2.0853, -5.8397, -10.8962, 2.0853, -5.5592, -10.6315, 2.1542, 14.2843, -10.6315, 2.1542, -5.8397, 1, 2.0853, -5.5592, -10.6315, 2.1542, -5.8397, -10.8962, 2.0853, -5.8397, 1, 2.0853, -5.5592, 0.7353, 2.1542, -5.5592, -10.6315, 2.1542, -5.5592, -10.6315, 5.1152, -5.5592, 0.7353, 2.1542, -5.5592, 0.7353, 5.1152, -5.5592, -10.6315, 5.1152, -5.5592, -10.6315, 2.1542, -5.5592, 0.7353, 2.1542, 14.2843, 0.7353, 2.1542, -5.5592, 0.7353, 5.1152, -5.5592, 0.7353, 2.1542, 14.2843, 0.7353, 2.1542, 14.2843, 0.7353, 5.1152, -5.5592, 0.7353, 5.1152, -5.5592, -10.6315, 2.1542, 14.2843, -10.6315, 5.1152, 14.2843, -10.6315, 2.1542, -5.5592, -10.6315, 2.1542, -5.5592, -10.6315, 5.1152, 14.2843, -10.6315, 5.1152, 14.2843, -10.6315, 2.1542, 14.2843, 0.7353, 5.1152, 14.2843, 0.7353, 2.1542, 14.2843, -10.6315, 2.1542, 14.2843, -10.6315, 5.1152, 14.2843, 0.7353, 5.1152, 14.5648, -10.8962, 2.0853, 14.2843, 0.7353, 2.1542, 14.5648, 1, 2.0853, 14.5648, -10.8962, 2.0853, 14.2843, -10.6315, 2.1542, 14.2843, 0.7353, 2.1542, 14.5648, 1, 5.1841, 14.2843, -10.6315, 5.1152, 14.5648, -10.8962, 5.1841, 14.5648, 1, 5.1841, 14.2843, 0.7353, 5.1152, 14.2843, -10.6315, 5.1152, 14.5648, 1, 2.0853, -5.5592, 0.7353, 2.1542, -5.8397, 1, 2.0853, 14.5648, 1, 2.0853, 14.2843, 0.7353, 2.1542, -5.5592, 0.7353, 2.1542, -5.8397, 1, 5.1841, 14.2843, 0.7353, 5.1152, 14.5648, 1, 5.1841, -5.8397, 1, 5.1841, -5.5592, 0.7353, 5.1152, 14.2843, 0.7353, 5.1152)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ygn48"]
+points = PackedVector3Array(-1, -1, -2.46277, 1, 1, 0.997369, 0.990057, -1, 0.980167, 1, 1, -2.47997, -1, 0.990057, 0.980167, -1, -1, 0.980167, 0.990057, -1, -2.46277, -1, 0.990057, -2.46277)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cqqqi"]
+points = PackedVector3Array(-1, -1, -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gqabl"]
+data = PackedVector3Array(-1, -0.4269, 1, -1, 1, -1, -1, 1, 1, -1, -0.4269, 1, -1, -0.4269, -1, -1, 1, -1, -1, -0.4269, -1, 1, 1, -1, -1, 1, -1, -1, -0.4269, -1, 1, -0.4269, -1, 1, 1, -1, 1, -0.4269, -1, 1, 1, 1, 1, 1, -1, 1, -0.4269, -1, 1, -0.4269, 1, 1, 1, 1, 1, -0.4269, 1, -1, 1, 1, 1, 1, 1, 1, -0.4269, 1, -1, -0.4269, 1, -1, 1, 1, -1, -0.4269, -1, 1, -0.4269, 1, 1, -0.4269, -1, -1, -0.4269, -1, -1, -0.4269, 1, 1, -0.4269, 1, 0.4769, 1, 0.4769, 0.4769, 1.7112, -0.4769, 0.4769, 1, -0.4769, 0.4769, 1, 0.4769, 0.4769, 1.7112, 0.4769, 0.4769, 1.7112, -0.4769, -0.4769, 1, 0.4769, -1, 1, -1, -0.4769, 1, -0.4769, -0.4769, 1, 0.4769, -1, 1, 1, -1, 1, -1, -0.4769, 1, -0.4769, 1, 1, -1, 0.4769, 1, -0.4769, -0.4769, 1, -0.4769, -1, 1, -1, 1, 1, -1, 0.4769, 1, -0.4769, 1, 1, 1, 0.4769, 1, 0.4769, 0.4769, 1, -0.4769, 1, 1, -1, 1, 1, 1, 0.4769, 1, 0.4769, -1, 1, 1, -0.4769, 1, 0.4769, 0.4769, 1, 0.4769, 1, 1, 1, -1, 1, 1, 0.4769, 1.7112, -0.4769, -0.4769, 1.7112, 0.4769, -0.4769, 1.7112, -0.4769, 0.4769, 1.7112, -0.4769, 0.4769, 1.7112, 0.4769, -0.4769, 1.7112, 0.4769, -0.4769, 1, -0.4769, -0.4769, 1.7112, 0.4769, -0.4769, 1, 0.4769, -0.4769, 1, -0.4769, -0.4769, 1.7112, -0.4769, -0.4769, 1.7112, 0.4769, -0.4769, 1, 0.4769, 0.4769, 1.7112, 0.4769, 0.4769, 1, 0.4769, -0.4769, 1, 0.4769, -0.4769, 1.7112, 0.4769, 0.4769, 1.7112, 0.4769, 0.4769, 1, -0.4769, -0.4769, 1.7112, -0.4769, -0.4769, 1, -0.4769, 0.4769, 1, -0.4769, 0.4769, 1.7112, -0.4769, -0.4769, 1.7112, -0.4769)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3mxma"]
+points = PackedVector3Array(-0.802988, -1, -1, 7.19701, 1, 1, 7.07749, 0.970119, -1, -0.922512, 1, 1, 7.07749, -1, 0.970119, 7.07749, -1, -1, -0.802988, 0.970119, -1, -0.802988, -1, 0.970119)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ipk8t"]
+points = PackedVector3Array(0.994074, 1, 0.968913, -0.6463, -0.995049, -1.86849, -0.637988, 1, -1.85411, -0.6463, -0.995049, 0.98329, 1, -0.992147, -1.86436, 1, -0.992147, 0.979163, -0.637988, 1, 0.968913, 0.994074, 1, -1.85411)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8f0bx")
+camera_attributes = SubResource("CameraAttributesPractical_s300m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.501511, 0.704771, -0.501781, 2.49258e-16, 0.579992, 0.814622, 0.865151, -0.408542, 0.290872, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.173648, 0.492404, -0.852868, 3.02058e-16, 0.866025, 0.5, 0.984808, -0.0868241, 0.150384, -55, 30, 2.08165e-12)
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(4, -1.39515e-15, 1.39515e-15, 1.39515e-15, 4, -1.39515e-15, -1.39515e-15, 1.39515e-15, 4, -15.7203, -1.25293, -11.8775)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = ExtResource("1_2owat")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ybs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("ConcavePolygonShape3D_r2lt4")
+
+[node name="Granary" type="StaticBody3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -23.8548, 6.69796, -14.1166)
+script = ExtResource("2_y88aw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Granary"]
+mesh = ExtResource("2_vs0x1")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ybs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Granary"]
+shape = SubResource("ConvexPolygonShape3D_ygn48")
+
+[node name="Armoury" type="StaticBody3D" parent="."]
+transform = Transform3D(5.6, 0, 0, 0, 5.6, 0, 0, 0, 5.6, -29.4513, 8.42527, -37.0459)
+script = ExtResource("2_y88aw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Armoury"]
+mesh = ExtResource("3_f610y")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ybs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armoury"]
+shape = SubResource("ConvexPolygonShape3D_cqqqi")
+
+[node name="Fort" type="StaticBody3D" parent="."]
+transform = Transform3D(13, 0, 0, 0, 13, 0, 0, 0, 13, 1.38622, 8.76108, -26.9042)
+script = ExtResource("2_y88aw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Fort"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("4_msdfp")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ybs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fort"]
+shape = SubResource("ConcavePolygonShape3D_gqabl")
+
+[node name="Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(5.60953, 0, 0, 0, 5.60953, 0, 0, 0, 5.60953, -22.394, 8.5565, 17.0817)
+script = ExtResource("2_y88aw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+mesh = ExtResource("6_lmmap")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ybs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+shape = SubResource("ConvexPolygonShape3D_3mxma")
+
+[node name="Watermill" type="StaticBody3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 25.7742, 11.6152, 0)
+script = ExtResource("2_y88aw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Watermill"]
+transform = Transform3D(1.1389, 0, 0, 0, 1.1389, 0, 0, 0, 1.1389, -0.423224, -0.616553, -2.0614)
+mesh = ExtResource("7_bfwor")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ybs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Watermill"]
+transform = Transform3D(1.1389, 0, 0, 0, 1.1389, 0, 0, 0, 1.1389, -0.423224, -0.616553, -2.0614)
+shape = SubResource("ConvexPolygonShape3D_ipk8t")
