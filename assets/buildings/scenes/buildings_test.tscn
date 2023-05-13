@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://tdgsrefjoyu4"]
+[gd_scene load_steps=12 format=3 uid="uid://tdgsrefjoyu4"]
 
 [ext_resource type="ArrayMesh" uid="uid://b21x26cs8xipu" path="res://assets/buildings/models/ground/ground_geo.res" id="1_2owat"]
+[ext_resource type="Script" path="res://assets/buildings/scripts/game_camera.gd" id="1_jxx3p"]
 [ext_resource type="PackedScene" uid="uid://b7fxbshlkyc4a" path="res://assets/buildings/scenes/granary.tscn" id="2_30fh0"]
 [ext_resource type="PackedScene" uid="uid://2pn0sstfwsql" path="res://assets/buildings/scenes/armoury.tscn" id="3_hp63y"]
 [ext_resource type="PackedScene" uid="uid://dxq6vpvntwv01" path="res://assets/buildings/scenes/fort.tscn" id="4_3vrd1"]
@@ -28,6 +29,8 @@ transform = Transform3D(0.501511, 0.704771, -0.501781, 2.49258e-16, 0.579992, 0.
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.173648, 0.492404, -0.852868, 3.02058e-16, 0.866025, 0.5, 0.984808, -0.0868241, 0.150384, -55, 30, 2.08165e-12)
+script = ExtResource("1_jxx3p")
+buildings = Array[NodePath]([NodePath("../Granary"), NodePath("../Armoury"), NodePath("../Fort"), NodePath("../Wall"), NodePath("../Watermill")])
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(4, -1.39515e-15, 1.39515e-15, 1.39515e-15, 4, -1.39515e-15, -1.39515e-15, 1.39515e-15, 4, -15.7203, -1.25293, -11.8775)
@@ -39,20 +42,37 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f8ybs")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("ConcavePolygonShape3D_r2lt4")
 
-[node name="Granary" parent="." instance=ExtResource("2_30fh0")]
+[node name="Granary" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("2_30fh0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8548, 6.69796, -14.1166)
+cam_zoom_pos = NodePath("GranaryCamZoom")
 
-[node name="Armoury" parent="." instance=ExtResource("3_hp63y")]
+[node name="GranaryCamZoom" type="Node3D" parent="Granary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7422, 5.99304, 3.8391)
+
+[node name="Armoury" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("3_hp63y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.4513, 8.42527, -37.0459)
+cam_zoom_pos = NodePath("ArmouryCamZoom")
 
-[node name="Fort" parent="." instance=ExtResource("4_3vrd1")]
+[node name="ArmouryCamZoom" type="Node3D" parent="Armoury"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.631, 7.52795, 4.07542)
+
+[node name="Fort" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("4_3vrd1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38622, 8.76108, -26.9042)
+cam_zoom_pos = NodePath("FortCamZoom")
 
-[node name="Wall" parent="." instance=ExtResource("5_rrvkr")]
+[node name="FortCamZoom" type="Node3D" parent="Fort"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1711, 9.1696, 18.1206)
+
+[node name="Wall" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("5_rrvkr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.394, 8.5565, 17.0817)
+cam_zoom_pos = NodePath("WallCamZoom")
 
-[node name="Watermill" parent="." instance=ExtResource("6_grno3")]
+[node name="WallCamZoom" type="Node3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3779, 4.9861, 0.129934)
+
+[node name="Watermill" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("6_grno3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7742, 7.7049, -9.78565)
+cam_zoom_pos = NodePath("WatermillCamZoom")
 
-[node name="GranaryCamZoom" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.597, 12.691, -10.2775)
+[node name="WatermillCamZoom" type="Node3D" parent="Watermill"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3779, 4.9861, 4.18306)
