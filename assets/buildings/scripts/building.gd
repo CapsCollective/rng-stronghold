@@ -1,10 +1,13 @@
-extends StaticBody3D
+extends Node3D
 
-var orig_scale
+
+var orig_scale: Vector3
+
+@onready var mesh = $StaticBody3D
 
 func _ready():
-	mouse_entered.connect(grow)
-	mouse_exited.connect(shrink)
+	mesh.mouse_entered.connect(grow)
+	mesh.mouse_exited.connect(shrink)
 	orig_scale = scale
 
 func grow():

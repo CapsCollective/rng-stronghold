@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7fxbshlkyc4a"]
+
+[ext_resource type="Script" path="res://assets/buildings/scripts/building.gd" id="1_rgen4"]
+[ext_resource type="ArrayMesh" uid="uid://c5hedb8sggyjj" path="res://assets/buildings/models/granary/granary_geo.res" id="2_au5dh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8ybs"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ygn48"]
+points = PackedVector3Array(-1, -1, -2.46277, 1, 1, 0.997369, 0.990057, -1, 0.980167, 1, 1, -2.47997, -1, 0.990057, 0.980167, -1, -1, 0.980167, 0.990057, -1, -2.46277, -1, 0.990057, -2.46277)
+
+[node name="Granary" type="Node3D"]
+script = ExtResource("1_rgen4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = ExtResource("2_au5dh")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ybs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ygn48")
