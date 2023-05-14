@@ -1,26 +1,27 @@
 class_name ValidationManager
 
+const Utils = preload("res://assets/common/utils.gd") 
 const validations = []
 
 func run_all_validations() -> bool:
-	print("Running all validations...")
+	Utils.push_info("Running all validations...")
 	var result = true
 	for validation in validations:
 		var v = validation.new()
-		print("- Running validation for %s..." % v._name())
-		if not v._run_validations():
-			print("    VALIDATION FAILED")
+		Utils.push_info("- Running validation for ", v.get_name(), "...")
+		if not v.run_validations():
+			push_error("    VALIDATION FAILED")
 			result = false
 	if result:
-		print("All validations passed!")
+		Utils.push_info("All validations passed!")
 	else:
-		print("Some validations failed - see above for more info.")
+		push_error("Some validations failed - see above for more info.")
 	return result
 
 class Validation:
 	
-	func _name() -> String:
+	func get_name() -> String:
 		return "Validation"
 	
-	func _run_validations() -> bool:
+	func run_validations() -> bool:
 		return true
