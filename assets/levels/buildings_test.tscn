@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://tdgsrefjoyu4"]
+[gd_scene load_steps=13 format=3 uid="uid://pfat44ytqvuh"]
 
-[ext_resource type="ArrayMesh" uid="uid://b21x26cs8xipu" path="res://assets/buildings/models/ground/ground_geo.res" id="1_2owat"]
-[ext_resource type="Script" path="res://assets/buildings/scripts/game_camera.gd" id="1_jxx3p"]
-[ext_resource type="PackedScene" uid="uid://b7fxbshlkyc4a" path="res://assets/buildings/scenes/granary.tscn" id="2_30fh0"]
-[ext_resource type="PackedScene" uid="uid://2pn0sstfwsql" path="res://assets/buildings/scenes/armoury.tscn" id="3_hp63y"]
-[ext_resource type="PackedScene" uid="uid://dxq6vpvntwv01" path="res://assets/buildings/scenes/fort.tscn" id="4_3vrd1"]
-[ext_resource type="PackedScene" uid="uid://dstyy0pxjmoos" path="res://assets/buildings/scenes/wall.tscn" id="5_rrvkr"]
-[ext_resource type="PackedScene" uid="uid://d133oe2modrw6" path="res://assets/buildings/scenes/watermill.tscn" id="6_grno3"]
+[ext_resource type="Script" path="res://assets/levels/buildings_test.gd" id="1_a5p3k"]
+[ext_resource type="PackedScene" uid="uid://c0newga26wfg0" path="res://assets/camera/scenes/game_camera.tscn" id="2_nunec"]
+[ext_resource type="ArrayMesh" uid="uid://b21x26cs8xipu" path="res://assets/buildings/models/ground/ground_geo.res" id="3_g5qx1"]
+[ext_resource type="PackedScene" uid="uid://b7fxbshlkyc4a" path="res://assets/buildings/scenes/granary.tscn" id="4_pp2kv"]
+[ext_resource type="PackedScene" uid="uid://2pn0sstfwsql" path="res://assets/buildings/scenes/armoury.tscn" id="5_42n2u"]
+[ext_resource type="PackedScene" uid="uid://dxq6vpvntwv01" path="res://assets/buildings/scenes/fort.tscn" id="6_36p4l"]
+[ext_resource type="PackedScene" uid="uid://dstyy0pxjmoos" path="res://assets/buildings/scenes/wall.tscn" id="7_duiru"]
+[ext_resource type="PackedScene" uid="uid://d133oe2modrw6" path="res://assets/buildings/scenes/watermill.tscn" id="8_xeg68"]
 
 [sub_resource type="Environment" id="Environment_8f0bx"]
 
@@ -19,6 +20,8 @@ albedo_color = Color(0.2, 0.2, 0.2, 1)
 data = PackedVector3Array(-5.8397, -10.8962, 2.0853, -5.8397, 1, -23.6335, -5.8397, 1, 2.0853, -5.8397, -10.8962, 2.0853, -5.8397, -10.8962, -23.6335, -5.8397, 1, -23.6335, -5.8397, -10.8962, -23.6335, 14.5648, 1, -23.6335, -5.8397, 1, -23.6335, -5.8397, -10.8962, -23.6335, 14.5648, -10.8962, -23.6335, 14.5648, 1, -23.6335, 14.5648, -10.8962, 5.1841, 14.5648, 1, 26.5912, 14.5648, 1, 5.1841, 14.5648, -10.8962, 5.1841, 14.5648, -10.8962, 26.5912, 14.5648, 1, 26.5912, 14.5648, -10.8962, 26.5912, -5.8397, 1, 26.5912, 14.5648, 1, 26.5912, 14.5648, -10.8962, 26.5912, -5.8397, -10.8962, 26.5912, -5.8397, 1, 26.5912, -5.8397, -10.8962, 5.1841, 14.5648, -10.8962, 26.5912, 14.5648, -10.8962, 5.1841, -5.8397, -10.8962, 5.1841, -5.8397, -10.8962, 26.5912, 14.5648, -10.8962, 26.5912, 14.5648, 1, 5.1841, -5.8397, 1, 26.5912, -5.8397, 1, 5.1841, 14.5648, 1, 5.1841, 14.5648, 1, 26.5912, -5.8397, 1, 26.5912, 14.5648, 1, -23.6335, -5.8397, 1, 2.0853, -5.8397, 1, -23.6335, 14.5648, 1, -23.6335, 14.5648, 1, 2.0853, -5.8397, 1, 2.0853, -5.8397, -10.8962, -23.6335, 14.5648, -10.8962, 2.0853, 14.5648, -10.8962, -23.6335, -5.8397, -10.8962, -23.6335, -5.8397, -10.8962, 2.0853, 14.5648, -10.8962, 2.0853, 14.5648, -10.8962, -23.6335, 14.5648, 1, 2.0853, 14.5648, 1, -23.6335, 14.5648, -10.8962, -23.6335, 14.5648, -10.8962, 2.0853, 14.5648, 1, 2.0853, -5.8397, -10.8962, 5.1841, -5.5592, 0.7353, 5.1152, -5.8397, 1, 5.1841, -5.8397, -10.8962, 5.1841, -5.5592, -10.6315, 5.1152, -5.5592, 0.7353, 5.1152, -5.8397, -10.8962, 26.5912, -5.8397, 1, 5.1841, -5.8397, 1, 26.5912, -5.8397, -10.8962, 26.5912, -5.8397, -10.8962, 5.1841, -5.8397, 1, 5.1841, 14.5648, -10.8962, 5.1841, -5.5592, -10.6315, 5.1152, -5.8397, -10.8962, 5.1841, 14.5648, -10.8962, 5.1841, 14.2843, -10.6315, 5.1152, -5.5592, -10.6315, 5.1152, -5.8397, -10.8962, 2.0853, 14.2843, -10.6315, 2.1542, 14.5648, -10.8962, 2.0853, -5.8397, -10.8962, 2.0853, -5.5592, -10.6315, 2.1542, 14.2843, -10.6315, 2.1542, -5.8397, 1, 2.0853, -5.5592, -10.6315, 2.1542, -5.8397, -10.8962, 2.0853, -5.8397, 1, 2.0853, -5.5592, 0.7353, 2.1542, -5.5592, -10.6315, 2.1542, -5.5592, -10.6315, 5.1152, -5.5592, 0.7353, 2.1542, -5.5592, 0.7353, 5.1152, -5.5592, -10.6315, 5.1152, -5.5592, -10.6315, 2.1542, -5.5592, 0.7353, 2.1542, 14.2843, 0.7353, 2.1542, -5.5592, 0.7353, 5.1152, -5.5592, 0.7353, 2.1542, 14.2843, 0.7353, 2.1542, 14.2843, 0.7353, 5.1152, -5.5592, 0.7353, 5.1152, -5.5592, -10.6315, 2.1542, 14.2843, -10.6315, 5.1152, 14.2843, -10.6315, 2.1542, -5.5592, -10.6315, 2.1542, -5.5592, -10.6315, 5.1152, 14.2843, -10.6315, 5.1152, 14.2843, -10.6315, 2.1542, 14.2843, 0.7353, 5.1152, 14.2843, 0.7353, 2.1542, 14.2843, -10.6315, 2.1542, 14.2843, -10.6315, 5.1152, 14.2843, 0.7353, 5.1152, 14.5648, -10.8962, 2.0853, 14.2843, 0.7353, 2.1542, 14.5648, 1, 2.0853, 14.5648, -10.8962, 2.0853, 14.2843, -10.6315, 2.1542, 14.2843, 0.7353, 2.1542, 14.5648, 1, 5.1841, 14.2843, -10.6315, 5.1152, 14.5648, -10.8962, 5.1841, 14.5648, 1, 5.1841, 14.2843, 0.7353, 5.1152, 14.2843, -10.6315, 5.1152, 14.5648, 1, 2.0853, -5.5592, 0.7353, 2.1542, -5.8397, 1, 2.0853, 14.5648, 1, 2.0853, 14.2843, 0.7353, 2.1542, -5.5592, 0.7353, 2.1542, -5.8397, 1, 5.1841, 14.2843, 0.7353, 5.1152, 14.5648, 1, 5.1841, -5.8397, 1, 5.1841, -5.5592, 0.7353, 5.1152, 14.2843, 0.7353, 5.1152)
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_a5p3k")
+buildings = Array[NodePath]([NodePath("Granary"), NodePath("Armoury"), NodePath("Fort"), NodePath("Wall"), NodePath("Watermill")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8f0bx")
@@ -27,50 +30,48 @@ camera_attributes = SubResource("CameraAttributesPractical_s300m")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.501511, 0.704771, -0.501781, 2.49258e-16, 0.579992, 0.814622, 0.865151, -0.408542, 0.290872, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.173648, 0.492404, -0.852868, 3.02058e-16, 0.866025, 0.5, 0.984808, -0.0868241, 0.150384, -55, 30, 2.08165e-12)
-script = ExtResource("1_jxx3p")
-buildings = Array[NodePath]([NodePath("../Granary"), NodePath("../Armoury"), NodePath("../Fort"), NodePath("../Wall"), NodePath("../Watermill")])
+[node name="GameCamera" parent="." instance=ExtResource("2_nunec")]
+transform = Transform3D(0.173648, 0.492404, -0.852868, 3.02058e-16, 0.866025, 0.5, 0.984808, -0.086824, 0.150384, -55, 30, 2.08165e-12)
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(4, -1.39515e-15, 1.39515e-15, 1.39515e-15, 4, -1.39515e-15, -1.39515e-15, 1.39515e-15, 4, -15.7203, -1.25293, -11.8775)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-mesh = ExtResource("1_2owat")
+mesh = ExtResource("3_g5qx1")
 surface_material_override/0 = SubResource("StandardMaterial3D_f8ybs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("ConcavePolygonShape3D_r2lt4")
 
-[node name="Granary" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("2_30fh0")]
+[node name="Granary" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("4_pp2kv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8548, 6.69796, -14.1166)
 cam_zoom_pos = NodePath("GranaryCamZoom")
 
 [node name="GranaryCamZoom" type="Node3D" parent="Granary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7422, 5.99304, 3.8391)
 
-[node name="Armoury" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("3_hp63y")]
+[node name="Armoury" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("5_42n2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.4513, 8.42527, -37.0459)
 cam_zoom_pos = NodePath("ArmouryCamZoom")
 
 [node name="ArmouryCamZoom" type="Node3D" parent="Armoury"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.631, 7.52795, 4.07542)
 
-[node name="Fort" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("4_3vrd1")]
+[node name="Fort" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("6_36p4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38622, 8.76108, -26.9042)
 cam_zoom_pos = NodePath("FortCamZoom")
 
 [node name="FortCamZoom" type="Node3D" parent="Fort"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1711, 9.1696, 18.1206)
 
-[node name="Wall" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("5_rrvkr")]
+[node name="Wall" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("7_duiru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.394, 8.5565, 17.0817)
 cam_zoom_pos = NodePath("WallCamZoom")
 
 [node name="WallCamZoom" type="Node3D" parent="Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3779, 4.9861, 0.129934)
 
-[node name="Watermill" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("6_grno3")]
+[node name="Watermill" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("8_xeg68")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7742, 7.7049, -9.78565)
 cam_zoom_pos = NodePath("WatermillCamZoom")
 
