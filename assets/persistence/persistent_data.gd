@@ -75,4 +75,4 @@ func load_file():
 		var save_data = json.get_data()
 		if deserialise_all_sections(save_data) == DeserialisationResult.FAILED:
 			push_error("Deserialisation Error: Some sections failed to deserialise.")
-		Utils.push_log("Deserialised Data: ", save_data)
+		Utils.push_info("Deserialised Data: ", save_data)
