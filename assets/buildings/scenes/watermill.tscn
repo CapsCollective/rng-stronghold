@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://d133oe2modrw6"]
+
+[ext_resource type="Script" path="res://assets/buildings/scripts/building.gd" id="1_tovxb"]
+[ext_resource type="ArrayMesh" uid="uid://bp475keqc861h" path="res://assets/buildings/models/watermill/watermill_geo.res" id="2_6yl5w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8ybs"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ipk8t"]
+points = PackedVector3Array(0.994074, 1, 0.968913, -0.6463, -0.995049, -1.86849, -0.637988, 1, -1.85411, -0.6463, -0.995049, 0.98329, 1, -0.992147, -1.86436, 1, -0.992147, 0.979163, -0.637988, 1, 0.968913, 0.994074, 1, -1.85411)
+
+[node name="Watermill" type="Node3D"]
+script = ExtResource("1_tovxb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = ExtResource("2_6yl5w")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ybs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ipk8t")
