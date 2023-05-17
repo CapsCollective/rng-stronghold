@@ -1,10 +1,10 @@
-class_name PersistentDataSection extends Node
+class_name PersistentDataSection extends Object
 
-const DeserialisationResult = PersistentData.DeserialisationResult
+const DeserialisationResult = PersistentDataSystem.DeserialisationResult
 
 func _init():
 	reset()
-	PersistentData.register_section(self)
+	PersistentDataSystem.register_section(self)
 
 func get_tag() -> String:
 	return "none"

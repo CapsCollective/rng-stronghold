@@ -18,8 +18,8 @@ config/version="0.1.3"
 
 [autoload]
 
+PersistentDataSystem="*res://assets/persistence/persistent_data_system.gd"
 PersistentData="*res://assets/persistence/persistent_data.gd"
-ExampleData="*res://assets/persistence/example_data.gd"
 
 [filesystem]
 
