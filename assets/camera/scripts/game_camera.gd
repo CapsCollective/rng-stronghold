@@ -1,14 +1,14 @@
 extends Camera3D
 
-@export var move_time: float = 0.5
+@export var default_move_duration: float = 0.5
 
-@onready var orig_pos: Vector3 = position
+@onready var reset_pos: Vector3 = position
 
-func reset_position(animate: bool = true):
-	move_to_position(orig_pos, animate)
+func reset_position(animate: bool = true, duration: float = default_move_duration):
+	move_to_position(reset_pos, animate, duration)
 
-func move_to_position(new_pos: Vector3, animate: bool = true):
+func move_to_position(new_pos: Vector3, animate: bool = true, duration: float = default_move_duration):
 	if animate:
-		create_tween().tween_property(self, "position", new_pos, move_time)
+		create_tween().tween_property(self, "position", new_pos, duration)
 	else:
 		position = new_pos

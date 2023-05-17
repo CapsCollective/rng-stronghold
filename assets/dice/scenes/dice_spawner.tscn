@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpgrqxbsrqqom"]
+
+[ext_resource type="Script" path="res://assets/dice/scripts/dice_spawner.gd" id="1_7nxwt"]
+
+[node name="DiceSpawner" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27353, 11.7419, 1)
+script = ExtResource("1_7nxwt")
