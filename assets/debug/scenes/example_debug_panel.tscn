@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbqbny2objppp"]
+
+[ext_resource type="PackedScene" uid="uid://c6uem6u1httu1" path="res://assets/debug/scenes/debug_panel.tscn" id="1_p3pui"]
+[ext_resource type="Script" path="res://assets/debug/scripts/example_debug_section.gd" id="2_bk4wp"]
+
+[node name="ExampleDebugPanel" instance=ExtResource("1_p3pui")]
+script = ExtResource("2_bk4wp")
+
+[node name="PanelTitle" parent="VBoxContainer" index="0"]
+text = "Example"
+
+[node name="Button" type="Button" parent="VBoxContainer" index="1"]
+layout_mode = 2
+text = "Example Button"
