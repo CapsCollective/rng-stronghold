@@ -18,13 +18,16 @@ config/version="0.1.4"
 
 [autoload]
 
-PersistentDataSystem="*res://assets/persistence/persistent_data_system.gd"
-PersistentData="*res://assets/persistence/persistent_data.gd"
+Savegame="*res://assets/persistence/savegame.gd"
 
 [display]
 
 window/size/window_width_override=1920
 window/size/window_height_override=1080
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/persistent_data/plugin.cfg")
 
 [filesystem]
 

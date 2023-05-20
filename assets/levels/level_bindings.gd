@@ -5,7 +5,8 @@ extends Node3D
 @export var game_cam: Camera3D
 
 func _ready():
-	PersistentDataSystem.load_file()
+	Savegame.load_file()
+	Utils.push_info("Deserialised Data: ", Savegame.get_dump())
 	for building in buildings:
 		get_node(building).selected.connect(on_building_selected)
 	dice_spawner.roll_completed.connect(on_roll_completed)
@@ -24,6 +25,6 @@ func on_building_selected(building_name, pos):
 func on_roll_completed(value: int):
 	print("Rolled: ", value)
 	
-	PersistentData.example.time = Time.get_ticks_msec()
-	PersistentData.example.value = value
-	PersistentDataSystem.save_file()
+	Savegame.example.time = Time.get_ticks_msec()
+	Savegame.example.value = value
+	Savegame.save_file()
