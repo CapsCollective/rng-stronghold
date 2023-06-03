@@ -1,6 +1,4 @@
-extends Node
-
-const FILE_NAME = "user://savegame.save"
+class_name PersistentDataFile extends Node
 
 enum DeserialisationResult {
 	OK = 0,
@@ -8,14 +6,14 @@ enum DeserialisationResult {
 	FAILED = 2,
 }
 
-const PD_METADATA = "metadata"
-const PD_METADATA_SAVE_VERSION = "save_version"
-const PD_METADATA_SAVE_TIME = "save_time"
-
-const SAVE_VERSION: int = 0
-
-var save_metadata: Dictionary = {}
+var metadata_section: MetadataSection
 var save_sections: Dictionary = {}
+
+func get_file_name() -> String:
+	return "user://persistent_data.save"
+
+func register_metadata(metadata: MetadataSection):
+	metadata_section = metadata
 
 func register_section(section: PersistentDataSection):
 	var tag = section.get_tag()
@@ -24,27 +22,16 @@ func register_section(section: PersistentDataSection):
 		return
 	save_sections[tag] = section
 
-func serialise_metadata() -> Dictionary:
-	return {
-		PD_METADATA_SAVE_VERSION: SAVE_VERSION,
-		PD_METADATA_SAVE_TIME: Time.get_datetime_string_from_system(true, true)
-	}
-
 func serialise_all_sections() -> Dictionary:
 	var save_data: Dictionary = {}
-	save_data[PD_METADATA] = serialise_metadata()
+	if metadata_section:
+		save_data[metadata_section.get_tag()] = metadata_section.serialise()
 	for section in save_sections.values():
 		save_data[section.get_tag()] = section.serialise()
 	return save_data
 
-func deserialise_metadata(data: Dictionary) -> DeserialisationResult:
-	if not data.has(PD_METADATA):
-		return DeserialisationResult.FAILED
-	save_metadata = data[PD_METADATA]
-	return DeserialisationResult.OK
-
 func deserialise_all_sections(data: Dictionary) -> DeserialisationResult:
-	var result: DeserialisationResult = deserialise_metadata(data)
+	var result: DeserialisationResult = metadata_section.deserialise(data) if metadata_section else OK
 	for section in save_sections.values():
 		var tag = section.get_tag()
 		if not data.has(tag):
@@ -58,14 +45,15 @@ func deserialise_all_sections(data: Dictionary) -> DeserialisationResult:
 	return result
 
 func save_file():
-	var file = FileAccess.open(FILE_NAME, FileAccess.WRITE)
+	var file = FileAccess.open(get_file_name(), FileAccess.WRITE)
 	var json_string = JSON.stringify(serialise_all_sections())
 	file.store_line(json_string)
 
 func load_file():
-	if not FileAccess.file_exists(FILE_NAME):
+	var file_name = get_file_name()
+	if not FileAccess.file_exists(file_name):
 		return
-	var save_game = FileAccess.open(FILE_NAME, FileAccess.READ)
+	var save_game = FileAccess.open(file_name, FileAccess.READ)
 	while save_game.get_position() < save_game.get_length():
 		var json = JSON.new()
 		var json_string = save_game.get_line()
@@ -75,4 +63,6 @@ func load_file():
 		var save_data = json.get_data()
 		if deserialise_all_sections(save_data) == DeserialisationResult.FAILED:
 			push_error("Deserialisation Error: Some sections failed to deserialise.")
-		Utils.push_info("Deserialised Data: ", save_data)
+
+func get_dump() -> Dictionary:
+	return serialise_all_sections()

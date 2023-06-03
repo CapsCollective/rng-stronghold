@@ -1,10 +1,10 @@
 class_name PersistentDataSection extends Object
 
-const DeserialisationResult = PersistentDataSystem.DeserialisationResult
+const DeserialisationResult = PersistentDataFile.DeserialisationResult
 
-func _init():
+func _init(file: PersistentDataFile):
 	reset()
-	PersistentDataSystem.register_section(self)
+	file.register_section(self)
 
 func get_tag() -> String:
 	return "none"
