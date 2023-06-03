@@ -10,6 +10,14 @@ func _ready():
 	for building in buildings:
 		get_node(building).selected.connect(on_building_selected)
 	dice_spawner.roll_completed.connect(on_roll_completed)
+	
+	var dt = load("res://addons/datatable/example/example_dt.tres")
+	var row = dt.data["test"] 
+	var props = row.get_row_properties()
+	for prop in props:
+		print(prop.name)
+		print(prop.type)
+		print(prop.value)
 
 func _input(event):
 	if event.is_action_released("rmb_down"):
