@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Datatable" load_steps=6 format=3 uid="uid://b28isnouxy81n"]
+
+[ext_resource type="Script" path="res://addons/datatable/example/example_row.gd" id="1_jglwc"]
+[ext_resource type="Script" path="res://addons/datatable/scripts/datatable.gd" id="2_moj3i"]
+
+[sub_resource type="Resource" id="Resource_krku7"]
+script = ExtResource("1_jglwc")
+value_a = 1.0
+value_b = 0.001
+value_c = "test"
+
+[sub_resource type="Resource" id="Resource_goqdp"]
+script = ExtResource("1_jglwc")
+value_a = -1.0
+value_b = -0.001
+value_c = "hi"
+
+[sub_resource type="Resource" id="Resource_ubty6"]
+script = ExtResource("1_jglwc")
+value_a = 0
+value_b = 0.0
+value_c = ""
+
+[resource]
+script = ExtResource("2_moj3i")
+default_row = SubResource("Resource_ubty6")
+data = {
+false: SubResource("Resource_krku7"),
+"new_row": SubResource("Resource_goqdp")
+}
