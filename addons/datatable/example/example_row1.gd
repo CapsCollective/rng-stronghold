@@ -1,4 +1,4 @@
-class_name ExampleRow extends DatatableRow
+class_name ExampleRow1 extends DatatableRow
 
 @export var value_a: int
 @export var value_b: float

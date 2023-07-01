@@ -1,66 +1,34 @@
-[gd_resource type="Resource" script_class="Datatable" load_steps=11 format=3 uid="uid://b28isnouxy81n"]
+[gd_resource type="Resource" script_class="Datatable" load_steps=6 format=3 uid="uid://b28isnouxy81n"]
 
-[ext_resource type="Script" path="res://addons/datatable/example/example_row.gd" id="1_jglwc"]
+[ext_resource type="Script" path="res://addons/datatable/example/example_row2.gd" id="2_aa0pq"]
 [ext_resource type="Script" path="res://addons/datatable/scripts/datatable.gd" id="2_moj3i"]
 
-[sub_resource type="Resource" id="Resource_qrbu1"]
-script = ExtResource("1_jglwc")
+[sub_resource type="Resource" id="Resource_uhwms"]
+script = ExtResource("2_aa0pq")
 value_a = 0
-value_b = 0.0
-value_c = ""
+value_b = 3.0
+value_c = Color(0.278431, 0.607843, 0.603922, 1)
+value_d = 1
 
-[sub_resource type="Resource" id="Resource_lvpa0"]
-script = ExtResource("1_jglwc")
+[sub_resource type="Resource" id="Resource_y03n6"]
+script = ExtResource("2_aa0pq")
 value_a = 0
-value_b = 0.0
-value_c = "th"
+value_b = 23.0
+value_c = Color(0.196078, 0.160784, 0.478431, 1)
+value_d = 0
 
-[sub_resource type="Resource" id="Resource_bgxi2"]
-script = ExtResource("1_jglwc")
+[sub_resource type="Resource" id="Resource_c44su"]
+script = ExtResource("2_aa0pq")
 value_a = 0
 value_b = 0.0
-value_c = ""
-
-[sub_resource type="Resource" id="Resource_1pnsf"]
-script = ExtResource("1_jglwc")
-value_a = 0
-value_b = 0.0
-value_c = ""
-
-[sub_resource type="Resource" id="Resource_w63nt"]
-script = ExtResource("1_jglwc")
-value_a = 0
-value_b = 0.0
-value_c = "hell"
-
-[sub_resource type="Resource" id="Resource_wakow"]
-script = ExtResource("1_jglwc")
-value_a = 0
-value_b = 0.0
-value_c = "my2"
-
-[sub_resource type="Resource" id="Resource_p66er"]
-script = ExtResource("1_jglwc")
-value_a = 0
-value_b = 0.0
-value_c = ""
-
-[sub_resource type="Resource" id="Resource_ubty6"]
-script = ExtResource("1_jglwc")
-value_a = 0
-value_b = 0.0
-value_c = ""
+value_c = Color(0, 0, 0, 1)
+value_d = 1
 
 [resource]
 script = ExtResource("2_moj3i")
-key_type = 4
-default_row = SubResource("Resource_ubty6")
+key_type = 2
+default_row = SubResource("Resource_c44su")
 data = {
-"": SubResource("Resource_qrbu1"),
-"5": SubResource("Resource_lvpa0"),
-"76": SubResource("Resource_bgxi2"),
-"new1": SubResource("Resource_1pnsf"),
-"new_row23": SubResource("Resource_w63nt"),
-"this_is": SubResource("Resource_wakow"),
-"ub9u": SubResource("Resource_p66er")
+0: SubResource("Resource_uhwms"),
+2.0: SubResource("Resource_y03n6")
 }
