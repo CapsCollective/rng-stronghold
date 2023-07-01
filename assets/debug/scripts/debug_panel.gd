@@ -3,6 +3,7 @@ extends Control
 signal refresh
 
 func _ready():
+	$VersionLabel.text = "v" + Utils.get_version()
 	set_open(false)
 
 func _input(event):
