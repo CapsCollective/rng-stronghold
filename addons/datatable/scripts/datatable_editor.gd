@@ -24,7 +24,7 @@ func set_current_datatable(datatable: Datatable):
 	refresh_table()
 
 func build_layout():
-	custom_minimum_size.y = 500
+	custom_minimum_size.y = 200 * editor_plugin.get_editor_interface().get_editor_scale()
 	anchors_preset = PRESET_BOTTOM_WIDE
 	size_flags_vertical = Control.SIZE_SHRINK_BEGIN | Control.SIZE_EXPAND
 	
@@ -50,9 +50,6 @@ func build_layout():
 	
 	new_dt_btn = Button.new()
 	new_dt_btn.flat = true
-	new_dt_btn.expand_icon = true
-	new_dt_btn.custom_minimum_size.x = 52
-	new_dt_btn.custom_minimum_size.y = 52
 	new_dt_btn.theme = theme
 	new_dt_btn.icon = get_theme_icon("New", "EditorIcons")
 	new_dt_btn.tooltip_text = "Create a new datatable."
@@ -122,7 +119,7 @@ func populate_table():
 	row_type_lbl.visible = true
 	add_row_btn.disabled = false
 	grid_container.visible = true
-	grid_container.columns = row_properties.size() + 2
+	grid_container.columns = row_properties.size() + 3
 	datatable_name_lbl.text = current_dt.resource_path
 	row_count_lbl.text = "(%d rows)" % row_count
 	row_type_lbl.text = "[%s]" % row_name
@@ -131,6 +128,9 @@ func populate_table():
 		return
 	
 	grid_container.add_child(Control.new())
+	var key_lbl = Label.new()
+	key_lbl.text = "key"
+	grid_container.add_child(key_lbl)
 	for property in row_properties:
 		var header_lbl = Label.new()
 		header_lbl.text = property.name
@@ -148,57 +148,96 @@ func populate_row(index: int, key):
 	idx_lbl.add_theme_color_override("font_color", Color(1, 1, 1, 0.5))
 	idx_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	grid_container.add_child(idx_lbl)
-	var row_properties = DatatableUtils.get_row_properties(current_dt.data[key])
+	
+	var row = current_dt.data[key]
+	var row_properties = DatatableUtils.get_row_properties(row)
+	
+	var set_value_func = func(k):
+		move_row_stable(key, k)
+		ResourceSaver.save(current_dt)
+		refresh_table()
+	var field_control = build_field_control(current_dt.key_type, key, set_value_func, true)
+	grid_container.add_child(field_control)
+	
 	for property in row_properties:
-		populate_cell(property, key)
+		set_value_func = func(v):
+			row.set(property.name, v)
+			ResourceSaver.save(current_dt)
+		field_control = build_field_control(property.type, property.value, set_value_func, false)
+		grid_container.add_child(field_control)
+	
 	var menu_btn = MenuButton.new()
 	menu_btn.get_popup().add_item("Delete", 0)
 	menu_btn.icon = get_theme_icon("GuiTabMenuHl", "EditorIcons")
-	menu_btn.get_popup().id_pressed.connect(func(id): if id == 0: on_delete_btn_pressed(key))
+	var on_pressed = func(id): if id == 0: on_delete_btn_pressed(key)
+	menu_btn.get_popup().id_pressed.connect(on_pressed)
 	grid_container.add_child(menu_btn)
 
-func populate_cell(row_property, key):
-	var set_value = func(v): current_dt.data[key].set(row_property.name, v)
+func build_field_control(type: Variant.Type, value: Variant, seter_callback: Callable, requires_confirm: bool):
 	var field_control
-	match(row_property.type):
+	match(type):
 		TYPE_BOOL:
 			field_control = CheckBox.new()
-			field_control.button_pressed = row_property.value
-			field_control.toggled.connect(set_value)
+			field_control.button_pressed = value
+			field_control.toggled.connect(seter_callback)
 		TYPE_STRING:
 			field_control = LineEdit.new()
-			field_control.text = row_property.value
-			field_control.text_changed.connect(set_value)
+			field_control.text = value
+			if requires_confirm:
+				field_control.text_submitted.connect(seter_callback)
+			else:
+				field_control.text_changed.connect(seter_callback)
 		TYPE_INT:
 			field_control = SpinBox.new()
 			field_control.allow_lesser = true
 			field_control.allow_greater = true
-			field_control.value = row_property.value
-			field_control.value_changed.connect(set_value)
+			field_control.value = value
+			field_control.value_changed.connect(seter_callback)
 		TYPE_FLOAT:
 			field_control = SpinBox.new()
 			field_control.step = 0.001
 			field_control.allow_lesser = true
 			field_control.allow_greater = true
-			field_control.value = row_property.value
-			field_control.value_changed.connect(set_value)
+			field_control.value = value
+			field_control.value_changed.connect(seter_callback)
 		TYPE_OBJECT:
 			field_control = EditorResourcePicker.new()
-			field_control.edited_resource = row_property.value
-			#field_control.base_type = "Node"
-			field_control.resource_changed.connect(set_value)
+			field_control.edited_resource = value
+			field_control.resource_changed.connect(seter_callback)
 		_:
 			field_control = Label.new()
 			field_control.add_theme_color_override("font_color", Color(1, 0, 0))
 			field_control.text = "unknown type"
-	grid_container.add_child(field_control)
+	return field_control
+
+func get_default_key(type: Variant.Type):
+	match(type):
+		TYPE_STRING_NAME:
+			return StringName()
+		TYPE_INT:
+			return 0
+
+func move_row_stable(old_key, new_key):
+	var new_data = Dictionary()
+	var all_keys = current_dt.data.keys()
+	var all_values = current_dt.data.values()
+	var key_idx = all_keys.find(old_key)
+	
+	for i in range(0, all_keys.size()):
+		if i != key_idx:
+			new_data[all_keys[i]] = all_values[i]
+		else:
+			new_data[new_key] = all_values[i]
+	current_dt.data = new_data
 
 func on_add_btn_pressed():
-	current_dt.data["new_row"] = current_dt.default_row.duplicate()
+	var new_key = get_default_key(current_dt.key_type)
+	current_dt.data[new_key] = current_dt.default_row.duplicate()
 	refresh_table()
 
 func on_delete_btn_pressed(row):
 	current_dt.data.erase(row)
+	ResourceSaver.save(current_dt)
 	refresh_table()
 
 func on_new_dt_btn_pressed():
@@ -210,14 +249,33 @@ func on_new_dt_btn_pressed():
 	var popup_vbox = VBoxContainer.new()
 	popup.add_child(popup_vbox)
 	
+	var popup_grid = GridContainer.new()
+	popup_grid.columns = 2
+	popup_vbox.add_child(popup_grid)
+	
+	var key_lbl = Label.new()
+	key_lbl.text = "Key Type:"
+	popup_grid.add_child(key_lbl)
+	
+	var key_type_options = OptionButton.new()
+	var dt_key_types = {"StringName": TYPE_STRING_NAME, "Int": TYPE_INT}
+	for type in dt_key_types:
+		key_type_options.add_item(type)
+	popup_grid.add_child(key_type_options)
+	
+	var row_lbl = Label.new()
+	row_lbl.text = "Base Row Type:"
+	popup_grid.add_child(row_lbl)
+	
 	var resource_picker = EditorResourcePicker.new()
 	resource_picker.base_type = "DatatableRow"
-	popup_vbox.add_child(resource_picker)
+	popup_grid.add_child(resource_picker)
 	
 	var type_btn = Button.new()
-	type_btn.text = "Select Base Row Type"
+	type_btn.text = "Create New Datatable"
 	var on_type_btn_pressed_callback = func():
-		create_new_dt_resource(resource_picker.edited_resource)
+		var key_type = dt_key_types[key_type_options.get_item_text(key_type_options.selected)]
+		create_new_dt_resource(key_type, resource_picker.edited_resource)
 		popup.hide()
 		popup.queue_free()
 	type_btn.pressed.connect(on_type_btn_pressed_callback)
@@ -225,19 +283,21 @@ func on_new_dt_btn_pressed():
 	
 	popup.popup(new_dt_btn.get_global_rect())
 
-func create_new_dt_resource(resource_type: Resource):
+func create_new_dt_resource(key_type: Variant.Type, resource_type: Resource):
 	if resource_type == null:
 		return
 	
 	var editor = editor_plugin.get_editor_interface().get_editor_main_screen()
 	
 	var new_dt = Datatable.new()
+	new_dt.key_type = key_type
 	new_dt.default_row = resource_type
 	
 	var file_dialog = EditorFileDialog.new()
 	file_dialog.mode = EditorFileDialog.FILE_MODE_OPEN_FILE
 	file_dialog.access = EditorFileDialog.ACCESS_RESOURCES
 	file_dialog.title = "Save New Datatable"
+	file_dialog.min_size = Vector2(1500, 1000)
 	file_dialog.add_filter("*.tres", "Datatable Resource")
 	var on_file_dialog_file_selected = func(file):
 		ResourceSaver.save(new_dt, file)

@@ -1,19 +1,49 @@
-[gd_resource type="Resource" script_class="Datatable" load_steps=6 format=3 uid="uid://b28isnouxy81n"]
+[gd_resource type="Resource" script_class="Datatable" load_steps=11 format=3 uid="uid://b28isnouxy81n"]
 
 [ext_resource type="Script" path="res://addons/datatable/example/example_row.gd" id="1_jglwc"]
 [ext_resource type="Script" path="res://addons/datatable/scripts/datatable.gd" id="2_moj3i"]
 
-[sub_resource type="Resource" id="Resource_krku7"]
+[sub_resource type="Resource" id="Resource_qrbu1"]
 script = ExtResource("1_jglwc")
-value_a = 1.0
-value_b = 0.001
-value_c = "test"
+value_a = 0
+value_b = 0.0
+value_c = ""
 
-[sub_resource type="Resource" id="Resource_goqdp"]
+[sub_resource type="Resource" id="Resource_lvpa0"]
 script = ExtResource("1_jglwc")
-value_a = -1.0
-value_b = -0.001
-value_c = "hi"
+value_a = 0
+value_b = 0.0
+value_c = "th"
+
+[sub_resource type="Resource" id="Resource_bgxi2"]
+script = ExtResource("1_jglwc")
+value_a = 0
+value_b = 0.0
+value_c = ""
+
+[sub_resource type="Resource" id="Resource_1pnsf"]
+script = ExtResource("1_jglwc")
+value_a = 0
+value_b = 0.0
+value_c = ""
+
+[sub_resource type="Resource" id="Resource_w63nt"]
+script = ExtResource("1_jglwc")
+value_a = 0
+value_b = 0.0
+value_c = "hell"
+
+[sub_resource type="Resource" id="Resource_wakow"]
+script = ExtResource("1_jglwc")
+value_a = 0
+value_b = 0.0
+value_c = "my2"
+
+[sub_resource type="Resource" id="Resource_p66er"]
+script = ExtResource("1_jglwc")
+value_a = 0
+value_b = 0.0
+value_c = ""
 
 [sub_resource type="Resource" id="Resource_ubty6"]
 script = ExtResource("1_jglwc")
@@ -23,8 +53,14 @@ value_c = ""
 
 [resource]
 script = ExtResource("2_moj3i")
+key_type = 4
 default_row = SubResource("Resource_ubty6")
 data = {
-false: SubResource("Resource_krku7"),
-"new_row": SubResource("Resource_goqdp")
+"": SubResource("Resource_qrbu1"),
+"5": SubResource("Resource_lvpa0"),
+"76": SubResource("Resource_bgxi2"),
+"new1": SubResource("Resource_1pnsf"),
+"new_row23": SubResource("Resource_w63nt"),
+"this_is": SubResource("Resource_wakow"),
+"ub9u": SubResource("Resource_p66er")
 }
