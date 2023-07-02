@@ -13,3 +13,16 @@ static func get_row_properties(row: DatatableRow) -> Array:
 		if prop.type != TYPE_NIL:
 			row_props.append(prop)
 	return row_props
+
+static func move_row_stable(datatable: Datatable, old_key, new_key):
+	var new_data = Dictionary()
+	var all_keys = datatable.data.keys()
+	var all_values = datatable.data.values()
+	var key_idx = all_keys.find(old_key)
+	
+	for i in range(0, all_keys.size()):
+		if i != key_idx:
+			new_data[all_keys[i]] = all_values[i]
+		else:
+			new_data[new_key] = all_values[i]
+	datatable.data = new_data

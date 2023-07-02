@@ -172,7 +172,7 @@ func populate_row(index: int, key):
 func build_field_control_for_key(value: Variant, type: Variant.Type):
 	var setter_callback = func(k):
 		if not current_dt.data.has(k):
-			move_row_stable(value, k)
+			DatatableUtils.move_row_stable(current_dt, value, k)
 			ResourceSaver.save(current_dt)
 		refresh_table()
 	var field_control
