@@ -3,24 +3,24 @@
 [ext_resource type="Script" path="res://addons/datatable/example/example_row2.gd" id="2_aa0pq"]
 [ext_resource type="Script" path="res://addons/datatable/scripts/datatable.gd" id="2_moj3i"]
 
-[sub_resource type="Resource" id="Resource_uhwms"]
+[sub_resource type="Resource" id="Resource_bcl7v"]
 script = ExtResource("2_aa0pq")
-value_a = 0
-value_b = 3.0
-value_c = Color(0.278431, 0.607843, 0.603922, 1)
-value_d = 1
-
-[sub_resource type="Resource" id="Resource_y03n6"]
-script = ExtResource("2_aa0pq")
-value_a = 0
-value_b = 23.0
-value_c = Color(0.196078, 0.160784, 0.478431, 1)
+value_a = false
+value_b = Vector4(1, 3, 2, 0)
+value_c = Color(0.184314, 0.2, 0.784314, 1)
 value_d = 0
+
+[sub_resource type="Resource" id="Resource_o8a4d"]
+script = ExtResource("2_aa0pq")
+value_a = true
+value_b = Vector4(0, 877, 77, 4)
+value_c = Color(0.172549, 0.470588, 0.411765, 1)
+value_d = 1
 
 [sub_resource type="Resource" id="Resource_c44su"]
 script = ExtResource("2_aa0pq")
-value_a = 0
-value_b = 0.0
+value_a = false
+value_b = Vector4(0, 0, 0, 0)
 value_c = Color(0, 0, 0, 1)
 value_d = 1
 
@@ -29,6 +29,6 @@ script = ExtResource("2_moj3i")
 key_type = 2
 default_row = SubResource("Resource_c44su")
 data = {
-0: SubResource("Resource_uhwms"),
-2.0: SubResource("Resource_y03n6")
+1: SubResource("Resource_bcl7v"),
+2: SubResource("Resource_o8a4d")
 }

@@ -227,6 +227,11 @@ func build_field_control(value: Variant, property: Dictionary, setter_callback: 
 				field_control.allow_greater = true
 				field_control.value = value
 				field_control.value_changed.connect(setter_callback)
+		TYPE_VECTOR2, TYPE_VECTOR2I, TYPE_VECTOR3, TYPE_VECTOR3I, TYPE_VECTOR4, TYPE_VECTOR4I:
+			field_control = DatatableEditorUtils.VectorEdit.new()
+			field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			field_control.vector = value
+			field_control.value_changed.connect(setter_callback)
 		TYPE_COLOR:
 			field_control = ColorPickerButton.new()
 			field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL

@@ -1,37 +1,27 @@
-[gd_resource type="Resource" script_class="Datatable" load_steps=11 format=3 uid="uid://6bhpyivuj2e7"]
+[gd_resource type="Resource" script_class="Datatable" load_steps=8 format=3 uid="uid://6bhpyivuj2e7"]
 
 [ext_resource type="Script" path="res://addons/datatable/example/example_row1.gd" id="1_k2jhp"]
-[ext_resource type="Script" path="res://scripts/apply_version.gd" id="2_cga4q"]
 [ext_resource type="Script" path="res://addons/datatable/scripts/datatable.gd" id="2_ty367"]
-[ext_resource type="Script" path="res://scripts/run_validations.gd" id="3_em5q6"]
 
-[sub_resource type="Resource" id="Resource_kd8af"]
-script = ExtResource("1_k2jhp")
-value_a = 0
-value_b = 0.0
-value_c = "asoh"
-value_d = ExtResource("2_cga4q")
-
-[sub_resource type="Resource" id="Resource_f5lgc"]
-script = ExtResource("1_k2jhp")
-value_a = 0
-value_b = 0.0
-value_c = "ds"
-value_d = ExtResource("3_em5q6")
-
-[sub_resource type="Resource" id="Resource_52y0o"]
+[sub_resource type="Resource" id="Resource_pedlg"]
 script = ExtResource("1_k2jhp")
 value_a = 0
 value_b = 0.0
 value_c = ""
 
-[sub_resource type="Resource" id="Resource_jbiqg"]
+[sub_resource type="Resource" id="Resource_yom6g"]
 script = ExtResource("1_k2jhp")
 value_a = 0
 value_b = 0.0
 value_c = ""
 
-[sub_resource type="Resource" id="Resource_23pe0"]
+[sub_resource type="Resource" id="Resource_jaq2w"]
+script = ExtResource("1_k2jhp")
+value_a = 0
+value_b = 0.0
+value_c = ""
+
+[sub_resource type="Resource" id="Resource_0ffkn"]
 script = ExtResource("1_k2jhp")
 value_a = 0
 value_b = 0.0
@@ -45,12 +35,11 @@ value_c = ""
 
 [resource]
 script = ExtResource("2_ty367")
-key_type = 21
+key_type = 4
 default_row = SubResource("Resource_ubty6")
 data = {
-"0testt": SubResource("Resource_kd8af"),
-"test": SubResource("Resource_f5lgc"),
-"test1": SubResource("Resource_52y0o"),
-"test2": SubResource("Resource_jbiqg"),
-"test4": SubResource("Resource_23pe0")
+"0test": SubResource("Resource_jaq2w"),
+"1": SubResource("Resource_0ffkn"),
+"hello": SubResource("Resource_pedlg"),
+"hi": SubResource("Resource_yom6g")
 }
