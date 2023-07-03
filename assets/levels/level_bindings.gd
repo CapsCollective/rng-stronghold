@@ -11,8 +11,8 @@ func _ready():
 		get_node(building).selected.connect(on_building_selected)
 	dice_spawner.roll_completed.connect(on_roll_completed)
 	
-	var dt = load("res://addons/datatable/example/example1_dt.tres")
-	for row in dt.get_iter():
+	var example_dt = load("res://addons/datatable/example/example1_dt.tres")
+	for row in example_dt:
 		print(row)
 
 func _input(event):

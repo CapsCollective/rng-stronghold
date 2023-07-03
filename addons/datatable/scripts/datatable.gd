@@ -4,6 +4,8 @@ class_name Datatable extends Resource
 @export var default_row: DatatableRow
 @export var data: Dictionary
 
+var iterator_idx: int = 0
+
 func is_empty() -> bool:
 	return data.is_empty()
 
@@ -38,8 +40,19 @@ func find_row_pair(key: Variant) -> DatatableRowPair:
 		return DatatableRowPair.new(key, value)
 	return null
 
-func get_iter() -> DatatableIterator:
-	return DatatableIterator.new(self)
+func should_continue():
+	return (iterator_idx < size())
+
+func _iter_init(arg):
+	iterator_idx = 0
+	return should_continue()
+
+func _iter_next(arg):
+	iterator_idx += 1
+	return should_continue()
+
+func _iter_get(arg) -> DatatableRowPair:
+	return get_row_pair(iterator_idx)
 
 func move_row(old_key, new_key):
 	var row_value = data.get(old_key)
@@ -56,25 +69,3 @@ class DatatableRowPair:
 	
 	func _to_string() -> String:
 		return "(%s, %s)" % [key, row.to_string()]
-
-class DatatableIterator:
-	var datatable: Datatable
-	var current_idx: int
-
-	func _init(datatable: Datatable):
-		self.datatable = datatable
-		self.current_idx = 0
-
-	func should_continue():
-		return (current_idx < datatable.size())
-
-	func _iter_init(arg):
-		current_idx = 0
-		return should_continue()
-
-	func _iter_next(arg):
-		current_idx += 1
-		return should_continue()
-
-	func _iter_get(arg) -> DatatableRowPair:
-		return datatable.get_row_pair(current_idx)
