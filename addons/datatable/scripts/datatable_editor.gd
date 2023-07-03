@@ -171,13 +171,19 @@ func populate_row(index: int, key):
 
 func build_field_control_for_key(value: Variant, type: Variant.Type):
 	var setter_callback = func(k):
+		match(current_dt.key_type):
+			TYPE_STRING:
+				k = String(k)
+			TYPE_INT:
+				k = int(k)
 		if not current_dt.data.has(k):
 			DatatableUtils.move_row_stable(current_dt, value, k)
-			ResourceSaver.save(current_dt)
+			if DatatableUtils.validate_datatable_keys(current_dt):
+				ResourceSaver.save(current_dt)
 		refresh_table()
 	var field_control
 	match(type):
-		TYPE_STRING_NAME:
+		TYPE_STRING:
 			field_control = LineEdit.new()
 			field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			field_control.text = value
@@ -252,23 +258,10 @@ func build_field_control(value: Variant, property: Dictionary, setter_callback: 
 
 func get_default_key(type: Variant.Type):
 	match(type):
-		TYPE_STRING_NAME:
-			return StringName()
+		TYPE_STRING:
+			return String()
 		TYPE_INT:
 			return 0
-
-func move_row_stable(old_key, new_key):
-	var new_data = Dictionary()
-	var all_keys = current_dt.data.keys()
-	var all_values = current_dt.data.values()
-	var key_idx = all_keys.find(old_key)
-	
-	for i in range(0, all_keys.size()):
-		if i != key_idx:
-			new_data[all_keys[i]] = all_values[i]
-		else:
-			new_data[new_key] = all_values[i]
-	current_dt.data = new_data
 
 func on_add_btn_pressed():
 	var new_key = get_default_key(current_dt.key_type)
@@ -299,7 +292,7 @@ func on_new_dt_btn_pressed():
 	popup_grid.add_child(key_lbl)
 	
 	var key_type_options = OptionButton.new()
-	var dt_key_types = {"StringName": TYPE_STRING_NAME, "Int": TYPE_INT}
+	var dt_key_types = {"String": TYPE_STRING, "Int": TYPE_INT}
 	for type in dt_key_types:
 		key_type_options.add_item(type)
 	popup_grid.add_child(key_type_options)

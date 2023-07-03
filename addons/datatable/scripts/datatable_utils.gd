@@ -26,3 +26,11 @@ static func move_row_stable(datatable: Datatable, old_key, new_key):
 		else:
 			new_data[new_key] = all_values[i]
 	datatable.data = new_data
+
+static func validate_datatable_keys(datatable: Datatable) -> bool:
+	var default_props = get_row_properties(datatable.default_row)
+	for key in datatable.data.keys():
+		if typeof(key) != datatable.key_type:
+			push_error("Found bad key ", key, "type should be ", datatable.key_type, " got ", typeof(key))
+			return false
+	return true
