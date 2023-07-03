@@ -244,11 +244,28 @@ func build_field_control(value: Variant, property: Dictionary, setter_callback: 
 			field_control.color = value
 			field_control.color_changed.connect(setter_callback)
 		TYPE_OBJECT:
-			field_control = EditorResourcePicker.new()
-			field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-			field_control.edited_resource = value
-			field_control.base_type = property.hint_string
-			field_control.resource_changed.connect(setter_callback)
+			if ClassDB.is_parent_class(property.hint_string, "Resource"):
+				field_control = EditorResourcePicker.new()
+				field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				field_control.edited_resource = value
+				field_control.base_type = property.hint_string
+				field_control.resource_changed.connect(setter_callback)
+			else:
+				var allowed_types = ["empty"]
+				var inheriting_classes = ClassDB.get_inheriters_from_class(property.hint_string)
+				allowed_types.append_array(inheriting_classes)
+				field_control = OptionButton.new()
+				field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				for type in allowed_types:
+					field_control.add_item(type)
+				if value:
+					var class_idx = allowed_types.find(value.get_class())
+					if not class_idx == -1:
+						field_control.select(class_idx)
+				var internal_setter_callback = func(v):
+					var selected_type = allowed_types[v]
+					setter_callback.call(ClassDB.instantiate(selected_type))
+				field_control.item_selected.connect(internal_setter_callback)
 		_:
 			field_control = Label.new()
 			field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL

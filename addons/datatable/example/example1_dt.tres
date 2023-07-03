@@ -1,31 +1,41 @@
-[gd_resource type="Resource" script_class="Datatable" load_steps=8 format=3 uid="uid://6bhpyivuj2e7"]
+[gd_resource type="Resource" script_class="Datatable" load_steps=9 format=3 uid="uid://6bhpyivuj2e7"]
 
 [ext_resource type="Script" path="res://addons/datatable/example/example_row1.gd" id="1_k2jhp"]
 [ext_resource type="Script" path="res://addons/datatable/scripts/datatable.gd" id="2_ty367"]
-
-[sub_resource type="Resource" id="Resource_pedlg"]
-script = ExtResource("1_k2jhp")
-value_a = 0
-value_b = 0.0
-value_c = ""
-
-[sub_resource type="Resource" id="Resource_yom6g"]
-script = ExtResource("1_k2jhp")
-value_a = 0
-value_b = 0.0
-value_c = ""
+[ext_resource type="Script" path="res://assets/camera/scripts/game_camera.gd" id="2_w522e"]
 
 [sub_resource type="Resource" id="Resource_jaq2w"]
 script = ExtResource("1_k2jhp")
 value_a = 0
 value_b = 0.0
 value_c = ""
+value_d = ExtResource("2_w522e")
+value_e = Object(Label3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":0,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":0,"gi_lightmap_scale":0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"pixel_size":0.005,"offset":Vector2(0, 0),"billboard":0,"shaded":false,"double_sided":true,"no_depth_test":false,"fixed_size":false,"alpha_cut":0,"alpha_scissor_threshold":0.5,"alpha_hash_scale":1.0,"alpha_antialiasing_mode":0,"alpha_antialiasing_edge":0.0,"texture_filter":3,"render_priority":0,"outline_render_priority":-1,"modulate":Color(1, 1, 1, 1),"outline_modulate":Color(0, 0, 0, 1),"text":"","font":null,"font_size":32,"outline_size":12,"horizontal_alignment":1,"vertical_alignment":1,"uppercase":false,"line_spacing":0.0,"autowrap_mode":0,"width":500.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
+
 
 [sub_resource type="Resource" id="Resource_0ffkn"]
 script = ExtResource("1_k2jhp")
 value_a = 0
 value_b = 0.0
 value_c = ""
+value_e = Object(Sprite3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":1,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":1,"gi_lightmap_scale":0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"modulate":Color(1, 1, 1, 1),"pixel_size":0.01,"axis":2,"billboard":0,"transparent":true,"shaded":false,"double_sided":true,"no_depth_test":false,"fixed_size":false,"alpha_cut":0,"alpha_scissor_threshold":0.5,"alpha_hash_scale":1.0,"alpha_antialiasing_mode":0,"alpha_antialiasing_edge":0.0,"texture_filter":3,"render_priority":0,"texture":null,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"script":null)
+
+
+[sub_resource type="Resource" id="Resource_pedlg"]
+script = ExtResource("1_k2jhp")
+value_a = 0
+value_b = 0.0
+value_c = ""
+value_e = Object(CPUParticles3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":1,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":1,"gi_lightmap_scale":0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"emitting":true,"amount":8,"lifetime":1.0,"one_shot":false,"preprocess":0.0,"speed_scale":1.0,"explosiveness":0.0,"randomness":0.0,"lifetime_randomness":0.0,"fixed_fps":0,"fract_delta":true,"local_coords":false,"draw_order":0,"mesh":null,"emission_shape":0,"emission_colors":PackedColorArray(),"particle_flag_align_y":false,"particle_flag_rotate_y":false,"particle_flag_disable_z":false,"direction":Vector3(1, 0, 0),"spread":45.0,"flatness":0.0,"gravity":Vector3(0, -9.8, 0),"initial_velocity_min":0.0,"initial_velocity_max":0.0,"angular_velocity_min":0.0,"angular_velocity_max":0.0,"angular_velocity_curve":null,"linear_accel_min":0.0,"linear_accel_max":0.0,"linear_accel_curve":null,"radial_accel_min":0.0,"radial_accel_max":0.0,"radial_accel_curve":null,"tangential_accel_min":0.0,"tangential_accel_max":0.0,"tangential_accel_curve":null,"damping_min":0.0,"damping_max":0.0,"damping_curve":null,"angle_min":0.0,"angle_max":0.0,"angle_curve":null,"scale_amount_min":1.0,"scale_amount_max":1.0,"scale_amount_curve":null,"split_scale":false,"color":Color(1, 1, 1, 1),"color_ramp":null,"color_initial_ramp":null,"hue_variation_min":0.0,"hue_variation_max":0.0,"hue_variation_curve":null,"anim_speed_min":0.0,"anim_speed_max":0.0,"anim_speed_curve":null,"anim_offset_min":0.0,"anim_offset_max":0.0,"anim_offset_curve":null,"script":null)
+
+
+[sub_resource type="Resource" id="Resource_yom6g"]
+script = ExtResource("1_k2jhp")
+value_a = 0
+value_b = 0.0
+value_c = ""
+value_e = Object(SoftBody3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":1,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":1,"gi_lightmap_scale":0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"mesh":null,"skin":null,"skeleton":NodePath(".."),"collision_layer":1,"collision_mask":1,"parent_collision_ignore":NodePath(""),"simulation_precision":5,"total_mass":1.0,"linear_stiffness":0.5,"pressure_coefficient":0.0,"damping_coefficient":0.01,"drag_coefficient":0.0,"ray_pickable":true,"disable_mode":0,"pinned_points":[],"script":null)
+
 
 [sub_resource type="Resource" id="Resource_ubty6"]
 script = ExtResource("1_k2jhp")
