@@ -1,8 +1,8 @@
 class_name ExampleRow2 extends DatatableRow
 
-enum ExampleEnum { Value1, Value2 }
+enum DamageType { FIRE, WATER, NECROTIC }
 
-@export var value_a: bool
-@export var value_b: Vector4
-@export var value_c: Color
-@export var value_d: ExampleEnum
+@export var is_enabled: bool
+@export var effect_offset: Vector4
+@export var effect_colour: Color
+@export var damage_type: DamageType

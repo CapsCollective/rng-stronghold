@@ -6,5 +6,5 @@ const ValidationManager = preload("res://assets/validation/validation.gd")
 func _init():
 	var manager = ValidationManager.new()
 	var result = manager.run_all_validations()
-	manager.queue_free()
+	manager.free()
 	quit(0 if result else 1)

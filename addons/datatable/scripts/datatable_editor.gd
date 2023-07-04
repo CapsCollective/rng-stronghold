@@ -152,14 +152,26 @@ func populate_row(index: int, key):
 	var row = current_dt.data[key]
 	var row_properties = DatatableUtils.get_row_properties(row)
 	
-	var field_control = build_field_control_for_key(key, current_dt.key_type)
+	var key_setter_callback = func(k):
+		match(current_dt.key_type):
+			TYPE_STRING:
+				k = String(k)
+			TYPE_INT:
+				k = int(k)
+		if not current_dt.data.has(k):
+			DatatableUtils.move_row_stable(current_dt, key, k)
+			if DatatableUtils.validate_datatable_keys(current_dt):
+				ResourceSaver.save(current_dt)
+		refresh_table()
+	var key_props = {"type": current_dt.key_type, "hint": PROPERTY_HINT_NONE, "hint_string": ""}
+	var field_control = build_field_control(key, key_props, key_setter_callback, true)
 	grid_container.add_child(field_control)
 	
 	for property in row_properties:
 		var setter_callback = func(v):
 			row.set(property.name, v)
 			ResourceSaver.save(current_dt)
-		field_control = build_field_control(row.get(property.name), property, setter_callback)
+		field_control = build_field_control(row.get(property.name), property, setter_callback, false)
 		grid_container.add_child(field_control)
 	
 	var menu_btn = MenuButton.new()
@@ -169,40 +181,7 @@ func populate_row(index: int, key):
 	menu_btn.get_popup().id_pressed.connect(on_pressed)
 	grid_container.add_child(menu_btn)
 
-func build_field_control_for_key(value: Variant, type: Variant.Type):
-	var setter_callback = func(k):
-		match(current_dt.key_type):
-			TYPE_STRING:
-				k = String(k)
-			TYPE_INT:
-				k = int(k)
-		if not current_dt.data.has(k):
-			DatatableUtils.move_row_stable(current_dt, value, k)
-			if DatatableUtils.validate_datatable_keys(current_dt):
-				ResourceSaver.save(current_dt)
-		refresh_table()
-	var field_control
-	match(type):
-		TYPE_STRING:
-			field_control = LineEdit.new()
-			field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-			field_control.text = value
-			field_control.text_submitted.connect(setter_callback)
-		TYPE_INT:
-			field_control = SpinBox.new()
-			field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-			field_control.allow_lesser = true
-			field_control.allow_greater = true
-			field_control.value = value
-			field_control.value_changed.connect(setter_callback)
-		_:
-			field_control = Label.new()
-			field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-			field_control.add_theme_color_override("font_color", Color.RED)
-			field_control.text = "undefined"
-	return field_control
-
-func build_field_control(value: Variant, property: Dictionary, setter_callback: Callable):
+func build_field_control(value: Variant, property: Dictionary, setter_callback: Callable, is_key: bool):
 	var field_control
 	match(property.type):
 		TYPE_BOOL:
@@ -214,7 +193,10 @@ func build_field_control(value: Variant, property: Dictionary, setter_callback: 
 			field_control = LineEdit.new()
 			field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			field_control.text = value
-			field_control.text_changed.connect(setter_callback)
+			if is_key:
+				field_control.text_submitted.connect(setter_callback)
+			else:
+				field_control.text_changed.connect(setter_callback)
 		TYPE_INT, TYPE_FLOAT:
 			if property.hint == PROPERTY_HINT_ENUM:
 				field_control = OptionButton.new()

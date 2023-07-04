@@ -14,6 +14,9 @@ func _ready():
 	var example_dt = load("res://addons/datatable/example/example1_dt.tres")
 	for row in example_dt:
 		print(row)
+	
+	var player_row = example_dt.get_row("player")
+	print(player_row.move_speed)
 
 func _input(event):
 	if event.is_action_released("rmb_down"):

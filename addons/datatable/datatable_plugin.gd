@@ -16,7 +16,6 @@ func _enter_tree():
 
 func _exit_tree():
 	remove_inspector_plugin(dt_inspector_plugin)
-	dt_inspector_plugin.queue_free()
 	remove_control_from_bottom_panel(dt_editor)
 	dt_editor.queue_free()
 

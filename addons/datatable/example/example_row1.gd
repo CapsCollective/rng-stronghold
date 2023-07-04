@@ -1,7 +1,7 @@
 class_name ExampleRow1 extends DatatableRow
 
-@export var value_a: int
-@export var value_b: float
-@export var value_c: String
-@export var value_d: GDScript
-@export var value_e: VisualInstance3D
+@export var priority: int
+@export var move_speed: float
+@export var display_name: String
+@export var combat_script: GDScript
+@export var debug_shape: CSGShape3D
