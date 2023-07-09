@@ -32,8 +32,8 @@ class VectorEdit extends HBoxContainer:
 		return panel_container
 	
 	func build_component_spinbox(idx):
-		var internal_setter_callback = func(v):
-			set_component_value(idx, v)
+		var internal_setter_callback = func(new_value):
+			set_component_value(idx, new_value)
 			build_layout()
 			value_changed.emit(vector)
 		var spinbox = SpinBox.new()
@@ -65,13 +65,13 @@ class VectorEdit extends HBoxContainer:
 			3:
 				return vector.w
 	
-	func set_component_value(idx, v):
+	func set_component_value(idx, value):
 		match(idx):
 			0:
-				vector.x = v
+				vector.x = value
 			1:
-				vector.y = v
+				vector.y = value
 			2:
-				vector.z = v
+				vector.z = value
 			3:
-				vector.w = v
+				vector.w = value

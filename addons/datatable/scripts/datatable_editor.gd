@@ -163,14 +163,14 @@ func populate_row(index: int, key):
 	var row = current_dt.data[key]
 	var row_properties = DatatableUtils.get_row_properties(row)
 	
-	var key_setter_callback = func(k):
+	var key_setter_callback = func(new_key):
 		match(current_dt.key_type):
 			TYPE_STRING:
-				k = String(k)
+				new_key = String(new_key)
 			TYPE_INT:
-				k = int(k)
-		if not current_dt.data.has(k):
-			DatatableUtils.move_row_stable(current_dt, key, k)
+				new_key = int(new_key)
+		if not current_dt.data.has(new_key):
+			DatatableUtils.move_row_stable(current_dt, key, new_key)
 			if DatatableUtils.validate_datatable_keys(current_dt):
 				ResourceSaver.save(current_dt)
 		refresh_table()
@@ -179,8 +179,8 @@ func populate_row(index: int, key):
 	grid_container.add_child(field_control)
 	
 	for property in row_properties:
-		var setter_callback = func(v):
-			row.set(property.name, v)
+		var setter_callback = func(new_value):
+			row.set(property.name, new_value)
 			ResourceSaver.save(current_dt)
 		field_control = build_field_control(row.get(property.name), property, setter_callback, false)
 		grid_container.add_child(field_control)
@@ -255,8 +255,8 @@ func build_field_control(value: Variant, property: Dictionary, setter_callback: 
 					var class_idx = allowed_types.find(value.get_class())
 					if not class_idx == -1:
 						field_control.select(class_idx)
-				var internal_setter_callback = func(v):
-					var selected_type = allowed_types[v]
+				var internal_setter_callback = func(new_value):
+					var selected_type = allowed_types[new_value]
 					setter_callback.call(ClassDB.instantiate(selected_type))
 				field_control.item_selected.connect(internal_setter_callback)
 		_:
