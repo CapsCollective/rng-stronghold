@@ -25,20 +25,20 @@ func get_row_by_index(idx: int) -> DatatableRow:
 	var key = get_key(idx)
 	return data[key] if key != null else null
 
-func get_row_pair_by_index(idx: int) -> DatatableRowPair:
+func get_row_pair_by_index(idx: int) -> Dictionary:
 	var key = get_key(idx)
 	if key != null:
-		return DatatableRowPair.new(key, data[key])
-	return null
+		return create_row_pair(key, data[key])
+	return {}
 
 func get_row(key: Variant) -> DatatableRow:
 	return data.get(key)
 
-func get_row_pair(key: Variant) -> DatatableRowPair:
+func get_row_pair(key: Variant) -> Dictionary:
 	var value = data.find_key(key)
 	if value != null:
-		return DatatableRowPair.new(key, value)
-	return null
+		return create_row_pair(key, value)
+	return {}
 
 func move_row(old_key, new_key):
 	var row_value = data.get(old_key)
@@ -53,19 +53,11 @@ func _iter_next(arg):
 	iterator_idx += 1
 	return iter_can_continue()
 
-func _iter_get(arg) -> DatatableRowPair:
+func _iter_get(arg) -> Dictionary:
 	return get_row_pair_by_index(iterator_idx)
 
 func iter_can_continue():
 	return iterator_idx < size()
 
-class DatatableRowPair:
-	var key: Variant
-	var row: DatatableRow
-	
-	func _init(key, row: DatatableRow):
-		self.key = key
-		self.row = row
-	
-	func _to_string() -> String:
-		return "(%s, %s)" % [key, row.to_string()]
+func create_row_pair(key: Variant, row: DatatableRow):
+	return {"key": key, "value": data[key]}
