@@ -350,6 +350,7 @@ func create_new_dt_resource(key_type: Variant.Type, resource_type: Resource):
 	var on_file_dialog_file_selected = func(file):
 		ResourceSaver.save(new_dt, file)
 		file_dialog.queue_free()
+		set_current_datatable(new_dt)
 	file_dialog.file_selected.connect(on_file_dialog_file_selected)
 	editor.add_child(file_dialog)
 	
