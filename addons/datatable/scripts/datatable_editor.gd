@@ -3,6 +3,7 @@ extends Control
 var datatable_name_lbl: Label
 var row_type_lbl: Label
 var row_count_lbl: Label
+var refresh_btn: Button
 var add_row_btn: Button
 var grid_container: GridContainer
 var none_lbl: Label
@@ -16,14 +17,17 @@ func _init(plugin: EditorPlugin):
 	editor_plugin = plugin
 
 func _ready():
-	build_layout()
+	rebuild_layout()
 	refresh_table()
 
 func set_current_datatable(datatable: Datatable):
 	current_dt = datatable
 	refresh_table()
 
-func build_layout():
+func rebuild_layout():
+	for child in get_children():
+		child.queue_free()
+	
 	custom_minimum_size.y = 200 * editor_plugin.get_editor_interface().get_editor_scale()
 	anchors_preset = PRESET_BOTTOM_WIDE
 	size_flags_vertical = Control.SIZE_SHRINK_BEGIN | Control.SIZE_EXPAND
@@ -57,6 +61,11 @@ func build_layout():
 	top_hbox.add_child(new_dt_btn)
 	
 	top_hbox.add_spacer(false)
+	
+	refresh_btn = Button.new()
+	refresh_btn.text = "Refresh"
+	refresh_btn.pressed.connect(on_refresh_btn_pressed)
+	top_hbox.add_child(refresh_btn)
 	
 	add_row_btn = Button.new()
 	add_row_btn.text = "Add Row"
@@ -105,6 +114,7 @@ func populate_table():
 		empty_lbl.visible = false
 		row_count_lbl.visible = false
 		row_type_lbl.visible = false
+		refresh_btn.disabled = true
 		add_row_btn.disabled = true
 		grid_container.visible = false
 		return
@@ -117,6 +127,7 @@ func populate_table():
 	empty_lbl.visible = current_dt.data.is_empty()
 	row_count_lbl.visible = true
 	row_type_lbl.visible = true
+	refresh_btn.disabled = false
 	add_row_btn.disabled = false
 	grid_container.visible = true
 	grid_container.columns = row_properties.size() + 3
@@ -261,6 +272,10 @@ func get_default_key(type: Variant.Type):
 			return String()
 		TYPE_INT:
 			return 0
+
+func on_refresh_btn_pressed():
+	rebuild_layout()
+	refresh_table()
 
 func on_add_btn_pressed():
 	var new_key = get_default_key(current_dt.key_type)
