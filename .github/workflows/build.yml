@@ -31,6 +31,9 @@ jobs:
           mkdir -p "$GODOT_TEMPLATES_DIR"
           mv ./templates "$GODOT_TEMPLATES_DIR/$GODOT_VERSION.stable"
 
+      - name: Open Godot editor for reimport
+        run: $GODOT_EXECUTABLE --editor --headless --quit || true
+
       - name: Apply version to export information
         run: $GODOT_EXECUTABLE --script scripts/apply_version.gd --headless
         

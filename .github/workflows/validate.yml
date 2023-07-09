@@ -57,5 +57,8 @@ jobs:
           unzip ./godot.zip
           mv ./Godot.app /Applications/Godot.app
 
+      - name: Open Godot for reimport
+        run: $GODOT_EXECUTABLE --editor --headless --quit || true
+
       - name: Run project validations
         run: $GODOT_EXECUTABLE --script scripts/run_validations.gd --headless
