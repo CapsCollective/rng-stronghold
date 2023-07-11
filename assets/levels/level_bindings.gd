@@ -15,8 +15,11 @@ func _ready():
 	for row in example_dt:
 		print(row)
 	
-	var player_row = example_dt.get_row("player")
+	var player_row: ExampleRow1 = example_dt.get_row("player")
 	print(player_row.move_speed)
+	var s = ClassDB.instantiate(player_row.debug_shape)
+	print(s)
+	s.queue_free()
 
 func _input(event):
 	if event.is_action_released("rmb_down"):

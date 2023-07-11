@@ -9,8 +9,7 @@ script = ExtResource("1_k2jhp")
 priority = 3.0
 move_speed = 6.999
 display_name = "Ogre"
-debug_shape = Object(CSGTorus3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":1,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":1,"gi_lightmap_scale":0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"operation":0,"snap":0.001,"calculate_tangents":true,"use_collision":false,"collision_layer":1,"collision_mask":1,"collision_priority":1.0,"flip_faces":false,"inner_radius":0.5,"outer_radius":1.0,"sides":8,"ring_sides":6,"smooth_faces":true,"material":null,"script":null)
-
+debug_shape = "CSGTorus3D"
 
 [sub_resource type="Resource" id="Resource_0ffkn"]
 script = ExtResource("1_k2jhp")
@@ -18,16 +17,14 @@ priority = 2.0
 move_speed = 2.111
 display_name = "Goblin"
 combat_script = ExtResource("3_lb3a7")
-debug_shape = Object(CSGSphere3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":1,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":1,"gi_lightmap_scale":0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"operation":0,"snap":0.001,"calculate_tangents":true,"use_collision":false,"collision_layer":1,"collision_mask":1,"collision_priority":1.0,"flip_faces":false,"radius":0.5,"radial_segments":12,"rings":6,"smooth_faces":true,"material":null,"script":null)
-
+debug_shape = "CSGSphere3D"
 
 [sub_resource type="Resource" id="Resource_yom6g"]
 script = ExtResource("1_k2jhp")
 priority = 2.0
 move_speed = 3.0
 display_name = "Geoff"
-debug_shape = Object(CSGBox3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":1,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":1,"gi_lightmap_scale":0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"operation":0,"snap":0.001,"calculate_tangents":true,"use_collision":false,"collision_layer":1,"collision_mask":1,"collision_priority":1.0,"flip_faces":false,"size":Vector3(1, 1, 1),"material":null,"script":null)
-
+debug_shape = "CSGBox3D"
 
 [sub_resource type="Resource" id="Resource_jaq2w"]
 script = ExtResource("1_k2jhp")
@@ -35,14 +32,14 @@ priority = 1.0
 move_speed = 4.57
 display_name = "Hero"
 combat_script = ExtResource("1_k2jhp")
-debug_shape = Object(CSGMesh3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":1,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":1,"gi_lightmap_scale":0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"operation":0,"snap":0.001,"calculate_tangents":true,"use_collision":false,"collision_layer":1,"collision_mask":1,"collision_priority":1.0,"flip_faces":false,"mesh":null,"material":null,"script":null)
-
+debug_shape = "CSGMesh3D"
 
 [sub_resource type="Resource" id="Resource_ubty6"]
 script = ExtResource("1_k2jhp")
 priority = 0
 move_speed = 0.0
 display_name = ""
+debug_shape = ""
 
 [resource]
 script = ExtResource("2_ty367")

@@ -201,13 +201,33 @@ func build_field_control(value: Variant, property: Dictionary, setter_callback: 
 			field_control.button_pressed = value
 			field_control.toggled.connect(setter_callback)
 		TYPE_STRING, TYPE_STRING_NAME:
-			field_control = LineEdit.new()
-			field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-			field_control.text = value
-			if is_key:
-				field_control.text_submitted.connect(setter_callback)
+			if property.hint == PROPERTY_HINT_ENUM and property.hint_string.begins_with("class_name"):
+				var base_class = property.hint_string.split(",")[1]
+				var allowed_types = ["empty"]
+				if ClassDB.class_exists(base_class):
+					allowed_types.append(base_class)
+					var inheriting_classes = ClassDB.get_inheriters_from_class(base_class)
+					allowed_types.append_array(inheriting_classes)
+				field_control = OptionButton.new()
+				field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				for type in allowed_types:
+					field_control.add_item(type)
+				if value:
+					var class_idx = allowed_types.find(value)
+					if not class_idx == -1:
+						field_control.select(class_idx)
+				var internal_setter_callback = func(new_value):
+					var selected_type = allowed_types[new_value] if new_value > 0 else String()
+					setter_callback.call(selected_type)
+				field_control.item_selected.connect(internal_setter_callback)
 			else:
-				field_control.text_changed.connect(setter_callback)
+				field_control = LineEdit.new()
+				field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				field_control.text = value
+				if is_key:
+					field_control.text_submitted.connect(setter_callback)
+				else:
+					field_control.text_changed.connect(setter_callback)
 		TYPE_INT, TYPE_FLOAT:
 			if property.hint == PROPERTY_HINT_ENUM:
 				field_control = OptionButton.new()
@@ -244,21 +264,10 @@ func build_field_control(value: Variant, property: Dictionary, setter_callback: 
 				field_control.base_type = property.hint_string
 				field_control.resource_changed.connect(setter_callback)
 			else:
-				var allowed_types = ["empty"]
-				var inheriting_classes = ClassDB.get_inheriters_from_class(property.hint_string)
-				allowed_types.append_array(inheriting_classes)
-				field_control = OptionButton.new()
+				field_control = Label.new()
 				field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-				for type in allowed_types:
-					field_control.add_item(type)
-				if value:
-					var class_idx = allowed_types.find(value.get_class())
-					if not class_idx == -1:
-						field_control.select(class_idx)
-				var internal_setter_callback = func(new_value):
-					var selected_type = allowed_types[new_value]
-					setter_callback.call(ClassDB.instantiate(selected_type))
-				field_control.item_selected.connect(internal_setter_callback)
+				field_control.add_theme_color_override("font_color", Color.RED)
+				field_control.text = "unsupported"
 		_:
 			field_control = Label.new()
 			field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
