@@ -242,8 +242,17 @@ func build_field_control(value: Variant, property: Dictionary, setter_callback: 
 				field_control = SpinBox.new()
 				field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 				if (property.type == TYPE_FLOAT): field_control.step = 0.001
-				field_control.allow_lesser = true
-				field_control.allow_greater = true
+				if property.hint == PROPERTY_HINT_RANGE:
+					var range_values = property.hint_string.split(",")
+					field_control.min_value = float(range_values[0])
+					field_control.max_value = float(range_values[1])
+					field_control.allow_lesser = false
+					field_control.allow_greater = false
+					if range_values.size() > 2:
+						field_control.step = float(range_values[2])
+				else:
+					field_control.allow_lesser = true
+					field_control.allow_greater = true
 				field_control.value = value
 				field_control.value_changed.connect(setter_callback)
 		TYPE_VECTOR2, TYPE_VECTOR2I, TYPE_VECTOR3, TYPE_VECTOR3I, TYPE_VECTOR4, TYPE_VECTOR4I:
