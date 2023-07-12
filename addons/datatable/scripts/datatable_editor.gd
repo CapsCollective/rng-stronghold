@@ -229,7 +229,13 @@ func build_field_control(value: Variant, property: Dictionary, setter_callback: 
 				else:
 					field_control.text_changed.connect(setter_callback)
 		TYPE_INT, TYPE_FLOAT:
-			if property.hint == PROPERTY_HINT_ENUM:
+			if property.hint == PROPERTY_HINT_FLAGS:
+				field_control = DatatableEditorUtils.FlagsEdit.new()
+				field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				field_control.value = value
+				field_control.hint_string = property.hint_string
+				field_control.value_changed.connect(setter_callback)
+			elif property.hint == PROPERTY_HINT_ENUM:
 				field_control = OptionButton.new()
 				field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 				var options = property.hint_string.split(",")

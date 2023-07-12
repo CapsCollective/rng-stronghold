@@ -1,5 +1,34 @@
 class_name DatatableEditorUtils
 
+class FlagsEdit extends MenuButton:
+	
+	signal value_changed(value)
+	
+	var value: int
+	var hint_string: String
+	
+	func _ready():
+		var on_pressed = func(idx):
+			var flags = hint_string.split(",")
+			var flag = int(flags[idx])
+			value = value & ~flag if value & flag else value | flag
+			build_layout()
+			value_changed.emit(value)
+		get_popup().id_pressed.connect(on_pressed)
+		build_layout()
+	
+	func build_layout():
+		get_popup().clear()
+		get_popup().hide_on_checkable_item_selection = false
+		
+		text = "Edit (%s)" % value
+		var flags = hint_string.split(",")
+		for i in range(0, flags.size()):
+			var flag_details = flags[i].split(":")
+			var is_set = value & int(flag_details[1])
+			get_popup().add_check_item(flag_details[0], i)
+			get_popup().set_item_checked(i, is_set)
+
 class VectorEdit extends HBoxContainer:
 	
 	signal value_changed(value)
