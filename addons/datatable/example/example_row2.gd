@@ -6,3 +6,4 @@ enum DamageType { FIRE, WATER, NECROTIC }
 @export var effect_offset: Vector4
 @export var effect_colour: Color
 @export var damage_type: DamageType
+@export_flags("Earth:1", "Ice:2", "Poison:4") var weaknesses: int
