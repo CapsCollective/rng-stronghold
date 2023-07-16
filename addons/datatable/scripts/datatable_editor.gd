@@ -8,6 +8,7 @@ var add_row_btn: Button
 var grid_container: GridContainer
 var none_lbl: Label
 var empty_lbl: Label
+var table_scroll: ScrollContainer
 var new_dt_btn: Button
 
 var current_dt: Datatable
@@ -88,7 +89,7 @@ func rebuild_layout():
 	empty_lbl.anchors_preset = Control.PRESET_CENTER
 	table_panel.add_child(empty_lbl)
 	
-	var table_scroll = ScrollContainer.new()
+	table_scroll = ScrollContainer.new()
 	table_scroll.layout_mode = 1
 	table_scroll.anchors_preset = Control.PRESET_FULL_RECT
 	table_panel.add_child(table_scroll)
@@ -306,6 +307,11 @@ func on_add_btn_pressed():
 	if not current_dt.data.has(new_key):
 		current_dt.data[new_key] = current_dt.default_row.duplicate()
 		refresh_table()
+		
+		# Wait for next frame to allow for scroll values to update
+		await get_tree().process_frame
+		var max_scroll = table_scroll.get_v_scroll_bar().max_value
+		table_scroll.scroll_vertical = max_scroll
 
 func on_delete_btn_pressed(row):
 	current_dt.data.erase(row)
@@ -357,6 +363,7 @@ func on_new_dt_btn_pressed():
 
 func create_new_dt_resource(key_type: Variant.Type, resource_type: Resource):
 	if resource_type == null:
+		push_warning("Failed to create new datatable resource with empty row type")
 		return
 	
 	var editor = editor_plugin.get_editor_interface().get_editor_main_screen()
