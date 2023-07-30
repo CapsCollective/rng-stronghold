@@ -1,8 +1,8 @@
 #!/usr/bin/env -S godot -s
 extends SceneTree
 
+const Utils = preload("res://assets/common/utils.gd")
 const EXPORT_PRESETS_FILE: String = "res://export_presets.cfg"
-const VERSION_CONFIG_SETTING: String = "application/config/version"
 
 func _init():
 	var result = apply_version()
@@ -13,7 +13,7 @@ func apply_version() -> bool:
 	if export_presets.load(EXPORT_PRESETS_FILE) != OK:
 		return false
 	
-	var version: String = ProjectSettings.get_setting(VERSION_CONFIG_SETTING)
+	var version: String = Utils.get_version()
 	var short_version = ".".join(version.rsplit("."))
 	var long_version = (".".join(version.split(".").slice(0, 3))) + ".0"
 	

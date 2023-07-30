@@ -8,8 +8,9 @@ on:
 env:
   APP_NAME: RNGStronghold
   BUILD_DIR: build
-  GODOT_VERSION: 4.0.2
+  GODOT_VERSION: 4.1
   GODOT_TEMPLATES_DIR: "/Users/runner/Library/Application Support/Godot/export_templates"
+  GODOT_EXECUTABLE: /Applications/Godot.app/Contents/MacOS/Godot
 
 jobs:
   build:
@@ -17,8 +18,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Install Godot
-        run: brew install godot
+      - name: Setup Godot
+        run: |
+          curl -o ./godot.zip "https://downloads.tuxfamily.org/godotengine/$GODOT_VERSION/Godot_v$GODOT_VERSION-stable_macos.universal.zip"
+          unzip ./godot.zip
+          mv ./Godot.app /Applications/Godot.app
 
       - name: Setup Godot templates
         run: |
@@ -27,13 +31,16 @@ jobs:
           mkdir -p "$GODOT_TEMPLATES_DIR"
           mv ./templates "$GODOT_TEMPLATES_DIR/$GODOT_VERSION.stable"
 
+      - name: Open Godot editor for reimport
+        run: $GODOT_EXECUTABLE --editor --headless --quit || true
+
       - name: Apply version to export information
-        run: godot --script scripts/apply_version.gd --headless
+        run: $GODOT_EXECUTABLE --script scripts/apply_version.gd --headless
         
       - name: Build macOS application
         run: |
           mkdir -p $BUILD_DIR/macos
-          godot --export-debug macOS --headless
+          $GODOT_EXECUTABLE --export-debug macOS --headless
           [ "$(ls -A $BUILD_DIR/macos)" ]
 
       - name: Compress macOS build (to preserve permissions)
@@ -47,7 +54,7 @@ jobs:
       - name: Build Windows application
         run: |
           mkdir -p $BUILD_DIR/windows
-          godot --export-debug Windows --headless
+          $GODOT_EXECUTABLE --export-debug Windows --headless
           [ "$(ls -A $BUILD_DIR/windows)" ]
 
       - uses: actions/upload-artifact@v3
@@ -58,7 +65,7 @@ jobs:
       - name: Build Linux application
         run: |
           mkdir -p $BUILD_DIR/linux
-          godot --export-debug Linux --headless
+          $GODOT_EXECUTABLE --export-debug Linux --headless
           [ "$(ls -A $BUILD_DIR/linux)" ]
 
       - name: Compress Linux build (to preserve permissions)

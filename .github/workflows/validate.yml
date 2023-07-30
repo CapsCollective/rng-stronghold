@@ -8,6 +8,8 @@ on:
 env:
   VERSION_FILE: project.godot
   VERSION_REGEX: config\/version=\"\K[0-9.\-A-z]*
+  GODOT_VERSION: 4.1
+  GODOT_EXECUTABLE: /Applications/Godot.app/Contents/MacOS/Godot
 
 jobs:
   check-version-bump:
@@ -50,7 +52,13 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Install Godot
-        run: brew install godot
+        run: |
+          curl -o ./godot.zip "https://downloads.tuxfamily.org/godotengine/$GODOT_VERSION/Godot_v$GODOT_VERSION-stable_macos.universal.zip"
+          unzip ./godot.zip
+          mv ./Godot.app /Applications/Godot.app
+
+      - name: Open Godot for reimport
+        run: $GODOT_EXECUTABLE --editor --headless --quit || true
 
       - name: Run project validations
-        run: godot --script scripts/run_validations.gd --headless
+        run: $GODOT_EXECUTABLE --script scripts/run_validations.gd --headless
