@@ -18,14 +18,14 @@ func _init(plugin: EditorPlugin):
 	editor_plugin = plugin
 
 func _ready():
-	rebuild_layout()
+	build_layout()
 	refresh_table()
 
 func set_current_datatable(datatable: Datatable):
 	current_dt = datatable
 	refresh_table()
 
-func rebuild_layout():
+func build_layout():
 	for child in get_children():
 		child.queue_free()
 	
@@ -299,7 +299,6 @@ func get_default_key(type: Variant.Type):
 			return 0
 
 func on_refresh_btn_pressed():
-	rebuild_layout()
 	refresh_table()
 
 func on_add_btn_pressed():
