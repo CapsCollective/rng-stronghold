@@ -227,6 +227,8 @@ func build_field_control(value: Variant, property: Dictionary, setter_callback: 
 				field_control.text = value
 				if is_key:
 					field_control.text_submitted.connect(setter_callback)
+					var mark_dirty = func(i): field_control.add_theme_color_override("font_color", Color.INDIAN_RED)
+					field_control.text_changed.connect(mark_dirty)
 				else:
 					field_control.text_changed.connect(setter_callback)
 		TYPE_INT, TYPE_FLOAT:
