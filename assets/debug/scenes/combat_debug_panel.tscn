@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://5lynws024gew"]
+
+[ext_resource type="PackedScene" uid="uid://c6uem6u1httu1" path="res://assets/debug/scenes/debug_panel.tscn" id="1_ndo2s"]
+[ext_resource type="Script" path="res://assets/debug/scripts/combat_debug_section.gd" id="2_y8rs4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dkh2n"]
+font_size = 14
+
+[node name="CombatDebugPanel" instance=ExtResource("1_ndo2s")]
+offset_right = 280.0
+offset_bottom = 350.0
+script = ExtResource("2_y8rs4")
+
+[node name="VBoxContainer" parent="." index="0"]
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="PanelTitle" parent="VBoxContainer" index="0"]
+text = "Combat"
+
+[node name="YourLabel" type="Label" parent="VBoxContainer" index="1"]
+layout_mode = 2
+text = "You"
+label_settings = SubResource("LabelSettings_dkh2n")
+
+[node name="YourUnits" type="HBoxContainer" parent="VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="D4s" type="SpinBox" parent="VBoxContainer/YourUnits" index="0"]
+layout_mode = 2
+max_value = 9.0
+suffix = "D4"
+
+[node name="D6s" type="SpinBox" parent="VBoxContainer/YourUnits" index="1"]
+layout_mode = 2
+max_value = 9.0
+suffix = "D6"
+
+[node name="D8s" type="SpinBox" parent="VBoxContainer/YourUnits" index="2"]
+layout_mode = 2
+max_value = 9.0
+suffix = "D8"
+
+[node name="EnemyLabel" type="Label" parent="VBoxContainer" index="3"]
+layout_mode = 2
+text = "Enemy"
+label_settings = SubResource("LabelSettings_dkh2n")
+
+[node name="EnemyUnits" type="HBoxContainer" parent="VBoxContainer" index="4"]
+layout_mode = 2
+
+[node name="D4s" type="SpinBox" parent="VBoxContainer/EnemyUnits" index="0"]
+layout_mode = 2
+max_value = 9.0
+suffix = "D4"
+
+[node name="D6s" type="SpinBox" parent="VBoxContainer/EnemyUnits" index="1"]
+layout_mode = 2
+max_value = 9.0
+suffix = "D6"
+
+[node name="D8s" type="SpinBox" parent="VBoxContainer/EnemyUnits" index="2"]
+layout_mode = 2
+max_value = 9.0
+suffix = "D8"
+
+[node name="Run" type="Button" parent="VBoxContainer" index="5"]
+layout_mode = 2
+text = "Run Simulation"
+
+[node name="Results" type="RichTextLabel" parent="VBoxContainer" index="6"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 3
+text = "You Rolled 6 (d6), 5 (d6), 3 (d4)
+Enemy Rolled 5 (d6), 5 (d8), 4 (d6)
+You lose 1d4
+Enemy loses 1d6
+Enemy deals X damage"
+scroll_active = false
