@@ -7,8 +7,8 @@
 font_size = 14
 
 [node name="CombatDebugPanel" instance=ExtResource("1_ndo2s")]
-offset_right = 280.0
-offset_bottom = 350.0
+offset_right = 320.0
+offset_bottom = 380.0
 script = ExtResource("2_y8rs4")
 
 [node name="VBoxContainer" parent="." index="0"]
