@@ -1,7 +1,6 @@
-extends Panel
+extends DebugSection
 
 func _ready():
-	get_parent().refresh.connect(on_refresh)
 	$VBoxContainer/Run.button_up.connect(on_button_up)
 
 func on_refresh():

@@ -3,6 +3,9 @@ extends Control
 signal refresh
 
 func _ready():
+	for child in get_children():
+		if child is DebugSection:
+			refresh.connect(child.on_refresh)
 	$VersionLabel.text = "v" + Utils.get_version()
 	set_open(false)
 
