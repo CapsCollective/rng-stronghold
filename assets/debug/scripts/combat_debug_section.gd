@@ -19,8 +19,8 @@ func on_button_up():
 		6: $VBoxContainer/EnemyUnits/D6s.get_value(),
 		8: $VBoxContainer/EnemyUnits/D8s.get_value()
 	}
-	var your_rolls := roll(your_dice)
-	var enemy_rolls := roll(enemy_dice)
+	var your_rolls := roll_dice(your_dice)
+	var enemy_rolls := roll_dice(enemy_dice)
 	results += "Your Rolls"
 	for roll in your_rolls:
 		results += ", %s (d%s)" % [roll.roll, roll.tier]
@@ -76,19 +76,17 @@ func on_button_up():
 	
 	$VBoxContainer/Results.text = results
 
-func roll(dice: Dictionary) -> Array:
+func roll_dice(dice: Dictionary) -> Array:
 	var rolls = []
 	for tier in dice:
-		var count = dice[tier]
 		for i in dice[tier]:
 			rolls.append({
-				'roll': randi_range(1, tier),
-				'tier': tier
+				"roll": randi_range(1, tier),
+				"tier": tier
 			})
-	rolls.sort_custom(sort_rolls)
+	rolls.sort_custom(func(a, b):
+		if (a.roll == b.roll):
+			return a.tier < b.tier
+		return a.roll > b.roll
+	)
 	return rolls
-
-func sort_rolls(a, b):
-	if (a.roll == b.roll):
-		return a.tier < b.tier
-	return a.roll > b.roll
