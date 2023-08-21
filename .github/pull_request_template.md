@@ -2,14 +2,14 @@
 <!-- Provide a brief description of what this PR does and how it can be tested below -->
 Some description...
 
-<!-- DO NOT delete the checklist below, make sure to complete each step after publishing the PR -->
+<!-- DO NOT delete the checklist below (unless this is a release PR), make sure to complete each step after publishing the PR -->
 ### The PR has been...
 - [ ] provided a reasonable name that is not just the branch name (e.g "Implemented walls mechanic")
-- [ ] linked to its related issue
+- [ ] linked to its related issue *(if any)*
 - [ ] assigned a reviewer from the team
 
 ### The code has been...
-- [ ] made mergable and free of conflicts in relation to `master` *(according to GitHub)*
+- [ ] made mergable and free of conflicts in relation to the base branch *(according to GitHub)*
 - [ ] pulled to the reviewer's machine and reasonably tested
 - [ ] read through and approved by a reviewer
 - [ ] bumped in project version over the [latest release](https://github.com/CapsCollective/rng-stronghold/releases) (i.e. vX.Y.Z for major, minor or patch)
