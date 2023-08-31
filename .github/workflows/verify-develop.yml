@@ -1,0 +1,48 @@
+name: 'Verify Develop'
+
+on:
+  pull_request:
+    branches: [ 'develop' ]
+
+env:
+  APP_NAME: RNGStronghold
+  BUILD_DIR: build
+  GODOT_VERSION: 4.1
+  VERSION_FILE: project.godot
+  VERSION_REGEX: config\/version=\"\K[0-9.\-A-z]*
+
+jobs:
+  check-version-bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run action
+        uses: ./.github/actions/check-version-bump
+        with:
+          version-file: ${{ env.VERSION_FILE }}
+          version-regex: ${{ env.VERSION_REGEX }}
+      
+  run-project-validation:
+    needs: check-version-bump
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run action
+        uses: ./.github/actions/run-project-validation
+        with:
+          godot-version: ${{ env.GODOT_VERSION }}
+
+  build:
+    needs: run-project-validation
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run action
+        uses: ./.github/actions/build-godot
+        with:
+          app-name: ${{ env.APP_NAME }}
+          build-dir: ${{ env.BUILD_DIR }}
+          godot-version: ${{ env.GODOT_VERSION }}
