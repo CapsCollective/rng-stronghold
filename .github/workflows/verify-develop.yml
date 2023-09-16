@@ -5,8 +5,6 @@ on:
     branches: [ 'develop' ]
 
 env:
-  APP_NAME: RNGStronghold
-  BUILD_DIR: build
   GODOT_VERSION: 4.1
   VERSION_FILE: project.godot
   VERSION_REGEX: config\/version=\"\K[0-9.\-A-z]*
@@ -15,34 +13,70 @@ jobs:
   check-version-bump:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout current branch
+        uses: actions/checkout@v3
 
-      - name: Run action
-        uses: ./.github/actions/check-version-bump
+      - name: Extract old version string
+        uses: ./.github/actions/extract-version-string
         with:
           version-file: ${{ env.VERSION_FILE }}
           version-regex: ${{ env.VERSION_REGEX }}
+          git-ref: ${{ github.base_ref }}
+        id: extract-version-old
+
+      - name: Checkout current branch
+        uses: actions/checkout@v3
+
+      - name: Extract new version string
+        uses: ./.github/actions/extract-version-string
+        with:
+          version-file: ${{ env.VERSION_FILE }}
+          version-regex: ${{ env.VERSION_REGEX }}
+        id: extract-version-new
+
+      - name: Check semantic version bump
+        uses: ./.github/actions/check-version-bump
+        with:
+          new-version: ${{ steps.extract-version-new.outputs.version-string }}
+          old-version: ${{ steps.extract-version-old.outputs.version-string }}
       
   run-project-validation:
     needs: check-version-bump
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout current branch
+        uses: actions/checkout@v3
 
-      - name: Run action
-        uses: ./.github/actions/run-project-validation
+      - name: Install Godot
+        uses: ./.github/actions/install-godot
         with:
           godot-version: ${{ env.GODOT_VERSION }}
+        id: install-godot
+
+      - name: Open Godot editor for reimport
+        run: ${{ steps.install-godot.outputs.godot-executable }} --editor --headless --quit || true
+
+      - name: Run project validations
+        run: ${{ steps.install-godot.outputs.godot-executable }} --script scripts/run_validations.gd --headless
 
   build:
     needs: run-project-validation
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout current branch
+        uses: actions/checkout@v3
 
-      - name: Run action
+      - name: Install Godot
+        uses: ./.github/actions/install-godot
+        with:
+          godot-version: ${{ env.GODOT_VERSION }}
+          install-templates: true
+        id: install-godot
+
+      - name: Open Godot editor for reimport
+        run: ${{ steps.install-godot.outputs.godot-executable }} --editor --headless --quit || true
+
+      - name: Build and upload artifacts for all platforms
         uses: ./.github/actions/build-godot
         with:
-          app-name: ${{ env.APP_NAME }}
-          build-dir: ${{ env.BUILD_DIR }}
-          godot-version: ${{ env.GODOT_VERSION }}
+          godot-executable: ${{ steps.install-godot.outputs.godot-executable }}

@@ -1,0 +1,36 @@
+action.ymlname: 'Extract Version String'
+description: 'Extract a version string from a file by regex'
+
+inputs:
+  version-file:
+    description: 'The file containing the version number'
+    required: true
+    default: 'undefined'
+  version-regex:
+    description: 'The regex expression to capture the semantic version'
+    required: true
+    default: '[0-9.\-A-z]*'
+  git-ref:
+    description: 'The Git reference to perform the checkout from'
+    required: false
+    default: ''
+
+outputs:
+  version-string:
+    description: 'The extracted version string'
+    value: ${{ steps.extract-string.outputs.VERSION }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout branch
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ inputs.git-ref }}
+
+    - name: Extract version string
+      shell: bash
+      run: |
+        VERSION_STRING=`grep -Po "${{ inputs.version-regex }}" ./${{ inputs.version-file }}`
+        echo "VERSION=v$VERSION_STRING" >> $GITHUB_OUTPUT
+      id: extract-string

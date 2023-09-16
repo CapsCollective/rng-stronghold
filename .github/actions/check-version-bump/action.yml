@@ -1,44 +1,19 @@
 name: 'Check Version Bump'
-description: 'Check whether a semantic version number within a file has been bumped'
+description: 'Check whether a semantic version number has been bumped'
 
 inputs:
-  version-file:
-    description: 'The file containing the version number'
+  new-version:
+    description: 'The new semantic version'
     required: true
-    default: 'undefined'
-  version-regex:
-    description: 'The regex expression to capture the semantic version'
+    default: 'v0.0.0'
+  old-version:
+    description: 'The old semantic version'
     required: true
-    default: '[0-9.\-A-z]*' 
+    default: 'v0.0.0' 
 
 runs:
   using: 'composite'
   steps:
-    - name: Checkout current branch
-      uses: actions/checkout@v3
-      with:
-        path: current
-
-    - name: Assign new version string
-      shell: bash
-      run: |
-        NEW_VERSION=`grep -Po "${{ inputs.version-regex }}" ./current/${{ inputs.version-file }}`
-        echo "VERSION=v$NEW_VERSION" >> $GITHUB_OUTPUT
-      id: branch
-
-    - name: Checkout base branch
-      uses: actions/checkout@v3
-      with:
-        ref: ${{ github.base_ref }}
-        path: base
-    
-    - name: Assign old version string
-      shell: bash
-      run: |
-        OLD_VERSION=`grep -Po "${{ inputs.version-regex }}" ./base/${{ inputs.version-file }}`
-        echo "VERSION=v$OLD_VERSION" >> $GITHUB_OUTPUT
-      id: base
-    
     - name: Download semver script
       shell: bash
       run: |
@@ -48,6 +23,4 @@ runs:
     - name: Compare semvers
       shell: bash
       run: |
-        NEW_VERSION=`echo ${{ steps.branch.outputs.VERSION }}`
-        OLD_VERSION=`echo ${{ steps.base.outputs.VERSION }}`
-        ./semver2.sh $NEW_VERSION $OLD_VERSION | { read -r var; if [ "$var" -gt 0 ]; then exit 0; else echo "AntiquatedVersionError: downstream version ("$NEW_VERSION") is <= base branch (${{ github.base_ref }}) version ("$OLD_VERSION"). Please update project version to newer semantic version before merging." && exit 1; fi; }
+        ./semver2.sh ${{ inputs.new-version }} ${{ inputs.old-version }} | { read -r var; if [ "$var" -gt 0 ]; then exit 0; else echo "AntiquatedVersionError: downstream version ("${{ inputs.new-version }}") is <= base version ("${{ inputs.old-version }}"). Please update to newer semantic version before merging." && exit 1; fi; }
