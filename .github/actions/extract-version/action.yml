@@ -1,5 +1,5 @@
-action.ymlname: 'Extract Version String'
-description: 'Extract a version string from a file by regex'
+action.ymlname: 'Extract Version'
+description: 'Extract a version from a file by regex'
 
 inputs:
   version-file:
@@ -16,6 +16,9 @@ inputs:
     default: ''
 
 outputs:
+  version-number:
+    description: 'The extracted version number'
+    value: ${{ steps.extract-number.outputs.VERSION }}
   version-string:
     description: 'The extracted version string'
     value: ${{ steps.extract-string.outputs.VERSION }}
@@ -28,9 +31,14 @@ runs:
       with:
         ref: ${{ inputs.git-ref }}
 
-    - name: Extract version string
+    - name: Extract version number
       shell: bash
       run: |
-        VERSION_STRING=`grep -Po "${{ inputs.version-regex }}" ./${{ inputs.version-file }}`
-        echo "VERSION=v$VERSION_STRING" >> $GITHUB_OUTPUT
+        VERSION_NUMBER=`grep -Po "${{ inputs.version-regex }}" ./${{ inputs.version-file }}`
+        echo "VERSION=$VERSION_NUMBER" >> $GITHUB_OUTPUT
+      id: extract-number
+
+    - name: Extract version
+      shell: bash
+      run: echo "VERSION=v${{ steps.extract-number.outputs.VERSION }}" >> $GITHUB_OUTPUT
       id: extract-string
