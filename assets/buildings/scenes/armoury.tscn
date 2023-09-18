@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://2pn0sstfwsql"]
+
+[ext_resource type="Script" path="res://assets/buildings/scripts/building.gd" id="1_6dnkk"]
+[ext_resource type="ArrayMesh" uid="uid://bwtjwljfr3uia" path="res://assets/buildings/models/armoury/armoury_geo.res" id="2_ikqay"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8ybs"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cqqqi"]
+points = PackedVector3Array(-1, -1, -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1)
+
+[node name="Armoury" type="Node3D"]
+script = ExtResource("1_6dnkk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(5.6, 0, 0, 0, 5.6, 0, 0, 0, 5.6, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = ExtResource("2_ikqay")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ybs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_cqqqi")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxq6vpvntwv01"]
+
+[ext_resource type="Script" path="res://assets/buildings/scripts/building.gd" id="1_brf3u"]
+[ext_resource type="ArrayMesh" uid="uid://cidgwartiiilx" path="res://assets/buildings/models/fort/fort_geo.res" id="2_e78s3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8ybs"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gqabl"]
+data = PackedVector3Array(-1, -0.4269, 1, -1, 1, -1, -1, 1, 1, -1, -0.4269, 1, -1, -0.4269, -1, -1, 1, -1, -1, -0.4269, -1, 1, 1, -1, -1, 1, -1, -1, -0.4269, -1, 1, -0.4269, -1, 1, 1, -1, 1, -0.4269, -1, 1, 1, 1, 1, 1, -1, 1, -0.4269, -1, 1, -0.4269, 1, 1, 1, 1, 1, -0.4269, 1, -1, 1, 1, 1, 1, 1, 1, -0.4269, 1, -1, -0.4269, 1, -1, 1, 1, -1, -0.4269, -1, 1, -0.4269, 1, 1, -0.4269, -1, -1, -0.4269, -1, -1, -0.4269, 1, 1, -0.4269, 1, 0.4769, 1, 0.4769, 0.4769, 1.7112, -0.4769, 0.4769, 1, -0.4769, 0.4769, 1, 0.4769, 0.4769, 1.7112, 0.4769, 0.4769, 1.7112, -0.4769, -0.4769, 1, 0.4769, -1, 1, -1, -0.4769, 1, -0.4769, -0.4769, 1, 0.4769, -1, 1, 1, -1, 1, -1, -0.4769, 1, -0.4769, 1, 1, -1, 0.4769, 1, -0.4769, -0.4769, 1, -0.4769, -1, 1, -1, 1, 1, -1, 0.4769, 1, -0.4769, 1, 1, 1, 0.4769, 1, 0.4769, 0.4769, 1, -0.4769, 1, 1, -1, 1, 1, 1, 0.4769, 1, 0.4769, -1, 1, 1, -0.4769, 1, 0.4769, 0.4769, 1, 0.4769, 1, 1, 1, -1, 1, 1, 0.4769, 1.7112, -0.4769, -0.4769, 1.7112, 0.4769, -0.4769, 1.7112, -0.4769, 0.4769, 1.7112, -0.4769, 0.4769, 1.7112, 0.4769, -0.4769, 1.7112, 0.4769, -0.4769, 1, -0.4769, -0.4769, 1.7112, 0.4769, -0.4769, 1, 0.4769, -0.4769, 1, -0.4769, -0.4769, 1.7112, -0.4769, -0.4769, 1.7112, 0.4769, -0.4769, 1, 0.4769, 0.4769, 1.7112, 0.4769, 0.4769, 1, 0.4769, -0.4769, 1, 0.4769, -0.4769, 1.7112, 0.4769, 0.4769, 1.7112, 0.4769, 0.4769, 1, -0.4769, -0.4769, 1.7112, -0.4769, -0.4769, 1, -0.4769, 0.4769, 1, -0.4769, 0.4769, 1.7112, -0.4769, -0.4769, 1.7112, -0.4769)
+
+[node name="Fort" type="Node3D"]
+script = ExtResource("1_brf3u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(13, 0, 0, 0, 13, 0, 0, 0, 13, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = ExtResource("2_e78s3")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8ybs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_gqabl")

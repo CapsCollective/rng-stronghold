@@ -4,16 +4,15 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://boxplkyalrvtv"
 path.s3tc="res://.godot/imported/dice_d4_tex.png-4921bc4c2b5ed7c1739e992f52e0956a.s3tc.ctex"
-path.etc2="res://.godot/imported/dice_d4_tex.png-4921bc4c2b5ed7c1739e992f52e0956a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/dice/models/d4/dice_d4_tex.png"
-dest_files=["res://.godot/imported/dice_d4_tex.png-4921bc4c2b5ed7c1739e992f52e0956a.s3tc.ctex", "res://.godot/imported/dice_d4_tex.png-4921bc4c2b5ed7c1739e992f52e0956a.etc2.ctex"]
+dest_files=["res://.godot/imported/dice_d4_tex.png-4921bc4c2b5ed7c1739e992f52e0956a.s3tc.ctex"]
 
 [params]
 

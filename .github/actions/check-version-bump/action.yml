@@ -1,0 +1,26 @@
+name: 'Check Version Bump'
+description: 'Check whether a semantic version number has been bumped'
+
+inputs:
+  new-version:
+    description: 'The new semantic version'
+    required: true
+    default: 'v0.0.0'
+  old-version:
+    description: 'The old semantic version'
+    required: true
+    default: 'v0.0.0' 
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Download semver script
+      shell: bash
+      run: |
+        curl https://raw.githubusercontent.com/Ariel-Rodriguez/sh-semversion-2/main/semver2.sh -o semver2.sh
+        chmod 755 ./semver2.sh
+    
+    - name: Compare semvers
+      shell: bash
+      run: |
+        ./semver2.sh ${{ inputs.new-version }} ${{ inputs.old-version }} | { read -r var; if [ "$var" -gt 0 ]; then exit 0; else echo "AntiquatedVersionError: downstream version ("${{ inputs.new-version }}") is <= base version ("${{ inputs.old-version }}"). Please update to newer semantic version before merging." && exit 1; fi; }
