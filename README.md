@@ -6,7 +6,7 @@ A game about evil dice-people chaos made in Godot.
 
 We're developing this game as an open-source product primarily **for the benefit of other game developers** who might want to see how to turn an open-source, hobby project into something releasable to storefronts.
 
-If you just want to go play the game, then please support us by wishlisting it, and purchasing it through [Steam](https://store.steampowered.com/developer/caps-collective) or [itch.io](https://caps-collective.itch.io) when it becomes available. But until then, **feel free to [drop us a message on Discord](https://discord.com/invite/Nnqd4YSdXN) for a beta key - we're always super happy to get playtesters!**
+If you just want to go play the game, then please support us by wishlisting it, and purchasing it through [Steam](https://store.steampowered.com/developer/caps-collective) or [itch.io](https://capscollective.itch.io) when it becomes available. But until then, **feel free to [drop us a message on Discord](https://discord.com/invite/Nnqd4YSdXN) for a beta key - we're always super happy to get playtesters!**
 
 The project is being developed out of our shared passion for putting out cool experiences and is solely being funded by our own blood, sweat, tears, the _continual ritual sacrifice of elves_ and whatever we can get from Steam and itch sales.
 
