@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm06gok1hhcpc"]
+
+[ext_resource type="PackedScene" uid="uid://c6uem6u1httu1" path="res://assets/debug/scenes/debug_panel.tscn" id="1_vgojy"]
+[ext_resource type="Script" path="res://assets/debug/scripts/debug_panel_units.gd" id="2_33eda"]
+
+[node name="UnitsDebugPanel" instance=ExtResource("1_vgojy")]
+offset_right = 250.0
+offset_bottom = 200.0
+script = ExtResource("2_33eda")
+
+[node name="VBoxContainer" parent="." index="0"]
+anchors_preset = -1
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="PanelTitle" parent="VBoxContainer" index="0"]
+text = "Units"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer" index="1"]
+layout_mode = 2
+columns = 3
+
+[node name="Tier" type="Label" parent="VBoxContainer/GridContainer" index="0"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Tier"
+
+[node name="Total" type="Label" parent="VBoxContainer/GridContainer" index="1"]
+custom_minimum_size = Vector2(81.25, 0)
+layout_mode = 2
+text = "Total"
+
+[node name="Available" type="Label" parent="VBoxContainer/GridContainer" index="2"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Available"
+horizontal_alignment = 2
+
+[node name="D4" type="Label" parent="VBoxContainer/GridContainer" index="3"]
+layout_mode = 2
+text = "D4"
+
+[node name="D4Total" type="SpinBox" parent="VBoxContainer/GridContainer" index="4"]
+layout_mode = 2
+
+[node name="D4Available" type="Label" parent="VBoxContainer/GridContainer" index="5"]
+layout_mode = 2
+text = "0
+"
+horizontal_alignment = 2
+
+[node name="D6" type="Label" parent="VBoxContainer/GridContainer" index="6"]
+layout_mode = 2
+text = "D6"
+
+[node name="D6Total" type="SpinBox" parent="VBoxContainer/GridContainer" index="7"]
+layout_mode = 2
+
+[node name="D6Available" type="Label" parent="VBoxContainer/GridContainer" index="8"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="D8" type="Label" parent="VBoxContainer/GridContainer" index="9"]
+layout_mode = 2
+text = "D8"
+
+[node name="D8Total" type="SpinBox" parent="VBoxContainer/GridContainer" index="10"]
+layout_mode = 2
+
+[node name="D8Available" type="Label" parent="VBoxContainer/GridContainer" index="11"]
+layout_mode = 2
+text = "0
+"
+horizontal_alignment = 2

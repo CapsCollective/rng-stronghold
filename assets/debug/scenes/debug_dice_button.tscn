@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dclujk3fw1jmg"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_qmnk1"]
+
+[node name="DiceButton" type="Button"]
+custom_minimum_size = Vector2(40, 40)
+toggle_mode = true
+button_group = SubResource("ButtonGroup_qmnk1")
+text = "1"

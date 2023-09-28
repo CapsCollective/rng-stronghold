@@ -1,26 +1,18 @@
 extends DebugSection
 
-func _ready():
-	$VBoxContainer/Run.button_up.connect(on_button_up)
+@onready var your_units = $VBoxContainer/YourUnits
+@onready var enemy_units = $VBoxContainer/EnemyUnits
+@onready var run_button = $VBoxContainer/RunButton
+@onready var results_text = $VBoxContainer/Results
 
-func on_refresh():
-	print("Refresh!")
+func _ready():
+	run_button.button_up.connect(on_button_up)
 
 func on_button_up():
 	print("Combat Start!")
 	var results := ""
-	var your_dice := {
-		4: $VBoxContainer/YourUnits/D4s.get_value(),
-		6: $VBoxContainer/YourUnits/D6s.get_value(),
-		8: $VBoxContainer/YourUnits/D8s.get_value()
-	}
-	var enemy_dice := {
-		4: $VBoxContainer/EnemyUnits/D4s.get_value(),
-		6: $VBoxContainer/EnemyUnits/D6s.get_value(),
-		8: $VBoxContainer/EnemyUnits/D8s.get_value()
-	}
-	var your_rolls := roll_dice(your_dice)
-	var enemy_rolls := roll_dice(enemy_dice)
+	var your_rolls := Utils.roll_dice(your_units.get_units())
+	var enemy_rolls := Utils.roll_dice(enemy_units.get_units())
 	results += "Your Rolls"
 	for roll in your_rolls:
 		results += ", %s (d%s)" % [roll.roll, roll.tier]
@@ -74,19 +66,4 @@ func on_button_up():
 	if damage_dealt > 0:
 		results += "\nEnemy deals %s damage" % damage_dealt
 	
-	$VBoxContainer/Results.text = results
-
-func roll_dice(dice: Dictionary) -> Array:
-	var rolls = []
-	for tier in dice:
-		for i in dice[tier]:
-			rolls.append({
-				"roll": randi_range(1, tier),
-				"tier": tier
-			})
-	rolls.sort_custom(func(a, b):
-		if (a.roll == b.roll):
-			return a.tier < b.tier
-		return a.roll > b.roll
-	)
-	return rolls
+	results_text.text = results

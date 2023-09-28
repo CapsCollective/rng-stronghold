@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://klq80i004brf"]
+[gd_scene load_steps=6 format=3 uid="uid://klq80i004brf"]
 
 [ext_resource type="Script" path="res://assets/debug/scripts/debug_panel.gd" id="1_i2e26"]
-[ext_resource type="PackedScene" uid="uid://bbqbny2objppp" path="res://assets/debug/scenes/example_debug_panel.tscn" id="2_tew68"]
-[ext_resource type="PackedScene" uid="uid://5lynws024gew" path="res://assets/debug/scenes/combat_debug_panel.tscn" id="3_bncxf"]
+[ext_resource type="PackedScene" uid="uid://5lynws024gew" path="res://assets/debug/scenes/debug_panel_combat.tscn" id="3_bncxf"]
+[ext_resource type="PackedScene" uid="uid://caf3yhbncyxwf" path="res://assets/debug/scenes/debug_panel_buildings.tscn" id="3_xgp8e"]
+[ext_resource type="PackedScene" uid="uid://bm06gok1hhcpc" path="res://assets/debug/scenes/debug_panel_units.tscn" id="4_spr7n"]
+[ext_resource type="PackedScene" uid="uid://nyn1wvia87jd" path="res://assets/debug/scenes/debug_panel_resources.tscn" id="5_d5tlc"]
 
 [node name="DebugDisplay" type="Control"]
 layout_mode = 3
@@ -36,16 +38,30 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "v0.0.0"
 
-[node name="ExampleDebugPanel" parent="." instance=ExtResource("2_tew68")]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 100.0
-offset_right = 300.0
-offset_bottom = 350.0
-
 [node name="CombatDebugPanel" parent="." instance=ExtResource("3_bncxf")]
 layout_mode = 0
 offset_left = 340.0
 offset_top = 100.0
 offset_right = 660.0
 offset_bottom = 480.0
+
+[node name="TabContainer" parent="." instance=ExtResource("3_xgp8e")]
+layout_mode = 0
+offset_left = 765.0
+offset_top = 162.0
+offset_right = 1101.0
+offset_bottom = 462.0
+
+[node name="UnitsDebugPanel" parent="." instance=ExtResource("4_spr7n")]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 341.0
+offset_right = 304.0
+offset_bottom = 541.0
+
+[node name="ResourcesDebugPanel" parent="." instance=ExtResource("5_d5tlc")]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 90.0
+offset_right = 270.0
+offset_bottom = 301.0

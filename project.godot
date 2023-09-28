@@ -19,6 +19,7 @@ config/version="0.1.7"
 [autoload]
 
 Savegame="*res://assets/persistence/savegame.gd"
+GameManager="*res://assets/common/game_manager.gd"
 
 [display]
 

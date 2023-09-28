@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://5lynws024gew"]
+
+[ext_resource type="PackedScene" uid="uid://c6uem6u1httu1" path="res://assets/debug/scenes/debug_panel.tscn" id="1_ndo2s"]
+[ext_resource type="Script" path="res://assets/debug/scripts/debug_section_combat.gd" id="2_y8rs4"]
+[ext_resource type="PackedScene" uid="uid://baj8jkegepq5f" path="res://assets/debug/scenes/debug_units_input.tscn" id="3_bmhxi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dkh2n"]
+font_size = 14
+
+[node name="CombatDebugPanel" instance=ExtResource("1_ndo2s")]
+offset_right = 320.0
+offset_bottom = 380.0
+script = ExtResource("2_y8rs4")
+
+[node name="VBoxContainer" parent="." index="0"]
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="PanelTitle" parent="VBoxContainer" index="0"]
+text = "Combat"
+
+[node name="YourLabel" type="Label" parent="VBoxContainer" index="1"]
+layout_mode = 2
+text = "You"
+label_settings = SubResource("LabelSettings_dkh2n")
+
+[node name="YourUnits" parent="VBoxContainer" index="2" instance=ExtResource("3_bmhxi")]
+layout_mode = 2
+
+[node name="EnemyLabel" type="Label" parent="VBoxContainer" index="3"]
+layout_mode = 2
+text = "Enemy"
+label_settings = SubResource("LabelSettings_dkh2n")
+
+[node name="EnemyUnits" parent="VBoxContainer" index="4" instance=ExtResource("3_bmhxi")]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" index="5"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="RunButton" type="Button" parent="VBoxContainer" index="6"]
+layout_mode = 2
+text = "Roll Combat"
+
+[node name="Results" type="RichTextLabel" parent="VBoxContainer" index="7"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 3
+text = "You Rolled 6 (d6), 5 (d6), 3 (d4)
+Enemy Rolled 5 (d6), 5 (d8), 4 (d6)
+You lose 1d4
+Enemy loses 1d6
+Enemy deals X damage"
+scroll_active = false
