@@ -26,7 +26,6 @@ layout_mode = 2
 text = "Tier"
 
 [node name="Total" type="Label" parent="VBoxContainer/GridContainer" index="1"]
-custom_minimum_size = Vector2(81.25, 0)
 layout_mode = 2
 text = "Total"
 

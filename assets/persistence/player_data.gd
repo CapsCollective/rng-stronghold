@@ -18,7 +18,9 @@ func serialise() -> Dictionary:
 
 func deserialise(data: Dictionary) -> DeserialisationResult:
 	resources = data.get(PD_SECTION_PLAYER_RESOURCES, {})
-	units = data.get(PD_SECTION_PLAYER_UNITS, {
+	# This causes the keys to be type string i.e. "4" instead of number 4
+	#units = data.get(PD_SECTION_PLAYER_UNITS, {
+	units = {
 		4: {
 			"total": 0,
 			"assigned": 0
@@ -31,5 +33,6 @@ func deserialise(data: Dictionary) -> DeserialisationResult:
 			"total": 0,
 			"assigned": 0
 		},
-	})
+	#})
+	}
 	return DeserialisationResult.OK

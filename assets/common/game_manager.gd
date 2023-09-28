@@ -12,7 +12,7 @@ const Resources: Array = [
 	"gold",
 ]
 
-signal resource_changed(resource: String)
+signal resource_changed(resource: String, value: int)
 signal units_changed(tier: int)
 
 func valid_resource(resource: String) -> bool:
@@ -28,7 +28,7 @@ func set_resource(resource: String, value: int):
 	if LogFlags.has("debug_stats"):
 		print("Resource: Setting ", resource, " to ", value)
 	Savegame.player.resources[resource] = value
-	resource_changed.emit(resource)
+	resource_changed.emit(resource, value)
 	
 func change_resource(resource: String, change: int):
 	if !has_resource(resource, change):

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://wld3cxit0cc"]
+
+[ext_resource type="Script" path="res://assets/debug/scripts/debug_action.gd" id="1_q61uq"]
+[ext_resource type="LabelSettings" uid="uid://cwva0alg3ydmv" path="res://assets/fonts/h3_font.tres" id="1_wyqv5"]
+[ext_resource type="LabelSettings" uid="uid://3rkfidxeoaqe" path="res://assets/fonts/h1_font.tres" id="2_w3g1w"]
+
+[node name="Action" type="VBoxContainer"]
+script = ExtResource("1_q61uq")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+text = "Collect Water"
+label_settings = ExtResource("1_wyqv5")
+horizontal_alignment = 1
+
+[node name="Remaining" type="Label" parent="."]
+layout_mode = 2
+text = "4"
+label_settings = ExtResource("2_w3g1w")
+horizontal_alignment = 1
+
+[node name="Assign" type="Button" parent="."]
+layout_mode = 2
+text = "Assign"

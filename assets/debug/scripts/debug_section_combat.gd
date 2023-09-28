@@ -1,18 +1,20 @@
-extends DebugSection
+extends Control
 
-@onready var your_units = $VBoxContainer/YourUnits
-@onready var enemy_units = $VBoxContainer/EnemyUnits
-@onready var run_button = $VBoxContainer/RunButton
-@onready var results_text = $VBoxContainer/Results
+@onready var your_units: DebugUnitsInput = $YourUnits
+@onready var enemy_units: DebugUnitsInput = $EnemyUnits
+@onready var run_button = $RunButton
+@onready var results_text = $Results
 
 func _ready():
 	run_button.button_up.connect(on_button_up)
+	results_text.text = ""
 
 func on_button_up():
 	print("Combat Start!")
 	var results := ""
 	var your_rolls := Utils.roll_dice(your_units.get_units())
 	var enemy_rolls := Utils.roll_dice(enemy_units.get_units())
+	your_units.reset_units()
 	results += "Your Rolls"
 	for roll in your_rolls:
 		results += ", %s (d%s)" % [roll.roll, roll.tier]

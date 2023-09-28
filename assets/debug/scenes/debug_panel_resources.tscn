@@ -1,48 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://nyn1wvia87jd"]
+[gd_scene load_steps=3 format=3 uid="uid://bon51dyvp8mot"]
 
 [ext_resource type="PackedScene" uid="uid://c6uem6u1httu1" path="res://assets/debug/scenes/debug_panel.tscn" id="1_26k0j"]
-[ext_resource type="Script" path="res://assets/debug/scripts/resources_debug_section.gd" id="2_ettn0"]
+[ext_resource type="Script" path="res://assets/debug/scripts/debug_section_resources.gd" id="2_y4v0x"]
 
-[node name="ResourcesDebugPanel" instance=ExtResource("1_26k0j")]
-offset_right = 228.0
-offset_bottom = 211.0
-script = ExtResource("2_ettn0")
+[node name="ResourceDebugPanel" instance=ExtResource("1_26k0j")]
+offset_right = 300.0
+offset_bottom = 300.0
+script = ExtResource("2_y4v0x")
 
 [node name="VBoxContainer" parent="." index="0"]
 anchors_preset = -1
 offset_right = -10.0
 offset_bottom = -10.0
+theme_override_constants/separation = 10
 
 [node name="PanelTitle" parent="VBoxContainer" index="0"]
-text = "Resource"
+text = "Resources"
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer" index="1"]
+[node name="ResourcesContainer" type="VBoxContainer" parent="VBoxContainer" index="1"]
 layout_mode = 2
-size_flags_vertical = 3
-columns = 2
+theme_override_constants/separation = 0
 
-[node name="Water" type="Label" parent="VBoxContainer/GridContainer" index="0"]
-custom_minimum_size = Vector2(100, 0)
+[node name="ResetButton" type="Button" parent="VBoxContainer" index="2"]
 layout_mode = 2
-text = "Water"
-
-[node name="WaterValue" type="SpinBox" parent="VBoxContainer/GridContainer" index="1"]
-layout_mode = 2
-
-[node name="Food" type="Label" parent="VBoxContainer/GridContainer" index="2"]
-layout_mode = 2
-text = "Food"
-
-[node name="FoodValue" type="SpinBox" parent="VBoxContainer/GridContainer" index="3"]
-layout_mode = 2
-
-[node name="Gold" type="Label" parent="VBoxContainer/GridContainer" index="4"]
-layout_mode = 2
-text = "Gold"
-
-[node name="GoldValue" type="SpinBox" parent="VBoxContainer/GridContainer" index="5"]
-layout_mode = 2
-
-[node name="Reset" type="Button" parent="VBoxContainer" index="2"]
-layout_mode = 2
-text = "Reset"
+text = "Reset All"

@@ -1,13 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://caf3yhbncyxwf"]
+[gd_scene load_steps=9 format=3 uid="uid://caf3yhbncyxwf"]
 
 [ext_resource type="Script" path="res://assets/debug/scripts/debug_building.gd" id="1_xw6vb"]
 [ext_resource type="LabelSettings" uid="uid://3rkfidxeoaqe" path="res://assets/fonts/h1_font.tres" id="2_gawm8"]
 [ext_resource type="LabelSettings" uid="uid://bmxdt10e72a0o" path="res://assets/fonts/h2_font.tres" id="3_b3qlw"]
 [ext_resource type="PackedScene" uid="uid://baj8jkegepq5f" path="res://assets/debug/scenes/debug_units_input.tscn" id="4_0gb48"]
-[ext_resource type="PackedScene" uid="uid://dclujk3fw1jmg" path="res://assets/debug/scenes/debug_dice_button.tscn" id="5_m56wh"]
-[ext_resource type="LabelSettings" uid="uid://cwva0alg3ydmv" path="res://assets/fonts/h3_font.tres" id="6_4gy6k"]
+[ext_resource type="Script" path="res://assets/debug/scripts/debug_section_combat.gd" id="6_1k06f"]
+[ext_resource type="PackedScene" uid="uid://wld3cxit0cc" path="res://assets/debug/scenes/debug_action.tscn" id="6_ji11w"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_pq52f"]
+[sub_resource type="LabelSettings" id="LabelSettings_l6bgl"]
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_r5jxv"]
+font_size = 14
 
 [node name="TabContainer" type="TabContainer"]
 offset_right = 280.0
@@ -39,13 +43,17 @@ label_settings = ExtResource("3_b3qlw")
 [node name="Units" parent="Well/Well" instance=ExtResource("4_0gb48")]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Well/Well"]
+[node name="Separator" type="Control" parent="Well/Well"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="RollButton" type="Button" parent="Well/Well"]
 layout_mode = 2
 text = "Roll"
 
 [node name="HSeparator" type="HSeparator" parent="Well/Well"]
-custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="ResultsLabel" type="Label" parent="Well/Well"]
 layout_mode = 2
@@ -57,13 +65,9 @@ layout_mode = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 
-[node name="DiceButton" parent="Well/Well/DiceContainer" instance=ExtResource("5_m56wh")]
-layout_mode = 2
-button_group = SubResource("ButtonGroup_pq52f")
-
 [node name="HSeparator2" type="HSeparator" parent="Well/Well"]
-custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="ActionsLabel" type="Label" parent="Well/Well"]
 layout_mode = 2
@@ -77,53 +81,58 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 alignment = 1
 
-[node name="Action" type="VBoxContainer" parent="Well/Well/ActionsContainer"]
+[node name="Action2" parent="Well/Well/ActionsContainer" instance=ExtResource("6_ji11w")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Well/Well/ActionsContainer/Action"]
-layout_mode = 2
-text = "Collect Water"
-label_settings = ExtResource("6_4gy6k")
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="Well/Well/ActionsContainer/Action"]
-layout_mode = 2
-text = "4"
-label_settings = ExtResource("2_gawm8")
-horizontal_alignment = 1
-
-[node name="Button" type="Button" parent="Well/Well/ActionsContainer/Action"]
-layout_mode = 2
-text = "Assign"
-
-[node name="Farm" type="VBoxContainer" parent="."]
+[node name="North Wall" type="MarginContainer" parent="."]
 visible = false
 layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="PanelTitle" type="Label" parent="Farm"]
+[node name="Container" type="VBoxContainer" parent="North Wall"]
 layout_mode = 2
-text = "Farm"
-label_settings = ExtResource("2_gawm8")
+script = ExtResource("6_1k06f")
 
-[node name="Assigned" type="Label" parent="Farm"]
+[node name="PanelTitle" type="Label" parent="North Wall/Container"]
 layout_mode = 2
-text = "Assigned"
-label_settings = ExtResource("3_b3qlw")
+text = "Combat"
+label_settings = SubResource("LabelSettings_l6bgl")
 
-[node name="YourUnits" type="HBoxContainer" parent="Farm"]
+[node name="YourLabel" type="Label" parent="North Wall/Container"]
+layout_mode = 2
+text = "You"
+label_settings = SubResource("LabelSettings_r5jxv")
+
+[node name="YourUnits" parent="North Wall/Container" instance=ExtResource("4_0gb48")]
 layout_mode = 2
 
-[node name="D4s" type="SpinBox" parent="Farm/YourUnits"]
+[node name="EnemyLabel" type="Label" parent="North Wall/Container"]
 layout_mode = 2
-max_value = 9.0
-suffix = "D4"
+text = "Enemy"
+label_settings = SubResource("LabelSettings_r5jxv")
 
-[node name="D6s" type="SpinBox" parent="Farm/YourUnits"]
+[node name="EnemyUnits" parent="North Wall/Container" instance=ExtResource("4_0gb48")]
 layout_mode = 2
-max_value = 9.0
-suffix = "D6"
+consume_available = false
 
-[node name="D8s" type="SpinBox" parent="Farm/YourUnits"]
+[node name="HSeparator" type="HSeparator" parent="North Wall/Container"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-max_value = 9.0
-suffix = "D8"
+
+[node name="RunButton" type="Button" parent="North Wall/Container"]
+layout_mode = 2
+text = "Roll Combat"
+
+[node name="Results" type="RichTextLabel" parent="North Wall/Container"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 3
+text = "You Rolled 6 (d6), 5 (d6), 3 (d4)
+Enemy Rolled 5 (d6), 5 (d8), 4 (d6)
+You lose 1d4
+Enemy loses 1d6
+Enemy deals X damage"
+scroll_active = false

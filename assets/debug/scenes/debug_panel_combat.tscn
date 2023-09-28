@@ -1,49 +1,60 @@
 [gd_scene load_steps=5 format=3 uid="uid://5lynws024gew"]
 
-[ext_resource type="PackedScene" uid="uid://c6uem6u1httu1" path="res://assets/debug/scenes/debug_panel.tscn" id="1_ndo2s"]
 [ext_resource type="Script" path="res://assets/debug/scripts/debug_section_combat.gd" id="2_y8rs4"]
 [ext_resource type="PackedScene" uid="uid://baj8jkegepq5f" path="res://assets/debug/scenes/debug_units_input.tscn" id="3_bmhxi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_resk1"]
+font_size = 18
 
 [sub_resource type="LabelSettings" id="LabelSettings_dkh2n"]
 font_size = 14
 
-[node name="CombatDebugPanel" instance=ExtResource("1_ndo2s")]
+[node name="CombatDebugPanel" type="TabContainer"]
 offset_right = 320.0
 offset_bottom = 380.0
+
+[node name="Wall 1" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Container" type="VBoxContainer" parent="Wall 1"]
+layout_mode = 2
 script = ExtResource("2_y8rs4")
 
-[node name="VBoxContainer" parent="." index="0"]
-offset_right = -10.0
-offset_bottom = -10.0
-
-[node name="PanelTitle" parent="VBoxContainer" index="0"]
+[node name="PanelTitle" type="Label" parent="Wall 1/Container"]
+layout_mode = 2
 text = "Combat"
+label_settings = SubResource("LabelSettings_resk1")
 
-[node name="YourLabel" type="Label" parent="VBoxContainer" index="1"]
+[node name="YourLabel" type="Label" parent="Wall 1/Container"]
 layout_mode = 2
 text = "You"
 label_settings = SubResource("LabelSettings_dkh2n")
 
-[node name="YourUnits" parent="VBoxContainer" index="2" instance=ExtResource("3_bmhxi")]
+[node name="YourUnits" parent="Wall 1/Container" instance=ExtResource("3_bmhxi")]
 layout_mode = 2
 
-[node name="EnemyLabel" type="Label" parent="VBoxContainer" index="3"]
+[node name="EnemyLabel" type="Label" parent="Wall 1/Container"]
 layout_mode = 2
 text = "Enemy"
 label_settings = SubResource("LabelSettings_dkh2n")
 
-[node name="EnemyUnits" parent="VBoxContainer" index="4" instance=ExtResource("3_bmhxi")]
+[node name="EnemyUnits" parent="Wall 1/Container" instance=ExtResource("3_bmhxi")]
 layout_mode = 2
+consume_available = false
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer" index="5"]
+[node name="HSeparator" type="HSeparator" parent="Wall 1/Container"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="RunButton" type="Button" parent="VBoxContainer" index="6"]
+[node name="RunButton" type="Button" parent="Wall 1/Container"]
 layout_mode = 2
 text = "Roll Combat"
 
-[node name="Results" type="RichTextLabel" parent="VBoxContainer" index="7"]
+[node name="Results" type="RichTextLabel" parent="Wall 1/Container"]
 clip_contents = false
 layout_mode = 2
 size_flags_vertical = 3
