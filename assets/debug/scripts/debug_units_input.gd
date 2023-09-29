@@ -1,6 +1,12 @@
+@tool
 class_name DebugUnitsInput extends Control
 
 @export var consume_available: bool = true
+@export var editable: bool = true: 
+	set(val):
+		editable = val
+		for input in inputs:
+			inputs[input].editable = editable
 
 @onready var inputs = {
 	4: $D4s,
@@ -18,8 +24,12 @@ func _ready():
 		for input in inputs.values():
 			input.max_value = 20
 		return
+	
 	GameManager.units_changed.connect(on_units_changed)
+	GameManager.new_turn.connect(reset_units)
+	GameManager.new_game.connect(reset_units)
 	for tier in inputs.keys():
+		on_units_changed(tier)
 		inputs[tier].value_changed.connect(func(value: int): on_changed(tier, value))
 	
 func on_units_changed(tier: int):
@@ -35,6 +45,11 @@ func get_units() -> Dictionary:
 		units[tier] = inputs[tier].get_value()
 	return units
 
+func change_units(tier: int, change: int):
+	prev_input_vals[tier] += change
+	inputs[tier].set_value_no_signal(prev_input_vals[tier])
+
 func reset_units():
 	for input in inputs:
+		prev_input_vals[input] = 0
 		inputs[input].set_value_no_signal(0)

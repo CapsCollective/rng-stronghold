@@ -1,17 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://bm06gok1hhcpc"]
 
 [ext_resource type="PackedScene" uid="uid://c6uem6u1httu1" path="res://assets/debug/scenes/debug_panel.tscn" id="1_vgojy"]
-[ext_resource type="Script" path="res://assets/debug/scripts/debug_panel_units.gd" id="2_33eda"]
+[ext_resource type="Script" path="res://assets/debug/scripts/debug_units.gd" id="2_33eda"]
 
 [node name="UnitsDebugPanel" instance=ExtResource("1_vgojy")]
-offset_right = 250.0
-offset_bottom = 200.0
+offset_right = 300.0
+offset_bottom = 260.0
 script = ExtResource("2_33eda")
 
 [node name="VBoxContainer" parent="." index="0"]
 anchors_preset = -1
 offset_right = -10.0
 offset_bottom = -10.0
+theme_override_constants/separation = 10
 
 [node name="PanelTitle" parent="VBoxContainer" index="0"]
 text = "Units"

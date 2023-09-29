@@ -1,6 +1,20 @@
-[gd_scene format=3 uid="uid://dclujk3fw1jmg"]
+[gd_scene load_steps=4 format=3 uid="uid://dclujk3fw1jmg"]
+
+[ext_resource type="Script" path="res://assets/debug/scripts/debug_dice_button.gd" id="1_d1v20"]
+[ext_resource type="Texture2D" uid="uid://clmrbjl3ovdpu" path="res://assets/icons/d4.svg" id="1_kwilw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x8e1p"]
 
 [node name="DiceButton" type="Button"]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(60, 60)
+offset_right = 50.0
+offset_bottom = 54.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_x8e1p")
 toggle_mode = true
-text = "1"
+text = "6"
+icon = ExtResource("1_kwilw")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("1_d1v20")
+tier = 4
+roll = 6

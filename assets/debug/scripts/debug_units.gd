@@ -1,4 +1,4 @@
-extends DebugSection
+extends Control
 
 @onready var total_inputs = {
 	4: $VBoxContainer/GridContainer/D4Total,
@@ -16,8 +16,9 @@ extends DebugSection
 func _ready():
 	GameManager.units_changed.connect(on_units_changed)
 	for tier in total_inputs.keys():
+		on_units_changed(tier)
 		total_inputs[tier].value_changed.connect(func(value): on_total_changed(tier, value))
-
+	
 func on_total_changed(tier: int, value: int):
 	GameManager.set_total_units(tier, value)
 

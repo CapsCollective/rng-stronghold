@@ -1,30 +1,31 @@
 class_name DebugAction extends Control
 
-@onready var name_label: Label = $Name
-@onready var remaining_label: Label = $Remaining
-@onready var assign_button: Button = $Assign
-var button_group: ButtonGroup
-var action_name: String = "Collect Water"
-var required_points: int = 4
-var remaining_points: int = 0
+@export var action: BuildingAction
+@onready var name_label: Label = $Container/Name
+@onready var description_label: Label = $Container/Description
+@onready var assign_button: Button = $Container/Assign
+
+var button_group: ButtonGroup:
+	set(group):
+		if button_group:
+			button_group.changed.disconnect(on_roll_changed)
+		group.changed.connect(on_roll_changed)
+		button_group = group
 
 func _ready():
-	remaining_points = required_points
-	name_label.text = action_name
-	remaining_label.text = str(remaining_points)
+	name_label.text = action.title
+	description_label.text = action.description
+	assign_button.text = str(action.remaining_points)
 	assign_button.pressed.connect(assign_roll)
+
+func on_roll_changed(selected_roll: Button):
+	print (selected_roll)
+	assign_button.disabled = not action.valid_roll(int(selected_roll.text))
 
 func assign_roll():
 	var selected_roll = button_group.get_pressed_button()
-	if !selected_roll:
+	if not selected_roll:
 		return
-		
-	remaining_points -= int(selected_roll.text)
+	action.assign_roll(int(selected_roll.text))
 	selected_roll.queue_free()
-	if remaining_points <= 0:
-		complete()
-	remaining_label.text = str(remaining_points)
-
-func complete():
-	GameManager.change_resource("water", 5)
-	remaining_points = required_points
+	assign_button.text = str(action.remaining_points)

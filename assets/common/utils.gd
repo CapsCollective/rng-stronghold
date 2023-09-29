@@ -2,8 +2,16 @@ class_name Utils
 
 const VERSION_CONFIG_SETTING: String = "application/config/version"
 
-static func push_info(arg1 = "", arg2 = "", arg3 = "", arg4 = "", arg5 = "", arg6 = "", arg7 = "", arg8 = ""):
-	print(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
+const LogFlags = [
+	"Resources",
+	"Units",
+	"Actions",
+	"Combat"
+]
+
+static func push_info(flag: String, arg2 = "", arg3 = "", arg4 = "", arg5 = "", arg6 = "", arg7 = "", arg8 = ""):
+	if LogFlags.has(flag):
+		print(flag, ": ", arg2, arg3, arg4, arg5, arg6, arg7, arg8)
 
 static func get_version() -> String:
 	return ProjectSettings.get_setting(VERSION_CONFIG_SETTING)
@@ -22,3 +30,7 @@ static func roll_dice(dice: Dictionary) -> Array:
 		return a.roll > b.roll
 	)
 	return rolls
+
+static func delete_children(node):
+	for n in node.get_children():
+		n.queue_free()

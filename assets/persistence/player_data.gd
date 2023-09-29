@@ -1,9 +1,11 @@
 extends PersistentDataSection
 
 const PD_SECTION_PLAYER = "player"
+const PD_SECTION_PLAYER_TURN = "turn"
 const PD_SECTION_PLAYER_RESOURCES = "resources"
 const PD_SECTION_PLAYER_UNITS = "units"
 
+var turn: int
 var resources: Dictionary
 var units: Dictionary
 
@@ -12,27 +14,20 @@ func get_tag() -> String:
 
 func serialise() -> Dictionary:
 	return {
+		PD_SECTION_PLAYER_TURN: turn,
 		PD_SECTION_PLAYER_RESOURCES: resources,
 		PD_SECTION_PLAYER_UNITS: units,
 	}
 
 func deserialise(data: Dictionary) -> DeserialisationResult:
+	turn = data.get(PD_SECTION_PLAYER_TURN, 0)
 	resources = data.get(PD_SECTION_PLAYER_RESOURCES, {})
-	# This causes the keys to be type string i.e. "4" instead of number 4
-	#units = data.get(PD_SECTION_PLAYER_UNITS, {
-	units = {
-		4: {
+	# Convert the string key to int i.e. "4" -> 4
+	var loaded = data.get(PD_SECTION_PLAYER_UNITS, {})
+	for tier in GameManager.DiceTiers:
+		units[tier] = loaded[str(tier)] if loaded.has(str(tier)) else {
 			"total": 0,
-			"assigned": 0
-		},
-		6: {
-			"total": 0,
-			"assigned": 0
-		},
-		8: {
-			"total": 0,
-			"assigned": 0
-		},
-	#})
-	}
+			"assigned": 0,
+			"incapacitated": 0
+		}
 	return DeserialisationResult.OK

@@ -1,24 +1,51 @@
-[gd_scene load_steps=4 format=3 uid="uid://wld3cxit0cc"]
+[gd_scene load_steps=5 format=3 uid="uid://wld3cxit0cc"]
 
 [ext_resource type="Script" path="res://assets/debug/scripts/debug_action.gd" id="1_q61uq"]
-[ext_resource type="LabelSettings" uid="uid://cwva0alg3ydmv" path="res://assets/fonts/h3_font.tres" id="1_wyqv5"]
-[ext_resource type="LabelSettings" uid="uid://3rkfidxeoaqe" path="res://assets/fonts/h1_font.tres" id="2_w3g1w"]
+[ext_resource type="LabelSettings" uid="uid://bmxdt10e72a0o" path="res://assets/fonts/h2_font.tres" id="2_q7ugd"]
+[ext_resource type="LabelSettings" uid="uid://deoi8smjor5ty" path="res://assets/fonts/subtitle_font.tres" id="3_pt85f"]
 
-[node name="Action" type="VBoxContainer"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8rgb"]
+bg_color = Color(1, 1, 1, 0.117647)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Action" type="Panel"]
+custom_minimum_size = Vector2(130, 160)
+offset_right = 130.0
+offset_bottom = 160.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_k8rgb")
 script = ExtResource("1_q61uq")
 
-[node name="Name" type="Label" parent="."]
+[node name="Container" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+theme_override_constants/separation = 10
+vertical = true
+
+[node name="Name" type="Label" parent="Container"]
 layout_mode = 2
-text = "Collect Water"
-label_settings = ExtResource("1_wyqv5")
+text = "Action Title"
+label_settings = ExtResource("2_q7ugd")
 horizontal_alignment = 1
 
-[node name="Remaining" type="Label" parent="."]
+[node name="Assign" type="Button" parent="Container"]
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
 text = "4"
-label_settings = ExtResource("2_w3g1w")
-horizontal_alignment = 1
 
-[node name="Assign" type="Button" parent="."]
+[node name="Description" type="Label" parent="Container"]
 layout_mode = 2
-text = "Assign"
+text = "Generates 5 Water
+a second line"
+label_settings = ExtResource("3_pt85f")
+horizontal_alignment = 1

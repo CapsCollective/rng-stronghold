@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bon51dyvp8mot"]
 
 [ext_resource type="PackedScene" uid="uid://c6uem6u1httu1" path="res://assets/debug/scenes/debug_panel.tscn" id="1_26k0j"]
-[ext_resource type="Script" path="res://assets/debug/scripts/debug_section_resources.gd" id="2_y4v0x"]
+[ext_resource type="Script" path="res://assets/debug/scripts/debug_resources.gd" id="2_y4v0x"]
 
 [node name="ResourceDebugPanel" instance=ExtResource("1_26k0j")]
 offset_right = 300.0
@@ -21,6 +21,12 @@ text = "Resources"
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="ResetButton" type="Button" parent="VBoxContainer" index="2"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" index="2"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+
+[node name="ResetButton" type="Button" parent="VBoxContainer" index="3"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
 text = "Reset All"
