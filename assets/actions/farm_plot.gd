@@ -1,7 +1,7 @@
 @tool 
 extends BuildingAction
 
-const WATER_INPUT = 3
+const WATER_INPUT = 2
 const WHEAT_OUTPUT = 5
 
 @export var plot_index: int
@@ -46,7 +46,7 @@ func get_plot_description() -> String:
 	return [
 		"Max 3",
 		"Consumes 2 water",
-		"Min 3\nGenerates 8 Wheat"
+		"Min 3\nGenerates 5 Wheat"
 	][plot_phase]
 	
 func get_plot_points() -> int:

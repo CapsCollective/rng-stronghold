@@ -9,6 +9,7 @@
 custom_minimum_size = Vector2(60, 60)
 offset_right = 50.0
 offset_bottom = 54.0
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_x8e1p")
 toggle_mode = true
 text = "0"
