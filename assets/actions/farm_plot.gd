@@ -57,7 +57,7 @@ func valid_roll(roll: int):
 		return false
 	match plot_phase:
 		0: return roll <= 3
-		1: return GameManager.get_resource("water") >= 2
+		1: return GameManager.has_resource("water", 2)
 		2: return roll >= 3
 
 func complete():

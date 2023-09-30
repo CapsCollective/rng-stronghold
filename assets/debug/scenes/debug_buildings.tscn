@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://caf3yhbncyxwf"]
+[gd_scene load_steps=10 format=3 uid="uid://caf3yhbncyxwf"]
 
 [ext_resource type="Resource" uid="uid://dj6yxc1r0isd1" path="res://assets/actions/farm_plot_0.tres" id="2_5uu5s"]
 [ext_resource type="Resource" uid="uid://bs6qu5thd22dv" path="res://assets/actions/collect_water.tres" id="2_7o0we"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://b5qgxelnnw7um" path="res://assets/debug/scenes/debug_combat.tscn" id="3_lcbqx"]
 [ext_resource type="Resource" uid="uid://dcst6t7rj3rnj" path="res://assets/actions/farm_plot_2.tres" id="4_fvf42"]
 [ext_resource type="Resource" uid="uid://cecarxju6bn0n" path="res://assets/actions/farm_plot_3.tres" id="5_a7ei7"]
+[ext_resource type="Resource" uid="uid://da1ny51wwsn8a" path="res://assets/actions/mill_flour.tres" id="7_hwefx"]
+[ext_resource type="Resource" uid="uid://dajl7bo3xhj6k" path="res://assets/actions/bake_bread.tres" id="8_7roce"]
 
 [node name="TabContainer" type="TabContainer"]
 offset_right = 300.0
@@ -36,6 +38,19 @@ theme_override_constants/margin_bottom = 10
 [node name="Farm" parent="Farm" instance=ExtResource("3_frnk2")]
 layout_mode = 2
 actions = Array[Resource("res://assets/actions/base_action.gd")]([ExtResource("2_5uu5s"), ExtResource("3_gcurf"), ExtResource("4_fvf42"), ExtResource("5_a7ei7")])
+title = "Farm"
+
+[node name="Mill" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Mill" parent="Mill" instance=ExtResource("3_frnk2")]
+layout_mode = 2
+actions = Array[Resource("res://assets/actions/base_action.gd")]([ExtResource("7_hwefx"), ExtResource("8_7roce")])
 title = "Farm"
 
 [node name="North Wall" type="MarginContainer" parent="."]
