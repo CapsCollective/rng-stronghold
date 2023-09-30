@@ -3,6 +3,5 @@
 [ext_resource type="LabelSettings" uid="uid://cib2lif5mebql" path="res://assets/fonts/list_item_font.tres" id="1_nlbqo"]
 
 [node name="Label" type="Label"]
-text = "dsdsf dfdfasd dasfdssdfsa dfdsasdd dsafdfsaddsa fd"
 label_settings = ExtResource("1_nlbqo")
 autowrap_mode = 3

@@ -1,15 +1,15 @@
 extends Control
 
 @onready var total_inputs = {
-	4: $VBoxContainer/GridContainer/D4Total,
-	6: $VBoxContainer/GridContainer/D6Total,
-	8: $VBoxContainer/GridContainer/D8Total
+	4: $Container/GridContainer/D4Total,
+	6: $Container/GridContainer/D6Total,
+	8: $Container/GridContainer/D8Total
 }
 
 @onready var available_labels = {
-	4: $VBoxContainer/GridContainer/D4Available,
-	6: $VBoxContainer/GridContainer/D6Available,
-	8: $VBoxContainer/GridContainer/D8Available
+	4: $Container/GridContainer/D4Available,
+	6: $Container/GridContainer/D6Available,
+	8: $Container/GridContainer/D8Available
 }
 
 # Called when the node enters the scene tree for the first time.

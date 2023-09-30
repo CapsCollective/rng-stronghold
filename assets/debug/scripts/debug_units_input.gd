@@ -1,4 +1,3 @@
-@tool
 class_name DebugUnitsInput extends Control
 
 @export var consume_available: bool = true
@@ -24,7 +23,7 @@ func _ready():
 		for input in inputs.values():
 			input.max_value = 20
 		return
-	
+	if not GameManager.is_node_ready(): return
 	GameManager.units_changed.connect(on_units_changed)
 	GameManager.new_turn.connect(reset_units)
 	GameManager.new_game.connect(reset_units)

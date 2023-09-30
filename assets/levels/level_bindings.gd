@@ -5,8 +5,6 @@ extends Node3D
 @export var game_cam: Camera3D
 
 func _ready():
-	Savegame.load_file()
-	Utils.push_info("Deserialised Data: ", Savegame.get_dump())
 	for building in buildings:
 		get_node(building).selected.connect(on_building_selected)
 	dice_spawner.roll_completed.connect(on_roll_completed)

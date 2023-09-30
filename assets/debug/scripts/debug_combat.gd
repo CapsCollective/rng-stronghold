@@ -1,5 +1,7 @@
+@tool
 class_name DebugCombat extends Control
 
+@onready var title_label: Label = $Title
 @onready var health_label: Label = $Health
 @onready var your_units: DebugUnitsInput = $YourUnits
 @onready var enemy_units: DebugUnitsInput = $EnemyUnits
@@ -14,13 +16,26 @@ var button_group: ButtonGroup = ButtonGroup.new()
 var health = 20:
 	set(val):
 		health = val
-		health_label.text = "Health: %s/%s" % [health, max_health]
-var max_health = 20
+		refresh_health()
+		
+@export var max_health = 20:
+	set(val): 
+		max_health = val
+		refresh_health()
+
+@export var title: String:
+	set(val):
+		title = val
+		if title_label: title_label.text = title
 
 func _ready():
 	roll_button.pressed.connect(roll_dice)
+	if not GameManager.is_node_ready(): return
 	GameManager.new_turn.connect(on_new_turn)
 	GameManager.new_game.connect(reset)
+
+func refresh_health():
+		if health_label: health_label.text = "Health: %s/%s" % [health, max_health]
 
 func roll_dice():
 	var your_rolls := Utils.roll_dice(your_units.get_units())

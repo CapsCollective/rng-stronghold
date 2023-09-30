@@ -6,6 +6,7 @@ var textures: Dictionary = {
 	6: preload("res://assets/icons/d6.svg"),
 	8: preload("res://assets/icons/d8.svg")
 }
+var used: bool
 
 @export var tier: int:
 	set(val):

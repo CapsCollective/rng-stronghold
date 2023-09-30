@@ -1,168 +1,61 @@
-[gd_scene load_steps=10 format=3 uid="uid://caf3yhbncyxwf"]
+[gd_scene load_steps=5 format=3 uid="uid://byy5ra0fytq68"]
 
-[ext_resource type="Script" path="res://assets/debug/scripts/debug_building.gd" id="1_xw6vb"]
-[ext_resource type="LabelSettings" uid="uid://3rkfidxeoaqe" path="res://assets/fonts/h1_font.tres" id="2_gawm8"]
-[ext_resource type="LabelSettings" uid="uid://bmxdt10e72a0o" path="res://assets/fonts/h2_font.tres" id="3_b3qlw"]
-[ext_resource type="PackedScene" uid="uid://baj8jkegepq5f" path="res://assets/debug/scenes/debug_units_input.tscn" id="4_0gb48"]
-[ext_resource type="Script" path="res://assets/actions/collect_water.gd" id="6_i6n6x"]
-[ext_resource type="PackedScene" uid="uid://wld3cxit0cc" path="res://assets/debug/scenes/debug_action.tscn" id="6_ji11w"]
-[ext_resource type="Script" path="res://assets/debug/scripts/debug_combat.gd" id="7_oysp4"]
+[ext_resource type="Script" path="res://assets/debug/scripts/debug_building.gd" id="1_n7q6l"]
+[ext_resource type="LabelSettings" uid="uid://3rkfidxeoaqe" path="res://assets/fonts/h1_font.tres" id="2_ragab"]
+[ext_resource type="LabelSettings" uid="uid://bmxdt10e72a0o" path="res://assets/fonts/h2_font.tres" id="3_irwu5"]
+[ext_resource type="PackedScene" uid="uid://baj8jkegepq5f" path="res://assets/debug/scenes/debug_units_input.tscn" id="4_kkcn0"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_l6bgl"]
-font_size = 18
+[node name="Well" type="VBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+offset_right = 280.0
+offset_bottom = 222.0
+script = ExtResource("1_n7q6l")
 
-[sub_resource type="LabelSettings" id="LabelSettings_r5jxv"]
-font_size = 14
-
-[node name="TabContainer" type="TabContainer"]
-offset_right = 300.0
-offset_bottom = 500.0
-
-[node name="Well" type="MarginContainer" parent="."]
+[node name="BuildingTitle" type="Label" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Well" type="VBoxContainer" parent="Well"]
-layout_mode = 2
-script = ExtResource("1_xw6vb")
-
-[node name="PanelTitle" type="Label" parent="Well/Well"]
-layout_mode = 2
-text = "Well"
-label_settings = ExtResource("2_gawm8")
+label_settings = ExtResource("2_ragab")
 vertical_alignment = 1
 
-[node name="Assigned" type="Label" parent="Well/Well"]
+[node name="TitleSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Assigned" type="Label" parent="."]
 layout_mode = 2
 text = "Assigned"
-label_settings = ExtResource("3_b3qlw")
+label_settings = ExtResource("3_irwu5")
 
-[node name="Units" parent="Well/Well" instance=ExtResource("4_0gb48")]
+[node name="Units" parent="." instance=ExtResource("4_kkcn0")]
 layout_mode = 2
 
-[node name="Separator" type="Control" parent="Well/Well"]
+[node name="Separator" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="RollButton" type="Button" parent="Well/Well"]
+[node name="DiceContainer" type="HFlowContainer" parent="."]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+
+[node name="RollButton" type="Button" parent="."]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Roll"
 
-[node name="HSeparator" type="HSeparator" parent="Well/Well"]
+[node name="HSeparator" type="HSeparator" parent="."]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="ResultsLabel" type="Label" parent="Well/Well"]
-layout_mode = 2
-text = "Results"
-label_settings = ExtResource("3_b3qlw")
-
-[node name="DiceContainer" type="HFlowContainer" parent="Well/Well"]
-layout_mode = 2
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
-
-[node name="HSeparator2" type="HSeparator" parent="Well/Well"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="ActionsLabel" type="Label" parent="Well/Well"]
+[node name="ActionsLabel" type="Label" parent="."]
 layout_mode = 2
 text = "Actions
 "
-label_settings = ExtResource("3_b3qlw")
+label_settings = ExtResource("3_irwu5")
 
-[node name="CollectWater" type="Node" parent="Well/Well"]
-script = ExtResource("6_i6n6x")
-title = "Collect Water"
-description = "Generates 5 Water"
-required_points = 4
-
-[node name="ActionsContainer" type="HFlowContainer" parent="Well/Well"]
+[node name="ActionsContainer" type="HFlowContainer" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 alignment = 1
-
-[node name="CollectWaterAction" parent="Well/Well/ActionsContainer" node_paths=PackedStringArray("action") instance=ExtResource("6_ji11w")]
-layout_mode = 2
-action = NodePath("../../CollectWater")
-
-[node name="North Wall" type="MarginContainer" parent="."]
-visible = false
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Container" type="VBoxContainer" parent="North Wall"]
-layout_mode = 2
-script = ExtResource("7_oysp4")
-
-[node name="PanelTitle" type="Label" parent="North Wall/Container"]
-layout_mode = 2
-text = "North Wall"
-label_settings = SubResource("LabelSettings_l6bgl")
-
-[node name="Health" type="Label" parent="North Wall/Container"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-text = "Health: 20/20"
-label_settings = SubResource("LabelSettings_r5jxv")
-
-[node name="YourLabel" type="Label" parent="North Wall/Container"]
-layout_mode = 2
-text = "You"
-label_settings = SubResource("LabelSettings_r5jxv")
-
-[node name="YourUnits" parent="North Wall/Container" instance=ExtResource("4_0gb48")]
-layout_mode = 2
-
-[node name="YourRolls" type="HFlowContainer" parent="North Wall/Container"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
-
-[node name="EnemyLabel" type="Label" parent="North Wall/Container"]
-layout_mode = 2
-text = "Enemy"
-label_settings = SubResource("LabelSettings_r5jxv")
-
-[node name="EnemyUnits" parent="North Wall/Container" instance=ExtResource("4_0gb48")]
-layout_mode = 2
-consume_available = false
-
-[node name="EnemyRolls" type="HFlowContainer" parent="North Wall/Container"]
-layout_mode = 2
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
-
-[node name="HSeparator" type="HSeparator" parent="North Wall/Container"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="RollButton" type="Button" parent="North Wall/Container"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Roll"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="North Wall/Container"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-
-[node name="Results" type="VBoxContainer" parent="North Wall/Container/ScrollContainer"]
-clip_contents = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3

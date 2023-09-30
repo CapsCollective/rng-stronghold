@@ -10,8 +10,8 @@ const LogFlags = [
 ]
 
 static func push_info(flag: String, arg2 = "", arg3 = "", arg4 = "", arg5 = "", arg6 = "", arg7 = "", arg8 = ""):
-	if LogFlags.has(flag):
-		print(flag, ": ", arg2, arg3, arg4, arg5, arg6, arg7, arg8)
+	#if LogFlags.has(flag):
+	print(flag, ": ", arg2, arg3, arg4, arg5, arg6, arg7, arg8)
 
 static func get_version() -> String:
 	return ProjectSettings.get_setting(VERSION_CONFIG_SETTING)
@@ -31,6 +31,7 @@ static func roll_dice(dice: Dictionary) -> Array:
 	)
 	return rolls
 
-static func delete_children(node):
+static func delete_children(node: Node):
+	if not node: return
 	for n in node.get_children():
 		n.queue_free()

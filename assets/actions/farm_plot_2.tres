@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dcst6t7rj3rnj"]
+
+[ext_resource type="Script" path="res://assets/actions/farm_plot.gd" id="1_j8uba"]
+
+[resource]
+script = ExtResource("1_j8uba")
+plot_index = 2
+title = ""
+description = ""
+required_points = 0

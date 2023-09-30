@@ -1,7 +1,7 @@
 extends Control
 
-@onready var reset_button = $VBoxContainer/ResetButton
-@onready var container = $VBoxContainer/ResourcesContainer
+@onready var reset_button = $Container/ResetButton
+@onready var container = $Container/ResourcesContainer
 @onready var row = preload("res://assets/debug/scenes/debug_resource_row.tscn")
 
 func _ready():

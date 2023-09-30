@@ -16,7 +16,8 @@ text = "Water"
 [node name="Count" type="HSlider" parent="."]
 custom_minimum_size = Vector2(140, 30)
 layout_mode = 2
-max_value = 20.0
+max_value = 50.0
+rounded = true
 
 [node name="Value" type="Label" parent="."]
 custom_minimum_size = Vector2(30, 0)

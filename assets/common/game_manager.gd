@@ -1,13 +1,17 @@
 extends Node
 
 func _ready():
-	print(Savegame.player.turn, "turn")
+	Savegame.load_file()
+	Utils.push_info("Deserialised Data", Savegame.get_dump())
 	if Savegame.player.turn == 0:
 		reset_game()
 
 # Turn
 signal new_turn
 signal new_game
+
+func get_turn():
+	return Savegame.player.turn
 
 func next_turn():
 	Savegame.player.turn += 1
@@ -17,9 +21,9 @@ func next_turn():
 
 func reset_game():
 	Savegame.player.turn = 1
-	print("reset")
 	reset_units()
 	reset_resources()
+	Savegame.player.farm_plot_phases = [0,0,0,0]
 	new_game.emit()
 
 # Resources
@@ -27,6 +31,9 @@ const Resources: Array = [
 	"water",
 	"food",
 	"gold",
+	"wheat",
+	"flour",
+	"ale"
 ]
 
 signal resource_changed(resource: String, value: int)
@@ -34,6 +41,15 @@ signal units_changed(tier: int)
 
 func valid_resource(resource: String) -> bool:
 	return Resources.has(resource)
+
+func get_resource(resource: String):
+	if not valid_resource(resource):
+		push_warning("Resource: ", resource, " is not a valid resource type")
+		return
+	if not Savegame.player.resources.has(resource):
+		Savegame.player.resources[resource] = 0
+		return 0
+	return Savegame.player.resources[resource]
 
 func set_resource(resource: String, value: int): 
 	if not valid_resource(resource):
@@ -49,7 +65,7 @@ func set_resource(resource: String, value: int):
 	
 func change_resource(resource: String, change: int):
 	if !has_resource(resource, change):
-		print("Resource: ", resource, " has less than ", change)
+		push_warning("Resource: ", resource, " has less than ", change)
 
 	set_resource(resource, Savegame.player.resources[resource] + change)
 

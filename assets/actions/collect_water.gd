@@ -1,5 +1,8 @@
+@tool
 extends BuildingAction
 
+const WATER_OUTPUT = 5
+
 func complete():
-	GameManager.change_resource("water", 5)
+	GameManager.change_resource("water", WATER_OUTPUT)
 	remaining_points = required_points

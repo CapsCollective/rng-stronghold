@@ -18,7 +18,7 @@ offset_bottom = 160.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_k8rgb")
 script = ExtResource("1_q61uq")
 
-[node name="Container" type="BoxContainer" parent="."]
+[node name="Container" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -28,11 +28,10 @@ offset_top = 10.0
 offset_right = -10.0
 offset_bottom = -10.0
 theme_override_constants/separation = 10
-vertical = true
 
 [node name="Name" type="Label" parent="Container"]
 layout_mode = 2
-text = "Action Title"
+text = "Action"
 label_settings = ExtResource("2_q7ugd")
 horizontal_alignment = 1
 
@@ -41,11 +40,11 @@ custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 40
+disabled = true
 text = "4"
 
 [node name="Description" type="Label" parent="Container"]
 layout_mode = 2
-text = "Generates 5 Water
-a second line"
+text = "Default Description"
 label_settings = ExtResource("3_pt85f")
 horizontal_alignment = 1

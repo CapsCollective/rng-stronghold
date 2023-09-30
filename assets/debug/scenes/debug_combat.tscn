@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5qgxelnnw7um"]
+
+[ext_resource type="Script" path="res://assets/debug/scripts/debug_combat.gd" id="1_5tb6i"]
+[ext_resource type="PackedScene" uid="uid://baj8jkegepq5f" path="res://assets/debug/scenes/debug_units_input.tscn" id="2_s85i6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l6bgl"]
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_r5jxv"]
+font_size = 14
+
+[node name="Container" type="VBoxContainer"]
+script = ExtResource("1_5tb6i")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+text = "North Wall"
+label_settings = SubResource("LabelSettings_l6bgl")
+
+[node name="TitleSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Health" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Health: 20/20"
+label_settings = SubResource("LabelSettings_r5jxv")
+
+[node name="YourLabel" type="Label" parent="."]
+layout_mode = 2
+text = "You"
+label_settings = SubResource("LabelSettings_r5jxv")
+
+[node name="YourUnits" parent="." instance=ExtResource("2_s85i6")]
+layout_mode = 2
+
+[node name="YourRolls" type="HFlowContainer" parent="."]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+
+[node name="EnemyLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Enemy"
+label_settings = SubResource("LabelSettings_r5jxv")
+
+[node name="EnemyUnits" parent="." instance=ExtResource("2_s85i6")]
+layout_mode = 2
+consume_available = false
+
+[node name="EnemyRolls" type="HFlowContainer" parent="."]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+
+[node name="HSeparator" type="HSeparator" parent="."]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="RollButton" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Roll"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Results" type="VBoxContainer" parent="ScrollContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

@@ -2,6 +2,7 @@ extends Control
 
 @onready var next_turn_button: Button = $Panels/NextTurn
 @onready var reset_game_button: Button = $Panels/ResetGame
+@onready var version_label: Label = $VersionLabel
 
 signal refresh
 
@@ -9,7 +10,7 @@ func _ready():
 	for child in get_children():
 		if child is DebugSection:
 			refresh.connect(child.on_refresh)
-	$VersionLabel.text = "v" + Utils.get_version()
+	version_label.text = "v" + Utils.get_version()
 	set_open(false)
 	next_turn_button.pressed.connect(GameManager.next_turn)
 	reset_game_button.pressed.connect(GameManager.reset_game)
