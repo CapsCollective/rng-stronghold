@@ -19,7 +19,7 @@ var prev_input_vals = {
 }
 
 func _ready():
-	if !consume_available:
+	if not consume_available:
 		for input in inputs.values():
 			input.max_value = 20
 		return

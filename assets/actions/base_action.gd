@@ -30,7 +30,7 @@ func register():
 
 func assign_roll(roll: int):
 	Utils.push_info("Actions", "Assigning ", roll, " to ", title)
-	if !valid_roll(roll): 
+	if not valid_roll(roll): 
 		push_warning("Actions: Roll ", roll, "is not valid for ", title)
 		return
 	remaining_points -= roll

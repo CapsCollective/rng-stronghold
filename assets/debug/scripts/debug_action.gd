@@ -30,8 +30,7 @@ func refresh():
 	description_label.text = action.description
 	assign_button.text = str(action.remaining_points)
 
-func on_roll_changed(pressed: Button):
-	print("Roll Changed", button_group.get_pressed_button())
+func on_roll_changed(_pressed: Button):
 	var selected_roll = button_group.get_pressed_button()
 	assign_button.disabled = (
 		not selected_roll or 
@@ -45,6 +44,5 @@ func assign_roll():
 	action.assign_roll(selected_roll.roll)
 	selected_roll.used = true
 	selected_roll.queue_free()
-	print("Button Deleted")
 	button_group.pressed.emit(selected_roll) # Trigger validation refresh
 	assign_button.text = str(action.remaining_points)

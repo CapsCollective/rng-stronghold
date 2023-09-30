@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_b5fjw")
 title = "Bake Bread"
-description = "1 Flour => 3 Food"
+description = "1 Flour => 4 Food"
 required_points = 2

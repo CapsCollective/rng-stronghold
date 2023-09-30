@@ -2,7 +2,7 @@
 extends BuildingAction
 
 const FLOUR_INPUT = 1
-const FOOD_OUTPUT = 3
+const FOOD_OUTPUT = 4
 
 func valid_roll(roll: int):
 	return GameManager.has_resource("flour", FLOUR_INPUT)

@@ -16,6 +16,13 @@ func get_turn():
 func next_turn():
 	Savegame.player.turn += 1
 	reset_assigned_units()
+	
+	var total_units = get_total_units()
+	if has_resource("water", total_units): 
+		change_resource("water", -total_units)
+	if has_resource("food", total_units): 
+		change_resource("food", -total_units)
+	
 	new_turn.emit()
 	Savegame.save_file()
 
@@ -23,7 +30,9 @@ func reset_game():
 	Savegame.player.turn = 1
 	reset_units()
 	reset_resources()
-	Savegame.player.farm_plot_phases = [0,0,0,0]
+	set_resource("water", 20)
+	set_resource("food", 40)
+	set_resource("gold", 10)
 	new_game.emit()
 
 # Resources
@@ -64,13 +73,15 @@ func set_resource(resource: String, value: int):
 	resource_changed.emit(resource, value)
 	
 func change_resource(resource: String, change: int):
-	if !has_resource(resource, change):
+	print("Changing Resource")
+	if not has_resource(resource, -change):
 		push_warning("Resource: ", resource, " has less than ", change)
-
-	set_resource(resource, Savegame.player.resources[resource] + change)
+		return
+	print("Changing Resource")
+	set_resource(resource, get_resource(resource) + change)
 
 func has_resource(resource: String, required: int) -> bool:
-	return Savegame.player.resources[resource] >= required
+	return get_resource(resource) >= required
 
 func reset_resources():
 	for resource in Resources:
@@ -81,6 +92,12 @@ const DiceTiers: Array = [4,6,8]
 
 func valid_dice_tier(tier: int) -> bool:
 		return DiceTiers.has(tier)
+
+func get_total_units():
+	var total = 0
+	for units in Savegame.player.units.values():
+		total += units.total
+	return total
 
 func get_available_units(tier: int) -> int:
 	return Savegame.player.units[tier].total - Savegame.player.units[tier].assigned
@@ -106,5 +123,5 @@ func reset_assigned_units():
 func reset_units():
 	GameManager.set_total_units(4, 4)
 	GameManager.set_total_units(6, 2)
-	GameManager.set_total_units(8, 1)
+	GameManager.set_total_units(8, 0)
 	reset_assigned_units()
