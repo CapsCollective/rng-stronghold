@@ -4,6 +4,7 @@ class_name DebugAction extends Control
 @onready var name_label: Label = $Container/Name
 @onready var description_label: Label = $Container/Description
 @onready var assign_button: Button = $Container/Assign
+@onready var check_icon = preload("res://assets/icons/check.svg")
 
 @export var action: BuildingAction:
 	set(val):
@@ -28,7 +29,8 @@ func refresh():
 	if not action or not is_node_ready(): return
 	name_label.text = action.title
 	description_label.text = action.description
-	assign_button.text = str(action.remaining_points)
+	assign_button.text = str(action.remaining_points) if not action.is_complete else ""
+	assign_button.icon = check_icon if action.is_complete else null
 
 func on_roll_changed(_pressed: Button):
 	var selected_roll = button_group.get_pressed_button()
@@ -45,4 +47,3 @@ func assign_roll():
 	selected_roll.used = true
 	selected_roll.queue_free()
 	button_group.pressed.emit(selected_roll) # Trigger validation refresh
-	assign_button.text = str(action.remaining_points)

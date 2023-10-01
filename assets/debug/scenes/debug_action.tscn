@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://wld3cxit0cc"]
+[gd_scene load_steps=6 format=3 uid="uid://wld3cxit0cc"]
 
 [ext_resource type="Script" path="res://assets/debug/scripts/debug_action.gd" id="1_q61uq"]
 [ext_resource type="LabelSettings" uid="uid://bmxdt10e72a0o" path="res://assets/fonts/h2_font.tres" id="2_q7ugd"]
 [ext_resource type="LabelSettings" uid="uid://deoi8smjor5ty" path="res://assets/fonts/subtitle_font.tres" id="3_pt85f"]
+[ext_resource type="Texture2D" uid="uid://dbr8fme6ekq51" path="res://assets/icons/check.svg" id="3_ylf86"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8rgb"]
 bg_color = Color(1, 1, 1, 0.117647)
@@ -42,7 +43,9 @@ size_flags_horizontal = 4
 focus_mode = 0
 theme_override_font_sizes/font_size = 40
 disabled = true
-text = "4"
+icon = ExtResource("3_ylf86")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Description" type="Label" parent="Container"]
 layout_mode = 2

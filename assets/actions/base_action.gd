@@ -19,6 +19,11 @@ var remaining_points: int = 0:
 		remaining_points = val
 		action_updated.emit()
 
+var is_complete: bool:
+	set(val):
+		is_complete = val
+		action_updated.emit()
+
 signal completed
 signal assigned(roll: int)
 signal action_updated

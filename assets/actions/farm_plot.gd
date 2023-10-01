@@ -5,7 +5,6 @@ const WATER_INPUT = 2
 const WHEAT_OUTPUT = 5
 
 @export var plot_index: int
-var is_completed: bool
 
 var plot_phase: int:
 	set(val):
@@ -24,7 +23,8 @@ func register():
 
 func on_new_turn():
 	super.on_new_turn()
-	is_completed = false
+	if is_complete: plot_phase = (plot_phase + 1) % 3
+	is_complete = false
 
 func on_new_game():
 	plot_phase = randi_range(0,2)
@@ -43,8 +43,7 @@ func get_plot_title() -> String:
 
 func get_plot_description() -> String:
 	return [
-		"",
-		#"Max 3",
+		"Max 3",
 		"Consumes 2 water",
 		"Min 3\nGenerates 5 Wheat"
 	][plot_phase]
@@ -53,11 +52,10 @@ func get_plot_points() -> int:
 	return [3, 4, 5][plot_phase]
 
 func valid_roll(roll: int):
-	if is_completed:
+	if is_complete:
 		return false
 	match plot_phase:
-		#0: return roll <= 3
-		0: return true
+		0: return roll <= 3
 		1: return GameManager.has_resource("water", 2)
 		2: return roll >= 3
 
@@ -67,5 +65,4 @@ func complete():
 		2: 
 			print("Wheat complete")
 			GameManager.change_resource("wheat", WHEAT_OUTPUT)
-	plot_phase = (plot_phase + 1) % 3
-	is_completed = true
+	is_complete = true
