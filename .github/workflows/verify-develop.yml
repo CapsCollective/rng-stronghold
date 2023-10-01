@@ -15,27 +15,28 @@ jobs:
     steps:
       - name: Checkout current branch
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.base_ref }}
 
       - name: Extract old version string
-        uses: ./.github/actions/extract-version
+        uses: CapsCollective/version-actions/extract-version@v1.0
         with:
           version-file: ${{ env.VERSION_FILE }}
           version-regex: ${{ env.VERSION_REGEX }}
-          git-ref: ${{ github.base_ref }}
         id: extract-version-old
 
       - name: Checkout current branch
         uses: actions/checkout@v3
 
       - name: Extract new version string
-        uses: ./.github/actions/extract-version
+        uses: CapsCollective/version-actions/extract-version@v1.0
         with:
           version-file: ${{ env.VERSION_FILE }}
           version-regex: ${{ env.VERSION_REGEX }}
         id: extract-version-new
 
       - name: Check semantic version bump
-        uses: ./.github/actions/check-version-bump
+        uses: CapsCollective/version-actions/check-version-bump@v1.0
         with:
           new-version: ${{ steps.extract-version-new.outputs.version-string }}
           old-version: ${{ steps.extract-version-old.outputs.version-string }}
@@ -48,7 +49,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install Godot
-        uses: ./.github/actions/install-godot
+        uses: CapsCollective/godot-actions/install-godot@v1.0
         with:
           godot-version: ${{ env.GODOT_VERSION }}
         id: install-godot
@@ -67,7 +68,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install Godot
-        uses: ./.github/actions/install-godot
+        uses: CapsCollective/godot-actions/install-godot@v1.0
         with:
           godot-version: ${{ env.GODOT_VERSION }}
           install-templates: true
@@ -77,6 +78,6 @@ jobs:
         run: ${{ steps.install-godot.outputs.godot-executable }} --editor --headless --quit || true
 
       - name: Build and upload artifacts for all platforms
-        uses: ./.github/actions/build-godot
+        uses: CapsCollective/godot-actions/build-godot@v1.0
         with:
           godot-executable: ${{ steps.install-godot.outputs.godot-executable }}
