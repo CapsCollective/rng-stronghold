@@ -5,7 +5,6 @@ on:
     branches: [ 'release' ]
 
 env:
-  GODOT_VERSION: 4.1
   VERSION_FILE: project.godot
   VERSION_REGEX: config\/version=\"\K[0-9.\-A-z]*
 
@@ -45,7 +44,7 @@ jobs:
       - name: Decompress Windows build
         run: |
           mkdir -p build/windows
-          unzip -v artifacts/windows.zip -d ./build/windows
+          unzip artifacts/windows.zip -d ./build/windows
 
       - name: Fetch Linux build
         uses: dsaltares/fetch-gh-release-asset@1.1.1
