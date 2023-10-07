@@ -19,12 +19,14 @@ func _ready():
 	print(s)
 	s.queue_free()
 
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action_released("rmb_down"):
 		print("Deselected")
 		game_cam.reset_position()
+		get_viewport().set_input_as_handled()
 	elif event.is_action_released("ui_accept"):
 		dice_spawner.spawn_die()
+		get_viewport().set_input_as_handled()
 
 func on_building_selected(building_name, pos):
 	print("Selected: ", building_name)

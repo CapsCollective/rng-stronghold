@@ -15,9 +15,10 @@ func _ready():
 	next_turn_button.pressed.connect(GameManager.next_turn)
 	reset_game_button.pressed.connect(GameManager.reset_game)
 
-func _input(event):
+func _shortcut_input(event):
 	if event.is_action_pressed("toggle_debug"):
 		set_open(not is_open())
+		get_viewport().set_input_as_handled()
 
 func is_open() -> bool:
 	return visible
