@@ -1,25 +1,21 @@
-@tool
 class_name DebugBuilding extends Control
 
-@onready var building_title: Label = $BuildingTitle
-@onready var assigned_units: DebugUnitsInput = $Units
-@onready var roll_button: Button = $RollButton
-@onready var dice_container = $DiceContainer
-@onready var action_container = $ActionsContainer
+@onready var building_title: Label = $Container/BuildingTitle
+@onready var assigned_units: DebugUnitsInput = $Container/Units
+@onready var roll_button: Button = $Container/RollButton
+@onready var dice_container = $Container/DiceContainer
+@onready var action_container = $Container/ActionsContainer
 @onready var dice_button = preload("res://assets/debug/scenes/debug_dice_button.tscn")
 @onready var debug_action = preload("res://assets/debug/scenes/debug_action.tscn")
 var button_group: ButtonGroup = ButtonGroup.new()
-
-@export var actions: Array[BuildingAction]
-@export var title: String:
-	set(val):
-		title = val
-		if building_title: building_title.text = title
+var building: Building
 
 func _ready():
-	title = title
+	# This needs to happen after building setup
+	await building.ready
+	building_title.text = building.title
 	setup_actions()
-	
+
 	roll_button.pressed.connect(roll_assigned)
 	button_group.allow_unpress = true
 	for action in action_container.get_children():
@@ -30,7 +26,7 @@ func _ready():
 func setup_actions():
 	if not is_node_ready(): return
 	Utils.delete_children(action_container)
-	for action in actions:
+	for action in building.actions:
 		var instance = debug_action.instantiate()
 		action_container.add_child(instance)
 		instance.action = action

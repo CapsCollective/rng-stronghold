@@ -1,41 +1,31 @@
-@tool
 class_name DebugCombat extends Control
 
-@onready var title_label: Label = $Title
-@onready var health_label: Label = $Health
-@onready var your_units: DebugUnitsInput = $YourUnits
-@onready var enemy_units: DebugUnitsInput = $EnemyUnits
-@onready var your_rolls_container: Container = $YourRolls
-@onready var enemy_rolls_container: Container = $EnemyRolls
-@onready var roll_button: Button = $RollButton
-@onready var results: Container = $ScrollContainer/Results
+@onready var title_label: Label = $Container/Title
+@onready var health_label: Label = $Container/Health
+@onready var your_units: DebugUnitsInput = $Container/YourUnits
+@onready var enemy_units: DebugUnitsInput = $Container/EnemyUnits
+@onready var your_rolls_container: Container = $Container/YourRolls
+@onready var enemy_rolls_container: Container = $Container/EnemyRolls
+@onready var roll_button: Button = $Container/RollButton
+@onready var results: Container = $Container/ScrollContainer/Results
 @onready var dice_button = preload("res://assets/debug/scenes/debug_dice_button.tscn")
 @onready var results_row = preload("res://assets/debug/scenes/debug_results_row.tscn")
 var button_group: ButtonGroup = ButtonGroup.new()
-
-var health = 20:
-	set(val):
-		health = val
-		refresh_health()
-		
-@export var max_health = 20:
-	set(val): 
-		max_health = val
-		refresh_health()
-
-@export var title: String:
-	set(val):
-		title = val
-		if title_label: title_label.text = title
+var barrier: Barrier
 
 func _ready():
+	await barrier.ready
+	title_label.text = barrier.title
+	barrier.health_updated.connect(refresh_health)
+	barrier.max_health_updated.connect(refresh_health)
+	refresh_health()
 	roll_button.pressed.connect(roll_dice)
 	if not GameManager.is_node_ready(): return
 	GameManager.new_turn.connect(on_new_turn)
 	GameManager.new_game.connect(reset)
 
 func refresh_health():
-		if health_label: health_label.text = "Health: %s/%s" % [health, max_health]
+		if health_label: health_label.text = "Health: %s/%s" % [barrier.health, barrier.max_health]
 
 func roll_dice():
 	var your_rolls := Utils.roll_dice(your_units.get_units())
@@ -75,7 +65,7 @@ func target_enemy_die(enemy_die: DebugDiceButton):
 func on_new_turn():
 	for remaining_roll in enemy_rolls_container.get_children():
 		if remaining_roll.hostile:
-			health -= min(int(remaining_roll.text), health)
+			barrier.health -= min(int(remaining_roll.text), barrier.health)
 	reset()
 
 func reset():

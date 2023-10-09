@@ -1,10 +1,13 @@
 extends Node
 
+signal load_completed
+
 func _ready():
 	Savegame.load_file()
 	Utils.push_info("Deserialised Data", Savegame.get_dump())
 	if Savegame.player.turn == 0:
 		reset_game()
+	load_completed.emit()
 
 # Turn
 signal new_turn

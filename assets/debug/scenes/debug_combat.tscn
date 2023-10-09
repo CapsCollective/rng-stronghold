@@ -9,69 +9,80 @@ font_size = 18
 [sub_resource type="LabelSettings" id="LabelSettings_r5jxv"]
 font_size = 14
 
-[node name="Container" type="VBoxContainer"]
+[node name="DebugCombat" type="MarginContainer"]
+offset_top = 376.0
+offset_right = 280.0
+offset_bottom = 376.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 script = ExtResource("1_5tb6i")
 
-[node name="Title" type="Label" parent="."]
+[node name="Container" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(280, 2.08165e-12)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Container"]
 layout_mode = 2
 text = "North Wall"
 label_settings = SubResource("LabelSettings_l6bgl")
 
-[node name="TitleSeparator" type="HSeparator" parent="."]
+[node name="TitleSeparator" type="HSeparator" parent="Container"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Health" type="Label" parent="."]
+[node name="Health" type="Label" parent="Container"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 text = "Health: 20/20"
 label_settings = SubResource("LabelSettings_r5jxv")
 
-[node name="YourLabel" type="Label" parent="."]
+[node name="YourLabel" type="Label" parent="Container"]
 layout_mode = 2
 text = "You"
 label_settings = SubResource("LabelSettings_r5jxv")
 
-[node name="YourUnits" parent="." instance=ExtResource("2_s85i6")]
+[node name="YourUnits" parent="Container" instance=ExtResource("2_s85i6")]
 layout_mode = 2
 
-[node name="YourRolls" type="HFlowContainer" parent="."]
+[node name="YourRolls" type="HFlowContainer" parent="Container"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 
-[node name="EnemyLabel" type="Label" parent="."]
+[node name="EnemyLabel" type="Label" parent="Container"]
 layout_mode = 2
 text = "Enemy"
 label_settings = SubResource("LabelSettings_r5jxv")
 
-[node name="EnemyUnits" parent="." instance=ExtResource("2_s85i6")]
+[node name="EnemyUnits" parent="Container" instance=ExtResource("2_s85i6")]
 layout_mode = 2
 consume_available = false
 
-[node name="EnemyRolls" type="HFlowContainer" parent="."]
+[node name="EnemyRolls" type="HFlowContainer" parent="Container"]
 layout_mode = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 
-[node name="HSeparator" type="HSeparator" parent="."]
+[node name="HSeparator" type="HSeparator" parent="Container"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="RollButton" type="Button" parent="."]
+[node name="RollButton" type="Button" parent="Container"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Roll"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="Container"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="Results" type="VBoxContainer" parent="ScrollContainer"]
+[node name="Results" type="VBoxContainer" parent="Container/ScrollContainer"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3

@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bs6qu5thd22dv"]
-
-[ext_resource type="Script" path="res://assets/actions/collect_water.gd" id="1_ll3tn"]
-
-[resource]
-script = ExtResource("1_ll3tn")
-title = "Collect Water"
-description = "Generates 5 Water"
-required_points = 4

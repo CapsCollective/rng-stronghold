@@ -1,14 +1,16 @@
-class_name BuildingAction extends Resource
+class_name BuildingAction
 
-@export var title: String:
+var title: String:
 	set(val):
 		title = val
 		action_updated.emit()
-@export var description: String:
+
+var description: Array:
 	set(val):
 		description = val
 		action_updated.emit()
-@export var required_points: int:
+
+var required_points: int:
 	set(val):
 		required_points = val
 		remaining_points = required_points
@@ -28,7 +30,7 @@ signal completed
 signal assigned(roll: int)
 signal action_updated
 
-func register():
+func _init():
 	remaining_points = required_points
 	if GameManager.is_node_ready():
 		GameManager.new_turn.connect(on_new_turn)

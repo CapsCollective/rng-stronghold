@@ -1,12 +1,14 @@
-extends Node3D
+class_name Building extends Node3D
 
 signal selected(building_name: String, pos: Vector3)
 
+@export var title: String
 @export var cam_zoom_pos: Node
 
 var orig_scale: Vector3
 var is_hovered: bool = false
 var mouse_over: bool = false
+var actions: Array[BuildingAction]
 
 @onready var mesh = $StaticBody3D
 

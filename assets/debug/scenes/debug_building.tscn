@@ -5,55 +5,63 @@
 [ext_resource type="LabelSettings" uid="uid://bmxdt10e72a0o" path="res://assets/fonts/h2_font.tres" id="3_irwu5"]
 [ext_resource type="PackedScene" uid="uid://baj8jkegepq5f" path="res://assets/debug/scenes/debug_units_input.tscn" id="4_kkcn0"]
 
-[node name="Well" type="VBoxContainer"]
-custom_minimum_size = Vector2(280, 0)
+[node name="Building" type="MarginContainer"]
+offset_top = 226.0
 offset_right = 280.0
-offset_bottom = 222.0
+offset_bottom = 226.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 script = ExtResource("1_n7q6l")
 
-[node name="BuildingTitle" type="Label" parent="."]
+[node name="Container" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+
+[node name="BuildingTitle" type="Label" parent="Container"]
 layout_mode = 2
 label_settings = ExtResource("2_ragab")
 vertical_alignment = 1
 
-[node name="TitleSeparator" type="HSeparator" parent="."]
+[node name="TitleSeparator" type="HSeparator" parent="Container"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Assigned" type="Label" parent="."]
+[node name="Assigned" type="Label" parent="Container"]
 layout_mode = 2
 text = "Assigned"
 label_settings = ExtResource("3_irwu5")
 
-[node name="Units" parent="." instance=ExtResource("4_kkcn0")]
+[node name="Units" parent="Container" instance=ExtResource("4_kkcn0")]
 layout_mode = 2
 
-[node name="Separator" type="Control" parent="."]
+[node name="Separator" type="Control" parent="Container"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="DiceContainer" type="HFlowContainer" parent="."]
+[node name="DiceContainer" type="HFlowContainer" parent="Container"]
 layout_mode = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 
-[node name="RollButton" type="Button" parent="."]
+[node name="RollButton" type="Button" parent="Container"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Roll"
 
-[node name="HSeparator" type="HSeparator" parent="."]
+[node name="HSeparator" type="HSeparator" parent="Container"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="ActionsLabel" type="Label" parent="."]
+[node name="ActionsLabel" type="Label" parent="Container"]
 layout_mode = 2
 text = "Actions
 "
 label_settings = ExtResource("3_irwu5")
 
-[node name="ActionsContainer" type="HFlowContainer" parent="."]
+[node name="ActionsContainer" type="HFlowContainer" parent="Container"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/h_separation = 10

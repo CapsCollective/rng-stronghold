@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://klq80i004brf"]
+[gd_scene load_steps=4 format=3 uid="uid://klq80i004brf"]
 
 [ext_resource type="Script" path="res://assets/debug/scripts/debug_display.gd" id="1_fy0n0"]
-[ext_resource type="PackedScene" uid="uid://caf3yhbncyxwf" path="res://assets/debug/scenes/debug_buildings.tscn" id="3_xgp8e"]
 [ext_resource type="PackedScene" uid="uid://bm06gok1hhcpc" path="res://assets/debug/scenes/debug_units.tscn" id="4_spr7n"]
 [ext_resource type="PackedScene" uid="uid://bon51dyvp8mot" path="res://assets/debug/scenes/debug_resources.tscn" id="5_l6a7d"]
 
@@ -64,6 +63,6 @@ layout_mode = 2
 [node name="UnitsDebugPanel" parent="Panels" instance=ExtResource("4_spr7n")]
 layout_mode = 2
 
-[node name="BuildingsDebug Panel" parent="Panels" instance=ExtResource("3_xgp8e")]
-custom_minimum_size = Vector2(300, 500)
+[node name="BuildingsDebugPanel" type="TabContainer" parent="Panels"]
+custom_minimum_size = Vector2(300, 400)
 layout_mode = 2

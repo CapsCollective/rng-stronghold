@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dajl7bo3xhj6k"]
-
-[ext_resource type="Script" path="res://assets/actions/bake_bread.gd" id="1_b5fjw"]
-
-[resource]
-script = ExtResource("1_b5fjw")
-title = "Bake Bread"
-description = "1 Flour => 4 Food"
-required_points = 2
