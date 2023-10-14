@@ -30,7 +30,6 @@ func _ready():
 	set_open(false)
 	next_turn_button.pressed.connect(GameManager.next_turn)
 	reset_game_button.pressed.connect(GameManager.reset_game)
-	
 
 func _shortcut_input(event):
 	if event.is_action_pressed("toggle_debug"):

@@ -15,7 +15,7 @@ func _init():
 	required_points = 2
 	super._init()
 
-func valid_roll(roll: int):
+func valid_roll(_roll: int):
 	return GameManager.has_resource(INPUT_RESOURCE, INPUT_AMOUNT)
 
 func complete():

@@ -30,7 +30,7 @@ size = Vector3(14.8268, 14.0738, 1.42399)
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("dice_spawner", "game_cam")]
 script = ExtResource("1_xhye2")
-buildings = Array[NodePath]([NodePath("Farm"), NodePath("Armoury"), NodePath("Fort"), NodePath("Wall"), NodePath("Watermill")])
+buildings = Array[NodePath]([NodePath("Farm"), NodePath("Armoury"), NodePath("Fort"), NodePath("Wall"), NodePath("Mill"), NodePath("Well")])
 dice_spawner = NodePath("RollingTray/DiceSpawner")
 game_cam = NodePath("GameCamera")
 
@@ -42,7 +42,7 @@ camera_attributes = SubResource("CameraAttributesPractical_s300m")
 transform = Transform3D(0.501511, 0.704771, -0.501781, 2.49258e-16, 0.579992, 0.814622, 0.865151, -0.408542, 0.290872, 0, 0, 0)
 
 [node name="DebugDisplay" parent="." node_paths=PackedStringArray("buildings", "barriers") instance=ExtResource("10_go3d5")]
-buildings = [NodePath("../Farm"), NodePath("../Well"), NodePath("../Watermill")]
+buildings = [NodePath("../Farm"), NodePath("../Well"), NodePath("../Mill")]
 barriers = [NodePath("../Wall")]
 
 [node name="GameCamera" parent="." instance=ExtResource("2_lsapu")]
@@ -62,13 +62,14 @@ shape = SubResource("ConcavePolygonShape3D_r2lt4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8548, 6.69796, -14.1166)
 script = ExtResource("6_hhkt7")
 title = "Farm"
-cam_zoom_pos = NodePath("")
+cam_zoom_pos = NodePath("FarmCamZoom")
 
 [node name="FarmCamZoom" type="Node3D" parent="Farm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7422, 3.99304, 3.8391)
 
 [node name="Armoury" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("5_xcywc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.78319, 8.42527, -50.3529)
+title = "Armoury"
 cam_zoom_pos = NodePath("ArmouryCamZoom")
 
 [node name="ArmouryCamZoom" type="Node3D" parent="Armoury"]
@@ -78,7 +79,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.631, 7.52795, 4.07542)
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -27.0892, 5.41915, -33.7421)
 script = ExtResource("8_5hke2")
 title = "Well"
-cam_zoom_pos = NodePath("")
+cam_zoom_pos = NodePath("WellCamZoom")
 
 [node name="WellCamZoom" type="Node3D" parent="Well"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.631, 7.52795, 4.07542)
@@ -96,18 +97,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.394, 8.5565, 17.0817)
 script = ExtResource("10_janea")
 max_health = 20
 title = "East Wall"
-cam_zoom_pos = NodePath("")
+cam_zoom_pos = NodePath("WallCamZoom")
 
 [node name="WallCamZoom" type="Node3D" parent="Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3779, 4.9861, 0.129934)
 
-[node name="Watermill" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("8_i7q2x")]
+[node name="Mill" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("8_i7q2x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7361, 7.7049, -9.93047)
 script = ExtResource("13_tdg7o")
 title = "Mill"
-cam_zoom_pos = NodePath("")
+cam_zoom_pos = NodePath("MillCamZoom")
 
-[node name="WatermillCamZoom" type="Node3D" parent="Watermill"]
+[node name="MillCamZoom" type="Node3D" parent="Mill"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3779, 4.9861, 4.18306)
 
 [node name="RollingTray" type="Node3D" parent="."]

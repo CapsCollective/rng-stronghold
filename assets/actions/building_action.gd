@@ -50,7 +50,7 @@ func assign_roll(roll: int):
 func on_new_turn():
 	remaining_points = required_points
 
-func valid_roll(roll: int):
+func valid_roll(_roll: int):
 	return true
 
 func complete():
