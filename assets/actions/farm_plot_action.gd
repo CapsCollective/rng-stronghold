@@ -6,7 +6,7 @@ const OUTPUT_RESOURCE = "wheat"
 const OUTPUT_AMOUNT = 5
 const PLOT_PHASES = 3
 
-var plot_index: int
+@export var plot_index: int
 
 var plot_phase: int:
 	get:
@@ -20,10 +20,9 @@ var plot_phase: int:
 		phases[plot_index] = val
 		update_details()
 
-func _init(_plot_index: int):
-	plot_index = _plot_index
+func _ready():
 	GameManager.new_game.connect(on_new_game)
-	super._init()
+	super._ready()
 
 func setup_details():
 	update_details()

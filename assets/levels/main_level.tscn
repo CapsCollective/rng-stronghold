@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1qqqoap4v764"]
+[gd_scene load_steps=21 format=3 uid="uid://c1qqqoap4v764"]
 
 [ext_resource type="Script" path="res://assets/levels/level_bindings.gd" id="1_xhye2"]
 [ext_resource type="PackedScene" uid="uid://c0newga26wfg0" path="res://assets/camera/scenes/game_camera.tscn" id="2_lsapu"]
@@ -6,14 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://b7fxbshlkyc4a" path="res://assets/buildings/scenes/granary.tscn" id="4_jckud"]
 [ext_resource type="PackedScene" uid="uid://2pn0sstfwsql" path="res://assets/buildings/scenes/armoury.tscn" id="5_xcywc"]
 [ext_resource type="PackedScene" uid="uid://dxq6vpvntwv01" path="res://assets/buildings/scenes/fort.tscn" id="6_bik7n"]
-[ext_resource type="Script" path="res://assets/buildings/scripts/farm.gd" id="6_hhkt7"]
+[ext_resource type="Script" path="res://assets/actions/farm_plot_action.gd" id="6_sh0xr"]
 [ext_resource type="PackedScene" uid="uid://dstyy0pxjmoos" path="res://assets/buildings/scenes/wall.tscn" id="7_134cx"]
-[ext_resource type="Script" path="res://assets/buildings/scripts/well.gd" id="8_5hke2"]
+[ext_resource type="Script" path="res://assets/actions/water_action.gd" id="8_btvb7"]
 [ext_resource type="PackedScene" uid="uid://d133oe2modrw6" path="res://assets/buildings/scenes/watermill.tscn" id="8_i7q2x"]
 [ext_resource type="PackedScene" uid="uid://bpgrqxbsrqqom" path="res://assets/dice/scenes/dice_spawner.tscn" id="9_8h5he"]
 [ext_resource type="PackedScene" uid="uid://klq80i004brf" path="res://assets/debug/scenes/debug_display.tscn" id="10_go3d5"]
 [ext_resource type="Script" path="res://assets/buildings/scripts/barrier.gd" id="10_janea"]
-[ext_resource type="Script" path="res://assets/buildings/scripts/mill.gd" id="13_tdg7o"]
+[ext_resource type="Script" path="res://assets/actions/flour_action.gd" id="13_ohye2"]
+[ext_resource type="Script" path="res://assets/actions/bread_action.gd" id="14_nv7t0"]
 
 [sub_resource type="Environment" id="Environment_8f0bx"]
 
@@ -60,12 +61,26 @@ shape = SubResource("ConcavePolygonShape3D_r2lt4")
 
 [node name="Farm" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("4_jckud")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8548, 6.69796, -14.1166)
-script = ExtResource("6_hhkt7")
 title = "Farm"
 cam_zoom_pos = NodePath("FarmCamZoom")
 
 [node name="FarmCamZoom" type="Node3D" parent="Farm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7422, 3.99304, 3.8391)
+
+[node name="FarmPlotAction1" type="Node" parent="Farm"]
+script = ExtResource("6_sh0xr")
+
+[node name="FarmPlotAction2" type="Node" parent="Farm"]
+script = ExtResource("6_sh0xr")
+plot_index = 1
+
+[node name="FarmPlotAction3" type="Node" parent="Farm"]
+script = ExtResource("6_sh0xr")
+plot_index = 2
+
+[node name="FarmPlotAction4" type="Node" parent="Farm"]
+script = ExtResource("6_sh0xr")
+plot_index = 3
 
 [node name="Armoury" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("5_xcywc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.78319, 8.42527, -50.3529)
@@ -77,12 +92,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.631, 7.52795, 4.07542)
 
 [node name="Well" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("5_xcywc")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -27.0892, 5.41915, -33.7421)
-script = ExtResource("8_5hke2")
 title = "Well"
 cam_zoom_pos = NodePath("WellCamZoom")
 
 [node name="WellCamZoom" type="Node3D" parent="Well"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.631, 7.52795, 4.07542)
+
+[node name="WaterAction" type="Node" parent="Well"]
+script = ExtResource("8_btvb7")
 
 [node name="Fort" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("6_bik7n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38622, 8.76108, -26.9042)
@@ -96,7 +113,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1711, 9.1696, 18.1206)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.394, 8.5565, 17.0817)
 script = ExtResource("10_janea")
 max_health = 20
-title = "East Wall"
+title = "Wall"
 cam_zoom_pos = NodePath("WallCamZoom")
 
 [node name="WallCamZoom" type="Node3D" parent="Wall"]
@@ -104,12 +121,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3779, 4.9861, 0.129934)
 
 [node name="Mill" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("8_i7q2x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7361, 7.7049, -9.93047)
-script = ExtResource("13_tdg7o")
 title = "Mill"
 cam_zoom_pos = NodePath("MillCamZoom")
 
 [node name="MillCamZoom" type="Node3D" parent="Mill"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3779, 4.9861, 4.18306)
+
+[node name="FlourAction" type="Node" parent="Mill"]
+script = ExtResource("13_ohye2")
+
+[node name="BreadAction" type="Node" parent="Mill"]
+script = ExtResource("14_nv7t0")
 
 [node name="RollingTray" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5421, -0.605974, -17.8797)

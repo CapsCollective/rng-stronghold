@@ -1,4 +1,4 @@
-class_name BuildingAction
+class_name BuildingAction extends Node
 
 signal completed
 signal assigned(roll: int)
@@ -30,7 +30,7 @@ var is_complete: bool:
 		is_complete = val
 		action_updated.emit()
 
-func _init():
+func _ready():
 	setup_details()
 	remaining_points = required_points
 	if GameManager.is_node_ready():
