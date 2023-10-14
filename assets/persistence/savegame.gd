@@ -11,7 +11,3 @@ const ExampleData = preload("res://assets/persistence/example_data.gd")
 
 const PlayerData = preload("res://assets/persistence/player_data.gd")
 @onready var player: PlayerData = PlayerData.new(self)
-
-func _exit_tree():
-	metadata.free()
-	example.free()
