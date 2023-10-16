@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://h4pl5eo0qrk1"]
 
-[ext_resource type="LabelSettings" uid="uid://cib2lif5mebql" path="res://assets/fonts/list_item_font.tres" id="1_nlbqo"]
+[ext_resource type="LabelSettings" uid="uid://cib2lif5mebql" path="res://assets/common/fonts/debug/debug_list_item_font.tres" id="1_nlbqo"]
 
 [node name="Label" type="Label"]
 label_settings = ExtResource("1_nlbqo")

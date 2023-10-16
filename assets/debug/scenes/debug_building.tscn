@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://byy5ra0fytq68"]
 
 [ext_resource type="Script" path="res://assets/debug/scripts/debug_building.gd" id="1_n7q6l"]
-[ext_resource type="LabelSettings" uid="uid://3rkfidxeoaqe" path="res://assets/fonts/h1_font.tres" id="2_ragab"]
-[ext_resource type="LabelSettings" uid="uid://bmxdt10e72a0o" path="res://assets/fonts/h2_font.tres" id="3_irwu5"]
+[ext_resource type="LabelSettings" uid="uid://3rkfidxeoaqe" path="res://assets/common/fonts/debug/debug_h1_font.tres" id="2_cj3lt"]
+[ext_resource type="LabelSettings" uid="uid://bmxdt10e72a0o" path="res://assets/common/fonts/debug/debug_h2_font.tres" id="3_gpc6q"]
 [ext_resource type="PackedScene" uid="uid://baj8jkegepq5f" path="res://assets/debug/scenes/debug_units_input.tscn" id="4_kkcn0"]
 
 [node name="Building" type="MarginContainer"]
@@ -21,7 +21,7 @@ layout_mode = 2
 
 [node name="BuildingTitle" type="Label" parent="Container"]
 layout_mode = 2
-label_settings = ExtResource("2_ragab")
+label_settings = ExtResource("2_cj3lt")
 vertical_alignment = 1
 
 [node name="TitleSeparator" type="HSeparator" parent="Container"]
@@ -31,7 +31,7 @@ theme_override_constants/separation = 20
 [node name="Assigned" type="Label" parent="Container"]
 layout_mode = 2
 text = "Assigned"
-label_settings = ExtResource("3_irwu5")
+label_settings = ExtResource("3_gpc6q")
 
 [node name="Units" parent="Container" instance=ExtResource("4_kkcn0")]
 layout_mode = 2
@@ -59,7 +59,7 @@ theme_override_constants/separation = 20
 layout_mode = 2
 text = "Actions
 "
-label_settings = ExtResource("3_irwu5")
+label_settings = ExtResource("3_gpc6q")
 
 [node name="ActionsContainer" type="HFlowContainer" parent="Container"]
 layout_mode = 2

@@ -1,5 +1,10 @@
 class_name DebugCombat extends Control
 
+const debug_dice_button_scene = preload("res://assets/debug/scenes/debug_dice_button.tscn")
+const debug_results_row_scene = preload("res://assets/debug/scenes/debug_results_row.tscn")
+
+var barrier: Barrier
+
 @onready var title_label: Label = $Container/Title
 @onready var health_label: Label = $Container/Health
 @onready var your_units: DebugUnitsInput = $Container/YourUnits
@@ -8,12 +13,10 @@ class_name DebugCombat extends Control
 @onready var enemy_rolls_container: Container = $Container/EnemyRolls
 @onready var roll_button: Button = $Container/RollButton
 @onready var results: Container = $Container/ScrollContainer/Results
-@onready var dice_button = preload("res://assets/debug/scenes/debug_dice_button.tscn")
-@onready var results_row = preload("res://assets/debug/scenes/debug_results_row.tscn")
-var button_group: ButtonGroup = ButtonGroup.new()
-var barrier: Barrier
+@onready var button_group: ButtonGroup = ButtonGroup.new()
 
 func _ready():
+	# This needs to happen after building setup
 	await barrier.ready
 	title_label.text = barrier.title
 	barrier.health_updated.connect(refresh_health)
@@ -25,7 +28,7 @@ func _ready():
 	GameManager.new_game.connect(reset)
 
 func refresh_health():
-		if health_label: health_label.text = "Health: %s/%s" % [barrier.health, barrier.max_health]
+	if health_label: health_label.text = "Health: %s/%s" % [barrier.health, barrier.max_health]
 
 func roll_dice():
 	var your_rolls := Utils.roll_dice(your_units.get_units())
@@ -34,13 +37,13 @@ func roll_dice():
 	enemy_units.editable = false
 	roll_button.visible = false
 	for roll in your_rolls:
-		var button: DebugDiceButton = dice_button.instantiate()
+		var button: DebugDiceButton = debug_dice_button_scene.instantiate()
 		your_rolls_container.add_child(button)
 		button.button_group = button_group
 		button.roll = roll.roll
 		button.tier = roll.tier
 	for roll in enemy_rolls:
-		var button: DebugDiceButton = dice_button.instantiate()
+		var button: DebugDiceButton = debug_dice_button_scene.instantiate()
 		enemy_rolls_container.add_child(button)
 		button.roll = roll.roll
 		button.tier = roll.tier
@@ -73,15 +76,15 @@ func reset():
 	your_units.editable = true
 	enemy_units.editable = true
 	roll_button.visible = true
-	Utils.delete_children(your_rolls_container)
-	Utils.delete_children(enemy_rolls_container)
-	Utils.delete_children(results)
+	Utils.queue_free_children(your_rolls_container)
+	Utils.queue_free_children(enemy_rolls_container)
+	Utils.queue_free_children(results)
 
 func add_result(result: String):
-	var label: Label = results_row.instantiate()
+	var label: Label = debug_results_row_scene.instantiate()
 	label.text = "• " + result
 	results.add_child(label)
 	results.move_child(label, 0)
 	
 func clear_results():
-	Utils.delete_children(results)
+	Utils.queue_free_children(results)

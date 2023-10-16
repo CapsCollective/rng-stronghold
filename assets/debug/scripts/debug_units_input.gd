@@ -7,15 +7,16 @@ class_name DebugUnitsInput extends Control
 		for input in inputs:
 			inputs[input].editable = editable
 
-@onready var inputs = {
-	4: $D4s,
-	6: $D6s,
-	8: $D8s
-}
 var prev_input_vals = {
 	4: 0,
 	6: 0,
 	8: 0
+}
+
+@onready var inputs = {
+	4: $D4s,
+	6: $D6s,
+	8: $D8s
 }
 
 func _ready():

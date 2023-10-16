@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dclujk3fw1jmg"]
 
 [ext_resource type="Script" path="res://assets/debug/scripts/debug_dice_button.gd" id="1_d1v20"]
-[ext_resource type="Texture2D" uid="uid://clmrbjl3ovdpu" path="res://assets/icons/d4.svg" id="1_kwilw"]
+[ext_resource type="Texture2D" uid="uid://clmrbjl3ovdpu" path="res://assets/common/icons/d4.svg" id="1_kwilw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x8e1p"]
 

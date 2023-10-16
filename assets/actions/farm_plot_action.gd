@@ -23,8 +23,10 @@ var plot_phase: int:
 func _init(_plot_index: int):
 	plot_index = _plot_index
 	GameManager.new_game.connect(on_new_game)
-	update_details()
 	super._init()
+
+func setup_details():
+	update_details()
 
 func on_new_turn():
 	super.on_new_turn()
@@ -59,7 +61,7 @@ func get_description() -> Array:
 func get_required_points() -> int:
 	return [3, 4, 5][plot_phase]
 
-func valid_roll(roll: int):
+func is_valid_roll(roll: int):
 	if is_complete:
 		return false
 	match plot_phase:

@@ -34,16 +34,16 @@ buildings = Array[NodePath]([NodePath("Farm"), NodePath("Armoury"), NodePath("Fo
 dice_spawner = NodePath("RollingTray/DiceSpawner")
 game_cam = NodePath("GameCamera")
 
+[node name="DebugDisplay" parent="." node_paths=PackedStringArray("buildings", "barriers") instance=ExtResource("10_go3d5")]
+buildings = [NodePath("../Farm"), NodePath("../Well"), NodePath("../Mill")]
+barriers = [NodePath("../Wall")]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8f0bx")
 camera_attributes = SubResource("CameraAttributesPractical_s300m")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.501511, 0.704771, -0.501781, 2.49258e-16, 0.579992, 0.814622, 0.865151, -0.408542, 0.290872, 0, 0, 0)
-
-[node name="DebugDisplay" parent="." node_paths=PackedStringArray("buildings", "barriers") instance=ExtResource("10_go3d5")]
-buildings = [NodePath("../Farm"), NodePath("../Well"), NodePath("../Mill")]
-barriers = [NodePath("../Wall")]
 
 [node name="GameCamera" parent="." instance=ExtResource("2_lsapu")]
 transform = Transform3D(0.173648, 0.492404, -0.852868, 3.02058e-16, 0.866025, 0.5, 0.984808, -0.086824, 0.150384, -55, 30, 2.08165e-12)

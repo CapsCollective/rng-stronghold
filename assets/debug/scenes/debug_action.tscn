@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://wld3cxit0cc"]
 
 [ext_resource type="Script" path="res://assets/debug/scripts/debug_action.gd" id="1_q61uq"]
-[ext_resource type="LabelSettings" uid="uid://bmxdt10e72a0o" path="res://assets/fonts/h2_font.tres" id="2_q7ugd"]
-[ext_resource type="Texture2D" uid="uid://dbr8fme6ekq51" path="res://assets/icons/check.svg" id="3_ylf86"]
+[ext_resource type="LabelSettings" uid="uid://bmxdt10e72a0o" path="res://assets/common/fonts/debug/debug_h2_font.tres" id="2_q7ugd"]
+[ext_resource type="Texture2D" uid="uid://dbr8fme6ekq51" path="res://assets/common/icons/check.svg" id="3_ylf86"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8rgb"]
 bg_color = Color(1, 1, 1, 0.117647)

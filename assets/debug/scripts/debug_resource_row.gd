@@ -3,6 +3,7 @@ extends Control
 @onready var resource_label: Label = $Resource
 @onready var count_input: Range = $Count
 @onready var value_label: Label = $Value
+
 var resource: String:
 	set(res):
 		resource = res

@@ -6,16 +6,15 @@ const OUTPUT_RESOURCE = "food"
 const OUTPUT_AMOUNT = 4
 const REQUIRED_POINTS = 2
 
-func _init():
+func setup_details():
 	title = "Bake Bread"
 	description = [
 		"Requires %s %s" % [INPUT_AMOUNT, INPUT_RESOURCE],
 		"Generates %s %s" % [OUTPUT_AMOUNT, OUTPUT_RESOURCE]
 	]
 	required_points = 2
-	super._init()
 
-func valid_roll(_roll: int):
+func is_valid_roll(_roll: int):
 	return GameManager.has_resource(INPUT_RESOURCE, INPUT_AMOUNT)
 
 func complete():

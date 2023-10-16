@@ -1,12 +1,11 @@
 @tool
 class_name DebugDiceButton extends Button
 
-var textures: Dictionary = {
-	4: preload("res://assets/icons/d4.svg"),
-	6: preload("res://assets/icons/d6.svg"),
-	8: preload("res://assets/icons/d8.svg")
+const textures: Dictionary = {
+	4: preload("res://assets/common/icons/d4.svg"),
+	6: preload("res://assets/common/icons/d6.svg"),
+	8: preload("res://assets/common/icons/d8.svg")
 }
-var used: bool
 
 @export var tier: int:
 	set(val):
@@ -25,3 +24,5 @@ var used: bool
 			add_theme_color_override("icon_normal_color", Color.RED)
 		else:
 			remove_theme_color_override("icon_normal_color")
+
+var used: bool

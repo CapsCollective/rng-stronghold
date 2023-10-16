@@ -2,17 +2,20 @@ extends Node
 
 signal load_completed
 
+signal new_turn
+signal new_game
+
+signal resource_changed(resource: String, value: int)
+signal units_changed(tier: int)
+
 func _ready():
 	Savegame.load_file()
-	Utils.push_info("Deserialised Data", Savegame.get_dump())
+	Utils.log_info("Deserialisation", Savegame.get_dump())
 	if Savegame.player.turn == 0:
 		reset_game()
 	load_completed.emit()
 
 # Turn
-signal new_turn
-signal new_game
-
 func get_turn():
 	return Savegame.player.turn
 
@@ -48,15 +51,12 @@ const Resources: Array = [
 	"ale"
 ]
 
-signal resource_changed(resource: String, value: int)
-signal units_changed(tier: int)
-
 func valid_resource(resource: String) -> bool:
 	return Resources.has(resource)
 
 func get_resource(resource: String):
 	if not valid_resource(resource):
-		push_warning("Resource: ", resource, " is not a valid resource type")
+		Utils.log_warn("Resource", resource, " is not a valid resource type")
 		return
 	if not Savegame.player.resources.has(resource):
 		Savegame.player.resources[resource] = 0
@@ -65,22 +65,20 @@ func get_resource(resource: String):
 
 func set_resource(resource: String, value: int): 
 	if not valid_resource(resource):
-		push_warning("Resource: ", resource, " is not a valid resource type")
+		Utils.log_warn("Resource", resource, " is not a valid resource type")
 		return
 	if value < 0: 
-		push_warning("Resource: Cannot have fewer than 0 of any ", resource)
+		Utils.log_warn("Resource", "Cannot have fewer than 0 of any ", resource)
 		return
 		
-	Utils.push_info("Resource", "Setting ", resource, " to ", value)
+	Utils.log_info("Resource", "Setting ", resource, " to ", value)
 	Savegame.player.resources[resource] = value
 	resource_changed.emit(resource, value)
-	
+
 func change_resource(resource: String, change: int):
-	print("Changing Resource")
 	if not has_resource(resource, -change):
-		push_warning("Resource: ", resource, " has less than ", change)
+		Utils.log_warn("Resource", resource, " has less than ", change)
 		return
-	print("Changing Resource")
 	set_resource(resource, get_resource(resource) + change)
 
 func has_resource(resource: String, required: int) -> bool:
@@ -111,10 +109,10 @@ func set_total_units(tier: int, value: int):
 
 func change_assigned_units(tier: int, change: int):
 	if get_available_units(tier) < change:
-		push_warning("Units: Not enough d", tier, " to assign")
+		Utils.log_warn("Units", "Not enough d", tier, " to assign")
 		return
 	
-	Utils.push_info("Units", "Assigning ",change, " d", tier, ", ", get_available_units(tier), " available")
+	Utils.log_info("Units", "Assigning ",change, " d", tier, ", ", get_available_units(tier), " available")
 	Savegame.player.units[tier].assigned += change
 	units_changed.emit(tier)
 	

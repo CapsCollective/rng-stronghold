@@ -1,5 +1,9 @@
 class_name BuildingAction
 
+signal completed
+signal assigned(roll: int)
+signal action_updated
+
 var title: String:
 	set(val):
 		title = val
@@ -26,19 +30,19 @@ var is_complete: bool:
 		is_complete = val
 		action_updated.emit()
 
-signal completed
-signal assigned(roll: int)
-signal action_updated
-
 func _init():
+	setup_details()
 	remaining_points = required_points
 	if GameManager.is_node_ready():
 		GameManager.new_turn.connect(on_new_turn)
 
+func setup_details():
+	pass
+
 func assign_roll(roll: int):
-	Utils.push_info("Actions", "Assigning ", roll, " to ", title)
-	if not valid_roll(roll): 
-		push_warning("Actions: Roll ", roll, "is not valid for ", title)
+	Utils.log_info("Actions", "Assigning ", roll, " to ", title)
+	if not is_valid_roll(roll): 
+		Utils.push_warn("Actions", "Roll ", roll, "is not valid for ", title)
 		return
 	remaining_points -= roll
 	if remaining_points <= 0:
@@ -46,11 +50,10 @@ func assign_roll(roll: int):
 		completed.emit()
 	assigned.emit(roll)
 
-# Overrides
 func on_new_turn():
 	remaining_points = required_points
 
-func valid_roll(_roll: int):
+func is_valid_roll(_roll: int) -> bool:
 	return true
 
 func complete():

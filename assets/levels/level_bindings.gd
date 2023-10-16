@@ -21,7 +21,7 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_released("rmb_down"):
-		print("Deselected")
+		Utils.log_info("Selection", "deselected building")
 		game_cam.reset_position()
 		get_viewport().set_input_as_handled()
 	elif event.is_action_released("ui_accept"):
@@ -29,11 +29,11 @@ func _unhandled_input(event):
 		get_viewport().set_input_as_handled()
 
 func on_building_selected(building_name, pos):
-	print("Selected: ", building_name)
+	Utils.log_info("Selection", "selected ", building_name)
 	game_cam.move_to_position(pos)
 
 func on_roll_completed(value: int):
-	print("Rolled: ", value)
+	Utils.log_info("Dice", "rolled ", value)
 	
 	Savegame.example.time = Time.get_ticks_msec()
 	Savegame.example.value = value

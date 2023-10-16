@@ -1,7 +1,6 @@
 extends Building
 
-func _ready():
-	actions = [
+func get_building_actions() -> Array[BuildingAction]:
+	return [
 		WaterAction.new(),
 	]
-	super._ready()

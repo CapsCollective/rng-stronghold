@@ -15,7 +15,7 @@ var actions: Array[BuildingAction]
 func _unhandled_input(event):
 	if event.is_action_released("lmb_down") and is_hovered:
 		if not cam_zoom_pos:
-			push_warning("No camera zoom position set for building ", name)
+			Utils.push_warn("Camera", "No camera zoom position set for building ", name)
 			return
 		selected.emit(name, cam_zoom_pos.global_position)
 		get_viewport().set_input_as_handled()
@@ -24,9 +24,13 @@ func _unhandled_input(event):
 		get_viewport().set_input_as_handled()
 
 func _ready():
+	actions = get_building_actions()
 	mesh.mouse_entered.connect(on_mouse_entered)
 	mesh.mouse_exited.connect(on_mouse_exited)
 	orig_scale = scale
+
+func get_building_actions() -> Array[BuildingAction]:
+	return []
 
 func on_mouse_entered():
 	mouse_over = true

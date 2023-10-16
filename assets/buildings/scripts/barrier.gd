@@ -6,7 +6,6 @@ signal max_health_updated
 var health: int:
 	get:
 		if not Savegame.player: return 0
-		print(Savegame.player.barrier_health.get(title, max_health))
 		return Savegame.player.barrier_health.get(title, max_health)
 	set(val):
 		health = val

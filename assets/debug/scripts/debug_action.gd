@@ -1,9 +1,10 @@
 class_name DebugAction extends Control
 
+const check_icon = preload("res://assets/common/icons/check.svg")
+
 @onready var name_label: Label = $Container/Name
 @onready var description_label: RichTextLabel = $Container/Description
 @onready var assign_button: Button = $Container/Assign
-@onready var check_icon = preload("res://assets/icons/check.svg")
 
 var action: BuildingAction:
 	set(val):
@@ -35,7 +36,7 @@ func on_roll_changed(_pressed: Button):
 	assign_button.disabled = (
 		not selected_roll or 
 		selected_roll.used or
-		not action.valid_roll(selected_roll.roll))
+		not action.is_valid_roll(selected_roll.roll))
 
 func assign_roll():
 	var selected_roll: DebugDiceButton = button_group.get_pressed_button()
