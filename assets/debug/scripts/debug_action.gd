@@ -6,7 +6,7 @@ const check_icon = preload("res://assets/common/icons/check.svg")
 @onready var description_label: RichTextLabel = $Container/Description
 @onready var assign_button: Button = $Container/Assign
 
-var action: BuildingAction:
+var action: DiceAction:
 	set(val):
 		if action: action.action_updated.disconnect(refresh)
 		action = val

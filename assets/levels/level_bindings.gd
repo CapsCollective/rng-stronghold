@@ -28,8 +28,8 @@ func _unhandled_input(event):
 		dice_spawner.spawn_die()
 		get_viewport().set_input_as_handled()
 
-func on_building_selected(building_name, pos):
-	Utils.log_info("Selection", "selected ", building_name)
+func on_building_selected(building, pos):
+	Utils.log_info("Selection", "selected ", building.name)
 	game_cam.move_to_position(pos)
 
 func on_roll_completed(value: int):

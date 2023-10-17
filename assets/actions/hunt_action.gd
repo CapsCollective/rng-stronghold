@@ -1,4 +1,4 @@
-class_name HuntAction extends BuildingAction
+class_name HuntAction extends DiceAction
 
 enum AnimalType {
 	RABBIT = 0,

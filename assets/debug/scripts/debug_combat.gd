@@ -3,7 +3,7 @@ class_name DebugCombat extends Control
 const debug_dice_button_scene = preload("res://assets/debug/scenes/debug_dice_button.tscn")
 const debug_results_row_scene = preload("res://assets/debug/scenes/debug_results_row.tscn")
 
-var barrier: Barrier
+var action_group: ActionGroup
 
 @onready var title_label: Label = $Container/Title
 @onready var health_label: Label = $Container/Health
@@ -16,11 +16,9 @@ var barrier: Barrier
 @onready var button_group: ButtonGroup = ButtonGroup.new()
 
 func _ready():
-	# This needs to happen after building setup
-	await barrier.ready
-	title_label.text = barrier.title
-	barrier.health_updated.connect(refresh_health)
-	barrier.max_health_updated.connect(refresh_health)
+	name = action_group.title
+	title_label.text = action_group.title
+	action_group.health_updated.connect(refresh_health)
 	refresh_health()
 	roll_button.pressed.connect(roll_dice)
 	if not GameManager.is_node_ready(): return
@@ -28,7 +26,7 @@ func _ready():
 	GameManager.new_game.connect(reset)
 
 func refresh_health():
-	if health_label: health_label.text = "Health: %s/%s" % [barrier.health, barrier.max_health]
+	if health_label: health_label.text = "Health: %s/%s" % [action_group.health, action_group.max_health]
 
 func roll_dice():
 	var your_rolls := Utils.roll_dice(your_units.get_units())
@@ -68,7 +66,7 @@ func target_enemy_die(enemy_die: DebugDiceButton):
 func on_new_turn():
 	for remaining_roll in enemy_rolls_container.get_children():
 		if remaining_roll.hostile:
-			barrier.health -= min(int(remaining_roll.text), barrier.health)
+			action_group.health -= min(int(remaining_roll.text), action_group.health)
 	reset()
 
 func reset():

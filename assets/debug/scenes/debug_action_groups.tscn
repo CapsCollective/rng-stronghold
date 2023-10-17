@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://caf3yhbncyxwf"]
 
-[ext_resource type="PackedScene" uid="uid://byy5ra0fytq68" path="res://assets/debug/scenes/debug_building.tscn" id="3_frnk2"]
+[ext_resource type="PackedScene" uid="uid://byy5ra0fytq68" path="res://assets/debug/scenes/debug_action_group.tscn" id="3_frnk2"]
 [ext_resource type="PackedScene" uid="uid://b5qgxelnnw7um" path="res://assets/debug/scenes/debug_combat.tscn" id="3_lcbqx"]
 
 [node name="TabContainer" type="TabContainer"]

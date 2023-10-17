@@ -1,4 +1,4 @@
-class_name WaterAction extends BuildingAction
+class_name WaterAction extends DiceAction
 
 const OUTPUT_RESOURCE = "water"
 const OUTPUT_AMOUNT = 8

@@ -1,9 +1,9 @@
-class_name DebugBuilding extends Control
+class_name DebugActionGroup extends Control
 
 const debug_dice_button_scene = preload("res://assets/debug/scenes/debug_dice_button.tscn")
 const debug_action_scene = preload("res://assets/debug/scenes/debug_action.tscn")
 
-var building: Building
+var action_group: ActionGroup
 
 @onready var building_title: Label = $Container/BuildingTitle
 @onready var assigned_units: DebugUnitsInput = $Container/Units
@@ -13,9 +13,8 @@ var building: Building
 @onready var button_group: ButtonGroup = ButtonGroup.new()
 
 func _ready():
-	# This needs to happen after building setup
-	await building.ready
-	building_title.text = building.title
+	name = action_group.title
+	building_title.text = action_group.title
 	setup_actions()
 
 	roll_button.pressed.connect(roll_assigned)
@@ -28,7 +27,7 @@ func _ready():
 func setup_actions():
 	if not is_node_ready(): return
 	Utils.queue_free_children(action_container)
-	for action in building.actions:
+	for action in action_group.get_actions():
 		var instance = debug_action_scene.instantiate()
 		action_container.add_child(instance)
 		instance.action = action

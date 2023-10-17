@@ -1,4 +1,4 @@
-class_name BuildingAction extends Node
+class_name DiceAction extends Node
 
 signal completed
 signal assigned(roll: int)
@@ -42,7 +42,7 @@ func setup_details():
 func assign_roll(roll: int):
 	Utils.log_info("Actions", "Assigning ", roll, " to ", title)
 	if not is_valid_roll(roll): 
-		Utils.push_warn("Actions", "Roll ", roll, "is not valid for ", title)
+		Utils.log_warn("Actions", "Roll ", roll, "is not valid for ", title)
 		return
 	remaining_points -= roll
 	if remaining_points <= 0:

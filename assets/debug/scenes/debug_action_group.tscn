@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://byy5ra0fytq68"]
 
-[ext_resource type="Script" path="res://assets/debug/scripts/debug_building.gd" id="1_n7q6l"]
+[ext_resource type="Script" path="res://assets/debug/scripts/debug_action_group.gd" id="1_n7q6l"]
 [ext_resource type="LabelSettings" uid="uid://3rkfidxeoaqe" path="res://assets/common/fonts/debug/debug_h1_font.tres" id="2_cj3lt"]
 [ext_resource type="LabelSettings" uid="uid://bmxdt10e72a0o" path="res://assets/common/fonts/debug/debug_h2_font.tres" id="3_gpc6q"]
 [ext_resource type="PackedScene" uid="uid://baj8jkegepq5f" path="res://assets/debug/scenes/debug_units_input.tscn" id="4_kkcn0"]

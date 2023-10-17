@@ -1,4 +1,4 @@
-class_name FlourAction extends BuildingAction
+class_name FlourAction extends DiceAction
 
 const INPUT_RESOURCE = "wheat"
 const INPUT_AMOUNT = 2

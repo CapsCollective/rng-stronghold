@@ -1,4 +1,4 @@
-class_name FarmPlotAction extends BuildingAction
+class_name FarmPlotAction extends DiceAction
 
 const INPUT_RESOURCE = "water"
 const INPUT_AMOUNT = 3
