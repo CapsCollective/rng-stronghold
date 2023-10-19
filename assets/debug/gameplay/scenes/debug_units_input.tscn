@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://baj8jkegepq5f"]
 
-[ext_resource type="Script" path="res://assets/debug/scripts/debug_units_input.gd" id="1_jpahf"]
+[ext_resource type="Script" path="res://assets/debug/gameplay/scripts/debug_units_input.gd" id="1_jpahf"]
 
 [node name="Units" type="HFlowContainer"]
 offset_right = 280.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bm06gok1hhcpc"]
 
-[ext_resource type="Script" path="res://assets/debug/scripts/debug_units.gd" id="2_33eda"]
+[ext_resource type="Script" path="res://assets/debug/gameplay/scripts/debug_units.gd" id="2_33eda"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_resk1"]
 font_size = 18

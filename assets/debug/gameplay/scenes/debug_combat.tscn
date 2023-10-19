@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5qgxelnnw7um"]
 
-[ext_resource type="Script" path="res://assets/debug/scripts/debug_combat.gd" id="1_5tb6i"]
-[ext_resource type="PackedScene" uid="uid://baj8jkegepq5f" path="res://assets/debug/scenes/debug_units_input.tscn" id="2_s85i6"]
+[ext_resource type="Script" path="res://assets/debug/gameplay/scripts/debug_combat.gd" id="1_5tb6i"]
+[ext_resource type="PackedScene" uid="uid://baj8jkegepq5f" path="res://assets/debug/gameplay/scenes/debug_units_input.tscn" id="2_s85i6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l6bgl"]
 font_size = 18

@@ -35,8 +35,7 @@ buildings = Array[NodePath]([NodePath("Farm"), NodePath("Armoury"), NodePath("Fo
 dice_spawner = NodePath("RollingTray/DiceSpawner")
 game_cam = NodePath("GameCamera")
 
-[node name="DebugDisplay" parent="." node_paths=PackedStringArray("action_groups") instance=ExtResource("10_go3d5")]
-action_groups = [NodePath("../Farm/FarmActionGroup"), NodePath("../Well/WellActionGroup"), NodePath("../Mill/MillActionGroup"), NodePath("../Wall/WallActionGroup")]
+[node name="DebugDisplay" parent="." instance=ExtResource("10_go3d5")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8f0bx")
@@ -112,18 +111,6 @@ cam_zoom_pos = NodePath("FortCamZoom")
 [node name="FortCamZoom" type="Node3D" parent="Fort"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1711, 9.1696, 18.1206)
 
-[node name="Wall" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("7_134cx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.394, 8.5565, 17.0817)
-cam_zoom_pos = NodePath("WallCamZoom")
-
-[node name="WallCamZoom" type="Node3D" parent="Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3779, 4.9861, 0.129934)
-
-[node name="WallActionGroup" type="Node" parent="Wall"]
-script = ExtResource("6_xmpji")
-title = "Wall"
-max_health = 20
-
 [node name="Mill" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("8_i7q2x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7361, 7.7049, -9.93047)
 cam_zoom_pos = NodePath("MillCamZoom")
@@ -140,6 +127,18 @@ script = ExtResource("13_ohye2")
 
 [node name="BreadAction" type="Node" parent="Mill/MillActionGroup"]
 script = ExtResource("14_nv7t0")
+
+[node name="Wall" parent="." node_paths=PackedStringArray("cam_zoom_pos") instance=ExtResource("7_134cx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.394, 8.5565, 17.0817)
+cam_zoom_pos = NodePath("WallCamZoom")
+
+[node name="WallCamZoom" type="Node3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3779, 4.9861, 0.129934)
+
+[node name="WallActionGroup" type="Node" parent="Wall"]
+script = ExtResource("6_xmpji")
+title = "Wall"
+max_health = 20
 
 [node name="RollingTray" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5421, -0.605974, -17.8797)

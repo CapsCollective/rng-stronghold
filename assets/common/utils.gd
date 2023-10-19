@@ -36,3 +36,19 @@ static func queue_free_children(node: Node):
 	if not node: return
 	for n in node.get_children():
 		n.queue_free()
+
+static func get_all_nodes_of_class(search_node: Node, classname: String):
+	var found_nodes = Array()
+	if search_node.is_class(classname):
+		found_nodes.append(search_node)
+	for child in search_node.get_children():
+		found_nodes.append_array(get_all_nodes_of_class(child, classname))
+	return found_nodes
+
+static func get_all_nodes_with_script(search_node: Node, script: GDScript):
+	var found_nodes = Array()
+	if search_node.get_script() == script:
+		found_nodes.append(search_node)
+	for child in search_node.get_children():
+		found_nodes.append_array(get_all_nodes_with_script(child, script))
+	return found_nodes

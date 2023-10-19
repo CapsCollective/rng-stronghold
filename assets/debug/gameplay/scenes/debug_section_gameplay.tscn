@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8f6d5jppta8k"]
+
+[ext_resource type="Script" path="res://assets/debug/gameplay/scripts/debug_section_gameplay.gd" id="1_kq01a"]
+[ext_resource type="PackedScene" uid="uid://bon51dyvp8mot" path="res://assets/debug/gameplay/scenes/debug_resources.tscn" id="2_jhcbd"]
+[ext_resource type="PackedScene" uid="uid://bm06gok1hhcpc" path="res://assets/debug/gameplay/scenes/debug_units.tscn" id="3_kgilw"]
+
+[node name="Gameplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kq01a")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="NextTurn" type="Button" parent="ScrollContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+text = "Next Turn"
+
+[node name="ResetGame" type="Button" parent="ScrollContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+text = "Reset Game"
+
+[node name="PanelsContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ResourceDebugPanel" parent="ScrollContainer/VBoxContainer/PanelsContainer" instance=ExtResource("2_jhcbd")]
+layout_mode = 2
+
+[node name="UnitsDebugPanel" parent="ScrollContainer/VBoxContainer/PanelsContainer" instance=ExtResource("3_kgilw")]
+layout_mode = 2
+
+[node name="BuildingsDebugPanel" type="TabContainer" parent="ScrollContainer/VBoxContainer/PanelsContainer"]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+size_flags_horizontal = 3

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://klq80i004brf"]
 
 [ext_resource type="Script" path="res://assets/debug/scripts/debug_display.gd" id="1_fy0n0"]
-[ext_resource type="PackedScene" uid="uid://bm06gok1hhcpc" path="res://assets/debug/scenes/debug_units.tscn" id="4_spr7n"]
-[ext_resource type="PackedScene" uid="uid://bon51dyvp8mot" path="res://assets/debug/scenes/debug_resources.tscn" id="5_l6a7d"]
+[ext_resource type="PackedScene" uid="uid://b8f6d5jppta8k" path="res://assets/debug/gameplay/scenes/debug_section_gameplay.tscn" id="2_3xwv3"]
+[ext_resource type="PackedScene" uid="uid://cmj6ltk4enqhw" path="res://assets/debug/savegame/scenes/debug_section_savegame.tscn" id="3_yc7rx"]
 
 [node name="DebugDisplay" type="Control"]
 layout_mode = 3
@@ -23,20 +23,18 @@ grow_vertical = 2
 
 [node name="VersionLabel" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -54.0
-offset_top = -33.0
-offset_right = -9.0
-offset_bottom = -7.0
+offset_right = -10.0
+offset_bottom = -2.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "v0.0.0"
 
-[node name="Panels" type="VFlowContainer" parent="."]
+[node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -45,24 +43,12 @@ offset_left = 30.0
 offset_top = 30.0
 offset_right = -30.0
 offset_bottom = -30.0
-theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 20
-alignment = 2
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="NextTurn" type="Button" parent="Panels"]
-layout_mode = 2
-text = "Next Turn"
-
-[node name="ResetGame" type="Button" parent="Panels"]
-layout_mode = 2
-text = "Reset Game"
-
-[node name="ResourceDebugPanel" parent="Panels" instance=ExtResource("5_l6a7d")]
+[node name="Gameplay" parent="TabContainer" instance=ExtResource("2_3xwv3")]
 layout_mode = 2
 
-[node name="UnitsDebugPanel" parent="Panels" instance=ExtResource("4_spr7n")]
-layout_mode = 2
-
-[node name="BuildingsDebugPanel" type="TabContainer" parent="Panels"]
-custom_minimum_size = Vector2(300, 400)
+[node name="Savegame" parent="TabContainer" instance=ExtResource("3_yc7rx")]
+visible = false
 layout_mode = 2

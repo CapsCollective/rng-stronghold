@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c3oax4ni8r32e"]
 
-[ext_resource type="Script" path="res://assets/debug/scripts/debug_resource_row.gd" id="1_ie0h3"]
+[ext_resource type="Script" path="res://assets/debug/gameplay/scripts/debug_resource_row.gd" id="1_ie0h3"]
 
 [node name="ResourceRow" type="HBoxContainer"]
 offset_right = 280.0

@@ -1,4 +1,7 @@
-class_name DebugSection extends Panel
+class_name DebugSection extends Control
 
-func on_refresh():
+func on_opened():
+	pass
+
+func on_closed():
 	pass
