@@ -5,14 +5,14 @@ const debug_results_row_scene = preload("res://assets/debug/gameplay/scenes/debu
 
 var action_group: ActionGroup
 
-@onready var title_label: Label = $Container/Title
-@onready var health_label: Label = $Container/Health
-@onready var your_units: DebugUnitsInput = $Container/YourUnits
-@onready var enemy_units: DebugUnitsInput = $Container/EnemyUnits
-@onready var your_rolls_container: Container = $Container/YourRolls
-@onready var enemy_rolls_container: Container = $Container/EnemyRolls
-@onready var roll_button: Button = $Container/RollButton
-@onready var results: Container = $Container/ScrollContainer/Results
+@onready var title_label: Label = $VBoxContainer/Title
+@onready var health_label: Label = $VBoxContainer/Health
+@onready var your_units: DebugUnitsInput = $VBoxContainer/YourUnits
+@onready var enemy_units: DebugUnitsInput = $VBoxContainer/EnemyUnits
+@onready var your_rolls_container: Container = $VBoxContainer/YourRolls
+@onready var enemy_rolls_container: Container = $VBoxContainer/EnemyRolls
+@onready var roll_button: Button = $VBoxContainer/RollButton
+@onready var results: Container = $VBoxContainer/ScrollContainer/Results
 @onready var button_group: ButtonGroup = ButtonGroup.new()
 
 func _ready():

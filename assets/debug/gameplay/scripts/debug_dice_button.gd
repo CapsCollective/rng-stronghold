@@ -1,4 +1,3 @@
-@tool
 class_name DebugDiceButton extends Button
 
 const textures: Dictionary = {

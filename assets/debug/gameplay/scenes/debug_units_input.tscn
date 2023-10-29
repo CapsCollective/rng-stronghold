@@ -3,8 +3,10 @@
 [ext_resource type="Script" path="res://assets/debug/gameplay/scripts/debug_units_input.gd" id="1_jpahf"]
 
 [node name="Units" type="HFlowContainer"]
-offset_right = 280.0
+anchors_preset = 10
+anchor_right = 1.0
 offset_bottom = 31.0
+grow_horizontal = 2
 theme_override_constants/h_separation = 10
 alignment = 1
 script = ExtResource("1_jpahf")

@@ -5,11 +5,11 @@ const debug_action_scene = preload("res://assets/debug/gameplay/scenes/debug_act
 
 var action_group: ActionGroup
 
-@onready var building_title: Label = $Container/BuildingTitle
-@onready var assigned_units: DebugUnitsInput = $Container/Units
-@onready var roll_button: Button = $Container/RollButton
-@onready var dice_container = $Container/DiceContainer
-@onready var action_container = $Container/ActionsContainer
+@onready var building_title: Label = $VBoxContainer/BuildingTitle
+@onready var assigned_units: DebugUnitsInput = $VBoxContainer/Units
+@onready var roll_button: Button = $VBoxContainer/RollButton
+@onready var dice_container = $VBoxContainer/DiceContainer
+@onready var action_container = $VBoxContainer/ActionsContainer
 @onready var button_group: ButtonGroup = ButtonGroup.new()
 
 func _ready():

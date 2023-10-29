@@ -7,8 +7,13 @@
 
 [node name="DiceButton" type="Button"]
 custom_minimum_size = Vector2(60, 60)
-offset_right = 50.0
-offset_bottom = 54.0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_x8e1p")
 toggle_mode = true

@@ -2,9 +2,9 @@ class_name DebugAction extends Control
 
 const check_icon = preload("res://assets/common/icons/check.svg")
 
-@onready var name_label: Label = $Container/Name
-@onready var description_label: RichTextLabel = $Container/Description
-@onready var assign_button: Button = $Container/Assign
+@onready var name_label: Label = $VBoxContainer/Name
+@onready var description_label: RichTextLabel = $VBoxContainer/Description
+@onready var assign_button: Button = $VBoxContainer/Assign
 
 var action: DiceAction:
 	set(val):

@@ -7,9 +7,14 @@ font_size = 18
 
 [node name="ResourceDebugPanel" type="Panel"]
 custom_minimum_size = Vector2(300, 360)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_y4v0x")
 
-[node name="Container" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -20,25 +25,24 @@ offset_right = -10.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
 
-[node name="PanelTitle" type="Label" parent="Container"]
+[node name="PanelTitle" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Resources"
 label_settings = SubResource("LabelSettings_resk1")
 
-[node name="HSeparator" type="HSeparator" parent="Container"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="ResourcesContainer" type="VBoxContainer" parent="Container"]
+[node name="ResourcesContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="HSeparator2" type="HSeparator" parent="Container"]
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="ResetButton" type="Button" parent="Container"]
+[node name="ResetButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4

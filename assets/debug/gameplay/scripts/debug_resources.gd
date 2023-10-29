@@ -2,8 +2,8 @@ extends Control
 
 const debug_resource_row_scene = preload("res://assets/debug/gameplay/scenes/debug_resource_row.tscn")
 
-@onready var reset_button = $Container/ResetButton
-@onready var container = $Container/ResourcesContainer
+@onready var reset_button = $VBoxContainer/ResetButton
+@onready var container = $VBoxContainer/ResourcesContainer
 
 func _ready():
 	reset_button.pressed.connect(GameManager.reset_resources)

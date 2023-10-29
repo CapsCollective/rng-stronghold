@@ -5,9 +5,9 @@ const ActionGroupScript = preload("res://assets/actions/action_group.gd")
 const debug_action_group_scene = preload("res://assets/debug/gameplay/scenes/debug_action_group.tscn")
 const debug_combat_scene = preload("res://assets/debug/gameplay/scenes/debug_combat.tscn")
 
-@onready var next_turn_button: Button = $ScrollContainer/VBoxContainer/ButtonsContainer/NextTurn
-@onready var reset_game_button: Button = $ScrollContainer/VBoxContainer/ButtonsContainer/ResetGame
-@onready var building_container: TabContainer = $ScrollContainer/VBoxContainer/PanelsContainer/BuildingsDebugPanel
+@onready var next_turn_button: Button = %NextTurnButton
+@onready var reset_game_button: Button = %ResetGameButton
+@onready var building_container: TabContainer = %BuildingsDebugPanel
 
 func _ready():
 	next_turn_button.pressed.connect(GameManager.next_turn)

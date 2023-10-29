@@ -7,12 +7,16 @@ font_size = 18
 
 [node name="UnitsDebugPanel" type="Panel"]
 custom_minimum_size = Vector2(300, 220)
-offset_right = 300.0
-offset_bottom = 220.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_33eda")
 
-[node name="Container" type="VBoxContainer" parent="."]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 10.0
@@ -21,68 +25,67 @@ offset_right = -10.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
 
-[node name="PanelTitle" type="Label" parent="Container"]
+[node name="PanelTitle" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Units"
 label_settings = SubResource("LabelSettings_resk1")
 
-[node name="HSeparator" type="HSeparator" parent="Container"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="Container"]
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
 columns = 3
 
-[node name="Tier" type="Label" parent="Container/GridContainer"]
+[node name="Tier" type="Label" parent="VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Tier"
 
-[node name="Total" type="Label" parent="Container/GridContainer"]
+[node name="Total" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Total"
 
-[node name="Available" type="Label" parent="Container/GridContainer"]
+[node name="Available" type="Label" parent="VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Available"
 horizontal_alignment = 2
 
-[node name="D4" type="Label" parent="Container/GridContainer"]
+[node name="D4" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "D4"
 
-[node name="D4Total" type="SpinBox" parent="Container/GridContainer"]
+[node name="D4Total" type="SpinBox" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 
-[node name="D4Available" type="Label" parent="Container/GridContainer"]
+[node name="D4Available" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "0
 "
 horizontal_alignment = 2
 
-[node name="D6" type="Label" parent="Container/GridContainer"]
+[node name="D6" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "D6"
 
-[node name="D6Total" type="SpinBox" parent="Container/GridContainer"]
+[node name="D6Total" type="SpinBox" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 
-[node name="D6Available" type="Label" parent="Container/GridContainer"]
+[node name="D6Available" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
-[node name="D8" type="Label" parent="Container/GridContainer"]
+[node name="D8" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "D8"
 
-[node name="D8Total" type="SpinBox" parent="Container/GridContainer"]
+[node name="D8Total" type="SpinBox" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 
-[node name="D8Available" type="Label" parent="Container/GridContainer"]
+[node name="D8Available" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "0
 "
