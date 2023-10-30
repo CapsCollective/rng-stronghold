@@ -5,8 +5,6 @@ extends Node3D
 @export var game_cam: Camera3D
 
 func _ready():
-	Savegame.load_file()
-	Utils.push_info("Deserialised Data: ", Savegame.get_dump())
 	for building in buildings:
 		get_node(building).selected.connect(on_building_selected)
 	dice_spawner.roll_completed.connect(on_roll_completed)
@@ -21,19 +19,21 @@ func _ready():
 	print(s)
 	s.queue_free()
 
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action_released("rmb_down"):
-		print("Deselected")
+		Utils.log_info("Selection", "deselected building")
 		game_cam.reset_position()
+		get_viewport().set_input_as_handled()
 	elif event.is_action_released("ui_accept"):
 		dice_spawner.spawn_die()
+		get_viewport().set_input_as_handled()
 
-func on_building_selected(building_name, pos):
-	print("Selected: ", building_name)
+func on_building_selected(building, pos):
+	Utils.log_info("Selection", "selected ", building.name)
 	game_cam.move_to_position(pos)
 
 func on_roll_completed(value: int):
-	print("Rolled: ", value)
+	Utils.log_info("Dice", "rolled ", value)
 	
 	Savegame.example.time = Time.get_ticks_msec()
 	Savegame.example.value = value

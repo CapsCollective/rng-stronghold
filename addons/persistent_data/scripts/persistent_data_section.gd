@@ -1,4 +1,4 @@
-class_name PersistentDataSection extends Object
+class_name PersistentDataSection
 
 const DeserialisationResult = PersistentDataFile.DeserialisationResult
 

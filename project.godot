@@ -14,11 +14,12 @@ config/name="RNG Stronghold"
 run/main_scene="res://assets/levels/main_level.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://assets/common/application_icon.svg"
-config/version="0.1.7"
+config/version="0.1.8"
 
 [autoload]
 
 Savegame="*res://assets/persistence/savegame.gd"
+GameManager="*res://assets/common/game_manager.gd"
 
 [display]
 

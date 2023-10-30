@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3oax4ni8r32e"]
+
+[ext_resource type="Script" path="res://assets/debug/gameplay/scripts/debug_resource_row.gd" id="1_ie0h3"]
+
+[node name="ResourceRow" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+script = ExtResource("1_ie0h3")
+
+[node name="Resource" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Water"
+
+[node name="Count" type="HSlider" parent="."]
+custom_minimum_size = Vector2(140, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 50.0
+rounded = true
+
+[node name="Value" type="Label" parent="."]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0
+"
+horizontal_alignment = 2
