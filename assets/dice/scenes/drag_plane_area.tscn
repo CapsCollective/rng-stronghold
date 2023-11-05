@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw3nd1txdntkq"]
+
+[ext_resource type="Script" path="res://assets/dice/scripts/drag_plane_area.gd" id="1_mqvq3"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_hcp5f"]
+margin = 0.0
+plane = Plane(-1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[node name="DragPlaneArea" type="Area3D"]
+collision_layer = 2
+collision_mask = 2
+input_ray_pickable = false
+monitoring = false
+monitorable = false
+script = ExtResource("1_mqvq3")
+
+[node name="SeparationPlane" type="CollisionShape3D" parent="."]
+shape = SubResource("WorldBoundaryShape3D_hcp5f")
+disabled = true

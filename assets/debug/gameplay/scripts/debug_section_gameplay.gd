@@ -1,7 +1,5 @@
 extends DebugSection
 
-const ActionGroupScript = preload("res://assets/actions/action_group.gd")
-
 const debug_action_group_scene = preload("res://assets/debug/gameplay/scenes/debug_action_group.tscn")
 const debug_combat_scene = preload("res://assets/debug/gameplay/scenes/debug_combat.tscn")
 
@@ -14,7 +12,7 @@ func _ready():
 	reset_game_button.pressed.connect(GameManager.reset_game)
 
 func on_opened():
-	var action_groups = Utils.get_all_nodes_with_script(get_tree().root, ActionGroupScript)
+	var action_groups = Utils.get_all_nodes_with_script(get_tree().root, ActionGroup)
 	for action_group in action_groups:
 		if not action_group.get_actions().is_empty():
 			var debug_action_group: DebugActionGroup = debug_action_group_scene.instantiate()
