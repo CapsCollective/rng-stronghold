@@ -8,12 +8,22 @@ signal new_game
 signal resource_changed(resource: String, value: int)
 signal units_changed(tier: int)
 
+var current_level: Level
+
 func _ready():
 	Savegame.load_file()
 	Utils.log_info("Deserialisation", Savegame.get_dump())
 	if Savegame.player.turn == 0:
 		reset_game()
 	load_completed.emit()
+
+# Level
+func register_level(level: Level):
+	current_level = level
+
+func deregister_level(level: Level):
+	if level == current_level:
+		current_level = null
 
 # Turn
 func get_turn():

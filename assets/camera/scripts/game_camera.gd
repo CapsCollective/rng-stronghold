@@ -1,4 +1,4 @@
-extends Camera3D
+class_name GameCamera extends Camera3D
 
 @export var default_move_duration: float = 0.5
 
