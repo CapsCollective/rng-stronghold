@@ -1,7 +1,7 @@
 class_name DebugActionGroup extends Control
 
-const debug_dice_button_scene = preload("res://assets/debug/gameplay/scenes/debug_dice_button.tscn")
-const debug_action_scene = preload("res://assets/debug/gameplay/scenes/debug_action.tscn")
+const debug_dice_button_scene = preload("res://assets/debug/scenario/scenes/debug_dice_button.tscn")
+const debug_action_scene = preload("res://assets/debug/scenario/scenes/debug_action.tscn")
 
 var action_group: ActionGroup
 

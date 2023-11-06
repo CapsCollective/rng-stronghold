@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://klq80i004brf"]
 
-[ext_resource type="Script" path="res://assets/debug/scripts/debug_display.gd" id="1_fy0n0"]
-[ext_resource type="PackedScene" uid="uid://b8f6d5jppta8k" path="res://assets/debug/gameplay/scenes/debug_section_gameplay.tscn" id="2_3xwv3"]
+[ext_resource type="Script" path="res://assets/debug/common/scripts/debug_display.gd" id="1_fy0n0"]
+[ext_resource type="PackedScene" uid="uid://b8f6d5jppta8k" path="res://assets/debug/scenario/scenes/debug_section_scenario.tscn" id="2_3xwv3"]
 [ext_resource type="PackedScene" uid="uid://cmj6ltk4enqhw" path="res://assets/debug/savegame/scenes/debug_section_savegame.tscn" id="3_yc7rx"]
 
 [node name="DebugDisplay" type="Control"]
@@ -46,7 +46,7 @@ offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Gameplay" parent="TabContainer" instance=ExtResource("2_3xwv3")]
+[node name="Scenario" parent="TabContainer" instance=ExtResource("2_3xwv3")]
 layout_mode = 2
 
 [node name="Savegame" parent="TabContainer" instance=ExtResource("3_yc7rx")]

@@ -1,7 +1,7 @@
 class_name DebugCombat extends Control
 
-const debug_dice_button_scene = preload("res://assets/debug/gameplay/scenes/debug_dice_button.tscn")
-const debug_results_row_scene = preload("res://assets/debug/gameplay/scenes/debug_results_row.tscn")
+const debug_dice_button_scene = preload("res://assets/debug/scenario/scenes/debug_dice_button.tscn")
+const debug_results_row_scene = preload("res://assets/debug/scenario/scenes/debug_results_row.tscn")
 
 var action_group: ActionGroup
 

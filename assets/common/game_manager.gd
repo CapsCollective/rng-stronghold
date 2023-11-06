@@ -8,7 +8,7 @@ signal new_game
 signal resource_changed(resource: String, value: int)
 signal units_changed(tier: int)
 
-var current_level: Level
+var current_scenario: Scenario
 
 func _ready():
 	Savegame.load_file()
@@ -17,13 +17,13 @@ func _ready():
 		reset_game()
 	load_completed.emit()
 
-# Level
-func register_level(level: Level):
-	current_level = level
+# Scenario
+func register_scenario(scenario: Scenario):
+	current_scenario = scenario
 
-func deregister_level(level: Level):
-	if level == current_level:
-		current_level = null
+func deregister_scenario(scenario: Scenario):
+	if scenario == current_scenario:
+		current_scenario = null
 
 # Turn
 func get_turn():

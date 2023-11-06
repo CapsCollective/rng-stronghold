@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8f6d5jppta8k"]
 
-[ext_resource type="Script" path="res://assets/debug/gameplay/scripts/debug_section_gameplay.gd" id="1_kq01a"]
-[ext_resource type="PackedScene" uid="uid://bon51dyvp8mot" path="res://assets/debug/gameplay/scenes/debug_resources.tscn" id="2_jhcbd"]
-[ext_resource type="PackedScene" uid="uid://bm06gok1hhcpc" path="res://assets/debug/gameplay/scenes/debug_units.tscn" id="3_kgilw"]
+[ext_resource type="Script" path="res://assets/debug/scenario/scripts/debug_section_scenario.gd" id="1_kq01a"]
+[ext_resource type="PackedScene" uid="uid://bon51dyvp8mot" path="res://assets/debug/scenario/scenes/debug_resources.tscn" id="2_jhcbd"]
+[ext_resource type="PackedScene" uid="uid://bm06gok1hhcpc" path="res://assets/debug/scenario/scenes/debug_units.tscn" id="3_kgilw"]
 
-[node name="Gameplay" type="Control"]
+[node name="Scenario" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

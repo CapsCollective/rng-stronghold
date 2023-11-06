@@ -1,4 +1,4 @@
-class_name Level extends Node3D
+class_name Scenario extends Node3D
 
 var game_cam: GameCamera
 var buildings: Array[Building]
@@ -11,10 +11,10 @@ func _ready():
 		buildings.append(building)
 		building.selected.connect(on_building_selected)
 		building.deselected.connect(on_building_deselected)
-	GameManager.register_level(self)
+	GameManager.register_scenario(self)
 
 func _exit_tree():
-	GameManager.deregister_level(self)
+	GameManager.deregister_scenario(self)
 
 func on_building_selected(building: Building):
 	Utils.log_info("Selection", "selected ", building.name)

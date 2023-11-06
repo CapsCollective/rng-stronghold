@@ -1,22 +1,22 @@
 [gd_scene load_steps=23 format=3 uid="uid://c1qqqoap4v764"]
 
-[ext_resource type="Script" path="res://assets/levels/scripts/level.gd" id="1_l7pqt"]
-[ext_resource type="PackedScene" uid="uid://c0newga26wfg0" path="res://assets/camera/scenes/game_camera.tscn" id="2_rgas6"]
-[ext_resource type="ArrayMesh" uid="uid://b21x26cs8xipu" path="res://assets/buildings/models/ground/ground_geo.res" id="3_0nlkw"]
-[ext_resource type="PackedScene" uid="uid://b7fxbshlkyc4a" path="res://assets/buildings/scenes/granary.tscn" id="4_clkfw"]
-[ext_resource type="PackedScene" uid="uid://cw3nd1txdntkq" path="res://assets/dice/scenes/drag_plane_area.tscn" id="5_7wl58"]
-[ext_resource type="Script" path="res://assets/actions/action_group.gd" id="6_v2hyr"]
-[ext_resource type="Script" path="res://assets/actions/farm_plot_action.gd" id="7_is716"]
-[ext_resource type="PackedScene" uid="uid://bpgrqxbsrqqom" path="res://assets/dice/scenes/dice_spawner.tscn" id="8_chgt2"]
-[ext_resource type="PackedScene" uid="uid://2pn0sstfwsql" path="res://assets/buildings/scenes/armoury.tscn" id="9_5kis3"]
-[ext_resource type="PackedScene" uid="uid://clstsmjnwam8a" path="res://assets/buildings/scenes/well.tscn" id="10_f5rlt"]
-[ext_resource type="Script" path="res://assets/actions/water_action.gd" id="10_ijsmi"]
-[ext_resource type="PackedScene" uid="uid://dxq6vpvntwv01" path="res://assets/buildings/scenes/fort.tscn" id="11_pkjmn"]
-[ext_resource type="PackedScene" uid="uid://d133oe2modrw6" path="res://assets/buildings/scenes/watermill.tscn" id="12_okwtb"]
-[ext_resource type="Script" path="res://assets/actions/flour_action.gd" id="13_sgh4o"]
-[ext_resource type="Script" path="res://assets/actions/bread_action.gd" id="14_7fqmq"]
-[ext_resource type="PackedScene" uid="uid://dstyy0pxjmoos" path="res://assets/buildings/scenes/wall.tscn" id="15_f8l3i"]
-[ext_resource type="Texture2D" uid="uid://dbr8fme6ekq51" path="res://assets/common/icons/check.svg" id="16_8m76a"]
+[ext_resource type="Script" path="res://assets/scenarios/scripts/scenario.gd" id="1_6bv4l"]
+[ext_resource type="PackedScene" uid="uid://c0newga26wfg0" path="res://assets/camera/scenes/game_camera.tscn" id="2_ef5a0"]
+[ext_resource type="ArrayMesh" uid="uid://b21x26cs8xipu" path="res://assets/buildings/models/ground/ground_geo.res" id="3_h2vay"]
+[ext_resource type="PackedScene" uid="uid://b7fxbshlkyc4a" path="res://assets/buildings/scenes/granary.tscn" id="4_pg7fi"]
+[ext_resource type="PackedScene" uid="uid://cw3nd1txdntkq" path="res://assets/dice/scenes/drag_plane_area.tscn" id="5_g88hq"]
+[ext_resource type="Script" path="res://assets/actions/action_group.gd" id="6_o5pou"]
+[ext_resource type="Script" path="res://assets/actions/farm_plot_action.gd" id="7_ugkrm"]
+[ext_resource type="PackedScene" uid="uid://bpgrqxbsrqqom" path="res://assets/dice/scenes/dice_spawner.tscn" id="8_ssq60"]
+[ext_resource type="PackedScene" uid="uid://2pn0sstfwsql" path="res://assets/buildings/scenes/armoury.tscn" id="9_p2vbn"]
+[ext_resource type="PackedScene" uid="uid://clstsmjnwam8a" path="res://assets/buildings/scenes/well.tscn" id="10_fsu7a"]
+[ext_resource type="Script" path="res://assets/actions/water_action.gd" id="11_57dmj"]
+[ext_resource type="PackedScene" uid="uid://dxq6vpvntwv01" path="res://assets/buildings/scenes/fort.tscn" id="12_d1rqx"]
+[ext_resource type="PackedScene" uid="uid://d133oe2modrw6" path="res://assets/buildings/scenes/watermill.tscn" id="13_fc7xk"]
+[ext_resource type="Script" path="res://assets/actions/flour_action.gd" id="14_r6vvr"]
+[ext_resource type="Script" path="res://assets/actions/bread_action.gd" id="15_2rkrp"]
+[ext_resource type="PackedScene" uid="uid://dstyy0pxjmoos" path="res://assets/buildings/scenes/wall.tscn" id="16_yi525"]
+[ext_resource type="Texture2D" uid="uid://dbr8fme6ekq51" path="res://assets/common/icons/check.svg" id="17_j8x76"]
 
 [sub_resource type="Environment" id="Environment_8f0bx"]
 
@@ -31,8 +31,8 @@ data = PackedVector3Array(-5.8397, -10.8962, 2.0853, -5.8397, 1, -23.6335, -5.83
 [sub_resource type="BoxShape3D" id="BoxShape3D_dfs0e"]
 size = Vector3(14.8268, 14.0738, 1.42399)
 
-[node name="Level" type="Node3D"]
-script = ExtResource("1_l7pqt")
+[node name="Scenario" type="Node3D"]
+script = ExtResource("1_6bv4l")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8f0bx")
@@ -41,20 +41,20 @@ camera_attributes = SubResource("CameraAttributesPractical_s300m")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.501511, 0.704771, -0.501781, 2.49258e-16, 0.579992, 0.814622, 0.865151, -0.408542, 0.290872, 0, 0, 0)
 
-[node name="GameCamera" parent="." instance=ExtResource("2_rgas6")]
+[node name="GameCamera" parent="." instance=ExtResource("2_ef5a0")]
 transform = Transform3D(0.173648, 0.492404, -0.852868, 3.02058e-16, 0.866025, 0.5, 0.984808, -0.086824, 0.150384, -55, 30, 2.08165e-12)
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(4, -1.39515e-15, 1.39515e-15, 1.39515e-15, 4, -1.39515e-15, -1.39515e-15, 1.39515e-15, 4, -15.7203, -1.25293, -11.8775)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-mesh = ExtResource("3_0nlkw")
+mesh = ExtResource("3_h2vay")
 surface_material_override/0 = SubResource("StandardMaterial3D_f8ybs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("ConcavePolygonShape3D_r2lt4")
 
-[node name="Farm" parent="." node_paths=PackedStringArray("cam_zoom", "drag_plane_area") instance=ExtResource("4_clkfw")]
+[node name="Farm" parent="." node_paths=PackedStringArray("cam_zoom", "drag_plane_area") instance=ExtResource("4_pg7fi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8548, 6.69796, -14.1166)
 cam_zoom = NodePath("FarmCamZoom")
 drag_plane_area = NodePath("DragPlaneArea")
@@ -62,27 +62,27 @@ drag_plane_area = NodePath("DragPlaneArea")
 [node name="FarmCamZoom" type="Node3D" parent="Farm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7422, 3.99304, 3.8391)
 
-[node name="DragPlaneArea" parent="Farm" node_paths=PackedStringArray("cursor") instance=ExtResource("5_7wl58")]
+[node name="DragPlaneArea" parent="Farm" node_paths=PackedStringArray("cursor") instance=ExtResource("5_g88hq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.88825, -6.69796, -2.33213)
 cursor = NodePath("../../Cursor")
 
 [node name="FarmActionGroup" type="Node" parent="Farm"]
-script = ExtResource("6_v2hyr")
+script = ExtResource("6_o5pou")
 title = "Farm"
 
 [node name="FarmPlotAction1" type="Node" parent="Farm/FarmActionGroup"]
-script = ExtResource("7_is716")
+script = ExtResource("7_ugkrm")
 
 [node name="FarmPlotAction2" type="Node" parent="Farm/FarmActionGroup"]
-script = ExtResource("7_is716")
+script = ExtResource("7_ugkrm")
 plot_index = 1
 
 [node name="FarmPlotAction3" type="Node" parent="Farm/FarmActionGroup"]
-script = ExtResource("7_is716")
+script = ExtResource("7_ugkrm")
 plot_index = 2
 
 [node name="FarmPlotAction4" type="Node" parent="Farm/FarmActionGroup"]
-script = ExtResource("7_is716")
+script = ExtResource("7_ugkrm")
 plot_index = 3
 
 [node name="RollingTray" type="Node3D" parent="Farm"]
@@ -112,16 +112,16 @@ transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Farm/RollingTray/StaticBody3D5"]
 shape = SubResource("BoxShape3D_dfs0e")
 
-[node name="DiceSpawner" parent="Farm/RollingTray" instance=ExtResource("8_chgt2")]
+[node name="DiceSpawner" parent="Farm/RollingTray" instance=ExtResource("8_ssq60")]
 
-[node name="Armoury" parent="." node_paths=PackedStringArray("cam_zoom") instance=ExtResource("9_5kis3")]
+[node name="Armoury" parent="." node_paths=PackedStringArray("cam_zoom") instance=ExtResource("9_p2vbn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4538, 8.42527, -50.3529)
 cam_zoom = NodePath("ArmouryCamZoom")
 
 [node name="ArmouryCamZoom" type="Node3D" parent="Armoury"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.631, 7.52795, 4.07542)
 
-[node name="Well" parent="." node_paths=PackedStringArray("cam_zoom") instance=ExtResource("10_f5rlt")]
+[node name="Well" parent="." node_paths=PackedStringArray("cam_zoom") instance=ExtResource("10_fsu7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1477, 5.41915, -34.9332)
 cam_zoom = NodePath("WellCamZoom")
 
@@ -129,20 +129,20 @@ cam_zoom = NodePath("WellCamZoom")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -11.3686, 7.20331, 4.92141)
 
 [node name="WellActionGroup" type="Node" parent="Well"]
-script = ExtResource("6_v2hyr")
+script = ExtResource("6_o5pou")
 title = "Well"
 
 [node name="WaterAction" type="Node" parent="Well/WellActionGroup"]
-script = ExtResource("10_ijsmi")
+script = ExtResource("11_57dmj")
 
-[node name="Fort" parent="." node_paths=PackedStringArray("cam_zoom") instance=ExtResource("11_pkjmn")]
+[node name="Fort" parent="." node_paths=PackedStringArray("cam_zoom") instance=ExtResource("12_d1rqx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38622, 8.76108, -26.9042)
 cam_zoom = NodePath("FortCamZoom")
 
 [node name="FortCamZoom" type="Node3D" parent="Fort"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1711, 9.1696, 18.1206)
 
-[node name="Mill" parent="." node_paths=PackedStringArray("cam_zoom") instance=ExtResource("12_okwtb")]
+[node name="Mill" parent="." node_paths=PackedStringArray("cam_zoom") instance=ExtResource("13_fc7xk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7361, 7.7049, -9.93047)
 cam_zoom = NodePath("MillCamZoom")
 
@@ -150,16 +150,16 @@ cam_zoom = NodePath("MillCamZoom")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3779, 4.9861, 4.18306)
 
 [node name="MillActionGroup" type="Node" parent="Mill"]
-script = ExtResource("6_v2hyr")
+script = ExtResource("6_o5pou")
 title = "Mill"
 
 [node name="FlourAction" type="Node" parent="Mill/MillActionGroup"]
-script = ExtResource("13_sgh4o")
+script = ExtResource("14_r6vvr")
 
 [node name="BreadAction" type="Node" parent="Mill/MillActionGroup"]
-script = ExtResource("14_7fqmq")
+script = ExtResource("15_2rkrp")
 
-[node name="Wall" parent="." node_paths=PackedStringArray("cam_zoom") instance=ExtResource("15_f8l3i")]
+[node name="Wall" parent="." node_paths=PackedStringArray("cam_zoom") instance=ExtResource("16_yi525")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.394, 8.5565, 17.0817)
 cam_zoom = NodePath("WallCamZoom")
 
@@ -167,10 +167,10 @@ cam_zoom = NodePath("WallCamZoom")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3779, 4.9861, 0.129934)
 
 [node name="WallActionGroup" type="Node" parent="Wall"]
-script = ExtResource("6_v2hyr")
+script = ExtResource("6_o5pou")
 title = "Wall"
 max_health = 20
 
 [node name="Cursor" type="Sprite3D" parent="."]
 transform = Transform3D(-4.37114e-07, -3.48787e-15, -10, 3.48787e-15, 10, -3.48787e-15, 10, -3.48787e-15, -4.37114e-07, -32.8703, 9.80649, 8.52338e-07)
-texture = ExtResource("16_8m76a")
+texture = ExtResource("17_j8x76")

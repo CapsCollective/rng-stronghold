@@ -62,4 +62,4 @@ func set_plane_disabled(disabled: bool):
 		Utils.log_warn("Building", "No drag plane defined for position set for building ", name)
 
 func is_any_building_selected() -> bool:
-	return GameManager.current_level.selected_building != null
+	return GameManager.current_scenario.selected_building != null

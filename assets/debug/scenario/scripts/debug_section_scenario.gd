@@ -1,7 +1,7 @@
 extends DebugSection
 
-const debug_action_group_scene = preload("res://assets/debug/gameplay/scenes/debug_action_group.tscn")
-const debug_combat_scene = preload("res://assets/debug/gameplay/scenes/debug_combat.tscn")
+const debug_action_group_scene = preload("res://assets/debug/scenario/scenes/debug_action_group.tscn")
+const debug_combat_scene = preload("res://assets/debug/scenario/scenes/debug_combat.tscn")
 
 @onready var next_turn_button: Button = %NextTurnButton
 @onready var reset_game_button: Button = %ResetGameButton

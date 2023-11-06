@@ -1,6 +1,6 @@
 extends Control
 
-const debug_resource_row_scene = preload("res://assets/debug/gameplay/scenes/debug_resource_row.tscn")
+const debug_resource_row_scene = preload("res://assets/debug/scenario/scenes/debug_resource_row.tscn")
 
 @onready var reset_button = $VBoxContainer/ResetButton
 @onready var container = $VBoxContainer/ResourcesContainer

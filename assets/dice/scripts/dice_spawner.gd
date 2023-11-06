@@ -17,3 +17,16 @@ func spawn_die():
 func on_roll_completed(die: PhysicsDie, value: int):
 	die.roll_completed.disconnect(on_roll_completed)
 	roll_completed.emit(value)
+
+func _ready():
+	var on_completed = func(value: int):
+		Utils.log_info("Dice", "rolled ", value)
+		Savegame.example.time = Time.get_ticks_msec()
+		Savegame.example.value = value
+		Savegame.save_file()
+	roll_completed.connect(on_completed)
+
+func _unhandled_input(event):
+	if event.is_action_released("ui_accept"):
+		spawn_die()
+		get_viewport().set_input_as_handled()
