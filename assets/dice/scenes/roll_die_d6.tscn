@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://cp4wh1hkmcujv"]
+
+[ext_resource type="Script" path="res://assets/dice/scripts/roll_die_d6.gd" id="1_rb722"]
+[ext_resource type="ArrayMesh" uid="uid://3ac0j5vyoxm3" path="res://assets/dice/models/d6/dice_d6_geo.res" id="3_isi1n"]
+[ext_resource type="Material" path="res://assets/dice/models/d6/dice_d6_mat.tres" id="4_3urhr"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0c1ht"]
+bounce = 0.6
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gtq2r"]
+size = Vector3(2, 2, 2)
+
+[node name="RollDie" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1.5, 2.08165e-12)
+physics_material_override = SubResource("PhysicsMaterial_0c1ht")
+gravity_scale = 3.0
+script = ExtResource("1_rb722")
+max_value = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_gtq2r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_isi1n")
+surface_material_override/0 = ExtResource("4_3urhr")

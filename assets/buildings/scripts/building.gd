@@ -5,6 +5,7 @@ signal deselected(building: Building)
 
 @export var cam_zoom: Node3D
 @export var drag_plane_area: DragPlaneArea
+@export var dice_spawner: DiceSpawner
 
 var orig_scale: Vector3
 var mouse_over: bool = false
@@ -27,6 +28,12 @@ func _unhandled_input(event):
 		get_viewport().set_input_as_handled()
 	elif event is InputEventMouseMotion and mouse_over and not building_hovered and not is_any_building_selected():
 		grow()
+		get_viewport().set_input_as_handled()
+	elif event.is_action_released("ui_accept") and building_selected :
+		if dice_spawner:
+			dice_spawner.spawn_die()
+		else:
+			Utils.log_warn("Building", "No dice spawner defined for building ", name)
 		get_viewport().set_input_as_handled()
 
 func on_selected():
@@ -59,7 +66,7 @@ func set_plane_disabled(disabled: bool):
 	if drag_plane_area:
 		drag_plane_area.set_plane_disabled(disabled)
 	else:
-		Utils.log_warn("Building", "No drag plane defined for position set for building ", name)
+		Utils.log_warn("Building", "No drag plane defined for building ", name)
 
 func is_any_building_selected() -> bool:
 	return GameManager.current_scenario.selected_building != null

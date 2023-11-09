@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c1qqqoap4v764"]
+[gd_scene load_steps=22 format=3 uid="uid://c1qqqoap4v764"]
 
 [ext_resource type="Script" path="res://assets/scenarios/scripts/scenario.gd" id="1_6bv4l"]
 [ext_resource type="PackedScene" uid="uid://c0newga26wfg0" path="res://assets/camera/scenes/game_camera.tscn" id="2_ef5a0"]
@@ -16,7 +16,6 @@
 [ext_resource type="Script" path="res://assets/actions/flour_action.gd" id="14_r6vvr"]
 [ext_resource type="Script" path="res://assets/actions/bread_action.gd" id="15_2rkrp"]
 [ext_resource type="PackedScene" uid="uid://dstyy0pxjmoos" path="res://assets/buildings/scenes/wall.tscn" id="16_yi525"]
-[ext_resource type="Texture2D" uid="uid://dbr8fme6ekq51" path="res://assets/common/icons/check.svg" id="17_j8x76"]
 
 [sub_resource type="Environment" id="Environment_8f0bx"]
 
@@ -54,17 +53,17 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f8ybs")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("ConcavePolygonShape3D_r2lt4")
 
-[node name="Farm" parent="." node_paths=PackedStringArray("cam_zoom", "drag_plane_area") instance=ExtResource("4_pg7fi")]
+[node name="Farm" parent="." node_paths=PackedStringArray("cam_zoom", "drag_plane_area", "dice_spawner") instance=ExtResource("4_pg7fi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8548, 6.69796, -14.1166)
 cam_zoom = NodePath("FarmCamZoom")
 drag_plane_area = NodePath("DragPlaneArea")
+dice_spawner = NodePath("FarmDiceSpawner")
 
 [node name="FarmCamZoom" type="Node3D" parent="Farm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7422, 3.99304, 3.8391)
 
-[node name="DragPlaneArea" parent="Farm" node_paths=PackedStringArray("cursor") instance=ExtResource("5_g88hq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.88825, -6.69796, -2.33213)
-cursor = NodePath("../../Cursor")
+[node name="DragPlaneArea" parent="Farm" instance=ExtResource("5_g88hq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.88825, -1.97722, -2.33213)
 
 [node name="FarmActionGroup" type="Node" parent="Farm"]
 script = ExtResource("6_o5pou")
@@ -85,34 +84,35 @@ plot_index = 2
 script = ExtResource("7_ugkrm")
 plot_index = 3
 
-[node name="RollingTray" type="Node3D" parent="Farm"]
+[node name="FarmDiceSpawner" parent="Farm" instance=ExtResource("8_ssq60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96083, 4.43797, -2.7631)
+
+[node name="FarmRollingTray" type="Node3D" parent="Farm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6873, -7.30393, -3.7631)
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="Farm/RollingTray"]
+[node name="StaticBody3D2" type="StaticBody3D" parent="Farm/FarmRollingTray"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.97308)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Farm/RollingTray/StaticBody3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Farm/FarmRollingTray/StaticBody3D2"]
 shape = SubResource("BoxShape3D_dfs0e")
 
-[node name="StaticBody3D3" type="StaticBody3D" parent="Farm/RollingTray"]
+[node name="StaticBody3D3" type="StaticBody3D" parent="Farm/FarmRollingTray"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.11676)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Farm/RollingTray/StaticBody3D3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Farm/FarmRollingTray/StaticBody3D3"]
 shape = SubResource("BoxShape3D_dfs0e")
 
-[node name="StaticBody3D4" type="StaticBody3D" parent="Farm/RollingTray"]
+[node name="StaticBody3D4" type="StaticBody3D" parent="Farm/FarmRollingTray"]
 transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -7.54319, 0, 1.51123)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Farm/RollingTray/StaticBody3D4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Farm/FarmRollingTray/StaticBody3D4"]
 shape = SubResource("BoxShape3D_dfs0e")
 
-[node name="StaticBody3D5" type="StaticBody3D" parent="Farm/RollingTray"]
+[node name="StaticBody3D5" type="StaticBody3D" parent="Farm/FarmRollingTray"]
 transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 7.58104, 0, 1.51123)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Farm/RollingTray/StaticBody3D5"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Farm/FarmRollingTray/StaticBody3D5"]
 shape = SubResource("BoxShape3D_dfs0e")
-
-[node name="DiceSpawner" parent="Farm/RollingTray" instance=ExtResource("8_ssq60")]
 
 [node name="Armoury" parent="." node_paths=PackedStringArray("cam_zoom") instance=ExtResource("9_p2vbn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4538, 8.42527, -50.3529)
@@ -170,7 +170,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3779, 4.9861, 0.129934)
 script = ExtResource("6_o5pou")
 title = "Wall"
 max_health = 20
-
-[node name="Cursor" type="Sprite3D" parent="."]
-transform = Transform3D(-4.37114e-07, -3.48787e-15, -10, 3.48787e-15, 10, -3.48787e-15, 10, -3.48787e-15, -4.37114e-07, -32.8703, 9.80649, 8.52338e-07)
-texture = ExtResource("17_j8x76")

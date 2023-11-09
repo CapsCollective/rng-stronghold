@@ -1,4 +1,4 @@
-extends PhysicsDie
+extends RollDie
 
 func check_result():
 	var result = -1

@@ -1,7 +1,5 @@
 class_name DragPlaneArea extends Area3D
 
-@export var cursor: Node3D
-
 func _input(event):
 	if event.is_action_released("ui_copy"):
 		if is_plane_disabled():
@@ -10,12 +8,13 @@ func _input(event):
 			set_plane_disabled(true)
 
 func is_plane_disabled() -> bool:
-	return $SeparationPlane.disabled
+	return $VerticalSeparationPlane.disabled
 
 func set_plane_disabled(disabled: bool):
-	$SeparationPlane.disabled = disabled
+	$VerticalSeparationPlane.disabled = disabled
+	$HorzontalSeparationPlane.disabled = disabled
 
-func _process(_delta):
+func process(_delta):
 	var viewport := get_viewport()
 	var mouse_position := viewport.get_mouse_position()
 	var camera := viewport.get_camera_3d()
@@ -27,4 +26,4 @@ func _process(_delta):
 	query.collision_mask = 2
 	var result := get_world_3d().direct_space_state.intersect_ray(query)
 	var world_position: Vector3 = result.get("position", end)
-	cursor.global_position = world_position
+	#cursor.global_position = world_position

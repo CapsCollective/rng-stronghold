@@ -1,10 +1,9 @@
-extends RigidBody3D
-class_name PhysicsDie
+class_name RollDie extends RigidBody3D
 
-signal roll_completed(die: PhysicsDie, value: int)
+signal roll_completed(die: RollDie, value: int)
 
-@export var initial_material: Material
-@export var finished_material: Material
+@export var max_value: int
+
 @onready var mesh: MeshInstance3D = $MeshInstance3D
 
 func _ready():
@@ -12,10 +11,8 @@ func _ready():
 
 func initiate_roll():
 	sleeping_state_changed.connect(end_roll)
-	mesh.set_surface_override_material(0, initial_material)
 
 func end_roll():
-	mesh.set_surface_override_material(0, finished_material)
 	check_result()
 
 func check_result():
