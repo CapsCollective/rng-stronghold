@@ -48,12 +48,6 @@ func _unhandled_input(event):
 	elif event is InputEventMouseMotion and mouse_over and not building_hovered and not is_any_building_selected():
 		grow()
 		get_viewport().set_input_as_handled()
-	elif event.is_action_released("ui_accept") and building_selected :
-		if dice_spawner:
-			dice_spawner.spawn_die()
-		else:
-			Utils.log_warn("Building", "No dice spawner defined for building ", name)
-		get_viewport().set_input_as_handled()
 
 func on_selected():
 	building_selected = true

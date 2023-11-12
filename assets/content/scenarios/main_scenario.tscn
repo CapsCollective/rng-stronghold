@@ -56,13 +56,13 @@ shape = SubResource("ConcavePolygonShape3D_r2lt4")
 [node name="Farm" parent="." node_paths=PackedStringArray("cam_zoom", "drag_plane_area", "dice_spawner") instance=ExtResource("4_pg7fi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8548, 6.69796, -14.1166)
 cam_zoom = NodePath("FarmCamZoom")
-drag_plane_area = NodePath("DragPlaneArea")
+drag_plane_area = NodePath("FarmDragPlaneArea")
 dice_spawner = NodePath("FarmDiceSpawner")
 
 [node name="FarmCamZoom" type="Node3D" parent="Farm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7422, 3.99304, 3.8391)
 
-[node name="DragPlaneArea" parent="Farm" instance=ExtResource("5_g88hq")]
+[node name="FarmDragPlaneArea" parent="Farm" instance=ExtResource("5_g88hq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.88825, -1.97722, -2.33213)
 
 [node name="FarmActionGroup" type="Node" parent="Farm"]
@@ -125,12 +125,17 @@ cam_zoom = NodePath("ArmouryCamZoom")
 [node name="ArmouryCamZoom" type="Node3D" parent="Armoury"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.631, 7.52795, 4.07542)
 
-[node name="Well" parent="." node_paths=PackedStringArray("cam_zoom") instance=ExtResource("10_fsu7a")]
+[node name="Well" parent="." node_paths=PackedStringArray("cam_zoom", "drag_plane_area", "dice_spawner") instance=ExtResource("10_fsu7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1477, 5.41915, -34.9332)
 cam_zoom = NodePath("WellCamZoom")
+drag_plane_area = NodePath("WellDragPlaneArea")
+dice_spawner = NodePath("WellDiceSpawner")
 
 [node name="WellCamZoom" type="Node3D" parent="Well"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -11.3686, 7.20331, 4.92141)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -18.9627, 5.41192, 2.00731)
+
+[node name="WellDragPlaneArea" parent="Well" instance=ExtResource("5_g88hq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7493, -1.97722, 0.26305)
 
 [node name="WellActionGroup" type="Node" parent="Well"]
 script = ExtResource("6_o5pou")
@@ -139,6 +144,40 @@ title = "Well"
 [node name="WaterAction" type="Node" parent="Well/WellActionGroup"]
 script = ExtResource("11_57dmj")
 
+[node name="WellDiceSpawner" parent="Well" instance=ExtResource("8_ssq60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.82188, 4.43797, -0.167919)
+
+[node name="WellRollingTray" type="Node3D" parent="Well"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.54835, -7.30393, -1.16792)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Well/WellRollingTray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.97308)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Well/WellRollingTray/StaticBody3D2"]
+shape = SubResource("BoxShape3D_dfs0e")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Well/WellRollingTray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.11676)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Well/WellRollingTray/StaticBody3D3"]
+shape = SubResource("BoxShape3D_dfs0e")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="Well/WellRollingTray"]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -7.54319, 0, 1.51123)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Well/WellRollingTray/StaticBody3D4"]
+shape = SubResource("BoxShape3D_dfs0e")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="Well/WellRollingTray"]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 7.58104, 0, 1.51123)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Well/WellRollingTray/StaticBody3D5"]
+shape = SubResource("BoxShape3D_dfs0e")
+
 [node name="Fort" parent="." node_paths=PackedStringArray("cam_zoom") instance=ExtResource("12_d1rqx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38622, 8.76108, -26.9042)
 cam_zoom = NodePath("FortCamZoom")
@@ -146,12 +185,17 @@ cam_zoom = NodePath("FortCamZoom")
 [node name="FortCamZoom" type="Node3D" parent="Fort"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1711, 9.1696, 18.1206)
 
-[node name="Mill" parent="." node_paths=PackedStringArray("cam_zoom") instance=ExtResource("13_fc7xk")]
+[node name="Mill" parent="." node_paths=PackedStringArray("cam_zoom", "drag_plane_area", "dice_spawner") instance=ExtResource("13_fc7xk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7361, 7.7049, -9.93047)
 cam_zoom = NodePath("MillCamZoom")
+drag_plane_area = NodePath("MillDragPlaneArea")
+dice_spawner = NodePath("MillDiceSpawner")
 
 [node name="MillCamZoom" type="Node3D" parent="Mill"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3779, 4.9861, 4.18306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2822, 4.9861, 8.27014)
+
+[node name="MillDragPlaneArea" parent="Mill" instance=ExtResource("5_g88hq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.54992, -1.97722, 3.40747)
 
 [node name="MillActionGroup" type="Node" parent="Mill"]
 script = ExtResource("6_o5pou")
@@ -162,6 +206,40 @@ script = ExtResource("14_r6vvr")
 
 [node name="BreadAction" type="Node" parent="Mill/MillActionGroup"]
 script = ExtResource("15_2rkrp")
+
+[node name="MillDiceSpawner" parent="Mill" instance=ExtResource("8_ssq60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.62251, 4.43797, 2.9765)
+
+[node name="MillRollingTray" type="Node3D" parent="Mill"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.34897, -7.30393, 1.9765)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Mill/MillRollingTray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.97308)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mill/MillRollingTray/StaticBody3D2"]
+shape = SubResource("BoxShape3D_dfs0e")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Mill/MillRollingTray"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.11676)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mill/MillRollingTray/StaticBody3D3"]
+shape = SubResource("BoxShape3D_dfs0e")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="Mill/MillRollingTray"]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -7.54319, 0, 1.51123)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mill/MillRollingTray/StaticBody3D4"]
+shape = SubResource("BoxShape3D_dfs0e")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="Mill/MillRollingTray"]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 7.58104, 0, 1.51123)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mill/MillRollingTray/StaticBody3D5"]
+shape = SubResource("BoxShape3D_dfs0e")
 
 [node name="Wall" parent="." node_paths=PackedStringArray("cam_zoom") instance=ExtResource("16_yi525")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.394, 8.5565, 17.0817)
