@@ -11,16 +11,15 @@ config_version=5
 [application]
 
 config/name="RNG Stronghold"
-run/main_scene="res://assets/scenarios/scenes/main_scenario.tscn"
+run/main_scene="res://assets/common/scenes/game_world.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://assets/common/application_icon.svg"
+config/icon="res://assets/common/icons/application_icon.svg"
 config/version="0.1.8"
 
 [autoload]
 
 Savegame="*res://assets/persistence/savegame.gd"
-GameManager="*res://assets/common/game_manager.gd"
-DebugDisplay="*res://assets/debug/common/scenes/debug_display.tscn"
+GameManager="*res://assets/common/scripts/game_manager.gd"
 
 [display]
 

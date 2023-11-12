@@ -30,7 +30,7 @@ data = PackedVector3Array(-5.8397, -10.8962, 2.0853, -5.8397, 1, -23.6335, -5.83
 [sub_resource type="BoxShape3D" id="BoxShape3D_dfs0e"]
 size = Vector3(14.8268, 14.0738, 1.42399)
 
-[node name="Scenario" type="Node3D"]
+[node name="MainScenario" type="Node3D"]
 script = ExtResource("1_6bv4l")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
