@@ -1,6 +1,6 @@
 class_name ValidationManager
 
-const Utils = preload("res://assets/common/utils.gd") 
+const Utils = preload("res://assets/common/scripts/utils.gd") 
 const validations = []
 
 func run_all_validations() -> bool:
