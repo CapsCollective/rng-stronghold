@@ -8,7 +8,10 @@ var drag_offset: Vector3
 var mouse_over: bool = false
 var mouse_dragging: bool = false
 
-func set_resting_position():
+func initialise(pos: Vector3, rot: Vector3, result: int):
+	position = pos
+	rotation = rot
+	value = result
 	initial_position = position
 
 func _input(event):
@@ -16,10 +19,12 @@ func _input(event):
 		var collision_point = get_perspective_collision_ray_point(false, 1)
 		drag_offset = global_position - collision_point
 		mouse_dragging = true
+		GameManager.get_selected_building().selected_die = self
 		get_viewport().set_input_as_handled()
 	elif event.is_action_released("lmb_down") and mouse_dragging:
 		mouse_dragging = false
 		mouse_over = false
+		GameManager.get_selected_building().selected_die = null
 		get_viewport().set_input_as_handled()
 
 func _process(_delta):

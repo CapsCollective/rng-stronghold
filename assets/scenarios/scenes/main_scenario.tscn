@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://c1qqqoap4v764"]
+[gd_scene load_steps=23 format=3 uid="uid://c1qqqoap4v764"]
 
 [ext_resource type="Script" path="res://assets/scenarios/scripts/scenario.gd" id="1_6bv4l"]
 [ext_resource type="PackedScene" uid="uid://c0newga26wfg0" path="res://assets/camera/scenes/game_camera.tscn" id="2_ef5a0"]
 [ext_resource type="ArrayMesh" uid="uid://b21x26cs8xipu" path="res://assets/buildings/models/ground/ground_geo.res" id="3_h2vay"]
+[ext_resource type="Script" path="res://assets/dice_drop.gd" id="3_p5ms2"]
 [ext_resource type="PackedScene" uid="uid://b7fxbshlkyc4a" path="res://assets/buildings/scenes/granary.tscn" id="4_pg7fi"]
 [ext_resource type="PackedScene" uid="uid://cw3nd1txdntkq" path="res://assets/dice/scenes/drag_plane_area.tscn" id="5_g88hq"]
 [ext_resource type="Script" path="res://assets/actions/action_group.gd" id="6_o5pou"]
@@ -42,6 +43,27 @@ transform = Transform3D(0.501511, 0.704771, -0.501781, 2.49258e-16, 0.579992, 0.
 
 [node name="GameCamera" parent="." instance=ExtResource("2_ef5a0")]
 transform = Transform3D(0.173648, 0.492404, -0.852868, 3.02058e-16, 0.866025, 0.5, 0.984808, -0.086824, 0.150384, -55, 30, 2.08165e-12)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 100.0
+offset_right = -100.0
+offset_bottom = 200.0
+grow_horizontal = 0
+script = ExtResource("3_p5ms2")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(4, -1.39515e-15, 1.39515e-15, 1.39515e-15, 4, -1.39515e-15, -1.39515e-15, 1.39515e-15, 4, -15.7203, -1.25293, -11.8775)
@@ -92,24 +114,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6873, -7.30393, -3.7631)
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Farm/FarmRollingTray"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.97308)
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Farm/FarmRollingTray/StaticBody3D2"]
 shape = SubResource("BoxShape3D_dfs0e")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="Farm/FarmRollingTray"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.11676)
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Farm/FarmRollingTray/StaticBody3D3"]
 shape = SubResource("BoxShape3D_dfs0e")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="Farm/FarmRollingTray"]
 transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -7.54319, 0, 1.51123)
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Farm/FarmRollingTray/StaticBody3D4"]
 shape = SubResource("BoxShape3D_dfs0e")
 
 [node name="StaticBody3D5" type="StaticBody3D" parent="Farm/FarmRollingTray"]
 transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 7.58104, 0, 1.51123)
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Farm/FarmRollingTray/StaticBody3D5"]
 shape = SubResource("BoxShape3D_dfs0e")

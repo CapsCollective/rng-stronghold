@@ -1,5 +1,8 @@
 class_name Scenario extends Node3D
 
+signal building_selected(building: Building)
+signal building_deselected(building: Building)
+
 var game_cam: GameCamera
 var buildings: Array[Building]
 var selected_building: Building
@@ -19,6 +22,7 @@ func _exit_tree():
 func on_building_selected(building: Building):
 	Utils.log_info("Selection", "selected ", building.name)
 	selected_building = building
+	building_selected.emit(building)
 	if not building.cam_zoom:
 		Utils.log_warn("Camera", "No camera zoom position set for building ", name)
 		return
@@ -26,5 +30,6 @@ func on_building_selected(building: Building):
 
 func on_building_deselected(building: Building):
 	selected_building = null
+	building_deselected.emit(building)
 	game_cam.reset_position()
 	Utils.log_info("Selection", "deselected ", building.name)

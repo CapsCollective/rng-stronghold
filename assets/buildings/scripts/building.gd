@@ -3,6 +3,9 @@ class_name Building extends Node3D
 signal selected(building: Building)
 signal deselected(building: Building)
 
+signal die_selected(die: ResultDie)
+signal die_deselected(die: ResultDie)
+
 @export var cam_zoom: Node3D
 @export var drag_plane_area: DragPlaneArea
 @export var dice_spawner: DiceSpawner
@@ -11,6 +14,18 @@ var orig_scale: Vector3
 var mouse_over: bool = false
 var building_hovered: bool = false
 var building_selected: bool = false
+
+var selected_die: ResultDie:
+	set(die):
+		if die:
+			selected_die = die
+			die_selected.emit(die)
+			Utils.log_info("Dice", "Selected die value: ", die.value)
+		else:
+			var deselected_die = selected_die
+			selected_die = die
+			Utils.log_info("Dice", "Deselected die value: ", deselected_die.value)
+			die_deselected.emit(deselected_die)
 
 @onready var mesh = $StaticBody3D
 

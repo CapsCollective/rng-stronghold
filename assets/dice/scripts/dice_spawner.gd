@@ -24,9 +24,7 @@ func on_roll_completed(die: RollDie, value: int):
 	die.roll_completed.disconnect(on_roll_completed)
 	var result_die = result_dice_types[die.max_value].instantiate()
 	add_child(result_die)
-	result_die.position = die.position
-	result_die.rotation = die.rotation
-	result_die.set_resting_position()
+	result_die.initialise(die.position, die.rotation, value)
 	die.queue_free()
 	roll_completed.emit(value)
 

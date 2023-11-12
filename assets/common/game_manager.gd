@@ -136,3 +136,6 @@ func reset_units():
 	GameManager.set_total_units(6, 2)
 	GameManager.set_total_units(8, 0)
 	reset_assigned_units()
+
+func get_selected_building() -> Building:
+	return current_scenario.selected_building
