@@ -13,6 +13,7 @@ albedo_texture = ExtResource("3_np7tj")
 
 [node name="ResultDie" type="CharacterBody3D"]
 transform = Transform3D(1, -6.97574e-16, 4.15924e-24, 4.15924e-24, 1.19249e-08, 1, -6.97574e-16, -1, 1.19249e-08, 0, 0, 0)
+collision_layer = 5
 script = ExtResource("1_yuvaq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

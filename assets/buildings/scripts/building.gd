@@ -6,6 +6,8 @@ signal deselected(building: Building)
 signal die_selected(die: ResultDie)
 signal die_deselected(die: ResultDie)
 
+const action_group_display_scene = preload("res://assets/actions/scenes/action_group_display.tscn")
+
 @export var cam_zoom: Node3D
 @export var drag_plane_area: DragPlaneArea
 @export var dice_spawner: DiceSpawner
@@ -14,6 +16,8 @@ var orig_scale: Vector3
 var mouse_over: bool = false
 var building_hovered: bool = false
 var building_selected: bool = false
+
+var action_group_display: Control
 
 var selected_die: ResultDie:
 	set(die):
@@ -55,12 +59,14 @@ func on_selected():
 	building_selected = true
 	set_plane_disabled(false)
 	shrink()
+	spawn_action_group_display()
 	selected.emit(self)
 
 func on_deselected():
 	building_selected = false
 	set_plane_disabled(true)
 	deselected.emit(self)
+	despawn_action_group_display()
 
 func on_mouse_entered():
 	mouse_over = true
@@ -85,3 +91,21 @@ func set_plane_disabled(disabled: bool):
 
 func is_any_building_selected() -> bool:
 	return GameManager.current_scenario.selected_building != null
+
+func get_action_group() -> ActionGroup:
+	var group = Utils.get_all_nodes_with_script(self, ActionGroup)
+	if group.size() < 1:
+		Utils.log_warn("Building", "Found no action groups for building ", name)
+	if group.size() > 1:
+		Utils.log_warn("Building", "Found more than one action group for building ", name)
+	return group[0] if group.size() > 0 else null
+
+func spawn_action_group_display():
+	action_group_display = action_group_display_scene.instantiate()
+	add_child(action_group_display)
+	action_group_display.initialise(self)
+
+func despawn_action_group_display():
+	if action_group_display:
+		action_group_display.deinitialise(self)
+		action_group_display.queue_free()

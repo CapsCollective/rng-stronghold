@@ -16,7 +16,7 @@ func initialise(pos: Vector3, rot: Vector3, result: int):
 
 func _input(event):
 	if event.is_action_pressed("lmb_down") and mouse_over:
-		var collision_point = get_perspective_collision_ray_point(false, 1)
+		var collision_point = get_perspective_collision_ray_point(false, 4)
 		drag_offset = global_position - collision_point
 		mouse_dragging = true
 		GameManager.get_selected_building().selected_die = self

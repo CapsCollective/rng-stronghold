@@ -12,6 +12,7 @@ albedo_color = Color(0.776471, 0.776471, 0.776471, 1)
 albedo_texture = ExtResource("2_ib5a4")
 
 [node name="ResultDie" type="CharacterBody3D"]
+collision_layer = 5
 script = ExtResource("1_7ku0n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
