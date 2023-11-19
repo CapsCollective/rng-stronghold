@@ -8,6 +8,11 @@ signal new_game
 signal resource_changed(resource: String, value: int)
 signal units_changed(tier: int)
 
+var game_world: GameWorld:
+	set(world):
+		Utils.log_info("Initialisation", "Game world registered")
+		game_world = world
+
 var current_scenario: Scenario
 
 func _ready():
