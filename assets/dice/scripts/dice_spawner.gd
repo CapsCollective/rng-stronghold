@@ -2,27 +2,27 @@ class_name DiceSpawner extends Node3D
 
 signal roll_completed(value: int)
 
-const roll_d4_scene = preload("res://assets/dice/scenes/roll_die_d4.tscn")
-const result_d4_scene = preload("res://assets/dice/scenes/result_die_d4.tscn")
-const roll_d6_scene = preload("res://assets/dice/scenes/roll_die_d6.tscn")
-const result_d6_scene = preload("res://assets/dice/scenes/result_die_d6.tscn")
+const dice_dt: Datatable = preload("res://assets/content/dice_dt.tres")
 
-const dice_types = [4, 6]
-const roll_dice_types = {4: roll_d4_scene, 6: roll_d6_scene}
-const result_dice_types = {4: result_d4_scene, 6: result_d6_scene}
-
-func spawn_die():
-	var die_type = dice_types[randi_range(0, dice_types.size() - 1)]
-	var die = roll_dice_types[die_type].instantiate()
-	die.roll_completed.connect(on_roll_completed)
-	die.rotation_degrees.x = randi_range(0, 360)
-	die.rotation_degrees.y = randi_range(0, 360)
-	die.rotation_degrees.z = randi_range(0, 360)
-	add_child(die)
+func spawn_die(tier: int):
+	var die_row: DieRow = dice_dt.get_row(tier)
+	if not die_row:
+		Utils.log_warn("Dice", "No die row found for tier ", tier)
+		return
+	var roll_die = load(die_row.roll_die_path).instantiate()
+	roll_die.roll_completed.connect(on_roll_completed)
+	roll_die.rotation_degrees.x = randi_range(0, 360)
+	roll_die.rotation_degrees.y = randi_range(0, 360)
+	roll_die.rotation_degrees.z = randi_range(0, 360)
+	add_child(roll_die)
 
 func on_roll_completed(die: RollDie, value: int):
 	die.roll_completed.disconnect(on_roll_completed)
-	var result_die = result_dice_types[die.max_value].instantiate()
+	var die_row: DieRow = dice_dt.get_row(die.max_value)
+	if not die_row:
+		Utils.log_warn("Dice", "No die row found for tier ", die.max_value)
+		return
+	var result_die = load(die_row.result_die_path).instantiate()
 	add_child(result_die)
 	result_die.initialise(die.position, die.rotation, value)
 	die.queue_free()

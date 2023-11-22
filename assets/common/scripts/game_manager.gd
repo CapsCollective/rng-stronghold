@@ -107,7 +107,7 @@ func reset_resources():
 const DiceTiers: Array = [4,6,8]
 
 func valid_dice_tier(tier: int) -> bool:
-		return DiceTiers.has(tier)
+	return DiceTiers.has(tier)
 
 func get_total_units():
 	var total = 0
