@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Datatable" load_steps=6 format=3 uid="uid://g0tcxgbk72t5"]
+
+[ext_resource type="Script" path="res://assets/dice/scripts/dt_row_die.gd" id="1_qgb1j"]
+[ext_resource type="Script" path="res://addons/datatable/scripts/datatable.gd" id="2_ht2no"]
+
+[sub_resource type="Resource" id="Resource_bv6jx"]
+script = ExtResource("1_qgb1j")
+display_name = "D4"
+roll_die_path = "res://assets/dice/scenes/roll_die_d4.tscn"
+result_die_path = "res://assets/dice/scenes/result_die_d4.tscn"
+
+[sub_resource type="Resource" id="Resource_oe14t"]
+script = ExtResource("1_qgb1j")
+display_name = "D6"
+roll_die_path = "res://assets/dice/scenes/roll_die_d6.tscn"
+result_die_path = "res://assets/dice/scenes/result_die_d6.tscn"
+
+[sub_resource type="Resource" id="Resource_s7pya"]
+script = ExtResource("1_qgb1j")
+display_name = ""
+roll_die_path = ""
+result_die_path = ""
+
+[resource]
+script = ExtResource("2_ht2no")
+key_type = 2
+default_row = SubResource("Resource_s7pya")
+data = {
+4: SubResource("Resource_bv6jx"),
+6: SubResource("Resource_oe14t")
+}

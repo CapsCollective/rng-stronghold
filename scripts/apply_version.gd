@@ -1,7 +1,7 @@
 #!/usr/bin/env -S godot -s
 extends SceneTree
 
-const Utils = preload("res://assets/common/utils.gd")
+const Utils = preload("res://assets/common/scripts/utils.gd")
 const EXPORT_PRESETS_FILE: String = "res://export_presets.cfg"
 
 func _init():

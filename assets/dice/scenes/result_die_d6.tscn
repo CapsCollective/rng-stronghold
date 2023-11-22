@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://bohd6rgio1lak"]
+
+[ext_resource type="ArrayMesh" uid="uid://3ac0j5vyoxm3" path="res://assets/dice/models/d6/dice_d6_geo.res" id="1_j32kh"]
+[ext_resource type="Script" path="res://assets/dice/scripts/result_die.gd" id="1_yuvaq"]
+[ext_resource type="Texture2D" uid="uid://cdkuw5fmhyfc6" path="res://assets/dice/models/d6/dice_d6_tex.png" id="3_np7tj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gtq2r"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xloxj"]
+albedo_color = Color(0.776471, 0.776471, 0.776471, 1)
+albedo_texture = ExtResource("3_np7tj")
+
+[node name="ResultDie" type="CharacterBody3D"]
+transform = Transform3D(1, -6.97574e-16, 4.15924e-24, 4.15924e-24, 1.19249e-08, 1, -6.97574e-16, -1, 1.19249e-08, 0, 0, 0)
+collision_layer = 5
+script = ExtResource("1_yuvaq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_gtq2r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_j32kh")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_xloxj")

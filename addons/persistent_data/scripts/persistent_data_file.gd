@@ -64,5 +64,15 @@ func load_file():
 		if deserialise_all_sections(save_data) == DeserialisationResult.FAILED:
 			push_error("Deserialisation Error: Some sections failed to deserialise.")
 
+func reset_file():
+	var file_name = get_file_name()
+	if not FileAccess.file_exists(file_name):
+		return
+	DirAccess.remove_absolute(file_name)
+	metadata_section.reset()
+	for section in save_sections.values():
+		section.reset()
+	save_file()
+
 func get_dump() -> Dictionary:
 	return serialise_all_sections()

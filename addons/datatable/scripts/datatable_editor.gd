@@ -221,6 +221,34 @@ func build_field_control(value: Variant, property: Dictionary, setter_callback: 
 					var selected_type = allowed_types[new_value] if new_value > 0 else String()
 					setter_callback.call(selected_type)
 				field_control.item_selected.connect(internal_setter_callback)
+			elif property.hint == PROPERTY_HINT_FILE:
+				field_control = HBoxContainer.new()
+				field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				var line_edit = LineEdit.new()
+				line_edit.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				line_edit.text = value
+				line_edit.text_changed.connect(setter_callback)
+				field_control.add_child(line_edit)
+				var file_button = Button.new()
+				var open_file_dialogue = func():
+					var editor = editor_plugin.get_editor_interface().get_editor_main_screen()
+					var file_dialog = EditorFileDialog.new()
+					file_dialog.mode = EditorFileDialog.FILE_MODE_OPEN_FILE
+					file_dialog.access = EditorFileDialog.ACCESS_RESOURCES
+					file_dialog.disable_overwrite_warning = true
+					file_dialog.title = "Select File"
+					file_dialog.min_size = Vector2(1500, 1000)
+					file_dialog.add_filter(property.hint_string, "Specified File Type")
+					var on_file_dialog_file_selected = func(file):
+						line_edit.text = file
+						line_edit.text_changed.emit(line_edit.text)
+						file_dialog.queue_free()
+					file_dialog.file_selected.connect(on_file_dialog_file_selected)
+					editor.add_child(file_dialog)
+					file_dialog.popup_centered()
+				file_button.button_down.connect(open_file_dialogue)
+				file_button.icon = get_theme_icon("Folder", "EditorIcons")
+				field_control.add_child(file_button)
 			else:
 				field_control = LineEdit.new()
 				field_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL

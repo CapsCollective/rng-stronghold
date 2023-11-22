@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://baj8jkegepq5f"]
+
+[ext_resource type="Script" path="res://assets/debug/scenario/scripts/debug_units_input.gd" id="1_jpahf"]
+
+[node name="Units" type="HFlowContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_constants/h_separation = 10
+alignment = 1
+script = ExtResource("1_jpahf")
+
+[node name="D4s" type="SpinBox" parent="."]
+layout_mode = 2
+max_value = 0.0
+suffix = "D4"
+
+[node name="D6s" type="SpinBox" parent="."]
+layout_mode = 2
+max_value = 0.0
+suffix = "D6"
+
+[node name="D8s" type="SpinBox" parent="."]
+layout_mode = 2
+max_value = 0.0
+suffix = "D8"

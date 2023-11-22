@@ -7,3 +7,4 @@ enum DamageType { FIRE, WATER, NECROTIC }
 @export var effect_colour: Color
 @export var damage_type: DamageType
 @export_flags("Earth:1", "Ice:2", "Poison:4") var weaknesses: int
+@export_file("*.gd") var script_path: String
