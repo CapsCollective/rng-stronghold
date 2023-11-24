@@ -11,7 +11,7 @@ func _ready():
 		notify_tab_state(tab_container.current_tab, true)
 	)
 
-func _shortcut_input(event):
+func _input(event):
 	if event.is_action_pressed("toggle_debug"):
 		set_open(not is_open())
 		get_viewport().set_input_as_handled()
