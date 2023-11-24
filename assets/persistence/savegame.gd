@@ -11,3 +11,7 @@ const ExampleData = preload("res://assets/persistence/example_data.gd")
 
 const PlayerData = preload("res://assets/persistence/player_data.gd")
 @onready var player: PlayerData = PlayerData.new(self)
+
+func save_file():
+	super()
+	Utils.log_info("Serialisation", "Saved game to disk as ", get_file_name())

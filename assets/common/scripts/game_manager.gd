@@ -44,6 +44,7 @@ func next_turn():
 	if has_resource("food", total_units): 
 		change_resource("food", -total_units)
 	
+	Utils.log_info("Resource", "Updated resources and units for next turn")
 	new_turn.emit()
 	Savegame.save_file()
 
@@ -66,20 +67,19 @@ const Resources: Array = [
 	"ale"
 ]
 
-func valid_resource(resource: String) -> bool:
+func is_valid_resource(resource: String) -> bool:
 	return Resources.has(resource)
 
 func get_resource(resource: String):
-	if not valid_resource(resource):
+	if not is_valid_resource(resource):
 		Utils.log_warn("Resource", resource, " is not a valid resource type")
 		return
 	if not Savegame.player.resources.has(resource):
 		Savegame.player.resources[resource] = 0
-		return 0
 	return Savegame.player.resources[resource]
 
 func set_resource(resource: String, value: int): 
-	if not valid_resource(resource):
+	if not is_valid_resource(resource):
 		Utils.log_warn("Resource", resource, " is not a valid resource type")
 		return
 	if value < 0: 

@@ -6,11 +6,8 @@ const dice_dt: Datatable = preload("res://assets/content/dice_dt.tres")
 var action_displays: Array[ActionDisplay]
 
 func _ready():
-	for die_entry in dice_dt:
-		var roll_button = Button.new()
-		roll_button.text = "Roll " + die_entry.value.display_name
-		roll_button.button_up.connect(func(): roll_die(die_entry.key))
-		$HBoxContainer.add_child(roll_button)
+	GameManager.units_changed.connect(func(_tier): update_display())
+	update_display()
 
 func initialise(building: Building):
 	building.die_deselected.connect(on_die_deselected)
@@ -30,10 +27,22 @@ func deinitialise(building: Building):
 func roll_die(tier: int):
 	var dice_spawner = GameManager.get_selected_building().dice_spawner
 	if dice_spawner:
-		dice_spawner.spawn_die(tier)
+		var available_units = GameManager.get_available_units(tier)
+		if available_units > 0:
+			GameManager.change_assigned_units(tier, 1)
+			dice_spawner.spawn_die(tier)
 	else:
 		Utils.log_warn("Building", "No dice spawner set for building ", name)
 
 func on_die_deselected(die: ResultDie):
 	for action_display in action_displays:
 		action_display.on_die_deselected(die)
+
+func update_display():
+	Utils.queue_free_children($HBoxContainer)
+	for die_entry in dice_dt:
+		var roll_button = Button.new()
+		var available_units = GameManager.get_available_units(die_entry.key)
+		roll_button.text = "Roll %s (%s)" % [die_entry.value.display_name, available_units]
+		roll_button.button_up.connect(func(): roll_die(die_entry.key))
+		$HBoxContainer.add_child(roll_button)

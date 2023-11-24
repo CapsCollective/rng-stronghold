@@ -39,16 +39,17 @@ func _ready():
 func setup_details():
 	pass
 
-func assign_roll(roll: int):
+func assign_roll(roll: int) -> bool:
 	Utils.log_info("Actions", "Assigning ", roll, " to ", title)
 	if not is_valid_roll(roll): 
-		Utils.log_warn("Actions", "Roll ", roll, "is not valid for ", title)
-		return
+		Utils.log_info("Actions", "Roll ", roll, "is not valid for ", title)
+		return false
 	remaining_points -= roll
 	if remaining_points <= 0:
 		complete()
 		completed.emit()
 	assigned.emit(roll)
+	return true
 
 func on_new_turn():
 	remaining_points = required_points

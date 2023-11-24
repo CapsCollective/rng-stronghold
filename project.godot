@@ -25,6 +25,7 @@ GameManager="*res://assets/common/scripts/game_manager.gd"
 
 window/size/window_width_override=1920
 window/size/window_height_override=1080
+window/stretch/scale=1.5
 
 [editor_plugins]
 
@@ -49,6 +50,11 @@ rmb_down={
 toggle_debug={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"command_or_control_autoremap":true,"alt_pressed":false,"shift_pressed":false,"pressed":false,"keycode":96,"physical_keycode":0,"key_label":0,"unicode":96,"echo":false,"script":null)
+]
+}
+next_turn={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194309,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 
