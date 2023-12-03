@@ -408,8 +408,12 @@ func create_new_dt_resource(key_type: Variant.Type, resource_type: Resource):
 	file_dialog.min_size = Vector2(1500, 1000)
 	file_dialog.add_filter("*.tres", "Datatable Resource")
 	var on_file_dialog_file_selected = func(file):
-		ResourceSaver.save(new_dt, file)
+		var save_error = ResourceSaver.save(new_dt, file)
 		file_dialog.queue_free()
+		if save_error != 0:
+			push_error("Failed to save new datatable resource with error code ", save_error)
+			return
+		new_dt = load(file)
 		set_current_datatable(new_dt)
 	file_dialog.file_selected.connect(on_file_dialog_file_selected)
 	editor.add_child(file_dialog)
