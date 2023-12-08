@@ -8,7 +8,7 @@ var dt_editor: DatatableEditor
 var dt_inspector_plugin: DatatableInspectorPlugin
 
 func _enter_tree():
-	dt_editor = DatatableEditor.new(self)
+	dt_editor = DatatableEditor.new()
 	add_control_to_bottom_panel(dt_editor, "Datatable Editor")
 	dt_inspector_plugin = DatatableInspectorPlugin.new()
 	dt_inspector_plugin.datatable_inspected.connect(on_datatable_inspected)
