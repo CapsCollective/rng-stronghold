@@ -11,14 +11,15 @@ config_version=5
 [application]
 
 config/name="RNG Stronghold"
-run/main_scene="res://assets/levels/main_level.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://assets/common/application_icon.svg"
-config/version="0.1.7"
+config/version="0.1.10"
+run/main_scene="res://assets/common/scenes/game_world.tscn"
+config/features=PackedStringArray("4.2", "Forward Plus")
+config/icon="res://assets/common/icons/application_icon.svg"
 
 [autoload]
 
 Savegame="*res://assets/persistence/savegame.gd"
+GameManager="*res://assets/common/scripts/game_manager.gd"
 
 [display]
 
@@ -50,6 +51,12 @@ toggle_debug={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"command_or_control_autoremap":true,"alt_pressed":false,"shift_pressed":false,"pressed":false,"keycode":96,"physical_keycode":0,"key_label":0,"unicode":96,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_physics/layer_1="Default"
+3d_physics/layer_2="DragPlane"
+3d_physics/layer_3="ResultDice"
 
 [rendering]
 

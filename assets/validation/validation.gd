@@ -1,6 +1,6 @@
-class_name ValidationManager extends Object
+class_name ValidationManager
 
-const Utils = preload("res://assets/common/utils.gd") 
+const Utils = preload("res://assets/common/scripts/utils.gd") 
 const validations = []
 
 func run_all_validations() -> bool:
@@ -12,14 +12,13 @@ func run_all_validations() -> bool:
 		if not v.run_validations():
 			push_error("    VALIDATION FAILED")
 			result = false
-		v.queue_free()
 	if result:
 		Utils.push_info("All validations passed!")
 	else:
 		push_error("Some validations failed - see above for more info.")
 	return result
 
-class Validation extends Object:
+class Validation:
 	
 	func get_name() -> String:
 		return "Validation"

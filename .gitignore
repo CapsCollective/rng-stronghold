@@ -4,6 +4,7 @@
 # Godot-specific ignores
 .import/
 export.cfg
+override.cfg
 
 # Imported translations (automatically generated from CSV files)
 *.translation
@@ -21,3 +22,6 @@ mono_crash.*.json
 
 # Project export ignores
 build/
+
+# Affinity-specific ignores
+*~lock~

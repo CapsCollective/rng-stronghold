@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://deyv7vqu7b2pl"]
 
 [ext_resource type="Texture2D" uid="uid://boxplkyalrvtv" path="res://assets/dice/models/d4/dice_d4_tex.png" id="1_5acg8"]
 
