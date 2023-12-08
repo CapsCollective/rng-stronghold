@@ -12,10 +12,6 @@ var table_scroll: ScrollContainer
 var new_dt_btn: Button
 
 var current_dt: Datatable
-var editor_plugin: EditorPlugin
-
-func _init(plugin: EditorPlugin):
-	editor_plugin = plugin
 
 func _ready():
 	build_layout()
@@ -29,7 +25,8 @@ func build_layout():
 	for child in get_children():
 		child.queue_free()
 	
-	custom_minimum_size.y = 200 * editor_plugin.get_editor_interface().get_editor_scale()
+	
+	custom_minimum_size.y = 200 * EditorInterface.get_editor_scale()
 	anchors_preset = PRESET_BOTTOM_WIDE
 	size_flags_vertical = Control.SIZE_SHRINK_BEGIN | Control.SIZE_EXPAND
 	
@@ -231,7 +228,7 @@ func build_field_control(value: Variant, property: Dictionary, setter_callback: 
 				field_control.add_child(line_edit)
 				var file_button = Button.new()
 				var open_file_dialogue = func():
-					var editor = editor_plugin.get_editor_interface().get_editor_main_screen()
+					var editor = EditorInterface.get_editor_main_screen()
 					var file_dialog = EditorFileDialog.new()
 					file_dialog.mode = EditorFileDialog.FILE_MODE_OPEN_FILE
 					file_dialog.access = EditorFileDialog.ACCESS_RESOURCES
@@ -348,7 +345,7 @@ func on_delete_btn_pressed(row):
 	refresh_table()
 
 func on_new_dt_btn_pressed():
-	var editor = editor_plugin.get_editor_interface().get_editor_main_screen()
+	var editor = EditorInterface.get_editor_main_screen()
 	
 	var popup = PopupPanel.new()
 	editor.add_child(popup)
@@ -395,7 +392,7 @@ func create_new_dt_resource(key_type: Variant.Type, resource_type: Resource):
 		push_warning("Failed to create new datatable resource with empty row type")
 		return
 	
-	var editor = editor_plugin.get_editor_interface().get_editor_main_screen()
+	var editor = EditorInterface.get_editor_main_screen()
 	
 	var new_dt = Datatable.new()
 	new_dt.key_type = key_type
