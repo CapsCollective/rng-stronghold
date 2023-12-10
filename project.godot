@@ -28,7 +28,7 @@ window/size/window_height_override=1080
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/datatable/plugin.cfg", "res://addons/persistent_data/plugin.cfg")
+enabled=PackedStringArray("res://addons/datatable/plugin.cfg", "res://addons/dialogue/plugin.cfg", "res://addons/persistent_data/plugin.cfg")
 
 [filesystem]
 
