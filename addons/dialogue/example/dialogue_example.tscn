@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://csuefnnbe46dr"]
+[gd_scene load_steps=3 format=3 uid="uid://csuefnnbe46dr"]
 
 [ext_resource type="Script" path="res://addons/dialogue/example/dialogue_example.gd" id="1_vwjjf"]
+[ext_resource type="PackedScene" uid="uid://x1dnfrdhqetk" path="res://addons/dialogue/example/dialogue_box/dialogue_box.tscn" id="2_tp8dj"]
 
 [node name="DialogueExample" type="Control"]
 layout_mode = 3
@@ -9,64 +10,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_vwjjf")
 
-[node name="DialogueBox" type="MarginContainer" parent="."]
+[node name="DialogueBox" parent="." instance=ExtResource("2_tp8dj")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -78.0
-grow_horizontal = 2
+offset_top = -98.0
 grow_vertical = 0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="PanelContainer" type="PanelContainer" parent="DialogueBox"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="DialogueBox/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="DialogueLine" type="VBoxContainer" parent="DialogueBox/PanelContainer/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="DialogueBox/PanelContainer/MarginContainer/DialogueLine"]
-layout_mode = 2
-
-[node name="SpeakerLabel" type="Label" parent="DialogueBox/PanelContainer/MarginContainer/DialogueLine/HBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 0
-text = "Speaker:"
-uppercase = true
-
-[node name="DialogueLineLabel" type="RichTextLabel" parent="DialogueBox/PanelContainer/MarginContainer/DialogueLine/HBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Some text goes here"
-fit_content = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="DialogueBox/PanelContainer/MarginContainer/DialogueLine"]
-layout_mode = 2
-alignment = 2
-
-[node name="ContinueButton" type="Button" parent="DialogueBox/PanelContainer/MarginContainer/DialogueLine/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Continue"
-
-[node name="DialogueOptions" type="VBoxContainer" parent="DialogueBox/PanelContainer/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2

@@ -5,8 +5,8 @@ signal selected(value: Variant)
 var option_text: String
 var option_value: Variant = null
 
-@onready var select_button: Button = $MarginContainer/Button
-@onready var text_label: RichTextLabel = $RichTextLabel
+@onready var select_button: Button = %SelectButton
+@onready var text_label: RichTextLabel = %OptionLabel
 
 func _ready():
 	text_label.text = option_text
