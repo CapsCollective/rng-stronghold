@@ -17,6 +17,7 @@ var context = ExampleContext.new()
 
 func _ready():
 	dialogue_script = DialogueScript.new("res://addons/dialogue/example/example_dialogue.json")
+	DialogueValidator.validate_script(dialogue_script)
 	dialogue_script.context_object = context
 	
 	dialogue_script.ended.connect(func():

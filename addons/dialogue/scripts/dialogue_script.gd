@@ -137,7 +137,7 @@ func get_intial_segment_id() -> StringName:
 func get_current_segment() -> Dictionary:
 	return segments.get(current_segment_id, {})
 
-func get_segment_type(segment: Variant) -> DialogueScriptSegmentType:
+static func get_segment_type(segment: Variant) -> DialogueScriptSegmentType:
 	if "lines" in segment: return DialogueScriptSegmentType.LINE
 	elif "options" in segment: return DialogueScriptSegmentType.OPTION
 	return DialogueScriptSegmentType.UNKNOWN
