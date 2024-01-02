@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RNG Stronghold"
-config/version="0.1.10"
+config/version="0.1.11"
 run/main_scene="res://assets/common/scenes/game_world.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://assets/common/icons/application_icon.svg"
@@ -28,7 +28,7 @@ window/size/window_height_override=1080
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/datatable/plugin.cfg", "res://addons/persistent_data/plugin.cfg")
+enabled=PackedStringArray("res://addons/datatable/plugin.cfg", "res://addons/dialogue/plugin.cfg", "res://addons/persistent_data/plugin.cfg")
 
 [filesystem]
 
